@@ -12,7 +12,7 @@ jobs:
 
     steps:
       - name: <AnyName>
-        uses: <username>/<repo>@master
+        uses: ElenaMerelo/TFG@master
         if: always()
         with:
           chat: ${{ secrets.chat }}
