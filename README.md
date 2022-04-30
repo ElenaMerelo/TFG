@@ -1,4 +1,4 @@
-# Trabajo de Fin de Grado: *Título*
+# Trabajo de Fin de Grado: *Análisis de redes causales en deportes de equipo*
 
 **Este sería el README de tu proyecto. Consulta las [instrucciones de
 instalación](INSTALL.md)
