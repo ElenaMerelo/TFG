@@ -1,5 +1,9 @@
 \chapter{Descripción del problema}
 
+The soccer analytics community is growing year after year. The potential of soccer data is not only catching the attention of researchers and amateur analysts but is also attracting more and more interest from soccer clubs. While the increased availability of freely available data and tools as well as the global pandemic led to an explosion of soccer analytics content in 2020, soccer clubs have arguably made a record-number of signings for data-related roles in 2021. Nevertheless, a significant number of high-quality blog posts and research papers has appeared in the past year. Like last year, this blog post provides an overview of the content that I liked the most!
+
+As a result of the increased interest in soccer analytics, separating the wheat from the chaff has also become more challenging, especially for newcomers to the community. I keep track of the latest developments in the soccer analytics community primarily via Twitter, maintaining a list of soccer analytics people. This blog post lists my favorite soccer analytics content from the past year. If you believe your favorite research paper, blog post, webinar or podcast also deserves a spot in this review, then feel free to send me a direct message via Twitter or LinkedIn.
+
 Me gusta jugar al fútbol, estudio informática y matemáticas, con lo que 
 surgen de manera natural preguntas en torno a la práctica de este deporte 
 alrededor del cual gira todo un mundo, y la importancia de las decisiones 
@@ -41,3 +45,206 @@ Llevándolo un poco a tierra y como motivación principal del presente proyecto,
  los que cada uno tenga una posición en la que estén cómodos y asegure un 
  buen resultado, así como que los cambios estén claros y se puedan hacer 
  sin perder tiempo.}
+
+
+\section{Glosario de términos}
+\subsection{Team Expected Goals}
+Not all shots are equal — a shot closer to the goal is obviously more 
+valuable than a shot farther from goal.
+
+Expected goals (xG) puts a number to the quality of a shot. A shot that has 
+a 50\% chance of going in has an xG of 0.5. A shot with a 10\% chance of going 
+in has an xG of 0.1. Adding up the xG of the shots a team takes is their “xG 
+for” (xGF), and adding up the xG of the shots the team allows is their “xG 
+against” (xGA). xGF minus xGA equals the “xG difference”, or xGD. Each data 
+provider has their own formula for actually calculating xG, but all typically 
+include information like the distance from and angle to goal, and what sort 
+of scenario the shot came from (a cross or a set piece, for example).
+
+Expected goals are a widespread and important metric in analytics. Teams 
+that get more and better shots than their opponents tend to perform well in 
+the long run, even if those shots don’t always go in, so xGD can be a better 
+measure of team strength than just goal difference. 
+
+\subsection{Player Expected Goals}
+Players that get many high quality shots tend to score lots of goals. A 
+player’s ability to get shots from good locations is actually a more 
+important factor in scoring than his ability to finish chances from any 
+location. Though analytics frequently confirm what people within soccer 
+intuitively know, this is one example where statistics contradicts 
+prevailing soccer wisdom.
+
+\subsection{Goalkeeper Expected Goals}
+For goalkeepers, xG relates to how difficult a save is. A keeper’s “goals 
+saved above expected” measures shot-stopping ability — how many more goals 
+did a keeper save than an average keeper would have.
+
+\subsection{Possession value}
+Expected goals are a good measure for the chances that a team creates and 
+concedes, but they’re only recorded when a team takes a shot. Possession 
+value, though, calculates the probability of a goal being scored at any 
+point in a possession. Just like with shots, a team on the ball right 
+outside the box is much more dangerous than a team knocking it around in 
+its own half — this is why straight percentage of possession stats can be 
+misleading. Possession value models that danger.
+
+Much of analytics focuses on determining the actions that lead to higher 
+and lower value possessions. Possession value provides a framework for evaluating the ways teams play, 
+and it has led to interesting analyses of different parts of the game.
+
+\subsection{Defensive actions}
+Unlike offensive ability, defensive ability is incredibly difficult to 
+evaluate from a possession value framework.
+
+Generally, defensive statistics are adjusted for possession. 
+A team with less possession has more opportunities to make defensive plays, 
+so measures of their actions are adjusted accordingly. Passes per defensive 
+action (PPDA) is one popular metric to measure the extent of a team’s press. 
+Pressure on the ball is also used. Looking at where a team chooses to 
+pressure the ball or make tackles and interceptions can be used to describe 
+a team’s defensive set up: Are they a low block or high block? Do they 
+press out wide or in the middle of the field?
+
+\subsection{Passing ability}
+Similar to measuring the quality of a shot (with xG), analytics can model 
+the difficulty of a pass. Completing a pass into an opponent’s six-yard box 
+is much more difficult than hitting a pass between two center backs, 
+for example. Passing scores measure which players are able to hit passes 
+at rates above what would be expected.
+
+\subsection{Game states}
+“Game state” is a catch-all term for the condition of the game — is a team 
+winning, tied, or trailing? Are they home or away? Are they a man up or a 
+man down? Game state effects provides important context for understanding 
+statistics. Home-field advantage in MLS is very strong, and home teams 
+take more shots, score more goals and win more often.
+
+As a result, a team that starts the season with two months of road 
+games (like Portland or D.C. United in the last two years) will look worse 
+relative to the rest of the league. Teams on the road tend to play with a 
+deeper defensive line and less possession, so stylistically, they might 
+look like they play in a very deep block for those first two months.
+
+\section{Visualizations}
+Data visualization can also fall under the domain of analytics. Here are some 
+popular ones:
+
+\textbf{xG maps} show the value and location of the shots a team or player creates or 
+concedes, either within a game or across a season.
+
+\textbf{Passing networks} describe passing connections — who passes to who, 
+and where — in order to understand how a team plays.
+
+\textbf{Radars} and \textbf{bar charts} display a team’s or player’s 
+performance across different metrics.
+
+\textbf{Pass sonars} describe the passing tendencies and abilities of players.
+
+
+\section{Metodología}
+
+Desarrollo ágil
+Planteamiento
+Con el término desarrollo ágil se agrupan una serie de buenas prácticas en el sector de la informática que ayudan a conseguir productos de calidad, adaptados a las necesidades de los clientes, y flexibles. En esta sesión veremos en qué consiste el desarrollo ágil.
+
+Al final de esta sesión
+Se entenderá qué es el desarrollo ágil, y se empezará a organizar el trabajo para emprender el desarrollo de un proyecto dentro de los términos del curso.
+
+Criterio de aceptación
+Se habrá asimilado en qué consiste el desarrollo ágil, y diferentes técnicas y herramientas usadas en ella, y se habrá comenzado a elaborar una épica de la cual surgirán las historias de usuario que se vayan a usar más adelante.
+
+Desarrollo ágil
+Hace ahora 20 años, el manifiesto ágil apostaba por una nueva manera de entender el desarrollo de software que aportara valor al cliente y que fuera ágil en la evolución del mismo, a la vez que proporcionara un entorno de trabajo más satisfactorio para quien lo desarrolla.
+
+Este manifiesto tenía una serie de lemas, que en general se presentaban en contraposición al método de cascada o waterfall en el que las diferentes fases de desarrollo estaban aisladas y diferenciadas, y sólo se pasaba a producción al final de una larga cadena de departamentos aislados entre sí. Los principales lemas eran
+
+Menos documentación, y más código funcionando. La documentación excesiva en forma de contratos y especificaciones funcionales no sirve de nada si no se acompaña de código que funcione; el código funcionando es la mejor forma de asegurar que efectivamente se entienden correctamente los requisitos del cliente.
+Menos procesos, más interacción con el cliente (y de los programadores entre sí). En vez de compartimentos aislados, con una cascada y el cliente en ambos extremos, las interacciones del cliente deben ser constantes, y los diferentes grupos de programadores llevando a cabo ese programa interaccionan continuamente para llevar el código a un estado en el que se pueda mostrar al cliente.
+La colaboración del cliente no debe ser mediante contratos (aunque tendrá que haberlos, sino mediante una interacción continua donde se le muestre productos funcionando y el cliente vea si eso corresponde a sus expectativas o no; si no lo hace, debe de organizarse el equipo de forma ágil para evolucionar el producto hasta que lo haga.
+Estos lemas se organizan en una serie de principios, doce en total. Pero de ellos vamos a extraer unos cuantos:
+
+La programación tiene que centrarse en resolver problemas. Lo más importante es eso, y debe ser el principal enfoque de la tarea. Resolverlos, y tener métodos ágiles para comprobar que efectivamente se ha resuelto.
+Para interaccionar con el cliente y que vea esos productos mínimamente viables, hay que publicar frecuentemente, pasando a producción cualquier cosa que esté lista y pase todos los tests. En este sentido, se parece al release early, release often del mundo del software libre.
+El diseño es esencial, aunque dentro de los límites de que se prefiere el código a la documentación. El diseño previo a la codificación debe seguir todos los lemas y todos los principios ágiles.
+Hay que atenerse a las buenas prácticas para codificar, en todas las áreas del proyecto, desde cómo nombrar las variables hasta que’tipo de herramientas y metodologías se consideran las mejores en un momento determinado. Es decir, cuando se comience un proyecto debe de dedicarse cierto tiempo a establecer cuales son esas buenas prácticas. En la evolución del mismo, será esencial para su flexibilidad y comprensibilidad seguir las mismas.
+La simplicidad es esencial, y no se debe hacer más que lo que hay en los requisitos, ni buscar más características que las que estrictamente se necesiten para resolver un problema.
+El trabajo se debe revisar frecuentemente, con el objetivo de hacerlo más eficiente, adaptarlo a nuevos requisitos, o simplemente incorporarlo a producción; el código siempre debe haber pasado por varios ojos antes de que sea hábil para funcionar.
+Estos principios deben guiar una metodología de trabajo. Para empezar, dice que hay que empezar por un problema a resolver, no con qué se quiere hacer. Las soluciones no pueden estar por delante del problema. Es decir, empezar por decir las herramientas que se van a usar para hacer algo es una forma de empezar algo que no va a ser simple, posiblemente no resuelva ningún problema, y sea difícil de probar si efectivamente funciona o no. Además, te indica que hay que organizar el trabajo en hitos, cada uno de los cuales implicará la publicación de un producto mínimamente viable, cada uno de los cuales se construirá sobre el anterior (o se agregará al anterior, según el problema). Sin un producto mínimamente viable, no se puede testear, y sin tener claro qué problema se quiere resolver, tampoco.
+
+La calidad en el software empieza por el diseño, y este diseño incluye desde la modularización del problema, hasta el el uso de lenguaje, bibliotecas o estructuras de datos para trabajar. En informática rara vez hay una sola forma de hacer las cosas, y siempre hay que tomar decisiones técnicas que tendrán implicaciones en la evolución del software. Diseñar te va ayudar a escribir menos código, y el mejor código es el que no hay que testear, con lo que será código de más claridad. Un diseño flexible, por capas, que desacople diferentes partes del mismo, será también mucho más fácil de adaptar a diferentes circunstancias.
+
+Y la búsqueda de mejores prácticas es esencial. La sintaxis y los manuales de referencia, y los tutoriales, rara vez se preocupan de guiar en la toma de una serie de decisiones técnicas. Te presentan una solución como ideal, o posiblemente la única posible. Sin embargo, llegar a esas soluciones implica una serie de decisiones, y es en las que hay que seguir las mejores prácticas, a todos los niveles: personales, empresas, industria.
+
+Finalmente, se tiene que establecer una infraestructura para revisión de código. Lo más simple es establecer un estándar en el cual no se incorpore código a la rama principal directamente, sino que se haga siempre mediante pull requests. Pero adicionalmente, el desarrollo ágil pide la creación de una serie de reuniones, normalmente llamadas retro, que revisan el código que ha puesto en producción, y sugiere, siempre de forma constructiva, diferentes mejoras (que se incorporarán a un MVP futuro). El pasar tests frecuentemente para guardarse de posibles cambios en las dependencias también es una buena práctica, porque cerrarse en una versión determinada de todo puede ser eficiente a la hora de llevar a producción, pero las versiones de todo acaban siendo deprecadas y no quieres encontrarte en una situación en la cual tengas que reescribir todo por usar algo con posibles huecos de seguridad.
+
+Capturando los deseos de los clientes
+Los deseos de los clientes se capturarán en unas historias de usuario. Pero previo a las historias de usuario se tendrán que crear unas narrativas de los diferentes pasos que van a dar los diferentes tipos de usuario, una visión más global que, más adelante, se dividirá en fragmentos, historias de usuario, testeables y programables. Estas narrativas se llaman épicas. En general, como afirma en el enlace anterior:
+
+Son historias de usuario demasiado extensas que se tienen que dividir en otras más pequeñas.
+
+Y en este punto es donde es conveniente empezar a usar las mejores prácticas en el desarrollo ágil. Hay muchas formas de llevarlo a cabo, pero generalmente se agrupan en dos campos diferentes: los partidarios de usar scrum o los usuarios de kanban. Hay diferencias considerables, aunque los dos coinciden en el hecho de que se trabaje sistemáticamente con historias de usuario… y con un tablero. Los tableros permiten ver claramente en qué estado está el trabajo, y permite organizar las historias de usuario en diferentes columnas según el estado en el que estén. Las columnas clásicas son “Por hacer”, “haciéndose” y “hecho”, pero se pueden añadir otras columnas según el proyecto y el equipo: Diseño técnico, o Tormenta de Ideas. Estas últimas permiten interaccionar, a través de la herramienta que se elija (que, por simplicidad, es mejor que sea la que provee el gestor de código, por ejemplo, el de GitHub).
+
+Estas columnas de “tormenta de ideas” se pueden usar, por ejemplo, para elaborar colaborativamente una épica. De esa épica, posteriormente, surgirán las diferentes historias de usuario. Pero eso lo veremos a continuación.
+
+Respetando los deseos de los clientes de forma incremental: milestones
+Como la metodología ágil aboga por presentar frecuentemente los resultados al cliente para ver si corresponde a sus expectativas, y cambiar o adaptar los requerimientos como resultados de las mismas, por lo que el desarrollo de un producto se debe hacer de forma incremental como una serie de entregables, cada uno de ellos apoyado en el anterior, con complejidad creciente y también un acercamiento creciente al cumplimiento de las historias de usuario (que, en muchos casos, no se podrán cumplir hasta el producto final).
+
+Todo el desarrollo tiene que organizarse alrededor de estos entregables, como si fueran mojones en una carretera (o milestones). La metáfora es que uno va avanzando por la carretera, hasta llegar al destino final, que es un producto que satisface una cantidad aceptable de historias de usuario (y puede, por tanto, ser desplegado o subido a un app store o simplemente una versión nueva en una biblioteca).
+
+Los milestones, por tanto, tienen que cumplir estas características
+
+Tiene que estar ordenados en una progresión lógica, que incluya todas las etapas del desarrollo, o al menos todas las que terminen en código en el repositorio.
+Cada milestone tiene que describir un producto mínimamente viable. El producto mínimamente viable tiene que ser más complejo que el anterior, incluirlo y agrupar todo el desarrollo hecho desde el entregable anterior.
+Que sea mínimamente significa que sólo va a incluir lo estrictamente necesario para que funcione; y que sea viable indica que tiene que ser un producto real, con un criterio de aceptación, y no una simple agrupación de tareas no relacionadas entre sí. Estos tests, casi siempre, estarán automatizados, aunque en la realidad la viabilidad tendría que decidirla el equipo de producto en contacto con los clientes.
+También tiene que ser un producto en el sentido que sea algo con entidad propia, desde el diseño de una clase con código que compile hasta una aplicación cliente-servidor completa publicada en un store para las mismas.
+Como siempre se va a desarrollar para el siguiente PMV, todo desarrollo que se haga tendrá que fluir desde las historias de usuario, pasando por issues que lo desarrollen, hasta los productos mínimamente viables, que también incluirán a los pull requests que agrupen una serie de issues. Las historias de usuario, en general, podrán irse moviendo de un milestone al siguiente, según se vayan implementando, o simplemente dejarse fuera de los milestones; los issues siempre tendrán que estar en un milestone. Evidentemente, como se va avanzando por una carretera, en general sólo se estará trabajando en un PMV.
+
+Por la misma razón, no es necesario planificar desde el principio todos los milestones que se vayan a desarrollar, sólo una cantidad suficiente para tener claro el horizonte al que se avanza; según se vaya desarrollando, se verá la necesidad de crear nuevos milestones, con releases que pueden ser internas (para el propio equipo) o externas (para el cliente).
+
+Los PMVs pueden ser internos o externos. En general, son un punto de control para pararse y decir “¿Es esto lo que queremos/quiere el cliente?”. También es una forma tangible del desarrollo, puesto que es algo que se puede liberar o publicar. Por eso también se suele establecer un tag para el repositorio con cada uno de los PMVs, que establezcan claramente cuál era el punto en el desarrollo. A ese punto se puede volver, por ejemplo, para corregir errores o simplemente volver a él si algún PMV posterior no es viable.
+
+1. Motivación/problema que queréis resolver. ¿Por qué queréis hacer este TFG? ¿A quién ayuda? ¿Quién lo usaría? ¿Qué solución proponéis? La ingeniería del software trata de resolver problemas, no de hacer aplicaciones, y los problemas deben estar antes que nada.
+2. De la motivación saldrán los objetivos que os planteáis (y de los objetivos una serie de productos mínimamente viables, claro). Recordad mi artículo sobre cómo formular objetivos que os lo he puesto miles de veces.
+
+Buenas. Parece que algunos estáis poniéndoos más en serio con el TF*, así que unos cuantos consejos.
+1. Tratad de usar el desarrollo ágil tanto para la parte más de rollete (o la matemática) como para la parte más de desarrollo. Lo que viene a continuación viene de ahí.
+2. Plantead una serie de milestones/PMVs de forma que en cada parte del camino tengáis algo que entregar, y también la documentación correspondiente. Plantead plazos razonables para los mismos.
+3. En muchos casos tendréis que plantear historias de usuario; en general, sirven siempre porque te centran en los problemas que quieres solucionar y los objetivos que quieres alcanzar. Las historias de usuario están relacionadas con la lógica de negocio de vuestro proyecto (y tenéis que tener claro cuál es esta) y siempre son un beneficio para el usuario (los posibles usuarios del proyecto)
+4. Los issues siempre plantean un problema. Siempre están enmarcados en un milestone, y siempre tienen que tener un criterio de aceptación para ser cerrados. 
+5. Intentad que todo el código se incorpore mediante PRs, y dejad los PRs un tiempo para darme tiempo a mi (y al cotutor en su caso) a comentar. Si veis uno especialmente complicado, pasadlo también por aquí que los anteriores trabajofindecarrerantes (y los de esta hornada) igual os podrán echar una mano.
+
+la secuencia sería:
+Objetivos del TFG → Milestones → Issues que vayan desarrollando los PMVs → PRs que vayan avanzando esos issues (y cerrando).
+
+Recordad que siempre la secuencia es objetivos → personas (clientes) → historias de usuario → milestones → a programar.
+
+También recordatorio de los 2-3 primeros milestones:
+Milestone 0: Repo configurado con corrección ortográfica, memoria comenzada con objetivos y motivación, metodología (es decir, todo esto de los milestones, ágil, DDD, explicado). También configuración global, gestor de tareas (makefile o lo que uséis), etcétera.
+Milestone 1: Identificación de las estructuras de datos fundamentales y de los elementos principales de la lógica de negocio, y programación de los mismos. Este PMV será una biblioteca con mínima funcionalidad y todos los tests pasando. En los proyectos más de investigación, alternativamente sería crear el capítulo del estado del arte. (Y este sería el posterior). Estos dos son milestones internos
+Milestone 2: A partir de aquí ya empezaréis a hacer la aplicación externa: API, cliente Telegram, alimentación de la librería, descarga de datos reales, lo que sea. Será un poco más específico de vuestro  TFG.
+
+Una regla del pulgar para las historias de usuario: Siempre tienen que expresar un deseo y un beneficio para el usuario. Si pones "ojalá qué" y te lo imaginas en la boca del usuario y suena creíble, es que es una historia de usuario. Si no, pues no.
+👉🏼 "Ojalá que pueda iniciar sesión y registrarme" ¿Suena creíble? ¿No? Pues no es una historia de usuario, es un issue o tarea que tú necesitas que el usuario haga para que cumpla sus deseos.
+
+Os recuerdo que parte integral del TFG es saber organizar bien el desarrollo del mismo. Y esto no solamente por el tribunal (que también), sino simplemente por vuestra salud mental y física, y para optimizar la experiencia de aprendizaje que es lo que es un TFG. El objetivo del TFG no es hacer el TFG, sino aprender a gestionar un proyecto siguiendo las mejores prácticas.
+
+La memoria suele empezar con los objetivos (tras un breve paso por la motivación/problema); no siempre es así, pero así debería ser. El primer capítulo debe empezar por la motivación (“Por razones legales, en una serie de locales se necesita saber en tiempo real cuantas personas se encuentran en el mismo, así como tener un histórico”) y el planteamiento del problema (“Se necesita un sistema de medición automática del aforo y de la duración de la estancia de una persona en un recinto cerrado”), pero a continuación, se deben experesar cuales son los objetivos del trabajo, es decir, qué parte de ese problema vamos a dejar resuelta y cuál se va a dejar como trabajo futuro.
+
+Construir un sistema tal como el que a priori se va a necesitar (que iremos concretando durante el trabajo) implica ver qué componentes, partes o productos mínimamente viables van a ser necesarios durante su desarrollo; también ver cuales son los casos de uso reales. Por ejemplo, puede que sea un sólo local en cuyo caso la solución será relativamente fácil: algo que se ejecute en un dispositivo en el mismo local. Pero puede ser un local con muchas estancias; o pueden ser muchos locales separados físicamente. Los objetivos deben estar claros, porque de los objetivos saldrán los casos de uso (una vez más, los casos de uso son muy importantes) y de los casos de uso los hitos y tareas para resolverlos. Por ejemplo, puede ser el siguiente objetivo.
+
+Crear un sistema que se pueda conectar a un sistema informático existente y que sea capaz de contar el número total de personas en un local así como tiempo de permanencia, con el sistema costando menos de 30€ en total.
+Los objetivos deben ser alcanzables, y en lo posible cuantitativos. En este caso, nos hemos comprometido a que valga menos de 30€ (lo que puede excluir, por ejemplo, equipos del tipo Raspi). Pero en subobjetivos se puede ir más allá.
+
+Subobjetivos
+Debe ser capaz de contar en recintos de x metros cuadrados.
+Debe contar el número de personas con una resolución de 5 minutos.
+En el primer caso, va a ser totalmente diferente la solución dependiendo de la dimensión del recinto; el segundo nos va a dar un límite en la capacidad de procesamiento del sistema. Que en este caso es amplia, pero puede ser de 1 segundo, en cuyo caso habrá que componérselas.
+
+No será un objetivo, por ejemplo
+
+Construir un dispositivo basado en una Raspberry Pi que capte WiFi y Bluetooth
+Por varias razones. Un objetivo siempre tiene que estar en el dominio del problema, o en un contexto de negocio. Si el problema, por ejemplo, es automatizar los procesos de desarrollo de una empresa que provee soluciones de gestión de contenidos, un objetivo podrá ser “Crear configuraciones repetibles que funcionen con una sola orden” o “reducir el tiempo de despliegue de desarrollo a 5 minutos” o “Poder adaptar soluciones existentes a una nueva solución con una semana-persona”. El objetivo no será nunca
+
+Desarrollar un script de ansible que instale todas las aplicaciones que usamos ahora.
+Un objetivo nunca debe formularse como una solución específica a un problema; es algo que se debe de alcanzar, y justificar, durante el desarrollo de un proyecto. Y nunca debe ser una tarea cerrada. Un TF siempre debe resolver un problema (o parte del mismo), no hacer una tarea.
+
