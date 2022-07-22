@@ -207,12 +207,8 @@ estos avances incluyen las métricas, esto es, combinaciones de datos
 que nos sirven para analizar el rendimiento.
 
 \subsection{Expected goals o Goles esperados, xG}
-Para esta métrica hay un artículo específico en el blog, realizado 
-por Dani Pérez, el cual puedes leer aquí. Pese a ello, realizaremos 
-un breve recordatorio sobre la misma.
-
 La métrica xG se basa en la atribución a una ocasión creada de 
-un valor de entre 0 a 1, siendo este valor dependiente de diversos 
+un valor entre 0 a 1, siendo este valor dependiente de diversos 
 factores, e interpretable como un porcentaje de conseguir dicho gol. 
 Por ejemplo a un valor 0,1 le correspondería un 10\% de posibilidades 
 de conseguir marcar. Normalmente, se suele utilizar los tiros 
@@ -221,18 +217,11 @@ ya que son intentos de anotar y son sencillos de identificar,
 y se utiliza la distancia y ángulo como variables principales.
 
 Dependiendo del distribuidor de los datos, se tienen en cuenta una 
-serie de diferentes variables, y el modelo entrenado para 
-facilitar los datos suele variar. Como breve resumen, podemos 
-señalar las siguientes variables facilitadas en las diferentes páginas web:
+serie de diferentes variables- tipo de asistencia, ángulo de tiro y 
+distancia a la portería entre ellos- y el modelo entrenado para 
+facilitar los datos suele variar.
 
-Opta,2020: tipo de asistencia, ángulo de tiro y distancia a la portería.
-Wyscout,2020: localización del tiro, localización de la asistencia, 
-si el golpeo es de cabeza o con el pie, tipo de asistencia, si se 
-ha regateado a un jugador de campo o portero antes de realizar 
-el tiro, si el tiro es precedido por una acción a balón parado, 
-si fue un contraataque o transición…
-
-Según Tippett,2019, los goles esperados sirven para determinar 
+Los goles esperados sirven entonces para determinar 
 los goles que se esperaría que un equipo marcase a partir de 
 la cantidad y la calidad de las ocasiones de gol creadas en un 
 partido. Es, posiblemente, la métrica avanzada más prominente 
@@ -249,11 +238,9 @@ convierta en una asistencia de gol. Para ello, similar al caso de xG,
 se le asigna un valor al pase que se relaciona con la oportunidad 
 de que acabe siendo una asistencia. Pese a ser similar al xG, el 
 valor que se le asigna no depende de si finalmente el compañero 
-realiza un tiro a portería.
-
-En Opta se consideran factores como el tipo de pase, la distancia 
-y la posición donde recibe la pelota el compañero. Adjunto un 
-video por si queréis saber más sobre esta métrica.
+realiza un tiro a portería. Para obtenerlo, se consideran factores 
+como el tipo de pase, la distancia y la posición donde recibe la 
+pelota el compañero.
 
 \subsection{Expected points o Puntos esperados,xP o xPts}
 Los puntos esperados es una métrica que refleja la cantidad 
@@ -285,35 +272,6 @@ de pases realizados por el equipo atacante y el número de
 acciones defensivas: entradas, intercepciones, faltas y duelos 
 defensivos ganados, que se producen en 60\% del campo del 
 equipo defensor.
-
-Dentro del análisis de fútbol, podemos entonces destacar los siguientes roles:
-
-\begin{itemize}
-    \item Analista táctico: se encarga de estudiar los equipos y cómo 
-    se desenvuelven en los diferentes partidos. Entre sus tareas se 
-    incluyen el análisis del propio equipo y de los rivales.
-    \item Scouter: es la persona encargada de la búsqueda y captación 
-    de jugadores. Su tarea consiste en encontrar los jugadores que 
-    necesita el equipo o el club, por lo que analiza sus cualidades 
-    y posibilidades de integración al equipo, desde su rendimiento 
-    futbolístico hasta el económico.
-    \item Analista de datos: toma la información estadística de 
-    cada partido tanto en lo individual como en lo colectivo. 
-    Establece relaciones para encontrar respuestas o ideas que 
-    puedan colaborar con la toma de decisiones del club referentes 
-    a lo táctico, lo técnico y lo económico, para el modelo de 
-    juego del equipo o para la compra y venta de jugadores.
-\end{itemize}
-
-Manteniendo esto en mente, nuestra solución 
-podría ser usada por ellos. Vemos entonces 
-que el trabajo se puede enfocar de diversas 
-maneras, y conforme avancemos habremos de descartar algunas y 
-quedarnos con otras, quedando todo debidamente justificado. Dependerá de los 
-datos que se encuentren disponibles, y la necesidad que haya en el mercado. 
-Normalmente y si consultamos la literatura, los análisis son estáticos; 
-rendimiento y mapas de calor de un jugador, desde dónde se ha lanzado más 
-a portería, etc. pero no hay tanto estudiado en cuanto a causalidad.
 
 \section{Metodología}
 
@@ -443,6 +401,7 @@ no quieres encontrarte en una situación en la cual
 tengas que reescribir todo por usar algo con posibles huecos de seguridad.
 
 \end{itemize}
+
 Capturando los deseos de los clientes
 Los deseos de los clientes se capturarán en unas historias de usuario. 
 Pero previo a las historias de usuario se tendrán que crear unas 
@@ -687,3 +646,39 @@ alcanzar, y justificar, durante el desarrollo de
 un proyecto. Y nunca debe ser una tarea cerrada. 
 Un TF siempre debe resolver un problema,o parte del mismo, no hacer una tarea.
 
+\section{Clientes}
+A su vez, dentro del análisis de fútbol, podemos destacar los siguientes roles:
+
+\begin{itemize}
+    \item Analista táctico: se encarga de estudiar los equipos y cómo 
+    se desenvuelven en los diferentes partidos. Querrá obtener un análisis 
+    del propio equipo y de los rivales.
+    \item Scouter: es la persona encargada de la búsqueda y captación 
+    de jugadores. Querrá encontrar los jugadores que necesita el equipo 
+    o el club, por lo que analiza sus cualidades y posibilidades de 
+    integración al equipo, desde su rendimiento futbolístico hasta el 
+    económico.
+    \item Analista de datos: toma la información estadística de 
+    cada partido tanto en lo individual como en lo colectivo. 
+    Establece relaciones para encontrar respuestas o ideas que 
+    puedan colaborar con la toma de decisiones del club referentes 
+    a lo táctico, lo técnico y lo económico, para el modelo de 
+    juego del equipo o para la compra y venta de jugadores.
+    \item Persona que apuesta: querrá inferir el resultado de un partido, 
+    quién marcará y así, una vez se publiquen los jugadores. 
+    \item Entrenador: querrá saber a quién sacar durante un partido, los 
+    cambios, dónde poner a quién.
+    \item Matemático ?
+    \item Informático ?
+    \item Aficionado  ?
+\end{itemize}
+
+Manteniendo esto en mente, nuestra solución 
+podría ser usada por ellos. Vemos entonces 
+que el trabajo se puede enfocar de diversas 
+maneras, y conforme avancemos habremos de descartar algunas y 
+quedarnos con otras, quedando todo debidamente justificado. Dependerá de los 
+datos que se encuentren disponibles, y la necesidad que haya en el mercado. 
+Normalmente y si consultamos la literatura, los análisis son estáticos; 
+rendimiento y mapas de calor de un jugador, desde dónde se ha lanzado más 
+a portería, etc. pero no hay tanto estudiado en cuanto a causalidad.
