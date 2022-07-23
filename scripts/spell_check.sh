@@ -9,20 +9,22 @@ SpellingError () {
         resultado=$(echo $line | aspell --mode=tex  --lang=en --list | aspell --mode=tex  --lang=es --list --home-dir=. --personal=.github/workflows/personal-dictionary.txt);
         if [[ ! -z "$resultado" ]]
         then 
-         echo "Spell error in line $n_line : $resultado" 
+         echo "Spelling error in line $n_line : $resultado" 
          let "error = 1";
         fi
         let "n_line += 1"
     done < $1
     return $error; 
 }
+
 export -f SpellingError; 
 exitValue=0
+
 # Comprobamos el readme 
 SpellingError Readme.md
 let "exitValue += $?"
 # Comprobamos ficheros .tex
-for file in $(find ./doc/secciones -name "*.tex")
+for file in $(find ../doc/secciones -name "*.tex")
 do 
     SpellingError $file; 
     let "exitValue += $?"

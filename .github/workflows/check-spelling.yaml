@@ -8,5 +8,5 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Install tools and spelling check
+      - name: Install tools and check spelling
         run: make workflow-spell
