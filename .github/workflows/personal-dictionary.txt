@@ -1,2 +1,14 @@
-README
-md
+Merelo 
+Julián
+Merelo
+Guervós
+Úrsula
+LaTeX
+TeXLive
+pdflatex
+bibtex
+pdflatex
+colorlinks
+linkcolor
+urlcolor
+bibliografía
