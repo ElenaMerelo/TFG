@@ -24,7 +24,7 @@ exitValue=0
 SpellingError README.md
 let "exitValue += $?"
 # Comprobamos ficheros .tex
-for file in "doc/secciones/*.tex"
+for file in "doc/secciones/*.tex doc/*.tex"
 do
     SpellingError $file;
     let "exitValue += $?"
