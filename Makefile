@@ -1,5 +1,6 @@
 # Corrector ortográfico
 spell:
+	chmod u+x ./scripts/spell_check.sh
 	./scripts/spell-check.sh
 
 install-spell:
