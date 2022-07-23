@@ -26,6 +26,7 @@ let "exitValue += $?"
 # Comprobamos ficheros .tex
 for file in "doc/secciones/*.tex"
 do
+    echo $file
     SpellingError $file;
     let "exitValue += $?"
 done
