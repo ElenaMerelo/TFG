@@ -1,4 +1,8 @@
 #!/bin/bash
+
+# Script basado en el de https://github.com/BlancaCC/TFG-Estudio-de-las-redes-neuronales 
+# MIT license 
+
 SpellingError () {
     error=0;
     echo "";
