@@ -16,8 +16,5 @@ spell:
 install-spell:
 	sudo apt-get install aspell aspell-es aspell-en
 
-order-dic:
-	./scripts/order-dictionary.py
-
 workflow-spell: install-spell spell
 

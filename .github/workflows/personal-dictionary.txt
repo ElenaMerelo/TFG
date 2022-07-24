@@ -11,4 +11,5 @@ pdflatex
 colorlinks
 linkcolor
 urlcolor
-bibliografía
+bibliografía 
+bibliografia 
