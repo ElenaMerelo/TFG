@@ -11,7 +11,7 @@ all: proyecto.pdf
 
 # Corrector ortográfico
 spell:
-	bash ./scripts/spell-check.sh
+	./scripts/spell-check.sh
 
 install-spell:
 	sudo apt-get install aspell aspell-es aspell-en
