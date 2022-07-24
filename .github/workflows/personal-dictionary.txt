@@ -13,3 +13,5 @@ linkcolor
 urlcolor
 bibliografía
 bibliografia
+bayesianas
+bayesiana
