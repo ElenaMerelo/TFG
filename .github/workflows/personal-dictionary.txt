@@ -1,4 +1,4 @@
-personal_ws-1.1 es 0 utf-8 
+personal_ws-1.1 es 0 utf-8
 Julián
 Merelo
 Guervós
@@ -13,4 +13,3 @@ linkcolor
 urlcolor
 bibliografía
 bibliografia
- 
