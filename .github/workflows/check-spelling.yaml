@@ -1,12 +1,19 @@
+# Inspiración: https://github.com/BlancaCC/TFG-Estudio-de-las-redes-neuronales
+
 name: "check spelling"
 
-on: push
+on:
+  push:
+    paths:
+      - '**.tex'
+      - '**.md'
+
 
 jobs:
   check-spelling:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Install tools and check spelling
         run: make workflow-spell
