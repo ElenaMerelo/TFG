@@ -4,35 +4,59 @@ Este proyecto tiene como idea ayudar desde los jugadores hasta
 el cuerpo técnico del equipo: entrenadores, director técnico, preparadores 
 físicos y analistas tácticos,también conocidos como 'scouting'.
 
-\section{Perfiles dentro del análisis de fútbol}
+\section{Metodología - Mentalidad ágil}
+% citar ágil
+Tiene su origen en el manifesto ágil\cite{manifesto-agil}, el cual fue una revolución 
+en la forma de desarrollar software, y planteaba que tienen más valor las personas que 
+los procesos o herramientas, un producto funcionando que mucha documentación, colaboración 
+con los clientes que contratos, y \textbf{flexibilidad} frente a seguir un plan. Desde el 
+año 2001 que se redactó ha cambiado mucho la tecnología, y por ejemplo nosotros pondremos 
+mucho peso en la documentación, mas la idea sigue intacta: lo importante son los usuarios, 
+adaptarse. En general pues, con \textit{ágil} nos referimos a una forma de pensar que se aplica 
+a todo un ciclo de desarrollo del software centrado en el cliente y que consiste en 
+continuas mejoras de cada vez más complejos productos mínimamente viables\cite{agile-science}.
+En este apartado enteremos mejor y dejaremos claro lo que esto significa e implica.
 
-scout, analista, ojeador 
+Lo esencial de esta forma de proceder es que su objetivo es \textbf{resolver problemas} y satisfacer 
+al cliente, no hacer aplicaciones: importa el por qué, antes que el qué o el cómo. Estos 
+últimos resultarán de ese primer análisis, seguidos de una empatización, que consiste 
+en contactar con clientes, leer prensa y demás para enfocar el problema;posteriormente 
+ideación, de la que saldrán los objetivo e hitos o historias de usuario; y por último diseño, 
+que será llevar a tierra todo lo anterior. 
 
+Asimismo, el punto de partida es pensar la motivación o problema que queremos resolver. 
+¿Por qué queremos hacer este TFG? ¿A quién ayuda? ¿Quién lo usaría? ¿Qué solución proponemos? 
+Los problemas deben estar antes que nada; es complicado comprar ingredientes si no sabes qué 
+receta vas a preparar. 
 
-\section{Métricas en el fútbol moderno: concepto, análisis y uso}
+Luego, de la motivación saldrán los objetivos que nos planteamos. Estos habrán de indicar 
+qué es lo que se quiere conseguir, incluyendo qué tipo de medios tenemos disponibles. Lo 
+más importante es que han de estar en el dominio del problema, tienen que ser específicos, 
+medibles y alcanzables\cite{objetivos}. 
 
-\subsection{Expected goals o Goles esperados, xG}
+De estos objetivos saldrán una serie de productos mínimamente viables. 
 
+Las historias de usuario sirven para centrarnos en los problemas que queremos solucionar 
+y los objetivos a alcanzar. Están relacionadas con la lógica de 
+negocio del proyecto y siempre son un beneficio para el los posibles usuarios del proyecto.
 
-\subsection{Expected assists o Asistencias esperadas, xA}
+Por otro lado, los issues  plantean un problema. Siempre están enmarcados en un milestone, 
+y tienen que tener un criterio de aceptación para ser cerrados. 
 
+Todo el código se incorpora mediante PRs
 
-\subsection{Expected points o Puntos esperados,xP o xPts}
-
-
-\subsection{Pases Permitidos por Acción Defensiva,PPDA}
-
-
-\section{Metodología}
+Un milestone describe un producto mínimamente viable, y el estado en el que tiene 
+que estar el repositorio al terminar, además de los criterios que se daben seguir 
+para validarlo.
 
 
 \section{Clientes}
 A su vez, dentro del análisis de fútbol, podemos destacar los siguientes roles:
 
+% mencionar uso de la metodología de personas
 \begin{itemize}
-    \item Analista táctico: se encarga de estudiar los equipos y cómo 
-    se desenvuelven en los diferentes partidos. Querrá obtener un análisis 
-    del propio equipo y de los rivales.
+    \item Analista táctico: estudia los equipos y cómo se desenvuelven en los partidos. 
+    Querrá obtener un análisis del propio equipo y de los rivales.
     \item Scouter: es la persona encargada de la búsqueda y captación 
     de jugadores. Querrá encontrar los jugadores que necesita el equipo 
     o el club, por lo que analiza sus cualidades y posibilidades de 
@@ -50,21 +74,29 @@ A su vez, dentro del análisis de fútbol, podemos destacar los siguientes roles
     \item Entrenador: querrá saber a quién sacar durante un partido, los 
     cambios, dónde poner a quién. Por ejemplo: entrenadora principal y 
     segunda entrenadora del Club de Fútbol Internacional del Granada.
-    \item Matemático ?
-    \item Informático ?
-    \item Aficionado  ?
+    \item Matemático 
+    \item Informático 
+    \item Aficionado  
+    \item Periodista deportivo 
 \end{itemize}
 
-Manteniendo esto en mente, nuestra solución 
-podría ser usada por ellos. Vemos entonces 
-que el trabajo se puede enfocar de diversas 
-maneras, y conforme avancemos habremos de descartar algunas y 
-quedarnos con otras, quedando todo debidamente justificado. Dependerá de los 
-datos que se encuentren disponibles, y la necesidad que haya en el mercado. 
-Normalmente y si consultamos la literatura, los análisis son estáticos; 
-rendimiento y mapas de calor de un jugador, desde dónde se ha lanzado más 
-a portería, etc. pero no hay tanto estudiado en cuanto a causalidad.
 
 \section{Historias de usuario}  
+
+
+
+\section{Métricas en el fútbol moderno: concepto, análisis y uso}
+
+\subsection{Expected goals o Goles esperados, xG}
+
+
+\subsection{Expected assists o Asistencias esperadas, xA}
+
+
+\subsection{Expected points o Puntos esperados,xP o xPts}
+
+
+\subsection{Pases Permitidos por Acción Defensiva,PPDA}
+
 
 
