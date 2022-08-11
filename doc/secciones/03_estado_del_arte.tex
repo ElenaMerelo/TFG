@@ -3,23 +3,43 @@
 En este apartado veremos trabajos relacionados que 
 nos han parecido interesantes, o aportan algo a 
 nuestro estudio. El primero que más llama la atención es 
-\textit{Dolores: un modelo que predice resultados de
+\textbf{Dolores: un modelo que predice resultados de
 partidos de fútbol de todo el mundo}\cite{dolores}, el 
-% añadir explicación hybrid BN y dynamic ratings
+% añadir en parte matemática explicación hybrid BN y dynamic ratings
 cual, usando calificaciones dinámicas y redes bayesianas 
 híbridas, hace una buena predicción del resultado de un partido 
 entre dos equipos \textit{a} y \textit{b} incluso cuando 
 se obtiene de datos históricos de partidos 
-en los que no participan ni \textit{a} ni \textit{b}.
+en los que no participan ni \textit{a} ni \textit{b}. Nosotros en un principio nos 
+centraremos en redes bayesianas normales, y no usaremos entrenamiento de datos o \textit{machine learning}, 
+pero es bueno tener este estudio en mente, al mostrarnos el increíble potencial que tienen estas redes también, 
+y no solo las más tradicionalmente usadas redes complejas.
 
-%sobra este párrafo?
-Si bien esto concuerda con estudios anteriores realizados 
-en fútbol y otros deportes, este paper es importante dado que 
-amplía la evidencia empírica a datos históricos de entrenamiento 
-que no solo incluyen resultados de partidos de una competición, 
-sino que contienen resultados que abarcan diferentes ligas y 
-divisiones de 35 países diferentes.
+De  \textbf{Predicción de resultados de fútbol con redes bayesianas en
+Liga Española-Equipo Barcelona}\cite{prediction-barcelona} destaca el uso de 
+\textit{NETICA software}\cite{netica}, el cual construye las redes usando un sistema de 
+preguntas y respuestas. Aparte, da la posibilidad de introducir información relevante, y 
+finalmente provee al usuario de unas conclusiones. Nosotros no lo usaremos porque no se 
+adapta completamente a nuestro problema.
 
-Asimismo, un artículo que se acerca a lo que nosotros queremos 
-hacer es \textit{Predicción de resultados de fútbol con redes bayesianas en
-Liga Española-Equipo Barcelona}\cite{prediction-barcelona}.
+% explicar en parte matemática qué es entropía de Tsallis y super-additive entropy index
+% explicar entropía de shannon, de renyi, decir por qué nosotros usaremos la de tsallis 
+% mencionar interaction performance theory, asbhys law of requisite variety and jaynes principle of maximum entropy 
+Asimismo, merece la pena mencionar \textbf{El comportamiento adaptativo de un equipo 
+de fútbol: un análisis basado en la entropía}\cite{entropy-analysis}, dado que guarda una 
+alta relación con lo que nosotros queremos estudiar y nos ocupa. A grandes rasgos, afirma que 
+para optimizar su rendimiento, un equipo debe mantener un equilibrio entre orden u organización, el cual 
+propicia la cooperación entre sus miembros, y desorden o desorganización, que confunde 
+al oponente y favorece el mantener un cierto grado de libertad. Para medir, usan entropía de 
+Tsallis a partir de los pases entre los jugadores, y concluyen que la posición de un equipo al final de la temporada está 
+correlada con la entropía del mismo, medida con un índice de entropía súper-aditivo. 
+
+Más específicamente, saber quién pasa el balón a quién significa reducir la entropía de los pases y maximizar 
+la comunicación y cooperación entre los jugadores del equipo. A su vez, esto implicaría limitar sus 
+grados de libertad al mover la pelota y sorprender al oponente, lo que expondría al equipo a contraataques. El precio 
+pues de maximizar la certeza de los pases puede ser un comportamiento predecible y hacer al equipo vulnerable. Lo más importante 
+de este \textit{paper} para nosotros es que reivindica que el rendimiento de un equipo de fútbol puede 
+ser modelado usando la entropía de sus pases de balón, lo que nos confirma que estamos siguiendo el camino correcto.
+
+% me quedan paper de jjmerelo, y el de jm buldú, quizás mencionar pero solo por encima algún otro, terminar de 
+% justificar y encajar con lo mío
