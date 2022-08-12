@@ -1,31 +1,42 @@
 \chapter{Estado del arte}
-
-En este apartado veremos trabajos relacionados que 
-nos han parecido interesantes, o aportan algo a 
-nuestro estudio. El primero que más llama la atención es 
-\textbf{Dolores: un modelo que predice resultados de
-partidos de fútbol de todo el mundo}\cite{dolores}, el 
 % añadir en parte matemática explicación hybrid BN y dynamic ratings
-cual, usando calificaciones dinámicas y redes bayesianas 
-híbridas, hace una buena predicción del resultado de un partido 
-entre dos equipos \textit{a} y \textit{b} incluso cuando 
-se obtiene de datos históricos de partidos 
+En este apartado veremos trabajos relacionados que nos han parecido interesantes, 
+aportan algo a nuestro estudio, o nos ayudaron a encaminarnos. El primero que más 
+llama la atención es \textbf{Dolores: un modelo que predice resultados de partidos 
+de fútbol de todo el mundo}\cite{dolores}, el cual, usando calificaciones dinámicas 
+y redes bayesianas híbridas, hace una predicción del resultado de un partido entre dos 
+equipos  \textit{a} y \textit{b} a partir de datos históricos de partidos 
 en los que no participan ni \textit{a} ni \textit{b}. Nosotros en un principio nos 
-centraremos en redes bayesianas normales, y no usaremos entrenamiento de datos o \textit{machine learning}, 
-pero es bueno tener este estudio en mente, al mostrarnos el increíble potencial que tienen estas redes también, 
-y no solo las más tradicionalmente usadas redes complejas.
+centraremos en redes bayesianas normales, y no usaremos entrenamiento de datos o 
+\textit{machine learning}, pero es bueno tener este estudio en mente, al mostrarnos 
+el increíble potencial que tienen estas redes también, y no solo las más tradicionalmente 
+usadas redes complejas.
 
-De  \textbf{Predicción de resultados de fútbol con redes bayesianas en
+De  \textbf{Predicción de resultados de fútbol con redes bayesianas en la
 Liga Española-Equipo Barcelona}\cite{prediction-barcelona} destaca el uso de 
 \textit{NETICA software}\cite{netica}, el cual construye las redes usando un sistema de 
-preguntas y respuestas. Aparte, da la posibilidad de introducir información relevante, y 
-finalmente provee al usuario de unas conclusiones. Nosotros no lo usaremos porque no se 
-adapta completamente a nuestro problema.
+preguntas y respuestas, dando la posibilidad de introducir información relevante, y 
+finalmente proveyendo al usuario de conclusiones. Sin embargo, nosotros no lo usaremos 
+debido a que no se adapta completamente a nuestro problema. Como este estudio hay 
+numerosos más, por ejemplo \textbf{Predicción de resultados de partidos de fútbol 
+usando redes bayesianas en la Premier League inglesa}\cite{razali-2017}, 
+cuyas redes consiguieron una precisión predictiva del 75.09\%, empleando datos de 
+tres temporadas.
+
+Adicionalmente, \textbf{Hacia datos inteligentes: Mejorando la precisión predictiva 
+en rendimiento a largo plazo de un equipo de fútbol}\cite{smart-data} pone un gran énfasis 
+en aplicar conocimiento causal y hechos reales al proceso de desarrollo del modelo, basándose 
+en los datos que son necesarios para la predicción, en vez de los que hay disponibles.
+De esa manera, desarrollan un modelo que genera predicciones precisas del cambiante rendimiento 
+de equipos de fútbol, usando datos limitados. El modelo permite predecir, antes de que 
+empiece una temporada, los puntos totales en la liga que se espera un equipo acumule 
+a lo largo de la temporada. Los resultados se comparan bien con otros tipos de 
+modelos relevantes, y obtiene resultados en línea con modelos que usan muchos más datos.
 
 % explicar en parte matemática qué es entropía de Tsallis y super-additive entropy index
 % explicar entropía de shannon, de renyi, decir por qué nosotros usaremos la de tsallis 
 % mencionar interaction performance theory, asbhys law of requisite variety and jaynes principle of maximum entropy 
-Asimismo, merece la pena mencionar \textbf{El comportamiento adaptativo de un equipo 
+Asimismo, merece mucho la pena mencionar \textbf{El comportamiento adaptativo de un equipo 
 de fútbol: un análisis basado en la entropía}\cite{entropy-analysis}, dado que guarda una 
 alta relación con lo que nosotros queremos estudiar y nos ocupa. A grandes rasgos, afirma que 
 para optimizar su rendimiento, un equipo debe mantener un equilibrio entre orden u organización, el cual 
@@ -41,5 +52,9 @@ pues de maximizar la certeza de los pases puede ser un comportamiento predecible
 de este \textit{paper} para nosotros es que reivindica que el rendimiento de un equipo de fútbol puede 
 ser modelado usando la entropía de sus pases de balón, lo que nos confirma que estamos siguiendo el camino correcto.
 
-% me quedan paper de jjmerelo, y el de jm buldú, quizás mencionar pero solo por encima algún otro, terminar de 
-% justificar y encajar con lo mío
+% me quedan paper de jjmerelo, el de jm buldú, y pdf de cerqueira
+% justificar y terminar de encajar todo con lo mío
+Son muy destacables y nos han inspirado las contribuciones realizadas por Anthony 
+Constantinou\cite{a-constantinou}, cuya investigación se encuentra en el campo 
+de las redes bayesianas, ha desarrollado varios modelos basados en ellas, y publicado 
+numerosos artículos aplicándolos al análisis de fútbol. 
