@@ -1,46 +1,43 @@
 \chapter{Estado del arte}
-% añadir en parte matemática explicación hybrid BN y dynamic ratings
-% explicar en parte matemática qué es entropía de Tsallis y super-additive entropy index
-% explicar entropía de shannon, de renyi, decir por qué nosotros usaremos la de tsallis 
-% mencionar interaction performance theory, asbhys law of requisite variety and jaynes 
-% principle of maximum entropy, permutation entropy
-En este apartado veremos trabajos relacionados que nos han parecido interesantes, 
-aportan algo a nuestro estudio, o nos ayudaron a encaminarnos. El primero que más 
-llama la atención es \textbf{Dolores: un modelo que predice resultados de partidos 
-de fútbol de todo el mundo}\cite{dolores}, el cual, usando calificaciones dinámicas 
-y redes bayesianas híbridas, hace una predicción del resultado de un partido entre dos 
-equipos  \textit{a} y \textit{b} a partir de datos históricos de partidos 
-en los que no participan ni \textit{a} ni \textit{b}. Nosotros nos 
-centraremos en redes bayesianas normales, y no usaremos entrenamiento de datos o 
-\textit{machine learning}, pero es bueno tener este estudio en mente, al mostrarnos 
+
+En los últimos años ha habido una revolución en el análisis de la organización 
+y rendimiento de los equipos de fútbol y sus jugadores, por lo que es posible tener acceso a todos los 
+eventos que ocurren en el campo, tales como pases, disparos o goles, todo ello con las coordenadas 
+exactas de tiempo y posición, y el jugador responsable de cada evento. Por otro lado, también es 
+posible llevar un registro de las posiciones de todos los jugadores en el campo, junto con el balón, 
+lo que permite determinar la posición, velocidad y aceleración de cada jugador, y dando información 
+muy útil sobre su desempeño físico y táctico. 
+
+No obstante, los avances más determinantes e importantes tienen que ver con la posibilidad de aplicar o 
+definir nuevos métodos y herramientas. En ese sentido, se pueden entender los roles de los jugadores 
+como un todo, no solo como componentes aisladas sin interacciones entre ellos. Consecuentemente, es 
+posible contruir redes de pases compuestas por nodos, correspondientes a los jugadores, y enlaces, 
+que representan los pases entre ellos. Esta organización está además lejos de ser 
+aleatoria. El análisis de la evolución de las redes de pases ha mostrado que sus propiedades 
+cambian continuamente a lo largo de un partido y que eventos importantes tales como goles 
+pueden afectar la organización de la red.\cite{spatial-and-temporal-entropies}
+
+Asimismo, durante la última década las redes bayesianas se han popularizado en el campo 
+de la inteligencia artificial, y hay numerosos estudios que buscan predecir los resultados 
+de partidos de fútbol empleándolas, para lo que construyen diferentes modelos\cite{prediction-barcelona}.
+En \cite{razali-2017} consiguen una precisión predictiva del 75.09\%. \cite{dolores} introduce el uso 
+de calificaciones dinámicas y redes bayesianas híbridas para hacer una predicción del resultado de un 
+partido entre dos equipos \textit{a} y \textit{b} a partir de datos históricos de partidos 
+en los que no participan ni \textit{a} ni \textit{b}. Ello nos muestra 
 el increíble potencial que tienen estas redes también, y no solo las más tradicionales 
 redes complejas.
 
-De \textbf{Predicción de resultados de fútbol con redes bayesianas en la
-Liga Española-Equipo Barcelona}\cite{prediction-barcelona} destaca el uso de 
-\textit{NETICA software}\cite{netica}, el cual construye las redes usando un sistema de 
-preguntas y respuestas. Sin embargo, nosotros no lo usaremos 
-debido a que no se adapta completamente a nuestro problema. Como este estudio hay 
-numerosos más, por ejemplo \textbf{Predicción de resultados de partidos de fútbol 
-usando redes bayesianas en la Premier League inglesa}\cite{razali-2017}, 
-cuyas redes consiguieron una precisión predictiva del 75.09\%, empleando datos de 
-tres temporadas.
-
-Adicionalmente, \textbf{Hacia datos inteligentes: Mejorando la precisión predictiva 
-en rendimiento a largo plazo de un equipo de fútbol}\cite{smart-data} pone un gran énfasis 
+Adicionalmente, hay estudios\cite{smart-data} que ponen un gran énfasis 
 en aplicar conocimiento causal al proceso de desarrollo del modelo, basándose 
-en los datos que son necesarios para la predicción. De esa manera, desarrollan un modelo 
-que genera predicciones precisas del cambiante rendimiento de equipos de fútbol. El 
-modelo permite predecir, antes de que empiece una temporada, los puntos totales en 
-la liga que se espera un equipo acumule a lo largo de la temporada. Lo 
-destacamos por el hecho de que construye y trabaja sobre toda la literatura anterior, y la extiende 
-de una manera muy completa.
+en los datos que son necesarios para la predicción. De esa manera, consiguen predicciones precisas 
+del cambiante rendimiento de equipos de fútbol. El modelo permite predecir, antes de que empiece 
+una temporada, los puntos totales en la liga que se espera un equipo acumule a lo largo de la temporada, lo 
+que supone un cambio de perspectiva con respecto a los artículos mencionados con anterioridad, y en su 
+metodología construye y trabaja sobre la literatura anterior, extendiéndola.
 
-Incluimos \textbf{Usando \textit{machine learning} para obtener inferencias sobre los datos de 
-ubicación de pases en el fútbol}\cite{ML-inference} por su uso de la inferencia estadística. 
-En este \textit{paper}, introducen dos maneras de analizar datos de eventos pasados para 
-revelar eventos no tan obvios. Aplican sus métodos a datos de la temporada 2012-2013 de La Liga 
-y curiosamente muestran que los equipos están caracterizados por dónde en el campo realizan pases, y se 
+Por otro lado, hay vertientes que hacen análisis de fútbol desde la inferencia estadística, desde 
+el \textit{machine learning}, o ambos\cite{ML-inference}. En este \textit{paper}, muestran que 
+los equipos están caracterizados por dónde en el campo realizan pases, y se 
 pueden identificar por la manera en que pasan el balón. Usando mapas de calor de las localizaciones 
 de los pases, consiguen una precisión del 87\% en una clasificación de veinte equipos. Emplean 
 además la localización de los pases a lo largo de una posesión del balón para predecir tiros a 
@@ -48,72 +45,41 @@ puerta. Finalmente, usan los pesos del modelo de predicción para categorizar a 
 según el valor de sus pases. Nos muestra una vez más la diversidad que existe en el estudio 
 y análisis del fútbol; no hay límites en cuanto a lo que se puede considerar y obtener.
 
-Asimismo, merece mucho la pena mencionar \textbf{El comportamiento adaptativo de un equipo 
-de fútbol: un análisis basado en la entropía}\cite{entropy-analysis}, dado que guarda una 
-alta relación con lo que nosotros queremos estudiar y nos ocupa. A grandes rasgos, afirma que 
-para optimizar su rendimiento, un equipo debe mantener un equilibrio entre orden u organización, el cual 
+En cuanto a entropía, \cite{entropy-analysis}, afirma que para optimizar su rendimiento, un 
+equipo debe mantener un equilibrio entre orden u organización, el cual 
 propicia la cooperación entre sus miembros, y desorden o desorganización, que confunde 
 al oponente y favorece el mantener un cierto grado de libertad. Para medir, usan entropía de 
-Tsallis a partir de los pases entre los jugadores, y concluyen que la posición de un equipo al final de la temporada está 
-correlada con la entropía del mismo. 
+Tsallis a partir de los pases entre los jugadores, y concluyen que la posición de un equipo 
+al final de la temporada está correlada con la entropía del mismo. 
 
 Más específicamente, saber quién pasa el balón a quién significa reducir la entropía de los pases y maximizar 
 la comunicación y cooperación entre los jugadores del equipo. A su vez, esto implicaría limitar sus 
 grados de libertad al mover la pelota y sorprender al oponente, lo que expondría al equipo a contraataques. El precio 
 pues de maximizar la certeza de los pases puede ser un comportamiento predecible y hacer al equipo vulnerable. Lo más importante 
-de este \textit{paper} para nosotros es que reivindica que el rendimiento de un equipo de fútbol puede 
-ser modelado usando la entropía de sus pases de balón, lo que nos confirma que estamos siguiendo el camino correcto.
+de este \textit{paper} es que reivindica que el rendimiento de un equipo de fútbol puede 
+ser modelado usando la entropía de sus pases de balón.
 
-Son muy destacables y nos han inspirado las contribuciones realizadas por Anthony 
-Constantinou\cite{a-constantinou}, cuya investigación se encuentra en el campo 
-de las redes bayesianas, ha desarrollado varios modelos basados en ellas, y publicado 
-numerosos artículos aplicándolos al análisis de fútbol. 
-
-Dejamos para lo último el artículo que más encaja con nuestro trabajo,
-\textbf{Entropías espaciales y temporales en la liga española de fútbol}\cite{spatial-and-temporal-entropies}. 
-En él, cuantifican la entropía espacial y temporal de equipos de fútbol y sus jugadores, 
-mediante interacciones basadas en pases. Sus resultados muestran que la entropía 
-espacial cambia de acuerdo con la posición de los jugadores en el campo, y la 
+Y no solo eso, \cite{spatial-and-temporal-entropies} cuantifica la entropía espacial y temporal de 
+equipos de fútbol y sus jugadores, también mediante interacciones basadas en pases. Sus resultados 
+muestran que la entropía espacial cambia de acuerdo con la posición de los jugadores en el campo, y la 
 organización de las redes de pases cambian a lo largo de un partido. 
 
-Aprovecha que en los últimos años ha habido una revolución en el análisis de la organización 
-y rendimiento de los equipos de fútbol y sus jugadores, por lo que es posible tener acceso a todos los 
-eventos que ocurren en el campo, tales como pases, disparos o goles.
-Todo ello con las coordenadas exactas de tiempo y posición, y el jugador responsable de cada 
-evento. Por otro lado, también es posible llevar un registro de las posiciones de todos los 
-jugadores en el campo, junto con el balón, lo que 
-permite determinar la posición, velocidad y aceleración de cada jugador, y dando información 
-muy útil sobre su desempeño físico y táctico.
-
-No obstante, los avances más determinantes ha sido la posibilidad de aplicar o definir nuevos métodos 
-y herramientas. En ese sentido, se puede 
-entender los roles de los jugadores como un todo, no solo como componentes aisladas sin 
-interacciones entre ellos. Consecuentemente, es posible contruir redes de pases, compuestas 
-por nodos (jugadores), y enlaces (pases entre ellos), cuya organización está lejos de ser 
-aleatoria. El análisis de la evolución de las redes de pases ha mostrado que sus propiedades 
-cambian continuamente a lo largo de un partido y que eventos importantes tales como goles 
-pueden afectar la organización de la red.
-
-Uno de los primeros en investigar la entropía entre los jugadores de un equipo de 
-fútbol fue \textbf{Un análisis de las redes de juego del equipo campeón de la copa 
-mundial FIFA 2010}\cite{network-analysis}. Analizan el desempeño y estilo de juego de la selección española en los mundiales del 2010 desde una 
+\cite{network-analysis} fue uno de los primeros en investigar la entropía entre los jugadores de un equipo de 
+fútbol. Analizan el desempeño y estilo de juego de la selección española en los mundiales del 2010 desde una 
 perspectiva temporal, con lo que medidas globales como el número de pases consecutivos o el número de 
 pases por minuto reflejan el éxito de un equipo en imponer su forma de juego. Observando el coeficiente 
 de agrupación se captura la naturaleza combinatoria del estilo de pases, habitualmente hechos a corta distancia.
 Así, España consigue tener mayor posesión del balón y pases completados, lo que es una buena estrategia defensiva 
-al privar al otro equipo de influenciar en el juego. Esto finalmente determina el resultado final del partido, 
-si bien es discutible la necesidad de tener tanto tiempo el balón, sin muchas veces avanzar tanto a puerta. Es 
-curioso cómo en el último partido muestran que la precisión disminuye y el juego es menos elaborado, al introducirse 
+al privar al otro equipo de influenciar en el juego. Esto en último lugar determina el resultado final del partido, 
+si bien es discutible la necesidad de tener tanto tiempo el balón, sin muchas veces avanzar a puerta. En el 
+último partido muestran que la precisión disminuye y el juego es menos elaborado, al introducirse 
 más emoción y nervios.
 
-El artículo \textbf{Investigando las redes causales subyacentes en equipos de fútbol europeos}\cite{cerqueira} 
-muestra que las estrategias ofensivas son más influyentes que las defensivas, y lo incluimos por usar redes 
-causales directamente, algo que no es del todo común. 
+Pero, ¿cómo medimos la calidad de un equipo? No hay muchos artículos aplicando redes causales a partidos de 
+fútbol. \cite{cerqueira} muestra que las estrategias ofensivas son más influyentes que las defensivas.
 
-Nuestro trabajo pues será una mezcla de estos que hemos expuesto, empleando redes causales, entropía e inferencia 
-estadística. 
 
-%mejorar estos dos párrafos finales
+% terminar de enmarcar en el problema
 
 
  
