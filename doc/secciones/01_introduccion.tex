@@ -1,52 +1,44 @@
 \chapter{Introducción}
 
-En este capítulo se describen la motivación del proyecto y los objetivos que
-se quieren alcanzar durante el desarrollo, así como una introducción histórica al
-a la aplicación del análisis al fútbol y las redes bayesianas. 
-
 \section{Motivación}
-%¿Por qué queréis hacer este TFG? ¿A quién ayuda? ¿Quién lo usaría? 
-%¿Qué solución proponéis? La ingeniería del software trata de resolver 
-%problemas, no de hacer aplicaciones, y los problemas deben estar antes que nada.
-
 El fútbol es un deporte de equipo  \textit{complicado}. Suponiendo que 
 jueguen veintidós personas, como parte del equipo técnico habrá que 
 decidir quiénes jugarán, dónde se posicionará cada uno, cuándo y qué 
 cambios se harán, si se aboga más por una táctica defensiva u ofensiva, 
-así como en qué hacer incidencia en los entrenamientos, entre otros. 
+así como en qué hacer incidencia durante los entrenamientos, entre otros. 
 Son bastantes las variables que entran, literalmente, en juego. 
 
-% por parte de quién, qué podría ser usado??? quitar lo del jugador
-% poner preguntas que surgen. SER MÁS ESPECÍFICO.
 Surgen, pues, de manera natural preguntas en torno a la práctica de 
 este deporte alrededor del cual gira todo un mundo, y la importancia 
 de las decisiones que se van tomando tanto dentro como fuera del 
 campo: Si a un equipo le va mal en un campeonato, se echa al entrenador, pero ¿de quién 
-es realmente 'la culpa'?
+es realmente 'la culpa'? ¿Qué cambios se pueden hacer? ¿Qué táctica es mejor? ¿Cómo se influencian los 
+jugadores entre ellos, o cuando juegan con otro equipo? ¿Es ello determinante en los 
+resultados que consiguen a lo largo de una temporada? 
 Principalmente,  el presente trabajo pretende ayudar a un 
-entrenador que , durante un partido, quiera saber el efecto de un 
-cambio de alineación, técnica o formación, y tras el mismo saber 
+entrenador que, durante un partido, quiera saber el efecto de una 
+alineación, técnica o formación, y tras el mismo saber 
 qué mejorar, en qué trabajar más, qué ha causado un gol o pérdida 
 de la posesión, o a un analista de datos que, antes de un partido, 
 estudia al equipo rival o al propio, a nivel individual o colectivo: 
 el número de contactos de cada jugador con el balón, el porcentaje 
 de acierto tanto tirando a gol como pasando a un compañero, la 
 dirección, el número de ataques realizados por sector del campo, 
-las conexiones entre jugadores,...
-
-No obstante, podría ser usado también por aficionados, personas que apuestan, analistas tácticos, técnicos o de rendimiento físico, y no necesariamente de un equipo profesional que tenga muchos medios. Pero de esto hablaremos en profundidad en próximos capítulos, cuando establezcamos los objetivos, clientes e historias de usuario.
-% no me convence el final, me falta responder bien las últimas preguntas
+las conexiones entre jugadores y así. Todo ello con énfasis en las 
+redes de pases, viendo qué información podemos obtener de ellas y su 
+importancia.
 
 \section{Objetivos del trabajo} \label{sect:goals}
 
 Dado el problema anterior, los objetivos a resolver son:
 
 \begin{enumerate}
-    \item \label{obj:1} Crear una herramienta para que personas del equipo técnico de un equipo de fútbol, como analistas de datos, analistas técnicos, analistas de rendimiento 
+    \item \label{obj:1} Crear una herramienta para que personas del equipo 
+    técnico de un equipo de fútbol, como analistas de datos, analistas técnicos, analistas de rendimiento 
     físico o entrenadores, puedan tomar decisiones en base al estudio que se haga antes, durante 
     o después de un partido. 
-    \item \label{obj:2} Entender cómo se pueden aplicar técnicas estadísticas en deportes de equipo, y adaptar resultados en ese campo a 
-    los tipos de datos que existen aquí.
+    \item \label{obj:2} Entender cómo se pueden aplicar técnicas estadísticas en deportes de equipo, 
+    y adaptar resultados en ese campo a los tipos de datos que existen aquí.
 \end{enumerate}
 
 Este proyecto es software libre, y está liberado con la licencia \cite{gplv3}.
