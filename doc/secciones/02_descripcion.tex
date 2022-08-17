@@ -1,6 +1,24 @@
-\chapter{Metodología}
-\section{Mentalidad ágil}
-Tiene su origen en el manifesto ágil\cite{manifesto-agil}, el cual fue una revolución, frente 
+\chapter{Descripción del problema}
+El presente trabajo intentará responder a: ¿La entropía mejora las posibilidades 
+de marcar gol? Si cambia la entropía del equipo, ¿podemos determinar la causa? Esto es, 
+si ha sido por un jugador específico, la alineación o más bien la influencia del equipo 
+contrario. Asimismo, ¿es posible ver la entropía reflejada en un tipo de visualización de 
+las redes de pases?. Estudiaremos pues hasta qué punto es determinante la 
+entropía a nivel de jugador o equipo, empleando técnicas estadísticas, para obtener respuestas a lo planteado.
+
+\section{Metodología - Mentalidad ágil}
+La metodología nos dicta dos cosas esenciales:
+\begin{enumerate}
+    \item ¿Qué tengo que hacer ahora?
+    \item ¿Lo que he hecho está bien y era lo que tenía que hacer?
+\end{enumerate}
+
+Para el primer punto, hacemos uso de \textit{issues} y \textit{milestones}, 
+como veremos más adelante. Para lo segundo, hay que tener en cuenta que todos 
+los \textit{issues} son problemas, e idealmente deben de decir explícitamente 
+(o implícitamente si está claro) cómo se resuelve el problema.
+
+La mentalidad ágil tiene su origen en el manifesto ágil\cite{manifesto-agil}, el cual fue una revolución, frente 
 al modelo en cascada,
 en la forma de desarrollar software, y planteaba que tienen más valor las personas que 
 los procesos o herramientas, un producto funcionando que mucha documentación, colaboración 
@@ -35,8 +53,22 @@ Las historias de usuario sirven para centrarnos en los problemas que queremos so
 y los objetivos a alcanzar. Están relacionadas con la lógica de 
 negocio del proyecto y siempre son un beneficio para el los posibles usuarios del proyecto.
 
+Una regla del pulgar para las historias de usuario: Siempre tienen que expresar un deseo y un 
+beneficio para el usuario. Si pones "ojalá qué" y te lo imaginas en la boca del usuario y suena 
+creíble, es que es una historia de usuario. Si no, pues no.
+"Ojalá que pueda iniciar sesión y registrarme" ¿Suena creíble? ¿No? Pues no es una historia 
+de usuario, es un issue o tarea que tú necesitas que el usuario haga para que cumpla sus deseos.
+
+
+El problema es poner lo que tú quieres que haga el usuario para conseguir algo, y no lo que el 
+usuario quiere. Está claro que nosotros no tenemos clientes (en la mayoría de los casos, aunque 
+os animo que busquéis a "stakeholders" que os puedan dar pistas) pero un usuario no quiere 
+logearse o quieren las cosas en React. Quiere tener claro cuantos pacientes tiene que atender 
+para optimizar su tiempo.
+
 Por otro lado, los issues  plantean un problema. Siempre están enmarcados en un \textit{milestone}, 
-y tienen que tener un criterio de aceptación para ser cerrados. 
+y tienen que tener un criterio de aceptación para ser cerrados. Hacer tareas lo más atómicas posibles ayuda, porque 
+se hace un PR, se termina una tarea, y se avanza menos a trompicones.
 
 Todo el código se incorpora mediante PRs
 
@@ -44,12 +76,18 @@ Un \textit{milestone} describe un producto mínimamente viable, y el estado en e
 que estar el repositorio al terminar, además de los criterios que se daben seguir 
 para validarlo.
 
+Dentro de la metodología descrita, nos enmarcaremos en el \href{https://www.iebschool.com/blog/design-thinking-agile-scrum/}{design thinking}, 
+un proceso iterativo y no lineal que consta de una fase inicial consistente en empatizar con el 
+cliente, para saber qué necesita. Seguidamente, se define el problema, se piensa en una solución al 
+mismo, se desarrolla un prototipo, y finalmente se testea. 
+
+
 \section{Herramientas usadas}
-%aquí justificación de github, github actions, zsh
+% issue #53
 
 
 \section{Clientes}
-Basándonos en la metodología basada en personas\href{https://www.designthinking.services/herramientas-design-thinking/metodo-persona/}, 
+Basándonos en la \href{https://www.designthinking.services/herramientas-design-thinking/metodo-persona/}{metodología basada en personas}, 
 hemos llegado a los siguientes usuarios: 
 \begin{itemize}
     \item Analista táctico: estudia los equipos y cómo se desenvuelven en los partidos. 
@@ -94,14 +132,11 @@ a las que va dirigido, idear y diseñar el resto.
 
 Y que se conecte sin problema con la parte informática.
 
+\section{Milestones o Productos Mínimamente Viables}
+
 
 \section{Diccionario de términos}
 % issue #50
-\subsection{Redes bayesianas}
-
-\subsection{Redes bayesianas híbridas}
-
-\subsection{Calificación dinámica}
 
 \subsection{Entropía}
 
@@ -111,16 +146,7 @@ Y que se conecte sin problema con la parte informática.
 
 \subsection{Entropía de Renyi} 
 
-\subsection{Entropía de permutación}
 
 \subsection{Principio de máxima entropía}
 
 \subsection{Redes causales}
-
-\section{Descripción del problema}
-El presente trabajo intentará responder a: ¿La entropía mejora las posibilidades 
-de marcar gol? Si cambia la entropía del equipo, ¿podemos determinar la causa? Esto es, 
-si ha sido por un jugador específico, la alineación o más bien la influencia del equipo 
-contrario. Asimismo, ¿es posible ver la entropía reflejada en un tipo de visualización de 
-las redes de pases?. Estudiaremos pues hasta qué punto es determinante la 
-entropía a nivel de jugador o equipo, empleando técnicas estadísticas, para obtener respuestas a lo planteado.
