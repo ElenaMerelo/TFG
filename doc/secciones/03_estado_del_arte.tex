@@ -1,5 +1,4 @@
 \chapter{Estado del arte}
-
 En los últimos años ha habido una revolución en el análisis de la organización 
 y rendimiento de los equipos de fútbol y sus jugadores, por lo que es posible tener acceso a todos los 
 eventos que ocurren en el campo, tales como pases, disparos o goles, todo ello con las coordenadas 
@@ -21,11 +20,16 @@ Asimismo, durante la última década las redes bayesianas se han popularizado en
 de la inteligencia artificial, y hay numerosos estudios que buscan predecir los resultados 
 de partidos de fútbol empleándolas, para lo que construyen diferentes modelos\cite{prediction-barcelona}.
 En \cite{razali-2017} consiguen una precisión predictiva del 75.09\%. \cite{dolores} introduce el uso 
-de calificaciones dinámicas y redes bayesianas híbridas para hacer una predicción del resultado de un 
+de calificaciones dinámicas\cite{pi-ratings} y redes bayesianas híbridas (redes bayesianas con variables 
+discretas y contínuas) para hacer una predicción del resultado de un 
 partido entre dos equipos \textit{a} y \textit{b} a partir de datos históricos de partidos 
 en los que no participan ni \textit{a} ni \textit{b}. Ello nos muestra 
 el increíble potencial que tienen estas redes también, y no solo las más tradicionales 
-redes complejas.
+redes complejas. 
+
+El sistema de calificación que usan genera una puntuación que captura la habilidad de un equipo relativa al resto, 
+en una liga particular. Las puntuaciones resultantes son usadas como entra para el modelo de redes bayesianas, 
+con el objetivo de conseguir una predicción de los resultados de los partidos. 
 
 Adicionalmente, hay estudios\cite{smart-data} que ponen un gran énfasis 
 en aplicar conocimiento causal al proceso de desarrollo del modelo, basándose 
