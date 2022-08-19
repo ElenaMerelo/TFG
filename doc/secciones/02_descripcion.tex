@@ -1,21 +1,34 @@
 \chapter{Descripción del problema}
-
-Este proyecto tiene como idea ayudar desde los jugadores hasta 
-el cuerpo técnico del equipo: entrenadores, director técnico, preparadores 
-físicos y analistas tácticos,también conocidos como 'scouting'.
+El presente trabajo intentará responder entonces a: ¿La entropía mejora las posibilidades 
+de marcar gol? Si cambia la entropía del equipo, ¿podemos determinar la causa?¿Ha sido por un jugador 
+específico, la alineación o más bien la influencia del equipo 
+contrario?. Asimismo, ¿es posible ver la entropía reflejada en un tipo de visualización de 
+las redes de pases?. Estudiaremos hasta qué punto es determinante la 
+entropía a nivel de jugador o equipo, empleando técnicas estadísticas, para obtener respuestas a lo planteado, 
+siguiendo la forma de trabajar que pasamos a describir.
 
 \section{Metodología - Mentalidad ágil}
-% citar ágil
-Tiene su origen en el manifesto ágil\cite{manifesto-agil}, el cual fue una revolución, frente 
+La metodología nos dicta dos cosas esenciales:
+\begin{enumerate}
+    \item ¿Qué tengo que hacer ahora?
+    \item ¿Lo que he hecho está bien y era lo que tenía que hacer?
+\end{enumerate}
+
+Para el primer punto, hacemos uso de \textit{issues} y \textit{milestones} en Github, 
+como veremos más adelante. Para lo segundo, hay que tener en cuenta que todos 
+los \textit{issues} son problemas, e idealmente deben de decir explícitamente 
+(o implícitamente si está claro) cómo se resuelve el problema.
+
+La mentalidad ágil tiene su origen en el manifesto ágil\cite{manifesto-agil}, el cual fue una revolución frente 
 al modelo en cascada,
 en la forma de desarrollar software, y planteaba que tienen más valor las personas que 
 los procesos o herramientas, un producto funcionando que mucha documentación, colaboración 
 con los clientes que contratos, y \textbf{flexibilidad} frente a seguir un plan. Desde el 
 año 2001 que se redactó ha cambiado mucho la tecnología, y por ejemplo nosotros pondremos 
 mucho peso en la documentación, mas la idea sigue intacta: lo importante son los usuarios, 
-adaptarse. En general pues, con \textit{ágil} nos referimos a una forma de pensar que se aplica 
+adaptarse a sus deseos. En general pues, con \textit{ágil} nos referimos a una forma de pensar que se aplica 
 a todo un ciclo de desarrollo del software centrado en el cliente y que consiste en 
-continuas mejoras de cada vez más complejos productos mínimamente viables\cite{agile-science}.
+continuas mejoras de productos mínimamente viables\cite{agile-science}.
 En este apartado entenderemos mejor y dejaremos claro lo que esto significa e implica.
 
 Lo esencial de esta forma de proceder es que su objetivo es \textbf{resolver problemas} y satisfacer 
@@ -23,7 +36,7 @@ al cliente, no hacer aplicaciones: importa el por qué, antes que el qué o el c
 últimos resultarán de ese primer análisis, seguidos de una empatización, que consiste 
 en contactar con clientes, leer prensa y demás para enfocar el problema; posteriormente 
 ideación, de la que saldrán los objetivo e hitos o historias de usuario; y por último diseño, 
-que será llevar a tierra todo lo anterior. 
+que será aterrizar todo lo anterior. 
 
 Asimismo, el punto de partida es pensar la motivación o problema que queremos resolver. 
 ¿Por qué queremos hacer este TFG? ¿A quién ayuda? ¿Quién lo usaría? ¿Qué solución proponemos? 
@@ -33,80 +46,171 @@ receta vas a preparar.
 Luego, de la motivación saldrán los objetivos que nos planteamos. Estos habrán de indicar 
 qué es lo que se quiere conseguir, incluyendo qué tipo de medios tenemos disponibles. Lo 
 más importante es que han de estar en el dominio del problema, tienen que ser específicos, 
-medibles y alcanzables\cite{objetivos}. 
+medibles y alcanzables\cite{objetivos}. De estos objetivos saldrán una serie de productos 
+mínimamente viables. 
 
-De estos objetivos saldrán una serie de productos mínimamente viables. 
-
-Las historias de usuario sirven para centrarnos en los problemas que queremos solucionar 
+Seguidamente, las \href{https://jj.github.io/curso-tdd/temas/dise%C3%B1o.html}{historias de usuario} sirven 
+para centrarnos en los problemas que queremos solucionar 
 y los objetivos a alcanzar. Están relacionadas con la lógica de 
-negocio del proyecto y siempre son un beneficio para el los posibles usuarios del proyecto.
+negocio del proyecto y siempre son un beneficio para los posibles usuarios del proyecto.
 
-Por otro lado, los issues  plantean un problema. Siempre están enmarcados en un \textit{milestone}, 
-y tienen que tener un criterio de aceptación para ser cerrados. 
+Una regla del pulgar para las historias de usuario: Siempre tienen que expresar un deseo y un 
+beneficio para el usuario. Si ponemos "ojalá qué" y te lo imaginas en la boca del usuario y suena 
+creíble, es que es una historia de usuario. Si no, es un \textit{issue} o tarea que necesitamos
+que el usuario haga para que cumpla sus deseos. El problema reside en poner lo que nosotros queremos que 
+haga el usuario para conseguir algo, y no lo que el usuario quiere. Más adelante expondremos las historias 
+de usuario planteadas.
 
-Todo el código se incorpora mediante PRs
+Por otro lado, las \href{https://docs.github.com/articles/about-issues}{issues} plantean un problema. 
+Siempre están enmarcadas en una \href{https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones}{milestone}, 
+y tienen que tener un criterio de aceptación para ser cerradas. Hacer tareas lo más atómicas posibles ayuda, porque 
+se hace un \href{https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests}{pull request}, 
+se termina una tarea, y se avanza más fácil y suavemente.
 
-Un \textit{milestone} describe un producto mínimamente viable, y el estado en el que tiene 
+Todo el código se incorpora mediante \textit{pull requests}, eventos que ocurren cuando un contribuidor está 
+preparado para iniciar el proceso de mezclar el nuevo código, normalmente desarrollado en una \href{https://docs.github.com/github/collaborating-with-issues-and-pull-requests/about-branches}{rama}, 
+con el repositorio del proyecto principal. Facilita así la revisión por parte de otra persona del equipo, y el 
+asegurarnos de que en producción siempre hay algo que funciona y está testeado.
+
+De manera adicional, un \textit{milestone} describe un producto mínimamente viable, y el estado en el que tiene 
 que estar el repositorio al terminar, además de los criterios que se daben seguir 
 para validarlo.
 
+Dentro de la metodología descrita, nos enmarcaremos en el \href{https://www.iebschool.com/blog/design-thinking-agile-scrum/}{design thinking}, 
+un proceso iterativo y no lineal que consta de una fase inicial consistente en empatizar con el 
+cliente, para saber qué necesita, seguida de la definición del problema, pensar en una solución al 
+mismo, el desarrollo de un prototipo, y finalmente se testea todo. 
+
+\section{Herramientas usadas}
+En esta sección profundizaremos un poco en las herramientas empleadas para desarrollar el trabajo y seguir 
+la metodología ya descrita, y por qué las hemos escogido.
+
+\subsection{\href{https://github.com/}{Github}} 
+
+Permite llevar cuenta de los proyectos de \href{https://git-scm.com/}{\tt git}, fuera del ordenador o 
+servidor local, y está basado en la nube. A su vez, {\tt git} es un 
+sistema distribuido de control de versiones, gratis y cuyo software es libre. Es fácil de 
+aprender, pesa poco y tiene un gran rendimiento.
+
+Así pues, Github es una aplicación con web (también API, marco de aplicaciones entre otras) muy completa para que desarrolladores y programadores puedan trabajar colaborativamente 
+en repositorios. Su punto fuerte es el sistema de control de versiones mencionado, que permite llevar cuenta detallada 
+de los cambios realizados por cada persona, discutirlos, revisarlos y proponer modificaciones, así como 
+separar el producto final de las funcionalidades que se vayan añadiendo y sobre las que cada equipo esté 
+trabajando. Adicionalmente, proporciona herramientas como las \href{https://github.com/features/actions}{Github Actions}, 
+las cuales facilitan la automatización de los flujos de trabajo, incluyendo integración y despliegue contínuos.
+Nosotros lo empleamos para chequear la ortografía cada vez que subimos algo al repositorio, o construir el pdf 
+de la memoria cuando se cambie algún archivo \textit{.tex}, pero por supuesto hay muchísimas más posibilidades.
+
+Se puede consultar nuestro repositorio en \href{https://github.com/ElenaMerelo/TFG}{el siguiente enlace}, y navegar 
+por las \href{https://github.com/ElenaMerelo/TFG/issues}{issues creadas}, \href{https://github.com/ElenaMerelo/TFG/pulls}{pull requests mergeados} 
+o \href{https://github.com/ElenaMerelo/TFG/actions}{actions usadas}. Para el desarrollo de nuestro trabajo es esencial 
+Github, y lo hemos escogido por ser de los más usados y establecidos, con más de 45 millones de usuarios, 
+y porque frente a \href{https://about.gitlab.com/}{gitlab}, contiene justo lo que necesitamos. Gitlab es para proyectos 
+más grandes y profesionales.
+
+\subsection{Oh my zsh}
+Para tener conciencia situacional del estado del repositorio, instalé \href{https://ohmyz.sh/}{oh my zsh}, 
+un \textit{framework} libre para configurar \textit{Zsh}. Permite el acceso y fácil instalación de plantillas para 
+la terminal, que hacen más fácil saber en qué rama se está trabajando, qué cambios se han realizado, y en 
+general casa genial con \textit{Github} y sus funcionalidades. Tiene detrás una comunidad muy grande de 
+contribuidores, incluye numerosos \textit{plugins} que hacen el desarrollo de \textit{software} más fácil, 
+y la posibilidad de personalizar la terminal, con temas ya creados o propios.
+
+{Zsh} es un \textit{shell} que se presenta como alternativa a \textit{bash}, el cual viene por defecto en 
+\textit{Ubuntu}. Las ventajas de las que más nos hemos aprovechado y por las que lo escogimos parten de 
+su mayor configurabilidad, el que te corrija errores de escritura y complete palabras.
 
 \section{Clientes}
-A su vez, dentro del análisis de fútbol, podemos destacar los siguientes roles:
-
-% mencionar uso de la metodología de personas
+Basándonos en la \href{https://www.designthinking.services/herramientas-design-thinking/metodo-persona/}{metodología basada en personas}, 
+hemos llegado a los siguientes usuarios: 
 \begin{itemize}
     \item Analista táctico: estudia los equipos y cómo se desenvuelven en los partidos. 
-    Querrá obtener un análisis del propio equipo y de los rivales.
     \item Scouter: es la persona encargada de la búsqueda y captación 
-    de jugadores. Querrá encontrar los jugadores que necesita el equipo 
-    o el club, por lo que analiza sus cualidades y posibilidades de 
-    integración al equipo, desde su rendimiento futbolístico hasta el 
-    económico.
+    de jugadores.
     \item Analista de datos: toma la información estadística de 
     cada partido tanto en lo individual como en lo colectivo. 
-    Establece relaciones para encontrar respuestas o ideas que 
-    puedan colaborar con la toma de decisiones del club referentes 
-    a lo táctico, lo técnico y lo económico, para el modelo de 
-    juego del equipo o para la compra y venta de jugadores. Por ejemplo: del 
-    equipo femenino de Noruega. 
-    \item Persona que apuesta: querrá inferir el resultado de un partido, 
-    quién marcará y así, una vez se publiquen los jugadores. 
-    \item Entrenador: querrá saber a quién sacar durante un partido, los 
-    cambios, dónde poner a quién. Por ejemplo: entrenadora principal y 
-    segunda entrenadora del Club de Fútbol Internacional del Granada.
-    \item Matemático 
-    \item Informático 
-    \item Aficionado  
-    \item Periodista deportivo 
+    \item Persona que apuesta: recopila información sobre los equipos y jugadores, para poder apostar 
+    en base a una alineación, o una vez se sabe quién va a jugar en un partido. 
+    \item Entrenador: es el encargado de decidir a quién sacar durante un partido, los 
+    cambios, dónde poner a quién.   
+    \item Periodista deportivo: debe escribir un artículo sobre un partido con gráficos y datos estadísticos, 
+    para lo que debe conocer medianamente a los jugadores y equipos, junto con su desempeño a lo largo de 
+    una liga o temporada. 
 \end{itemize}
-
 
 \section{Historias de usuario}  
 
-A partir de los clientes, y como parte de la metodología ya explicada, definimos en \href{https://github.com/ElenaMerelo/TFG}{mi repositorio 
-de GitHub} las siguientes historias de usuario: 
+A partir de los clientes, y como parte de la metodología, definimos en \href{https://github.com/ElenaMerelo/TFG/issues?q=is%3Aopen+is%3Aissue+label%3Auser-story}{las siguientes historias de usuario}: 
 
-\subsection{Como tutores, nos gustaría que el proyecto siga un desarrollo ágil}
+\begin{itemize}
+    \item Como analista táctico, quiero obtener un análisis del propio equipo y de los rivales.
+    \item Como tutores, nos gustaría que el proyecto siga un desarrollo ágil.
+    \item Como matemática, quiero que la teoría sobre redes causales se aplique bien al caso concreto, y se conecte sin problema con la parte informática.
+    \item Como entrenador, me gustaría poder usar la herramienta desarrollada, y que sea intuitiva.
+    \item Como scouter,  quiero encontrar los jugadores que necesita el equipo 
+    o el club, y analizar sus cualidades y posibilidades de integración al equipo, desde su rendimiento futbolístico hasta el 
+    económico.
+    \item Como analista de datos, quiero poder establecer relaciones para encontrar respuestas o ideas que 
+    puedan colaborar con la toma de decisiones del club referentes 
+    a lo táctico, lo técnico y lo económico, para el modelo de 
+    juego del equipo o para la compra y venta de jugadores. 
+    \item Como persona que apuesta, querré inferir el resultado de un partido y 
+    quién marcará, una vez se publiquen los jugadores. 
+    \item Como periodista deportivo, desearía tener una herramienta más en mi arsenal, y 
+    usarla para obtener gráficos, estadísticas, y conclusiones acerca de un partido, 
+    temporada, equipo o jugador.
+\end{itemize}
 
-En la línea de lo que hemos explicitado con anterioridad, el trabajo estará orientado 
-al cliente.
-Como tutores, nos gustaría que el proyecto use un desarrollo ágil, orientado al cliente, 
-que me lleve a montar la infraestructura del TFG, para después empatizar con las personas 
-a las que va dirigido, idear y diseñar el resto.
+\section{Hitos o Productos Mínimamente Viables}
 
-\subsection*{Como matemática, quiero que la teoría sobre redes causales se aplique bien al caso concreto}
+\subsection{\textit{Milestone} 1 - Infraestructura}
+El objetivo de esta milestone es configurar la infraestructura del proyecto. Para ello, tendremos que:
+\begin{itemize}
+    \item Borrar los archivos de la plantilla que no sean necesarios.
+    \item Definir los primeros \textit{milestone} e issues.
+    \item Configurar un corrector ortográfico.
+    \item Documentar la configuración inicial.
+    \item Formular los objetivos principales del trabajo.
+\end{itemize} 
+De esta manera, tendremos hecho el esqueleto sobre el que seguir construyendo. El objetivo principal y 
+producto esperado de este \textit{milestone} es pues tener claro el problema a resolver y los objetivos 
+de este trabajo.
+   
+Al final de esta milestone, se pretende tener el repositorio configurado de forma que tengamos las 
+bases para crear un producto de calidad (sin faltas ortográficas, por ejemplo).
 
-Y que se conecte sin problema con la parte informática.
+\subsection{\textit{Milestone} 2 - Planteamiento}
+El objetivo de esta \textit{milestone} es dejar escritas:
 
+\begin{itemize}
+    \item Introducción
+    \item Descripción del problema
+    \item Estado del arte
+    \item Planificación
+    \item Metodología
+    \item Clientes, usuarios e historias de usuario
+\end{itemize}
 
-\section{Diccionario de términos}
+Habiendo terminado así la parte de ideación, planteamiento del problema, y pasar a estar preparado para solucionarlo.
+
+\subsection{Milestone 3 - Parte matemática} 
+El objetivo de esta \textit{Milestone} es la recopilación de datos, procesarlos, eliminar los que 
+no sirvan, obtener conclusiones. Aparte, habría que reproducir teoremas, dejar bien clara la base matemática.
+
+Como producto esperado se tendrá la base teórica terminada y bien explicada, para ello habrá que: 
+
+\begin{itemize}
+    \item Añadir fundamentos de redes
+    \item Incluir fundamentos de probabilidad 
+    \item Añadir fundamentos de redes probabilísticas 
+    \item Entender cómo se pueden resolver redes probabilísticas 
+    \item Añadir introducción a las redes causales 
+\end{itemize}
+
+ 
+
+\section{Definiciones y terminología}
 % issue #50
-\subsection{Redes bayesianas}
-
-\subsection{Redes bayesianas híbridas}
-
-\subsection{Calificación dinámica}
 
 \subsection{Entropía}
 
@@ -116,7 +220,6 @@ Y que se conecte sin problema con la parte informática.
 
 \subsection{Entropía de Renyi} 
 
-\subsection{Entropía de permutación}
 
 \subsection{Principio de máxima entropía}
 
