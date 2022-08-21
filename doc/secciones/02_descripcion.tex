@@ -214,76 +214,29 @@ En esta sección definiremos términos que usaremos en el estado del arte, para 
 
 \begin{definicion}[Redes bayesianas]
 Las redes bayesianas nos ayudan a modelar y entender las muchas variables que informan nuestro proceso de 
-toma de decisiones.\cite{things-to-know-BN}
-More complex decisions are usually based on a host of factors or variables. For example, 
-imagine you are the owner of a top-flight football (soccer) team and you must decide before 
-the start of each season how much money to invest in new players. There are many factors to 
-consider: the likely income from sales of unwanted players; the relative net spending of other 
-teams; and the possible negative impact on team performance of making too many personnel changes 
-at once. We can map the decision the team owner needs to make, and all the different variables, 
-using a Bayesian network (BN). This is a graphical model that captures the relationship between 
-variables under causal or influential assumptions.
+toma de decisiones. Las decisiones más complejas están normalmente basadas en una multitud de factores o 
+variables. Por ejemplo, imaginemos que el dueño de un equipo de fútbol tiene que decidir antes del comienzo 
+de cada temporada cuánto dinero hay que invertir en nuevos jugadores. Habrá de considerar los ingresos 
+probables por las ventas de jugadores no deseados; el gasto neto relativo de otros
+equipos; y el posible impacto negativo en el desempeño del equipo de hacer demasiados cambios de personal de una 
+vez, entre otros. Podemos mapear la decisión que tiene que hacer, y todas las diferentes variables, usando 
+una red bayesiana, esto es, un modelo gráfico que captura la relación entre variables que están bajo 
+supuestos de causalidad o influencia.\cite{things-to-know-BN}
 
-In this article, we provide an overview of BNs and the kind of assumptions required to build 
-useful networks for complex decision-making. We highlight the need to fuse data with expert 
-knowledge, and we describe the challenges in doing so. Finally, we explain why, for fully 
-optimised decision-making, extended versions of BNs, called Bayesian decision networks, are required.
+Básicamente entonces, y con lo que nos tenemos que quedar es que una red bayesiana es un diagrama que 
+usa flechas o arcos dirigidos para mostrar cómo distintos factores, representados por nodos elípticos, se 
+influencian los unos a los otros. Cada nodo viene con su tabla de probabilidad, la cual refleja las 
+posibilidades de varios desenlaces, provenientes de las influencias que le afectan directamente. Una vez 
+la estructura del grafo y la tabla de una red han sido definidos, hay algoritmos estándar que 
+calculan los estados de las variables desconocidas basándose en los estados de las variables conocidas en el
+modelo.\cite{learning-algorithms-BN-comparison}, \cite{BN-achilles-heel}, \cite{different-algorithmic-schemes}
 
-The basics
-A BN is a diagram which uses arrows (“directed arcs”) to show how various factors – represented 
-by elliptical nodes – influence one another. Each node comes with its own probability table, 
-known as a conditional probability table (CPT), reflecting the chances of various outcomes resulting 
-from the different influences directly affecting it.
-
-Figure 1 (page 19) illustrates part of a BN model which provided long-term predictions for football 
-team performance.1
-
-Once the graphical structure and CPTs of a network have been defined, there are standard algorithms 
-that compute the states of the unknown variables based on the states of the known variables in the 
-model. We can enter as many or as few actual observations as we have available, and the algorithm 
-will update the probability distribution of each of the unobserved variables.
-
-A reason why BNs are so powerful is that they can perform both predictive and diagnostic inference. 
-For example, we can predict a team's league position for a given value (observation) of team 
-performance, but we can also enter a required state of league position as an observation to examine 
-what level of team performance could explain that observation. These standard algorithms are 
-called “Bayesian propagation” algorithms because they rely on Bayes’ theorem, in which the 
-probability of an unknown variable is updated after evidence relevant to that variable is 
-observed. In a BN, Bayesian probability inference is driven by the three causal classes 
-illustrated in Figure 2. Specifically:
-
-Causal chain: This describes variables that have a knock-on effect on each other. For example, 
-changes in players’ quality impacts team performance which impacts league position. This means 
-that league position is independent of changes in players’ quality once we know team performance.
-Common effect: This is where two different variables, such as transfers in and transfers out, 
-both impact a third variable, such as net transfer spending. This means that transfers out is 
-dependent on transfers in once we know net transfer spending.
-Common cause: This is where two different variables, such as league position and attendance, 
-are impacted by the same variable, such as team performance. This means that attendance is 
-independent of league position once we know team performance.
-
-
-These causal assumptions are also vital if we wish to reason about an intervention. Figure 3 shows 
-two different representations of the relationships between four of the variables used in the BN model 
-of Figure 1. If we rely on data alone to determine associations between variables, we would arrive at 
-the model shown in (a), which is not a BN because it does not capture the direction of influence 
-between factors. In contrast to model (a), model (b) indicates that an intervention on attendance 
-will have no effect on other parts of the model, whereas an intervention on changes in players' 
-quality will have an effect on all of the model variables. In model (a), the association between 
-league position and attendance comes via the common cause, team performance. The causal assumptions 
-established by model (b) allow us to simulate the effect of interventions, actions, or decisions and 
-hence, in contrast to model (a), enable us to move from mere prediction to risk management.
-
-Scientific research is heavily driven by interest in discovering, assessing, and modelling 
-cause-and-effect relationships as guides for action. This means they require models more 
-like (b) than (a). Although the distinction between association and causation is nowadays 
-well understood, what has changed is mostly the way the results are stated, rather than the 
-way the results are generated. Consequently, too often, important conclusions and recommendations 
-are based on models similar to (a), and we believe this is a problem.
-
-
-
-
+Una de las razones por las que las redes bayesianas son tan poderosos es que pueden realizar inferencias 
+tanto predictivas como diagnósticas. Por ejemplo, podemos por un lado predecir la posición en la liga de un equipo para 
+un valor dado (observación) de rendimiento, y por otro ingresar un estado de posición en la 
+liga como observación para examinar qué nivel de desempeño del equipo podría explicarla. Estos algoritmos estándar son
+llamados algoritmos de "propagación bayesiana"\cite{Cano2004},\cite{more-algorithms}, \cite{back-prop} porque se basan en el teorema de Bayes, en el que la 
+probabilidad de una variable desconocida se actualiza después de que se obtenga evidencia relevante para esa variable.\cite{prop-alg}
 \end{definicion}
 
 \begin{definicion}[Redes bayesianas híbridas]
