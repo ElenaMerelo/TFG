@@ -213,7 +213,87 @@ Como producto esperado se tendrá la base teórica terminada y bien explicada, p
 En esta sección definiremos términos que usaremos en el estado del arte, para poder entenderlo mejor.
 
 \begin{definicion}[Redes bayesianas]
-    
+Las redes bayesianas nos ayudan a modelar y entender las muchas variables que informan nuestro proceso de 
+toma de decisiones.\cite{things-to-know-BN}
+More complex decisions are usually based on a host of factors or variables. For example, 
+imagine you are the owner of a top-flight football (soccer) team and you must decide before 
+the start of each season how much money to invest in new players. There are many factors to 
+consider: the likely income from sales of unwanted players; the relative net spending of other 
+teams; and the possible negative impact on team performance of making too many personnel changes 
+at once. We can map the decision the team owner needs to make, and all the different variables, 
+using a Bayesian network (BN). This is a graphical model that captures the relationship between 
+variables under causal or influential assumptions.
+
+In this article, we provide an overview of BNs and the kind of assumptions required to build 
+useful networks for complex decision-making. We highlight the need to fuse data with expert 
+knowledge, and we describe the challenges in doing so. Finally, we explain why, for fully 
+optimised decision-making, extended versions of BNs, called Bayesian decision networks, are required.
+
+The basics
+A BN is a diagram which uses arrows (“directed arcs”) to show how various factors – represented 
+by elliptical nodes – influence one another. Each node comes with its own probability table, 
+known as a conditional probability table (CPT), reflecting the chances of various outcomes resulting 
+from the different influences directly affecting it.
+
+Figure 1 (page 19) illustrates part of a BN model which provided long-term predictions for football 
+team performance.1
+
+Once the graphical structure and CPTs of a network have been defined, there are standard algorithms 
+that compute the states of the unknown variables based on the states of the known variables in the 
+model. We can enter as many or as few actual observations as we have available, and the algorithm 
+will update the probability distribution of each of the unobserved variables.
+
+A reason why BNs are so powerful is that they can perform both predictive and diagnostic inference. 
+For example, we can predict a team's league position for a given value (observation) of team 
+performance, but we can also enter a required state of league position as an observation to examine 
+what level of team performance could explain that observation. These standard algorithms are 
+called “Bayesian propagation” algorithms because they rely on Bayes’ theorem, in which the 
+probability of an unknown variable is updated after evidence relevant to that variable is 
+observed. In a BN, Bayesian probability inference is driven by the three causal classes 
+illustrated in Figure 2. Specifically:
+
+Causal chain: This describes variables that have a knock-on effect on each other. For example, 
+changes in players’ quality impacts team performance which impacts league position. This means 
+that league position is independent of changes in players’ quality once we know team performance.
+Common effect: This is where two different variables, such as transfers in and transfers out, 
+both impact a third variable, such as net transfer spending. This means that transfers out is 
+dependent on transfers in once we know net transfer spending.
+Common cause: This is where two different variables, such as league position and attendance, 
+are impacted by the same variable, such as team performance. This means that attendance is 
+independent of league position once we know team performance.
+
+
+These causal assumptions are also vital if we wish to reason about an intervention. Figure 3 shows 
+two different representations of the relationships between four of the variables used in the BN model 
+of Figure 1. If we rely on data alone to determine associations between variables, we would arrive at 
+the model shown in (a), which is not a BN because it does not capture the direction of influence 
+between factors. In contrast to model (a), model (b) indicates that an intervention on attendance 
+will have no effect on other parts of the model, whereas an intervention on changes in players' 
+quality will have an effect on all of the model variables. In model (a), the association between 
+league position and attendance comes via the common cause, team performance. The causal assumptions 
+established by model (b) allow us to simulate the effect of interventions, actions, or decisions and 
+hence, in contrast to model (a), enable us to move from mere prediction to risk management.
+
+Scientific research is heavily driven by interest in discovering, assessing, and modelling 
+cause-and-effect relationships as guides for action. This means they require models more 
+like (b) than (a). Although the distinction between association and causation is nowadays 
+well understood, what has changed is mostly the way the results are stated, rather than the 
+way the results are generated. Consequently, too often, important conclusions and recommendations 
+are based on models similar to (a), and we believe this is a problem.
+
+
+
+
+\end{definicion}
+
+\begin{definicion}[Redes bayesianas híbridas]
+Una red bayesiana híbrida\cite{hybrid-BN} es un tipo de red bayesiana con variables discretas y contínuas. Una 
+variable aleatoria contínua puede tener padres discretos y contínuos, mientras que una variable aleatoria 
+discreta solo puede venir de variables aleatorias discretas. Una red bayesiana es una representación 
+gráfica de la distribución conjunta de variables aleatorias, y es usada para identificar la estructura de 
+una gran cantidad de datos, capturando la independencias condicionales entre las variables aleatorias, para 
+predecir los datos perdidos o no observables. En la realidad, la mayor parte de los datos son una combinación de distribuciones 
+contínuas y discretas, por ello son útiles este tipo de redes.
 \end{definicion}
 
 \begin{definicion}[Redes complejas]

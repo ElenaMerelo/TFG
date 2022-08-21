@@ -1,5 +1,31 @@
 \chapter{Estado del arte}
-En los últimos años ha habido una revolución en el análisis de la organización 
+
+La historia del análisis de fútbol comienza en 1950, cuando Charles Reep\cite{reep-bio} empezó a 
+registrar sistemáticamente los eventos que tenían lugar a lo largo de un partido de Swindon Town. Con ello, no pretendía 
+únicamente tener detalle de lo que había ocurrido, sino también saber por qué pasaba y qué podían aprender los 
+equipos de los datos, para mejorar su juego. Tras décadas, llegó a la conclusión de que el mayor número 
+de goles resultaba de posesiones de tres pases o menos, por lo que aludía que los equipos debían simplificar 
+sus tácticas para llegar a portería más rápido.
+
+El problema de Reep no fue su recolección de datos, sino su análisis; podría haberse preguntado sobre 
+la tasa de goles en posesiones de varias distancias, o cómo se desarrollaron exactamente esas 
+posesiones de tres pases. Su trabajo mostró que "El 60 por ciento de todos los movimientos de gol 
+comienzan a 32 metros de la portería de un oponente".
+
+En 1996, \href{https://es.wikipedia.org/wiki/Opta_Sports}{Opta} empezó a acumular datos de partidos para la 
+\textit{Premier League} inglesa. Ello incluía todas las estadísticas a las que un aficionado al fútbol está 
+acostumbrado: número de pases, número de regateos, distancia recorrida, por ejemplo. Este podría considerarse 
+el punto de comienzo del análisis de fútbol moderno. 
+
+En 2003, Michael Lewis lanzó el libro \href{https://en.wikipedia.org/wiki/Moneyball}{Moneyball}, el cual tuvo una gran 
+influencia también fuera de Estados Unidos. Trata sobre cómo la oficina de \textit{Oakland Athletics} convertió 
+un equipo de béisbol de bajo presupuesto en uno de los mejores, usando estadísticas para reclutar a jugadores 
+con habilidades hasta entonces minusvaloradas. El lanzamiento del libro fomentó que se generaran preguntas en 
+torno al uso de datos en el fútbol. Un par de irracionalidades del mercado de fichajes
+quedaron expuestas, sobre todo la relación entre salario y duración de la carrera de los porteros
+y delanteros y un extraño sesgo hacia la contratación de jugadores más altos.
+
+Desde 2003 hasta ahora ha habido una revolución en el análisis de la organización 
 y rendimiento de los equipos de fútbol y sus jugadores, por lo que es posible tener acceso a todos los 
 eventos que ocurren en el campo, tales como pases, disparos o goles, todo ello con las coordenadas 
 exactas de tiempo y posición, y el jugador responsable de cada evento. Por otro lado, también es 
@@ -20,15 +46,14 @@ Asimismo, durante la última década las redes bayesianas se han popularizado en
 de la inteligencia artificial, y hay numerosos estudios que buscan predecir los resultados 
 de partidos de fútbol empleándolas, para lo que construyen diferentes modelos\cite{prediction-barcelona}.
 En \cite{razali-2017} consiguen una precisión predictiva del 75.09\%. \cite{dolores} introduce el uso 
-de calificaciones dinámicas\cite{pi-ratings} y redes bayesianas híbridas (redes bayesianas con variables 
-discretas y contínuas) para hacer una predicción del resultado de un 
+de calificaciones dinámicas\cite{pi-ratings} y redes bayesianas híbridas para hacer una predicción del resultado de un 
 partido entre dos equipos \textit{a} y \textit{b} a partir de datos históricos de partidos 
 en los que no participan ni \textit{a} ni \textit{b}. Ello nos muestra 
 el increíble potencial que tienen estas redes también, y no solo las más tradicionales 
 redes complejas. 
 
 El sistema de calificación que usan genera una puntuación que captura la habilidad de un equipo relativa al resto, 
-en una liga particular. Las puntuaciones resultantes son usadas como entra para el modelo de redes bayesianas, 
+en una liga particular. Las puntuaciones resultantes son usadas como entrada para el modelo de redes bayesianas, 
 con el objetivo de conseguir una predicción de los resultados de los partidos. 
 
 Adicionalmente, hay estudios\cite{smart-data} que ponen un gran énfasis 
