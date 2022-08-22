@@ -207,56 +207,67 @@ Como producto esperado se tendrá la base teórica terminada y bien explicada, p
     \item Añadir introducción a las redes causales 
 \end{itemize}
 
- 
-
 \section{Definiciones y terminología}
-En esta sección definiremos términos que usaremos en el estado del arte, para poder entenderlo mejor.
+El objetivo de esta sección es definir los términos que serán usados en el estado del arte.
 
-\begin{definicion}[Redes bayesianas]
-Las redes bayesianas nos ayudan a modelar y entender las muchas variables que informan nuestro proceso de 
-toma de decisiones. Las decisiones más complejas están normalmente basadas en una multitud de factores o 
-variables. Por ejemplo, imaginemos que el dueño de un equipo de fútbol tiene que decidir antes del comienzo 
-de cada temporada cuánto dinero hay que invertir en nuevos jugadores. Habrá de considerar los ingresos 
-probables por las ventas de jugadores no deseados; el gasto neto relativo de otros
-equipos; y el posible impacto negativo en el desempeño del equipo de hacer demasiados cambios de personal de una 
-vez, entre otros. Podemos mapear la decisión que tiene que hacer, y todas las diferentes variables, usando 
-una red bayesiana, esto es, un modelo gráfico que captura la relación entre variables que están bajo 
-supuestos de causalidad o influencia.\cite{things-to-know-BN}
-
-Básicamente entonces, y con lo que nos tenemos que quedar es que una red bayesiana es un diagrama que 
-usa flechas o arcos dirigidos para mostrar cómo distintos factores, representados por nodos elípticos, se 
-influencian los unos a los otros. Cada nodo viene con su tabla de probabilidad, la cual refleja las 
-posibilidades de varios desenlaces, provenientes de las influencias que le afectan directamente. Una vez 
-la estructura del grafo y la tabla de una red han sido definidos, hay algoritmos estándar que 
-calculan los estados de las variables desconocidas basándose en los estados de las variables conocidas en el
-modelo.\cite{learning-algorithms-BN-comparison}, \cite{BN-achilles-heel}, \cite{different-algorithmic-schemes}
-
-Una de las razones por las que las redes bayesianas son tan poderosos es que pueden realizar inferencias 
-tanto predictivas como diagnósticas. Por ejemplo, podemos por un lado predecir la posición en la liga de un equipo para 
-un valor dado (observación) de rendimiento, y por otro ingresar un estado de posición en la 
-liga como observación para examinar qué nivel de desempeño del equipo podría explicarla. Estos algoritmos estándar son
-llamados algoritmos de "propagación bayesiana"\cite{Cano2004},\cite{more-algorithms}, \cite{back-prop} porque se basan en el teorema de Bayes, en el que la 
-probabilidad de una variable desconocida se actualiza después de que se obtenga evidencia relevante para esa variable.\cite{prop-alg}
-\end{definicion}
-
-\begin{definicion}[Redes bayesianas híbridas]
-Una red bayesiana híbrida\cite{hybrid-BN} es un tipo de red bayesiana con variables discretas y contínuas. Una 
-variable aleatoria contínua puede tener padres discretos y contínuos, mientras que una variable aleatoria 
-discreta solo puede venir de variables aleatorias discretas. Una red bayesiana es una representación 
+\begin{definicion}[Redes bayesianas]\label{def:BN}
+Una red bayesiana es una representación 
 gráfica de la distribución conjunta de variables aleatorias, y es usada para identificar la estructura de 
 una gran cantidad de datos, capturando la independencias condicionales entre las variables aleatorias, para 
-predecir los datos perdidos o no observables. En la realidad, la mayor parte de los datos son una combinación de distribuciones 
+predecir los datos perdidos o no observables.   
+\end{definicion}
+
+\begin{definicion}[Redes bayesianas híbridas]\label{def:hybrid_BN}
+Una red bayesiana híbrida\cite{hybrid-BN} es un tipo de red bayesiana con variables discretas y contínuas. Una 
+variable aleatoria contínua puede tener padres discretos y contínuos, mientras que una variable aleatoria 
+discreta solo puede venir de variables aleatorias discretas. 
+
+En la realidad, la mayor parte de los datos son una combinación de distribuciones 
 contínuas y discretas, por ello son útiles este tipo de redes.
 \end{definicion}
 
-\begin{definicion}[Redes complejas]
-    
+\begin{definicion}[Redes complejas]\label{def:CN}
+En el contexto de teoría de redes, una \href{https://en.wikipedia.org/wiki/Complex_network}{red compleja} 
+es un grafo con características topológicas que no se dan 
+en redes simples como \href{https://en.wikipedia.org/wiki/Lattice_(order)}{celosías} o 
+\href{https://mathworld.wolfram.com/RandomGraph.html}{grafos aleatorios}, pero a menudo ocurren en redes que 
+representan sistemas reales. 
+
+Una de las principales razones detrás de la popularidad de las redes complejas es su flexibilidad
+y generalidad para representar prácticamente cualquier estructura natural, incluidas las que experimentan 
+cambios dinámicos de topología. De hecho, cada estructura discreta, como listas, árboles o incluso celosías,
+pueden representarse adecuadamente como casos especiales de grafos\cite{CN-review}
 \end{definicion}
 
-\begin{definicion}[Entropía]
-    
+\begin{definicion}[Entropía]\label{def:entropy}
+La entropía es el concepto clave para extraer características universales de un sistema a partir de sus 
+detalles. Aparece en muchos contextos como termodinámica, mecánica estadística o teoría de la información, como 
+una medida de diferentes propiedades: energía que no puede producir trabajo, desorden, incertidumbre, 
+aleatoriedad o complejidad.\cite{gen-entr-review}
+
+El concepto de entropía fue introducido por el matemático y físico alemán que se considera uno de los fundadores 
+de la termodinámica,
+\href{https://www.engineeringenotes.com/thermal-engineering/entropy/entropy-clausius-theorem-property-equations-and-representation-thermodynamics/49188}{Rudolf Clausius} 
+para medir la cantidad de energía en un sistema que no puede producir trabajo.
+
+Es una herramienta fundamental en mecánica estadística, termodinámica, ciencias de la información
+y estadística. En física, la entropía normalmente se refiere a la medida de la aleatoriedad en un sistema físico. 
+En termodinámica, se interpreta como la cantidad de desorden molecular dentro de un sistema macroscópico. 
+La segunda ley de la termodinámica establece que la entropía de un sistema aislado nunca disminuirá
+a lo largo del tiempo; el sistema evoluciona espontáneamente hacia un equilibrio termodinámico, donde alcanza su
+máxima entropía, es decir, un estado de máximo desorden.\cite{t-entropy}
 \end{definicion}
 
-\begin{definicion}[Entropía de Tsallis]
-    
+\begin{definicion}[Entropía de Tsallis]\label{def:tsallis_entropy}
+En 1988 el físico \href{https://en.wikipedia.org/wiki/Constantino_Tsallis}{Constantino Tsallis} 
+introdujo una nueva definición para entropía que describe las características estadísticas de sistemas 
+complejos. Destaca porque fue diseñada para analizar sistemas donde existen correlaciones entre sus 
+microestados, y por lo tanto nos pareció específicamente relevante para analizar los datos de los partidos 
+de fútbol.\cite{tsallis}
+
+Más específicamente, las estadísticas de Tsallis se utilizan para describir sistemas que exhiben 
+correlaciones de largo alcance, memoria,
+o propiedades fractales; se han encontrado aplicaciones para una amplia gama de fenómenos en diversos
+disciplinas como la física, la geofísica, la química, la biología, la economía, la medicina, etc.\cite{t-ent}
+También se pueden utilizar para obtener una distribución espacio-temporal y de magnitud de actividades sísmicas.
 \end{definicion}
