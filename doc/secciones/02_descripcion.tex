@@ -210,6 +210,7 @@ Como producto esperado se tendrá la base teórica terminada y bien explicada, p
 \section{Definiciones y terminología}
 El objetivo de esta sección es introducir los términos que serán usados en el estado del arte.
 
+\subsection{Redes bayesianas}
 \begin{definicion}[Redes bayesianas]\label{def:BN}
 Una red bayesiana es un modelo gráfico probabilístico que mide la estructura de dependencia condicional
 de un conjunto de variables aleatorias basadas en el teorema de Bayes:\\
@@ -227,7 +228,6 @@ Estas relaciones pueden ser sugeridas por expertos o actualizadas usando el teor
 y nuevos datos que se vayan recopilando. La estructura de dependencia entre variables está representada por nodos, 
 que representan las variables, y arcos dirigidos, que representan las relaciones condicionales, en la forma
 de un gráfico acíclico dirigido.\cite{YANG201919}
- 
 \end{definicion}
 
 \begin{definicion}[Redes bayesianas híbridas]\label{def:hybrid_BN}
@@ -236,6 +236,49 @@ sobre variables discretas y contínuas, por lo que extiende su aplicabilidad.
 \end{definicion}
 
 \subsection{Redes complejas}
+El estudio de redes complejas está inspirado por los análisis empíricos de redes reales. Nos permiten entender 
+pues varios sistemas reales, desde redes tecnológicas a biológicas. Por ejemplo, necesitamos un conjunto de 
+neuronas conectadas por sinapsis para poder leer, nuestro cuerpo está gobernado por interacciones entre miles 
+de células; infraestructuras de comunicación, como internet, está formada por \textit{routers}, cables y 
+fibras ópticas; y la sociedad consiste en gente conectada por relaciones sociales tales como amistad y colaboraciones 
+familiares o profesionales.\cite{albert2002statistical}, \cite{barrat2008dynamical}, \cite{dorogovtsev2003evolution}.
+
+Estos sistemas son llamados complejos debido a que no es posible predecir directamente su 
+comportamiento colectivo a partir de sus componentes individuales. Una de las principales razones detrás de 
+la popularidad de las redes complejas es su flexibilidad
+y generalidad para representar prácticamente cualquier estructura natural, incluidas las que experimentan 
+cambios dinámicos de topología. De hecho, cada estructura discreta, como listas, árboles o incluso celosías,
+pueden representarse adecuadamente como casos especiales de grafos\cite{CN-review}
+
+A pesar de las diferencias entre los sistemas complejos que podemos encontrar en la naturaleza o la sociedad, 
+las estructuras de estas redes son muy similares, dado que están gobernadas por los mismos principios. Así, 
+podemos usar el mismo conjunto de herramientas matemáticas y computacionales para explorarlas. En términos 
+generales, una red es un sistema que puede ser representado como un grafo, compues por elementos denominados nodos 
+o vértices y un conjunto de enlaces o aristas, que representan las interacciones entre ellos.\cite{caldarelli2007scale}
+
+La ventaja de modelar un sistema como un grafo es que los problemas se vuelven más simples y manejables.
+
+Desde un punto de vista matemático, podemos representar una red usando una matriz de adyacencia $A$. Un grafo 
+de $N$ vértices tendrá una matriz de adyacencia $N \times N$. Las aristas se pueden representar por los elementos 
+$A_{ij}$ de la matriz de tal manera que: 
+
+\begin{equation}
+    A_{ij}=
+    \begin{cases}
+      1, & \text{si los vértices i y j están conectados}\\
+      0, & \text{en otro caso}
+    \end{cases}
+\end{equation}
+
+para un grafo no dirigido y sin pesos, como el mostrado a continuación. 
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.5]{./img/grafo.png}
+    \caption{Grafo no dirigido y sin pesos}
+    \label{img:grafo1}
+\end{figure}
+
 \begin{definicion}[Redes complejas]\label{def:CN}
 En el contexto de teoría de redes, una \href{https://en.wikipedia.org/wiki/Complex_network}{red compleja} 
 es un grafo con características topológicas que no se dan 
@@ -243,10 +286,7 @@ en redes simples como \href{https://en.wikipedia.org/wiki/Lattice_(order)}{celos
 \href{https://mathworld.wolfram.com/RandomGraph.html}{grafos aleatorios}, pero a menudo ocurren en redes que 
 representan sistemas reales. 
 
-Una de las principales razones detrás de la popularidad de las redes complejas es su flexibilidad
-y generalidad para representar prácticamente cualquier estructura natural, incluidas las que experimentan 
-cambios dinámicos de topología. De hecho, cada estructura discreta, como listas, árboles o incluso celosías,
-pueden representarse adecuadamente como casos especiales de grafos\cite{CN-review}
+
 \end{definicion}
 
 \subsection{Entropía}
@@ -267,12 +307,18 @@ En termodinámica, se interpreta como la cantidad de desorden molecular dentro d
 La segunda ley de la termodinámica establece que la entropía de un sistema aislado nunca disminuirá
 a lo largo del tiempo; el sistema evoluciona espontáneamente hacia un equilibrio termodinámico, donde alcanza su
 máxima entropía, es decir, un estado de máximo desorden.\cite{t-entropy}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.5]{./img/entropies.png}
+    \label{img:entropies}
+\end{figure}
 \end{definicion}
 
 \subsection{Entropía de Tsallis}
 \begin{definicion}[Entropía de Tsallis]\label{def:tsallis_entropy}
 En 1988 el físico \href{https://en.wikipedia.org/wiki/Constantino_Tsallis}{Constantino Tsallis} 
-introdujo una nueva definición para entropía que describe las características estadísticas de sistemas 
+introdujo una nueva definición para     entropía que describe las características estadísticas de sistemas 
 complejos. Destaca porque fue diseñada para analizar sistemas donde existen correlaciones entre sus 
 microestados, y por lo tanto nos pareció específicamente relevante para analizar los datos de los partidos 
 de fútbol.\cite{tsallis}
