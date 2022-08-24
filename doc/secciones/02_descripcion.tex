@@ -19,7 +19,7 @@ como veremos más adelante. Para lo segundo, hay que tener en cuenta que todos
 los \textit{issues} son problemas, e idealmente deben de decir explícitamente 
 (o implícitamente si está claro) cómo se resuelve el problema.
 
-La mentalidad ágil tiene su origen en el manifesto ágil\cite{manifesto-agil}, el cual fue una revolución frente 
+La mentalidad ágil tiene su origen en el manifesto ágil\cite{manifiesto-agil}, el cual fue una revolución frente 
 al modelo en cascada,
 en la forma de desarrollar software, y planteaba que tienen más valor las personas que 
 los procesos o herramientas, un producto funcionando que mucha documentación, colaboración 
@@ -208,24 +208,35 @@ Como producto esperado se tendrá la base teórica terminada y bien explicada, p
 \end{itemize}
 
 \section{Definiciones y terminología}
-El objetivo de esta sección es definir los términos que serán usados en el estado del arte.
+El objetivo de esta sección es introducir los términos que serán usados en el estado del arte.
 
 \begin{definicion}[Redes bayesianas]\label{def:BN}
-Una red bayesiana es una representación 
-gráfica de la distribución conjunta de variables aleatorias, y es usada para identificar la estructura de 
-una gran cantidad de datos, capturando la independencias condicionales entre las variables aleatorias, para 
-predecir los datos perdidos o no observables.   
+Una red bayesiana es un modelo gráfico probabilístico que mide la estructura de dependencia condicional
+de un conjunto de variables aleatorias basadas en el teorema de Bayes:\\
+\begin{equation}
+\label{eq:bayes}
+P(\theta|\textbf{D}) = P(\theta ) \frac{P(\textbf{D} |\theta)}{P(\textbf{D})} ~~~~~|| I,
+\end{equation}
+donde denotamos $I$ como el término generalmente aceptado en los condicionales. Los datos están 
+representados por \textbf{D} y los parámetros están representados por $\theta$.
+
+\href{https://es.wikipedia.org/wiki/Judea_Pearl}{Pearl} en 1988 afirmó que las redes bayesianas 
+son modelos gráficos que contienen información sobre 
+relaciones causales de probabilidad entre variables y se utilizan a menudo para ayudar en la toma de decisiones. 
+Estas relaciones pueden ser sugeridas por expertos o actualizadas usando el teorema de Bayes
+y nuevos datos que se vayan recopilando. La estructura de dependencia entre variables está representada por nodos, 
+que representan las variables, y arcos dirigidos, que representan las relaciones condicionales, en la forma
+de un gráfico acíclico dirigido.\cite{YANG201919}
+ 
 \end{definicion}
 
 \begin{definicion}[Redes bayesianas híbridas]\label{def:hybrid_BN}
 Una red bayesiana híbrida\cite{hybrid-BN} es un tipo de red bayesiana con variables discretas y contínuas. Una 
 variable aleatoria contínua puede tener padres discretos y contínuos, mientras que una variable aleatoria 
 discreta solo puede venir de variables aleatorias discretas. 
-
-En la realidad, la mayor parte de los datos son una combinación de distribuciones 
-contínuas y discretas, por ello son útiles este tipo de redes.
 \end{definicion}
 
+\subsection{Redes complejas}
 \begin{definicion}[Redes complejas]\label{def:CN}
 En el contexto de teoría de redes, una \href{https://en.wikipedia.org/wiki/Complex_network}{red compleja} 
 es un grafo con características topológicas que no se dan 
@@ -239,6 +250,7 @@ cambios dinámicos de topología. De hecho, cada estructura discreta, como lista
 pueden representarse adecuadamente como casos especiales de grafos\cite{CN-review}
 \end{definicion}
 
+\subsection{Entropía}
 \begin{definicion}[Entropía]\label{def:entropy}
 La entropía es el concepto clave para extraer características universales de un sistema a partir de sus 
 detalles. Aparece en muchos contextos como termodinámica, mecánica estadística o teoría de la información, como 
@@ -258,6 +270,7 @@ a lo largo del tiempo; el sistema evoluciona espontáneamente hacia un equilibri
 máxima entropía, es decir, un estado de máximo desorden.\cite{t-entropy}
 \end{definicion}
 
+\subsection{Entropía de Tsallis}
 \begin{definicion}[Entropía de Tsallis]\label{def:tsallis_entropy}
 En 1988 el físico \href{https://en.wikipedia.org/wiki/Constantino_Tsallis}{Constantino Tsallis} 
 introdujo una nueva definición para entropía que describe las características estadísticas de sistemas 
