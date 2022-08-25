@@ -59,15 +59,18 @@ Asimismo, durante la última década las redes bayesianas\ref{def:BN} se han pop
 de la inteligencia artificial, y hay numerosos estudios que buscan predecir los resultados 
 de partidos de fútbol empleándolas, para lo que construyen diferentes modelos\cite{prediction-barcelona}.
 En \cite{razali-2017} consiguen una precisión predictiva del 75.09\%. \cite{dolores} introduce el uso 
-de calificaciones dinámicas\cite{pi-ratings} y redes bayesianas híbridas\ref{def:hybrid-BN} para hacer una predicción del resultado de un 
+de calificaciones dinámicas\cite{pi-ratings} y redes bayesianas híbridas\ref{def:hybrid_BN} para hacer una predicción del resultado de un 
 partido entre dos equipos \textit{a} y \textit{b} a partir de datos históricos de partidos 
 en los que no participan ni \textit{a} ni \textit{b}. Ello nos muestra 
 el increíble potencial que tienen estas redes también, y no solo las más tradicionales 
 redes complejas\ref{def:CN}. 
 
-El sistema de calificación que usan genera una puntuación que captura la habilidad de un equipo relativa al resto, 
-en una liga particular. Las puntuaciones resultantes son usadas como entrada para el modelo de redes bayesianas, 
-con el objetivo de conseguir una predicción de los resultados de los partidos. 
+A diferencia de los sistemas simples, muy pocas metodologías tratan la evaluación de la confiabilidad de
+sistemas complejos, especialmente los configurados como redes, donde es difícil tomar en
+consideración los diferentes vínculos y factores que pueden afectar la disponibilidad y confiabilidad de tales
+sistemas En este contexto, las redes bayesianas permiten el
+modelado de sistemas configurados como red y el cálculo de probabilidades marginales de la
+nodos del sistema utilizando probabilidades previas y condicionales.\cite{bn-and-cn}
 
 Adicionalmente, hay estudios\cite{smart-data} que ponen un gran énfasis 
 en aplicar conocimiento causal al proceso de desarrollo del modelo, basándose 
