@@ -238,7 +238,7 @@ de un conjunto de variables aleatorias basándose en el teorema de Bayes:\\
 P(A|B) = \frac{P(B|A).P(A)}{P(B)}
 \end{equation}
 donde $P(A)$ es la probabilidad previa, $P(B)$ son las observaciones y la probabilidad posterior viene dada 
-por $P(A|B)$.
+por $P(A|B)$.\cite{YANG201919}
 
 \begin{definicion}[Redes bayesianas híbridas]\label{def:hybrid_BN}
 Una red bayesiana híbrida\cite{hybrid-BN} es un tipo de red bayesiana que permite modelar incertidumbre
@@ -246,41 +246,37 @@ sobre variables discretas y contínuas, por lo que extiende su aplicabilidad.
 \end{definicion}
 
 \subsection{Redes complejas}
-El estudio de redes complejas está inspirado por los análisis empíricos de redes reales. Nos permiten entender 
-pues varios sistemas reales, desde redes tecnológicas a biológicas. Por ejemplo, necesitamos un conjunto de 
-neuronas conectadas por sinapsis para poder leer, nuestro cuerpo está gobernado por interacciones entre miles 
-de células; infraestructuras de comunicación, como internet, está formada por \textit{routers}, cables y 
-fibras ópticas; y la sociedad consiste en gente conectada por relaciones sociales tales como amistad y colaboraciones 
-familiares o profesionales.\cite{albert2002statistical}, \cite{barrat2008dynamical}, \cite{dorogovtsev2003evolution}.
+\begin{definicion}[Redes complejas]\label{def:CN}
+    Una \href{https://en.wikipedia.org/wiki/Complex_network}{red compleja} 
+    es un grafo con características topológicas que no se dan 
+    en redes simples como \href{https://en.wikipedia.org/wiki/Lattice_(order)}{celosías} o 
+    \href{https://mathworld.wolfram.com/RandomGraph.html}{grafos aleatorios}, pero a menudo ocurren en redes que 
+    representan sistemas reales. 
+\end{definicion}
+
+Tradicionalmente se han aplicado más las redes complejas que las bayesianas al análisis del fútbol.\cite{ARRIAZAARDILES2018236}
+Este tipo de redes nos interesan ya que su estudio está inspirado por los análisis empíricos de redes reales, y 
+nos permiten entender el funcionamiento de los equipos, desde el punto de vista individual o colectivo.
+
+La teoría de redes complejas se desarrolla en base a la teoría de grafos y la física estadística. En teoría de 
+redes complejas, todo sistema complejo puede abstraerse como una red. Los nodos de la red se pueden 
+considerar como los elementos en el sistema, y las relaciones
+entre cada elemento como conexiones. Hay muchos indicadores estructurales
+en la teoría de redes complejas que pueden cuantificar la importancia de los nodos desde el nodo mismo o el
+nivel de relación de red, usando \href{https://link.springer.com/10.1007%2F978-1-4419-9863-7_935}{centralidad de grado}, 
+\href{https://neo4j.com/docs/graph-data-science/current/algorithms/eigenvector-centrality/}{centralidad de vectores propios} 
+y \href{https://en.wikipedia.org/wiki/Clustering_coefficient}{coeficiente de agrupamiento}.
+ 
+Por lo tanto, la teoría de redes complejas se introduce para optimizar y simplificar el grafo de conocimiento que 
+se tenga, mediante el cálculo de los índices mencionados anteriormente, que permiten medir la importancia de cada nodo, obtener 
+las relaciones de dependencia entre ellos. Basándonos en la estructura de esa red simplificada obtenida, se puede establecer la estructura topológica de la red bayesiana. 
+\cite{Bai_Xing_Wu_2022}
 
 Estos sistemas son llamados complejos debido a que no es posible predecir directamente su 
 comportamiento colectivo a partir de sus componentes individuales. Una de las principales razones detrás de 
 la popularidad de las redes complejas es su flexibilidad
 y generalidad para representar prácticamente cualquier estructura natural, incluidas las que experimentan 
-cambios dinámicos de topología. De hecho, cada estructura discreta, como listas, árboles o incluso celosías,
-pueden representarse adecuadamente como casos especiales de grafos\cite{CN-review}
-
-A pesar de las diferencias entre los sistemas complejos que podemos encontrar en la naturaleza o la sociedad, 
-las estructuras de estas redes son muy similares, dado que están gobernadas por los mismos principios. Así, 
-podemos usar el mismo conjunto de herramientas matemáticas y computacionales para explorarlas. En términos 
-generales, una red es un sistema que puede ser representado como un grafo, compuesto por elementos denominados nodos 
-o vértices y un conjunto de enlaces o aristas, que representan las interacciones entre ellos.\cite{caldarelli2007scale}
-
-La ventaja de modelar un sistema como un grafo es que los problemas se vuelven más simples y manejables.
-
-\begin{definicion}[Redes complejas]\label{def:CN}
-En el contexto de teoría de redes, una \href{https://en.wikipedia.org/wiki/Complex_network}{red compleja} 
-es un grafo con características topológicas que no se dan 
-en redes simples como \href{https://en.wikipedia.org/wiki/Lattice_(order)}{celosías} o 
-\href{https://mathworld.wolfram.com/RandomGraph.html}{grafos aleatorios}, pero a menudo ocurren en redes que 
-representan sistemas reales. 
-
-
-\end{definicion}
-
-
-
-
+cambios dinámicos de topología.\cite{CN-review}
 \subsection{Sistemas de calificación}
 
 \subsection{Entropía}
