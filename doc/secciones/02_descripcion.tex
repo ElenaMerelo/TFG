@@ -38,7 +38,7 @@ en contactar con clientes, leer prensa y demás para enfocar el problema; poster
 ideación, de la que saldrán los objetivo e hitos o historias de usuario; y por último diseño, 
 que será aterrizar todo lo anterior. 
 
-Asimismo, el punto de partida es pensar la motivación o problema que queremos resolver. 
+Consecuentemente, el punto de partida es pensar la motivación o problema que queremos resolver. 
 ¿Por qué queremos hacer este TFG? ¿A quién ayuda? ¿Quién lo usaría? ¿Qué solución proponemos? 
 Los problemas deben estar antes que nada; es complicado comprar ingredientes si no sabes qué 
 receta vas a preparar. 
@@ -242,7 +242,7 @@ por $P(A|B)$.\cite{YANG201919}
 
 \begin{definicion}[Redes bayesianas híbridas]\label{def:hybrid_BN}
 Una red bayesiana híbrida\cite{hybrid-BN} es un tipo de red bayesiana que permite modelar incertidumbre
-sobre variables discretas y contínuas, por lo que extiende su aplicabilidad.
+sobre variables discretas y contínuas.
 \end{definicion}
 
 \subsection{Redes complejas}
@@ -276,19 +276,20 @@ Estos sistemas son llamados complejos debido a que no es posible predecir direct
 comportamiento colectivo a partir de sus componentes individuales. Una de las principales razones detrás de 
 la popularidad de las redes complejas es su flexibilidad
 y generalidad para representar prácticamente cualquier estructura natural, incluidas las que experimentan 
-cambios dinámicos de topología.\cite{CN-review}
+cambios dinámicos de topología\cite{CN-review}.
+
 \subsection{Sistemas de calificación}
 
 \subsection{Entropía}
 La entropía es el concepto clave para extraer características universales de un sistema a partir de sus 
 detalles. Aparece en muchos contextos como termodinámica, mecánica estadística o teoría de la información, como 
 una medida de diferentes propiedades: energía que no puede producir trabajo, desorden, incertidumbre, 
-aleatoriedad o complejidad.\cite{gen-entr-review}
+aleatoriedad o complejidad\cite{gen-entr-review}.
 
+En teoría de la información, la entropía de una variable aleatoria es el nivel promedio de información, 
+sorpresa o incertidumbre inherente a los posibles resultados de una variable\cite{t-entropy}.
 \begin{definicion}[Entropía]\label{def:entropy}
-En física, la entropía es la cantidad de desorden de un sistema.En la teoría de la información, 
-la entropía de una variable aleatoria es el nivel promedio de "información", "sorpresa" o "incertidumbre" 
-inherente a los posibles resultados de una variable aleatoria discreta $X$ como\cite{t-entropy}:  
+Para una variable aleatoria discreta $X$ definimos su entropía como:  
 
 $$H(X):= - \sum_{x} P(x)\log[P(x)]$$
 
@@ -316,9 +317,10 @@ complejos. Fue diseñada para analizar sistemas donde existen correlaciones entr
 Dado un conjunto discreto de probabilidades ${p_i}$ con la condición $\sum_{i} p_i = 1$, y con $q$ 
 cualquier número real, se define la entropía de Tsallis como
 $$ S_q(p_i)=\frac{k}{q-1}(1- \sum_{i=1}^{N}p_{i}^{q})$$
-donde $q$ se denomina índice entrópico, $N$ son los microestados y $k$ es una constante positiva. Si $q = 1$, obtenemos la entropía de 
+donde $q$ se denomina índice entrópico, $N$ son los microestados y $k$ es una constante positiva.
+\end{definicion}
+Si $q = 1$, obtenemos la entropía de 
 Shannon. La entropía de Tsallis no es extensiva, lo que significa que si se combinan dos sistemas idénticos, 
 la entropía del sistema combinado no es igual a la suma de la entropía de sus subsistemas.\cite{comparison-entropies}
-\end{definicion}
 
 
