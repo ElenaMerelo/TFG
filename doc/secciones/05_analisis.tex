@@ -1,5 +1,5 @@
 \chapter{Desarrollo teórico}
-En este capítulo proveeremos con la base matemática. Principalmente nos basaremos en los libros \textit{Advanced Data Analysis
+En este capítulo proveeremos con la base matemática del proyecto. Principalmente nos basaremos en los libros \textit{Advanced Data Analysis
 from an Elementary Point of View}\cite{ada} y \textit{Probabilistic Networks for Practitioners — A
 Guide to Construction and Analysis of Bayesian
 Networks and Influence Diagrams}\cite{pgm}, junto con el capítulo \textit{An overview of the representation and 
@@ -32,6 +32,7 @@ llamados algoritmos de "propagación bayesiana"\cite{Cano2004},\cite{more-algori
 probabilidad de una variable desconocida se actualiza después de que se obtenga evidencia relevante para esa variable.\cite{prop-alg}
 
 \section{Grafos}
+%Una forma relativamente natural de ver un partido es como una secuencia de pases entre jugadores e intercepciones, que terminan en una resolución. Podemos... "
 Un grafo es un par $G = (V, E)$, donde $V$ es un conjunto finito de vértices distinguibles y 
 $E \subseteq V \times V$ es un conjunto de aristas. Un par ordenado $(u, v) \in E$ denota un borde dirigido
 del vértice $u$ al vértice $v$, y se dice que $u$ es padre de $v$ y $v$ hijo de $u$.
@@ -46,7 +47,7 @@ bordes no dirigidos como líneas.
     \caption{Grafo dirigido acíclico con ocho vértices y ocho aristas dirigidas, donde, por ejemplo, el vértice 
     etiquetado $E$ tiene dos padres etiquetados $T$ y $L$. Las etiquetas de los vértices se 
     refieren a los nombres de los vértices, los nombres de las variables representadas por 
-     los vértices, o etiquetas descriptivas asociadas a las variables representadas por los vértices.}
+     los vértices, o etiquetas descriptivas asociadas a las variables representadas por los vértices.\ref{pgm}}
     \label{img:dag1}
 \end{figure}
     
@@ -61,6 +62,8 @@ se dicen que están conectados en G si
 \section{Probabilidades} 
 
 \section{Redes probabilísticas}
+%¿Por qué nos interesa esto? ¿Qué vamos a hacer con ellas?
+%¿Qué tienen que ver con los grafos? O igual simplemente haz una referencia.
 Las redes probabilísticas son modelos gráficos de interacciones (causales) entre una
 conjunto de variables, donde las variables se representan como vértices (también: nodos)
 de un gráfico y las interacciones (dependencias directas) como aristas dirigidas (también:
@@ -71,19 +74,11 @@ grafico. Por lo tanto, las redes probabilísticas capturan un conjunto de depend
 y propiedades de independencia asociadas con las variables representadas en el
 la red.
 
-Los gráficos han demostrado ser un lenguaje muy intuitivo para representar
+Los grafos han demostrado ser un lenguaje muy intuitivo para representar
 tales declaraciones de dependencia e independencia, y por lo tanto proporcionan una excelente
 lenguaje para comunicar y discutir las relaciones entre las 
 variables del dominio del problema, las cuales se pueden representar de forma muy compacta 
-mediante gráficos dirigidos acíclicos (DAG).
-
-Los gráficos de cadena son una generalización de los DAGs, capaces de representar un espectro más amplio de 
-clases de dependencia y supuestos de independencia. El poder expresivo añadido
-viene, sin embargo, con el coste de un aumento significativo en la complejidad semántica, 
-lo que hace que la especificación de los factores de probabilidad conjunta sea mucho menos intuitiva.
-Por ello, los modelos de gráficos en cadena han ganado muy poca
-popularidad como modelos prácticos para los sistemas de soporte de decisiones, y vamos a
-concentrarnos exclusivamente en modelos que factoricen de acuerdo con los DAG.
+mediante grafos dirigidos acíclicos (DAG).
 
 Las redes probabilísticas pueden verse como representaciones compactas de reglas de causa-efecto "difusas" 
 que, contrariamente a los sistemas normales basados en reglas, son capables de realizar tanto razonamiento 
@@ -94,6 +89,7 @@ el paciente tiene fiebre y dolor de garganta. Por otro lado, el razonamiento abd
 va en contra de la dirección de los nexos causales; por ejemplo, observar
 que un paciente tiene dolor de garganta proporciona evidencia de que anginas es un diagnóstico correcto.
 
+% de qué hipótesis estamos hablando en este caso?
 Sin embargo, la propiedad que distingue a la inferencia en redes probabilísticas
 de otros paradigmas de razonamiento automático es su capacidad para hacer razonamientos intercausales: 
 obtener evidencia que apoye una sola hipótesis (o un subconjunto de
