@@ -1,5 +1,6 @@
 \chapter{Desarrollo teórico}
-En este capítulo proveeremos con la base matemática del proyecto. Principalmente nos basaremos en los libros \textit{Advanced Data Analysis
+En este capítulo proveeremos con la base matemática del proyecto. Principalmente nos basaremos en 
+los libros \textit{Advanced Data Analysis
 from an Elementary Point of View}\cite{ada} y \textit{Probabilistic Networks for Practitioners — A
 Guide to Construction and Analysis of Bayesian
 Networks and Influence Diagrams}\cite{pgm}, junto con el capítulo \textit{An overview of the representation and 
@@ -10,9 +11,9 @@ Las redes bayesianas nos ayudan a modelar y entender las muchas variables que in
 toma de decisiones. Las decisiones más complejas están normalmente basadas en una multitud de factores o 
 variables. Por ejemplo, imaginemos que el dueño de un equipo de fútbol tiene que decidir antes del comienzo 
 de cada temporada cuánto dinero hay que invertir en nuevos jugadores. Habrá de considerar los ingresos 
-probables por las ventas de jugadores no deseados; el gasto neto relativo de otros
-equipos; y el posible impacto negativo en el desempeño del equipo de hacer demasiados cambios de personal de una 
-vez, entre otros. Podemos mapear la decisión que tiene que hacer, y todas las diferentes variables, usando 
+probables por las ventas de jugadores no deseados, el gasto neto relativo de otros
+equipos y el posible impacto negativo en el desempeño del equipo de hacer demasiados cambios de personal de una 
+vez, entre otros. Podemos mapear la decisión que tiene que hacer y todas las diferentes variables usando 
 una red bayesiana, esto es, un modelo gráfico que captura la relación entre variables que están bajo 
 supuestos de causalidad o influencia.\cite{things-to-know-BN}
 
@@ -32,35 +33,25 @@ llamados algoritmos de "propagación bayesiana"\cite{Cano2004},\cite{more-algori
 probabilidad de una variable desconocida se actualiza después de que se obtenga evidencia relevante para esa variable.\cite{prop-alg}
 
 \section{Grafos}
-%Una forma relativamente natural de ver un partido es como una secuencia de pases entre jugadores e intercepciones, que terminan en una resolución. Podemos... "
 Un grafo es un par $G = (V, E)$, donde $V$ es un conjunto finito de vértices distinguibles y 
 $E \subseteq V \times V$ es un conjunto de aristas. Un par ordenado $(u, v) \in E$ denota un borde dirigido
 del vértice $u$ al vértice $v$, y se dice que $u$ es padre de $v$ y $v$ hijo de $u$.
 El conjunto de padres e hijos de un vértice $v$ se denotará por $pa(v)$ y $ch(v)$, respectivamente.
 Como veremos más adelante, según lo que representen, los vértices se muestran como círculos 
 etiquetados, óvalos o polígonos, los bordes dirigidos como flechas, y los 
-bordes no dirigidos como líneas.
+bordes no dirigidos como líneas. Una forma relativamente natural de ver un partido es como una secuencia de 
+pases entre jugadores e intercepciones, que terminan en una resolución, por lo que la traducción a un grafo resulta 
+intuitiva.
 
-\begin{figure}[h!]
-    \centering
-    \includegraphics[scale=0.5]{./img/dag.png}
-    \caption{Grafo dirigido acíclico con ocho vértices y ocho aristas dirigidas, donde, por ejemplo, el vértice 
-    etiquetado $E$ tiene dos padres etiquetados $T$ y $L$. Las etiquetas de los vértices se 
-    refieren a los nombres de los vértices, los nombres de las variables representadas por 
-     los vértices, o etiquetas descriptivas asociadas a las variables representadas por los vértices.\ref{pgm}}
-    \label{img:dag1}
-\end{figure}
-    
 Se usa la notación $u$ $\underrightarrow{G}$ $v$ para denotar $(u,v) \in E$, o simplemente 
 $u \rightarrow v$ si se sobreentiende $G$. Si $(u,v) \in E$ y $(v,u) \in E$, la arista 
 entre $u$ y $v$ es no dirigida, y se denota ${u,v} \in E$ o $u - v$. Se usará la notación 
 $u ~ v$ para denotar $u \rightarrow v$ , $u \leftarrow v$, o $u - v$. Los vértices $u$ y $v$ 
 se dicen que están conectados en G si
-
-
+% wip
 
 \section{Probabilidades} 
-
+% issue #61
 \section{Redes probabilísticas}
 %¿Por qué nos interesa esto? ¿Qué vamos a hacer con ellas?
 %¿Qué tienen que ver con los grafos? O igual simplemente haz una referencia.

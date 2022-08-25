@@ -2,7 +2,7 @@
 El presente trabajo intentará responder entonces a: ¿La entropía mejora las posibilidades 
 de marcar gol? Si cambia la entropía del equipo, ¿podemos determinar la causa?¿Ha sido por un jugador 
 específico, la alineación o más bien la influencia del equipo 
-contrario?. Asimismo, ¿es posible ver la entropía reflejada en un tipo de visualización de 
+contrario?. Igualmente, ¿es posible ver la entropía reflejada en un tipo de visualización de 
 las redes de pases?. Estudiaremos hasta qué punto es determinante la 
 entropía a nivel de jugador o equipo, empleando técnicas estadísticas, para obtener respuestas a lo planteado, 
 siguiendo la forma de trabajar que pasamos a describir.
@@ -82,8 +82,8 @@ cliente, para saber qué necesita, seguida de la definición del problema, pensa
 mismo, el desarrollo de un prototipo, y finalmente se testea todo. 
 
 \section{Herramientas usadas}
-En esta sección profundizaremos un poco en las herramientas empleadas para desarrollar el trabajo y seguir 
-la metodología ya descrita, y por qué las hemos escogido.
+En esta sección profundizaremos en las herramientas empleadas para desarrollar el trabajo y seguir 
+la metodología ya descrita, además de explicitar por qué las hemos escogido.
 
 \subsection{\href{https://github.com/}{Github}} 
 
@@ -119,6 +119,9 @@ y la posibilidad de personalizar la terminal, con temas ya creados o propios.
 {Zsh} es un \textit{shell} que se presenta como alternativa a \textit{bash}, el cual viene por defecto en 
 \textit{Ubuntu}. Las ventajas de las que más nos hemos aprovechado y por las que lo escogimos parten de 
 su mayor configurabilidad, el que te corrija errores de escritura y complete palabras.
+
+\subsection{LaTeX}
+% issue #59
 
 \section{Clientes}
 Basándonos en la \href{https://www.designthinking.services/herramientas-design-thinking/metodo-persona/}{metodología basada en personas}, 
@@ -162,9 +165,10 @@ A partir de los clientes, y como parte de la metodología, definimos en \href{ht
 \end{itemize}
 
 \section{Hitos o Productos Mínimamente Viables}
+Pasamos a describir los prototipos del producto que queremos desarrollar.
 
 \subsection{\textit{Milestone} 1 - Infraestructura}
-El objetivo de esta milestone es configurar la infraestructura del proyecto. Para ello, tendremos que:
+El objetivo de esta \textit{milestone} es configurar la infraestructura del proyecto. Para ello, tendremos que:
 \begin{itemize}
     \item Borrar los archivos de la plantilla que no sean necesarios.
     \item Definir los primeros \textit{milestone} e issues.
@@ -208,7 +212,8 @@ Como producto esperado se tendrá la base teórica terminada y bien explicada, p
 \end{itemize}
 
 \section{Definiciones y terminología}
-El objetivo de esta sección es introducir los términos que serán usados en el estado del arte.
+El objetivo de esta sección es introducir los términos que serán usados en el estado del arte, donde veremos 
+cómo se conectan con nuestro problema.
 
 \subsection{Redes bayesianas}
 \begin{definicion}[Redes bayesianas]\label{def:BN}
@@ -268,7 +273,7 @@ nivel de relación de red, usando \href{https://link.springer.com/10.1007%2F978-
 y \href{https://en.wikipedia.org/wiki/Clustering_coefficient}{coeficiente de agrupamiento}.
  
 Por lo tanto, la teoría de redes complejas se introduce para optimizar y simplificar el grafo de conocimiento que 
-se tenga, mediante el cálculo de los índices mencionados anteriormente, que permiten medir la importancia de cada nodo, obtener 
+se tenga del problema, mediante el cálculo de los índices mencionados anteriormente, que permiten medir la importancia de cada nodo, obtener 
 las relaciones de dependencia entre ellos. Basándonos en la estructura de esa red simplificada obtenida, se puede establecer la estructura topológica de la red bayesiana. 
 \cite{Bai_Xing_Wu_2022}
 
@@ -279,6 +284,7 @@ y generalidad para representar prácticamente cualquier estructura natural, incl
 cambios dinámicos de topología\cite{CN-review}.
 
 \subsection{Sistemas de calificación}
+% issue %50
 
 \subsection{Entropía}
 La entropía es el concepto clave para extraer características universales de un sistema a partir de sus 
