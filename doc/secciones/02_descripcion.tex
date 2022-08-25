@@ -212,23 +212,33 @@ El objetivo de esta sección es introducir los términos que serán usados en el
 
 \subsection{Redes bayesianas}
 \begin{definicion}[Redes bayesianas]\label{def:BN}
-Una red bayesiana es un modelo gráfico probabilístico que mide la estructura de dependencia condicional
-de un conjunto de variables aleatorias basadas en el teorema de Bayes:\\
+Una red bayesiana\cite{def-bncn} $\mathfrak{B} = \lbrace \mathcal{G}, \mathbb{P} \rbrace$ está definida por:
+\begin{itemize}
+    \item Un grafo directo acíclico $\mathcal{G}=(X,E)$ donde $X$ es un conjunto de nodos o vértices y $E$ 
+    es un conjunto de enlaces dirigidos o bordes.
+    \item Un espacio de probabilidad $(\Omega, \mathbb{P})$.
+    \item Un conjunto de variables aleatorias $X={X_1...X_n}$ asociadas con los nodos del grafo $(\Omega, \mathbb{P})$ 
+    de tal manera que $\mathbb{P}(X_1...X_n)= \prod_{i=1}^{n}\mathbb{P}(X_i|P_a(X_i))$, donde $P_a(X_i)$ es el 
+    conjunto de los nodos padre del nodo $X_i$ en $\mathcal{G}$.  
+\end{itemize}
+\end{definicion}
+
+En otras palabras, una red bayesiana es un grafo donde los nodos representan variables aleatorias discretas o contínuas 
+y los bordes o aristas representan las influencias entre ellas. Asociamos la variable aleatoria $X$ a sus modalidades 
+($X=x_1, X=x_2,..., X=x_n$ si $X$ puede tomar $n$ valores). Las aristas representan pues las causalidades, que pueden ser determinísticas 
+o probabilísticas. Para un borde uniendo el hecho $A$ con el $B$, hay una relación que es la probabilidad condicionada, notada como $P(B|A)$, 
+la cual representa una relación de probabilidad de un nodo, conocidos sus nodos padres. Para los nodos sin padres o nodos raíz, una probabilidad 
+previa será asignada.
+
+Generalmente, este tipo de modelo gráfico probabilístico se utilizan como un marco eficiente para
+toma de decisiones con conocimiento incierto, y mide la estructura de dependencia condicional
+de un conjunto de variables aleatorias basándose en el teorema de Bayes:\\
 \begin{equation}
 \label{eq:bayes}
-P(\theta|\textbf{D}) = P(\theta ) \frac{P(\textbf{D} |\theta)}{P(\textbf{D})} ~~~~~|| I,
+P(A|B) = \frac{P(B|A).P(A)}{P(B)}
 \end{equation}
-donde denotamos $I$ como el término generalmente aceptado en los condicionales. Los datos están 
-representados por \textbf{D} y los parámetros están representados por $\theta$.
-
-\href{https://es.wikipedia.org/wiki/Judea_Pearl}{Pearl} en 1988 afirmó que las redes bayesianas 
-son modelos gráficos que contienen información sobre 
-relaciones causales de probabilidad entre variables y se utilizan a menudo para ayudar en la toma de decisiones. 
-Estas relaciones pueden ser sugeridas por expertos o actualizadas usando el teorema de Bayes
-y nuevos datos que se vayan recopilando. La estructura de dependencia entre variables está representada por nodos, 
-que representan las variables, y arcos dirigidos, que representan las relaciones condicionales, en la forma
-de un gráfico acíclico dirigido.\cite{YANG201919}
-\end{definicion}
+donde $P(A)$ es la probabilidad previa, $P(B)$ son las observaciones y la probabilidad posterior viene dada 
+por $P(A|B)$.
 
 \begin{definicion}[Redes bayesianas híbridas]\label{def:hybrid_BN}
 Una red bayesiana híbrida\cite{hybrid-BN} es un tipo de red bayesiana que permite modelar incertidumbre
@@ -253,31 +263,10 @@ pueden representarse adecuadamente como casos especiales de grafos\cite{CN-revie
 A pesar de las diferencias entre los sistemas complejos que podemos encontrar en la naturaleza o la sociedad, 
 las estructuras de estas redes son muy similares, dado que están gobernadas por los mismos principios. Así, 
 podemos usar el mismo conjunto de herramientas matemáticas y computacionales para explorarlas. En términos 
-generales, una red es un sistema que puede ser representado como un grafo, compues por elementos denominados nodos 
+generales, una red es un sistema que puede ser representado como un grafo, compuesto por elementos denominados nodos 
 o vértices y un conjunto de enlaces o aristas, que representan las interacciones entre ellos.\cite{caldarelli2007scale}
 
 La ventaja de modelar un sistema como un grafo es que los problemas se vuelven más simples y manejables.
-
-Desde un punto de vista matemático, podemos representar una red usando una matriz de adyacencia $A$. Un grafo 
-de $N$ vértices tendrá una matriz de adyacencia $N \times N$. Las aristas se pueden representar por los elementos 
-$A_{ij}$ de la matriz de tal manera que: 
-
-\begin{equation}
-    A_{ij}=
-    \begin{cases}
-      1, & \text{si los vértices i y j están conectados}\\
-      0, & \text{en otro caso}
-    \end{cases}
-\end{equation}
-
-para un grafo no dirigido y sin pesos, como el mostrado a continuación. 
-
-\begin{figure}[h!]
-    \centering
-    \includegraphics[scale=0.5]{./img/grafo.png}
-    \caption{Grafo no dirigido y sin pesos}
-    \label{img:grafo1}
-\end{figure}
 
 \begin{definicion}[Redes complejas]\label{def:CN}
 En el contexto de teoría de redes, una \href{https://en.wikipedia.org/wiki/Complex_network}{red compleja} 
@@ -288,6 +277,11 @@ representan sistemas reales.
 
 
 \end{definicion}
+
+
+
+
+\subsection{Sistemas de calificación}
 
 \subsection{Entropía}
 \begin{definicion}[Entropía]\label{def:entropy}
