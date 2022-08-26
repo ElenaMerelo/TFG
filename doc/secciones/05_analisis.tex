@@ -1,5 +1,5 @@
 \chapter{Desarrollo teórico}
-En este capítulo proveeremos con la base matemática del proyecto. Principalmente nos basaremos en 
+En este capítulo estableceremos la base matemática del proyecto. Principalmente nos basaremos en 
 los libros \textit{Advanced Data Analysis
 from an Elementary Point of View}\cite{ada} y \textit{Probabilistic Networks for Practitioners — A
 Guide to Construction and Analysis of Bayesian
@@ -15,7 +15,7 @@ probables por las ventas de jugadores no deseados, el gasto neto relativo de otr
 equipos y el posible impacto negativo en el desempeño del equipo de hacer demasiados cambios de personal de una 
 vez, entre otros. Podemos mapear la decisión que tiene que hacer y todas las diferentes variables usando 
 una red bayesiana, esto es, un modelo gráfico que captura la relación entre variables que están bajo 
-supuestos de causalidad o influencia.\cite{things-to-know-BN}
+supuestos de causalidad o influencia\cite{things-to-know-BN}.
 
 Básicamente entonces, \textbf{una red bayesiana es un diagrama que 
 usa flechas o arcos dirigidos para mostrar cómo distintos factores, representados por nodos elípticos, se 
@@ -23,14 +23,14 @@ influencian los unos a los otros.} Cada nodo viene con su tabla de probabilidad,
 posibilidades de varios desenlaces, provenientes de las influencias que le afectan directamente. Una vez 
 la estructura del grafo y la tabla de una red han sido definidos, hay algoritmos estándar que 
 calculan los estados de las variables desconocidas basándose en los estados de las variables conocidas en el
-modelo.\cite{learning-algorithms-BN-comparison}, \cite{BN-achilles-heel}, \cite{different-algorithmic-schemes}
+modelo\cite{learning-algorithms-BN-comparison}, \cite{BN-achilles-heel}, \cite{different-algorithmic-schemes}.
 
 Una de las razones por las que las redes bayesianas son tan potentes es que pueden realizar inferencias 
 tanto predictivas como diagnósticas. Por ejemplo, podemos por un lado predecir la posición en la liga de un equipo para 
 un valor dado (observación) de rendimiento, y por otro ingresar un estado de posición en la 
 liga como observación para examinar qué nivel de desempeño del equipo podría explicarla. Estos algoritmos estándar son
 llamados algoritmos de "propagación bayesiana"\cite{Cano2004},\cite{more-algorithms}, \cite{back-prop} porque se basan en el teorema de Bayes, en el que la 
-probabilidad de una variable desconocida se actualiza después de que se obtenga evidencia relevante para esa variable.\cite{prop-alg}
+probabilidad de una variable desconocida se actualiza después de que se obtenga evidencia relevante para esa variable\cite{prop-alg}.
 
 \section{Grafos}
 Un grafo es un par $G = (V, E)$, donde $V$ es un conjunto finito de vértices distinguibles y 

@@ -85,15 +85,18 @@ mismo, el desarrollo de un prototipo, y finalmente se testea todo.
 En esta sección profundizaremos en las herramientas empleadas para desarrollar el trabajo y seguir 
 la metodología ya descrita, además de explicitar por qué las hemos escogido.
 
-\subsection{\href{https://github.com/}{Github}} 
+\subsection{Plataforma de alojamiento de código} 
 
-Permite llevar cuenta de los proyectos de \href{https://git-scm.com/}{\tt git}, fuera del ordenador o 
+\href{https://github.com/}{Github} es una plataforma de alojamiento de código para control de versiones y 
+colaboración que permite llevar cuenta de los proyectos de \href{https://git-scm.com/}{\tt git}, fuera del ordenador o 
 servidor local, y está basado en la nube. A su vez, {\tt git} es un 
 sistema distribuido de control de versiones, gratis y cuyo software es libre. Es fácil de 
 aprender, pesa poco y tiene un gran rendimiento.
 
-Así pues, Github es una aplicación con web (también API, marco de aplicaciones entre otras) muy completa para que desarrolladores y programadores puedan trabajar colaborativamente 
-en repositorios. Su punto fuerte es el sistema de control de versiones mencionado, que permite llevar cuenta detallada 
+Así pues, Github es una aplicación con web (también API, marco de aplicaciones entre otras) muy completa 
+para que desarrolladores y programadores puedan trabajar colaborativamente 
+en repositorios. Su punto fuerte es el sistema de control de versiones mencionado, que permite llevar 
+cuenta detallada 
 de los cambios realizados por cada persona, discutirlos, revisarlos y proponer modificaciones, así como 
 separar el producto final de las funcionalidades que se vayan añadiendo y sobre las que cada equipo esté 
 trabajando. Adicionalmente, proporciona herramientas como las \href{https://github.com/features/actions}{Github Actions}, 
@@ -108,7 +111,7 @@ Github, y lo hemos escogido por ser de los más usados y establecidos, con más 
 y porque frente a \href{https://about.gitlab.com/}{gitlab}, contiene justo lo que necesitamos. Gitlab es para proyectos 
 más grandes y profesionales.
 
-\subsection{Oh my zsh}
+\subsection{shell}
 Para tener conciencia situacional del estado del repositorio, instalé \href{https://ohmyz.sh/}{oh my zsh}, 
 un \textit{framework} libre para configurar \textit{Zsh}. Permite el acceso y fácil instalación de plantillas para 
 la terminal, que hacen más fácil saber en qué rama se está trabajando, qué cambios se han realizado, y en 
@@ -243,7 +246,7 @@ de un conjunto de variables aleatorias basándose en el teorema de Bayes:\\
 P(A|B) = \frac{P(B|A).P(A)}{P(B)}
 \end{equation}
 donde $P(A)$ es la probabilidad previa, $P(B)$ son las observaciones y la probabilidad posterior viene dada 
-por $P(A|B)$.\cite{YANG201919}
+por $P(A|B)$\cite{YANG201919}.
 
 \begin{definicion}[Redes bayesianas híbridas]\label{def:hybrid_BN}
 Una red bayesiana híbrida\cite{hybrid-BN} es un tipo de red bayesiana que permite modelar incertidumbre
@@ -259,7 +262,7 @@ sobre variables discretas y contínuas.
     representan sistemas reales. 
 \end{definicion}
 
-Tradicionalmente se han aplicado más las redes complejas que las bayesianas al análisis del fútbol.\cite{ARRIAZAARDILES2018236}
+Tradicionalmente se han aplicado más las redes complejas que las bayesianas al análisis del fútbol\cite{ARRIAZAARDILES2018236}.
 Este tipo de redes nos interesan ya que su estudio está inspirado por los análisis empíricos de redes reales, y 
 nos permiten entender el funcionamiento de los equipos, desde el punto de vista individual o colectivo.
 
@@ -274,8 +277,8 @@ y \href{https://en.wikipedia.org/wiki/Clustering_coefficient}{coeficiente de agr
  
 Por lo tanto, la teoría de redes complejas se introduce para optimizar y simplificar el grafo de conocimiento que 
 se tenga del problema, mediante el cálculo de los índices mencionados anteriormente, que permiten medir la importancia de cada nodo, obtener 
-las relaciones de dependencia entre ellos. Basándonos en la estructura de esa red simplificada obtenida, se puede establecer la estructura topológica de la red bayesiana. 
-\cite{Bai_Xing_Wu_2022}
+las relaciones de dependencia entre ellos. Basándonos en la estructura de esa red simplificada obtenida, 
+se puede establecer la estructura topológica de la red bayesiana\cite{Bai_Xing_Wu_2022}.
 
 Estos sistemas son llamados complejos debido a que no es posible predecir directamente su 
 comportamiento colectivo a partir de sus componentes individuales. Una de las principales razones detrás de 
@@ -320,7 +323,7 @@ de 1948 "Una teoría matemática de la comunicación"\cite{shannon-1948} y tambi
 \subsection{Entropía de Tsallis}
 En 1988 el físico \href{https://en.wikipedia.org/wiki/Constantino_Tsallis}{Constantino Tsallis} 
 introdujo una nueva definición para entropía que describe las características estadísticas de sistemas 
-complejos. Fue diseñada para analizar sistemas donde existen correlaciones entre sus microestados.\cite{tsallis}
+complejos. Fue diseñada para analizar sistemas donde existen correlaciones entre sus microestados\cite{tsallis}.
 \begin{definicion}[Entropía de Tsallis]\label{def:tsallis_entropy}
 Dado un conjunto discreto de probabilidades ${p_i}$ con la condición $\sum_{i} p_i = 1$, y con $q$ 
 cualquier número real, se define la entropía de Tsallis como
@@ -329,6 +332,6 @@ donde $q$ se denomina índice entrópico, $N$ son los microestados y $k$ es una 
 \end{definicion}
 Si $q = 1$, obtenemos la entropía de 
 Shannon. La entropía de Tsallis no es extensiva, lo que significa que si se combinan dos sistemas idénticos, 
-la entropía del sistema combinado no es igual a la suma de la entropía de sus subsistemas.\cite{comparison-entropies}
+la entropía del sistema combinado no es igual a la suma de la entropía de sus subsistemas\cite{comparison-entropies}.
 
 \subsection{Redes causales}
