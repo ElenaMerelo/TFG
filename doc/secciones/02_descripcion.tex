@@ -313,7 +313,8 @@ en este tipo de modelos es computacionalmente más desafiante \cite{inference-re
 
 Tradicionalmente se han aplicado más las redes complejas que las bayesianas al análisis del fútbol \cite{ARRIAZAARDILES2018236}.
 Este tipo de redes nos interesan ya que su estudio está inspirado por los análisis empíricos de redes reales, y 
-permiten entender el funcionamiento de los equipos de fútbol, desde el punto de vista individual o colectivo.
+permiten entender el funcionamiento de los equipos de fútbol, desde el punto de vista individual o colectivo. Usaremos 
+variables definidas sobre la red compleja para "alimentar" la red bayesiana \cite{Bai_Xing_Wu_2022}.
 
 \subsection{Redes complejas}
 \begin{definicion}[Redes complejas] \label{def:CN}
@@ -339,12 +340,7 @@ nivel de relación de red, usando \href{https://link.springer.com/10.1007%2F978-
 \href{https://neo4j.com/docs/graph-data-science/current/algorithms/eigenvector-centrality/}{centralidad de vectores propios} 
 y \href{https://en.wikipedia.org/wiki/Clustering_coefficient}{coeficiente de agrupamiento} \cite{albert2002statistical}.
  
-Por lo tanto, la teoría de redes complejas se introduce para optimizar y simplificar la red de conocimiento que 
-se tenga del problema, mediante el cálculo de los índices mencionados anteriormente, que nos permiten medir 
-la importancia de cada nodo, para obtener las relaciones de dependencia entre ellos. En \ref{subsect:modelos}, 
-nos proveerían de la componente cuantitativa. Basándonos en la 
-estructura de esa red simplificada obtenida, se puede establecer la estructura topológica de la red 
-bayesiana \cite{Bai_Xing_Wu_2022}.
+
 
 Otra manera de medir la importancia de cada nodo es mediante sistemas de calificación.
 
