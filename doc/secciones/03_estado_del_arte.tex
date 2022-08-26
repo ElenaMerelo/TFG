@@ -1,4 +1,43 @@
 \chapter{Estado del arte}
+La historia del análisis de fútbol comienza en 1950, cuando Charles Reep \cite{reep-bio}, teniente coronel de 
+la \textit{Royal Air Force} británica y contable, empezó a 
+registrar sistemáticamente los eventos que tenían lugar a lo largo de un partido de Swindon Town. Con ello, no pretendía 
+únicamente tener detalle de lo que había ocurrido, sino también saber por qué pasaba y qué podían aprender los 
+equipos de los datos, para mejorar su juego. Tras décadas, llegó a la conclusión de que el mayor número 
+de goles resultaba de posesiones de tres pases o menos, por lo que aludía que los equipos debían simplificar 
+sus tácticas para llegar a portería más rápido.
+
+El problema de Reep no fue su recolección de datos, sino su análisis; podría haberse preguntado sobre 
+la tasa de goles en posesiones de varias distancias, o cómo se desarrollaron exactamente esas 
+posesiones de tres pases. 
+
+Otro pionero en el uso de datos en el deporte fue \href{http://www.riazhaq.com/2022/08/remembering-salam-qureishi-pillar-of.html}{Abdus Salam Qureishi}, 
+filántropo e informático en Sillicon Valley, hacía \textit{datascouting} en la reconstrucción de los 
+\href{https://www.dallascowboys.com/}{Dallas Cowboys}, un equipo profesional de fútbol americano de los 60s \cite{chazan2020sports}.
+
+En los años 70, \href{https://es.wikipedia.org/wiki/Valeri_Lobanovski}{Valeri Lobanovski} fue un jugador y entrenador de 
+fútbol ucraniano que formalizó el cuerpo técnico moderno y la captura de eventos en el fútbol del equipo \href{https://es.wikipedia.org/wiki/F._C._Dinamo_de_Kiev}{Dinamo de 
+Kiev}. Declaraba que "Hoy en día los jugadores no pueden objetar, saben que mañana después del partido una hoja estará colgada con 
+las cifras que describen en detalle su juego" \cite{kilpatrick2011inverting}.
+
+En 1996, \href{https://es.wikipedia.org/wiki/Opta_Sports}{Opta} empezó a acumular datos de partidos para la 
+\textit{Premier League} inglesa. Ello incluía todas las estadísticas a las que un aficionado al fútbol está 
+acostumbrado: número de pases, número de regateos, distancia recorrida, por ejemplo. Este podría considerarse 
+el punto de comienzo del análisis de fútbol moderno. Desde 2019, se llama \href{https://www.statsperform.com/}{Stats Perform}, y 
+es todo un referente a la hora de análisis de datos de deportes, incorporando inteligencia artificial.
+
+En 2003, Michael Lewis lanzó el libro \href{https://en.wikipedia.org/wiki/Moneyball}{Moneyball}, el cual tuvo una gran 
+influencia también fuera de Estados Unidos. Trata sobre cómo
+un equipo de béisbol de bajo presupuesto se convirtió en uno de los mejores, usando estadísticas para reclutar a jugadores 
+con habilidades hasta entonces minusvaloradas, como el \href{https://en.wikipedia.org/wiki/On-base_percentage}{porcentaje de veces que un bateador llega a una base}, o 
+la \href{https://en.wikipedia.org/wiki/Slugging_percentage}{productividad de bateo} \cite{moneyball-ev}. El lanzamiento del 
+libro fomentó que se generaran \href{https://thesportjournal.org/article/an-examination-of-the-moneyball-theory-a-baseball-statistical-analysis/}{preguntas} en torno al uso de datos en deportes de equipo. 
+
+A su vez, en 2005 hubo muchos intentos de relacionar redes complejas y fútbol \cite{lee2005passes}, 
+e incluso en el 2004 se lanzó un desafío en la lista redes \cite{Bundio_Matías_2008} para predecir el resultado de la Eurocopa usando 
+redes sociales. En cualquier caso, tanto el estallido del análisis de redes sociales como el libro contribuyeron 
+a la expansión de este campo.
+
 En los últimos años ha habido una revolución en el análisis de la organización 
 y rendimiento de los equipos de fútbol y sus jugadores, por lo que es posible tener acceso a todos los 
 eventos que ocurren en el campo, tales como pases, disparos o goles, todo ello con las coordenadas 
@@ -14,24 +53,26 @@ posible contruir redes de pases compuestas por nodos, correspondientes a los jug
 que representan los pases entre ellos. Esta organización está además lejos de ser 
 aleatoria. El análisis de la evolución de las redes de pases ha mostrado que sus propiedades 
 cambian continuamente a lo largo de un partido y que eventos importantes tales como goles 
-pueden afectar la organización de la red.\cite{spatial-and-temporal-entropies}
+pueden afectar la organización de la red \cite{spatial-and-temporal-entropies}.
 
-Asimismo, durante la última década las redes bayesianas se han popularizado en el campo 
+Asimismo, durante la última década las redes bayesianas \ref{def:BN} se han popularizado en el campo 
 de la inteligencia artificial, y hay numerosos estudios que buscan predecir los resultados 
-de partidos de fútbol empleándolas, para lo que construyen diferentes modelos\cite{prediction-barcelona}.
+de partidos de fútbol empleándolas, para lo que construyen diferentes modelos \cite{prediction-barcelona}.
 En \cite{razali-2017} consiguen una precisión predictiva del 75.09\%. \cite{dolores} introduce el uso 
-de calificaciones dinámicas\cite{pi-ratings} y redes bayesianas híbridas (redes bayesianas con variables 
-discretas y contínuas) para hacer una predicción del resultado de un 
+de calificaciones dinámicas \ref{subsect:ratings} y redes bayesianas híbridas \ref{def:hybrid_BN} para hacer una predicción del resultado de un 
 partido entre dos equipos \textit{a} y \textit{b} a partir de datos históricos de partidos 
 en los que no participan ni \textit{a} ni \textit{b}. Ello nos muestra 
 el increíble potencial que tienen estas redes también, y no solo las más tradicionales 
-redes complejas. 
+redes complejas \ref{def:CN} \cite{caldarelli2007scale}. 
 
-El sistema de calificación que usan genera una puntuación que captura la habilidad de un equipo relativa al resto, 
-en una liga particular. Las puntuaciones resultantes son usadas como entra para el modelo de redes bayesianas, 
-con el objetivo de conseguir una predicción de los resultados de los partidos. 
+A diferencia de los sistemas simples, muy pocas metodologías tratan la evaluación de la confiabilidad de
+sistemas complejos, especialmente los configurados como redes, donde es difícil tomar en
+consideración los diferentes vínculos y factores que pueden afectar la disponibilidad y confiabilidad de tales
+sistemas En este contexto, las redes bayesianas permiten el
+modelado de sistemas configurados como red y el cálculo de probabilidades marginales de la
+nodos del sistema utilizando probabilidades previas y condicionales \cite{bn-and-cn}.
 
-Adicionalmente, hay estudios\cite{smart-data} que ponen un gran énfasis 
+Adicionalmente, hay estudios \cite{smart-data} que ponen un gran énfasis 
 en aplicar conocimiento causal al proceso de desarrollo del modelo, basándose 
 en los datos que son necesarios para la predicción. De esa manera, consiguen predicciones precisas 
 del cambiante rendimiento de equipos de fútbol. El modelo permite predecir, antes de que empiece 
@@ -40,7 +81,7 @@ que supone un cambio de perspectiva con respecto a los artículos mencionados co
 metodología construye y trabaja sobre la literatura anterior, extendiéndola.
 
 Por otro lado, hay vertientes que hacen análisis de fútbol desde la inferencia estadística, desde 
-el \textit{machine learning}, o ambos\cite{ML-inference}. En este \textit{paper}, muestran que 
+el \textit{machine learning}, o ambos \cite{ML-inference}. En este \textit{paper}, muestran que 
 los equipos están caracterizados por dónde en el campo realizan pases, y se 
 pueden identificar por la manera en que pasan el balón. Usando mapas de calor de las localizaciones 
 de los pases, consiguen una precisión del 87\% en una clasificación de veinte equipos. Emplean 
@@ -49,14 +90,14 @@ puerta. Finalmente, usan los pesos del modelo de predicción para categorizar a 
 según el valor de sus pases. Nos muestra una vez más la diversidad que existe en el estudio 
 y análisis del fútbol; no hay límites en cuanto a lo que se puede considerar y obtener.
 
-En cuanto a entropía, \cite{entropy-analysis}, afirma que para optimizar su rendimiento, un 
+\cite{entropy-analysis} afirma que para optimizar su rendimiento, un 
 equipo debe mantener un equilibrio entre orden u organización, el cual 
 propicia la cooperación entre sus miembros, y desorden o desorganización, que confunde 
 al oponente y favorece el mantener un cierto grado de libertad. Para medir, usan entropía de 
-Tsallis a partir de los pases entre los jugadores, y concluyen que la posición de un equipo 
+Tsallis \ref{def:tsallis_entropy} a partir de los pases entre los jugadores, y concluyen que la posición de un equipo 
 al final de la temporada está correlada con la entropía del mismo. 
 
-Más específicamente, saber quién pasa el balón a quién significa reducir la entropía de los pases y maximizar 
+Más específicamente, saber quién pasa el balón a quién significa reducir la entropía \ref{def:entropy} de los pases y maximizar 
 la comunicación y cooperación entre los jugadores del equipo. A su vez, esto implicaría limitar sus 
 grados de libertad al mover la pelota y sorprender al oponente, lo que expondría al equipo a contraataques. El precio 
 pues de maximizar la certeza de los pases puede ser un comportamiento predecible y hacer al equipo vulnerable. Lo más importante 
@@ -71,8 +112,7 @@ organización de las redes de pases cambian a lo largo de un partido.
 \cite{network-analysis} fue uno de los primeros en investigar la entropía entre los jugadores de un equipo de 
 fútbol. Analizan el desempeño y estilo de juego de la selección española en los mundiales del 2010 desde una 
 perspectiva temporal, con lo que medidas globales como el número de pases consecutivos o el número de 
-pases por minuto reflejan el éxito de un equipo en imponer su forma de juego. Observando el coeficiente 
-de agrupación se captura la naturaleza combinatoria del estilo de pases, habitualmente hechos a corta distancia.
+pases por minuto reflejan el éxito de un equipo en imponer su forma de juego.
 Así, España consigue tener mayor posesión del balón y pases completados, lo que es una buena estrategia defensiva 
 al privar al otro equipo de influenciar en el juego. Esto en último lugar determina el resultado final del partido, 
 si bien es discutible la necesidad de tener tanto tiempo el balón, sin muchas veces avanzar a puerta. En el 

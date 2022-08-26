@@ -22,6 +22,24 @@
 \usepackage{tabularx}
 \usepackage{booktabs}
 
+% Matemáticas 
+\usepackage{amsmath, amsthm, amssymb} % Paquetes matemáticas
+\usepackage{mathtools}                % Añade mejoras a amsmath
+\usepackage[mathscr]{eucal} 		  % Proporciona el comando \mathscr para
+                                      % fuentes de tipo manuscrito en modo matemático sin sobreescribir el comando \mathcal
+% TEOREMAS Y ENTORNOS ASOCIADOS
+
+% \newtheorem{theore<m}{Theorem}[chapter]
+\newtheorem*{teorema*}{Teorema}
+\newtheorem{teorema}{Teorema}[chapter]
+\newtheorem{proposicion}{Proposición}[chapter]
+\newtheorem{lema}{Lema}[chapter]
+\newtheorem{corolario}{Corolario}[chapter]
+
+\theoremstyle{definition}
+\newtheorem{definicion}{Definición}
+\newtheorem{ejemplo}{Ejemplo}[chapter]
+
 \usepackage[table,xcdraw]{xcolor}
 \hypersetup{
 	colorlinks=true,	% false: boxed links; true: colored links
@@ -33,7 +51,7 @@
 \pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
 \fancyhead[L]{} % Empty left header
 \fancyhead[C]{} % Empty center header
-\fancyhead[R]{Me Llamo Así} % My name
+\fancyhead[R]{Elena Merelo} % My name
 \fancyfoot[L]{} % Empty left footer
 \fancyfoot[C]{} % Empty center footer
 \fancyfoot[R]{\thepage} % Page numbering for right footer

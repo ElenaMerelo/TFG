@@ -2,9 +2,9 @@
 El presente trabajo intentará responder entonces a: ¿La entropía mejora las posibilidades 
 de marcar gol? Si cambia la entropía del equipo, ¿podemos determinar la causa?¿Ha sido por un jugador 
 específico, la alineación o más bien la influencia del equipo 
-contrario?. Asimismo, ¿es posible ver la entropía reflejada en un tipo de visualización de 
+contrario?. Igualmente, ¿es posible ver la entropía reflejada en un tipo de visualización de 
 las redes de pases?. Estudiaremos hasta qué punto es determinante la 
-entropía a nivel de jugador o equipo, empleando técnicas estadísticas, para obtener respuestas a lo planteado, 
+entropía a nivel de jugador o equipo, empleando técnicas estadísticas para obtener respuestas a lo planteado y 
 siguiendo la forma de trabajar que pasamos a describir.
 
 \section{Metodología - Desarrollo ágil}
@@ -19,7 +19,7 @@ como veremos más adelante. Para lo segundo, hay que tener en cuenta que todos
 los \textit{issues} son problemas, e idealmente deben de decir explícitamente 
 (o implícitamente si está claro) cómo se resuelve el problema.
 
-La mentalidad ágil tiene su origen en el manifesto ágil\cite{manifesto-agil}, el cual fue una revolución frente 
+El desarrollo ágil tiene su origen en el manifesto ágil\cite{manifiesto-agil}, el cual fue una revolución frente 
 al modelo en cascada,
 en la forma de desarrollar software, y planteaba que tienen más valor las personas que 
 los procesos o herramientas, un producto funcionando que mucha documentación, colaboración 
@@ -38,7 +38,7 @@ en contactar con clientes, leer prensa y demás para enfocar el problema; poster
 ideación, de la que saldrán los objetivo e hitos o historias de usuario; y por último diseño, 
 que será aterrizar todo lo anterior. 
 
-Asimismo, el punto de partida es pensar la motivación o problema que queremos resolver. 
+Consecuentemente, el punto de partida es pensar la motivación o problema que queremos resolver. 
 ¿Por qué queremos hacer este TFG? ¿A quién ayuda? ¿Quién lo usaría? ¿Qué solución proponemos? 
 Los problemas deben estar antes que nada; es complicado comprar ingredientes si no sabes qué 
 receta vas a preparar. 
@@ -82,18 +82,20 @@ cliente, para saber qué necesita, seguida de la definición del problema, pensa
 mismo, el desarrollo de un prototipo, y finalmente se testea todo. 
 
 \section{Herramientas usadas}
-En esta sección profundizaremos un poco en las herramientas empleadas para desarrollar el trabajo y seguir 
-la metodología ya descrita, y por qué las hemos escogido.
+En esta sección profundizaremos en las herramientas empleadas para desarrollar el trabajo y seguir 
+la metodología ya descrita, además de explicitar por qué las hemos escogido.
 
-\subsection{\href{https://github.com/}{Github}} 
-
-Permite llevar cuenta de los proyectos de \href{https://git-scm.com/}{\tt git}, fuera del ordenador o 
+\subsection{Plataforma de desarrollo} 
+\href{https://github.com/}{Github} es una plataforma de alojamiento de código para control de versiones y 
+colaboración que permite llevar cuenta de los proyectos de \href{https://git-scm.com/}{\tt git}, fuera del ordenador o 
 servidor local, y está basado en la nube. A su vez, {\tt git} es un 
-sistema distribuido de control de versiones, gratis y cuyo software es libre. Es fácil de 
+sistema distribuido de control de versiones, marco de integración y despliegue contínuo gratis y cuyo software es libre. Es fácil de 
 aprender, pesa poco y tiene un gran rendimiento.
 
-Así pues, Github es una aplicación con web (también API, marco de aplicaciones entre otras) muy completa para que desarrolladores y programadores puedan trabajar colaborativamente 
-en repositorios. Su punto fuerte es el sistema de control de versiones mencionado, que permite llevar cuenta detallada 
+Así pues, Github es una aplicación con web (también API, marco de aplicaciones entre otras) muy completa 
+para que desarrolladores y programadores puedan trabajar colaborativamente 
+en repositorios. Su punto fuerte es el sistema de control de versiones mencionado, que permite llevar 
+cuenta detallada 
 de los cambios realizados por cada persona, discutirlos, revisarlos y proponer modificaciones, así como 
 separar el producto final de las funcionalidades que se vayan añadiendo y sobre las que cada equipo esté 
 trabajando. Adicionalmente, proporciona herramientas como las \href{https://github.com/features/actions}{Github Actions}, 
@@ -108,7 +110,7 @@ Github, y lo hemos escogido por ser de los más usados y establecidos, con más 
 y porque frente a \href{https://about.gitlab.com/}{gitlab}, contiene justo lo que necesitamos. Gitlab es para proyectos 
 más grandes y profesionales.
 
-\subsection{Oh my zsh}
+\subsection{Shell}
 Para tener conciencia situacional del estado del repositorio, instalé \href{https://ohmyz.sh/}{oh my zsh}, 
 un \textit{framework} libre para configurar \textit{Zsh}. Permite el acceso y fácil instalación de plantillas para 
 la terminal, que hacen más fácil saber en qué rama se está trabajando, qué cambios se han realizado, y en 
@@ -119,6 +121,36 @@ y la posibilidad de personalizar la terminal, con temas ya creados o propios.
 {Zsh} es un \textit{shell} que se presenta como alternativa a \textit{bash}, el cual viene por defecto en 
 \textit{Ubuntu}. Las ventajas de las que más nos hemos aprovechado y por las que lo escogimos parten de 
 su mayor configurabilidad, el que te corrija errores de escritura y complete palabras.
+
+\subsection{Editor de código}
+Como editor de código uso \href{https://code.visualstudio.com/}{Visual Studio Code}, dado que ya estaba 
+familiarizada y muy contenta con él. Tiene soporte para mucho lenguajes, está disponible para Ubuntu, Windows y 
+MacOs, comprende resaltado de sintaxis, autoindentación, innumerables temas y plugins, atajos de teclado, 
+aparte de una comunidad enorme detrás. Combina pues la simplicidad de un editor 
+de código fuente con herramientas de desarrollo potentes, como completación de código o \textit{debugging}. Y lo mejor, 
+es software libre, y se integra perfectamente con git y Github, además de permitirte construir el proyecto y compilarlo, 
+todo sin cambiar de pantalla. 
+
+\subsection{Sistema de composición de documentos}
+\href{https://www.latex-project.org/}{LaTeX} es un sistema de composición tipográfica de alta calidad; 
+incluye características diseñadas para la producción de documentación técnica y científica. Es el estándar 
+de facto para la comunicación y publicación de documentos científicos, además de estar disponible como 
+software libre y gratuito. 
+
+LaTeX da al usuario un control extremadamente bueno sobre el formato de los documentos. Una vez que se 
+domina, puede ser mucho más fácil trabajar con él que con un procesador de texto convencional. Tuve 
+problemas (que fui reflejando en \href{https://github.com/ElenaMerelo/TFG/issues}{mi Github}) a la hora 
+de usarlo ya que no lo había empleado hasta este momento, por lo que tenía que entender 
+el funcionamiento de la plantilla que uso, \href{https://github.com/ElenaMerelo/TFG/issues/58}{cómo escribir las fórmulas 
+y símbolos matemáticos}, \href{https://github.com/ElenaMerelo/TFG/issues/54}{la definición de entornos}, 
+\href{https://github.com/ElenaMerelo/TFG/issues/56}{cómo hacer citas y referencias}, 
+\href{https://github.com/ElenaMerelo/TFG/issues/57}{cómo se incluyen imágenes}, cómo incluir y usar paquetes, o incluso cómo poner títulos, letra 
+en itálica, enlaces. Hay numerosos tutoriales en internet, pero lo que más consulté ha sido
+ \href{https://es.overleaf.com/learn}{la documentación de Overleaf}, aunque tenga otro editor de LaTeX. Ciertamente, 
+ la curva de aprendizaje no es muy grande, y una vez entiendes la lógica detrás, se escribe relativamente rápido. En 
+ cualquier caso, es mejor que ir buscando la fórmula en el cuadro de mandos de los editores de texto tradicionales, 
+ y al ser ficheros de texto los edito en VisualCode Studio y puedo subirlos al repositorio de GitHub junto con el resto 
+ del proyecto. 
 
 \section{Clientes}
 Basándonos en la \href{https://www.designthinking.services/herramientas-design-thinking/metodo-persona/}{metodología basada en personas}, 
@@ -132,7 +164,9 @@ hemos llegado a los siguientes usuarios:
     \item Persona que apuesta: recopila información sobre los equipos y jugadores, para poder apostar 
     en base a una alineación, o una vez se sabe quién va a jugar en un partido. 
     \item Entrenador: es el encargado de decidir a quién sacar durante un partido, los 
-    cambios, dónde poner a quién.   
+    cambios, dónde poner a quién. 
+    \item Presidente del equipo de fútbol: tiene que decidir antes del comienzo 
+    de cada temporada cuánto dinero ha de invertir en nuevos jugadores. 
     \item Periodista deportivo: debe escribir un artículo sobre un partido con gráficos y datos estadísticos, 
     para lo que debe conocer medianamente a los jugadores y equipos, junto con su desempeño a lo largo de 
     una liga o temporada. 
@@ -144,9 +178,6 @@ A partir de los clientes, y como parte de la metodología, definimos en \href{ht
 
 \begin{itemize}
     \item Como analista táctico, quiero obtener un análisis del propio equipo y de los rivales.
-    \item Como tutores, nos gustaría que el proyecto siga un desarrollo ágil.
-    \item Como matemática, quiero que la teoría sobre redes causales se aplique bien al caso concreto, y se conecte sin problema con la parte informática.
-    \item Como entrenador, me gustaría poder usar la herramienta desarrollada, y que sea intuitiva.
     \item Como scouter,  quiero encontrar los jugadores que necesita el equipo 
     o el club, y analizar sus cualidades y posibilidades de integración al equipo, desde su rendimiento futbolístico hasta el 
     económico.
@@ -156,15 +187,24 @@ A partir de los clientes, y como parte de la metodología, definimos en \href{ht
     juego del equipo o para la compra y venta de jugadores. 
     \item Como persona que apuesta, querré inferir el resultado de un partido y 
     quién marcará, una vez se publiquen los jugadores. 
+    \item Como entrenador, me gustaría poder usar la herramienta desarrollada, y que sea intuitiva.
+    \item \label{hu:presidente} Como presidente del equipo de fútbol, quiero poder calcular los ingresos 
+    probables por las ventas de jugadores no deseados, el gasto neto relativo de otros
+    equipos y el posible impacto negativo en el desempeño del equipo de hacer demasiados cambios de personal de una 
+    vez.  
     \item Como periodista deportivo, desearía tener una herramienta más en mi arsenal, y 
     usarla para obtener gráficos, estadísticas, y conclusiones acerca de un partido, 
     temporada, equipo o jugador.
+    \item Como tutores, nos gustaría que el proyecto siga un desarrollo ágil.
+    \item Como matemática, quiero que la teoría sobre redes causales se aplique bien al caso concreto, y 
+    se conecte sin problema con la parte informática.
 \end{itemize}
 
 \section{Hitos o Productos Mínimamente Viables}
+Pasamos a describir los prototipos del producto que queremos desarrollar.
 
 \subsection{\textit{Milestone} 1 - Infraestructura}
-El objetivo de esta milestone es configurar la infraestructura del proyecto. Para ello, tendremos que:
+El objetivo de esta \textit{milestone} es configurar la infraestructura del proyecto. Para ello, tendremos que:
 \begin{itemize}
     \item Borrar los archivos de la plantilla que no sean necesarios.
     \item Definir los primeros \textit{milestone} e issues.
@@ -193,7 +233,7 @@ El objetivo de esta \textit{milestone} es dejar escritas:
 
 Habiendo terminado así la parte de ideación, planteamiento del problema, y pasar a estar preparado para solucionarlo.
 
-\subsection{Milestone 3 - Parte matemática} 
+\subsection{\textit{Milestone} 3 - Parte matemática} 
 El objetivo de esta \textit{Milestone} es la recopilación de datos, procesarlos, eliminar los que 
 no sirvan, obtener conclusiones. Aparte, habría que reproducir teoremas, dejar bien clara la base matemática.
 
@@ -207,20 +247,184 @@ Como producto esperado se tendrá la base teórica terminada y bien explicada, p
     \item Añadir introducción a las redes causales 
 \end{itemize}
 
+\section{Definiciones y terminología}
+El objetivo de esta sección es introducir los términos que serán usados en el estado del arte, donde veremos 
+todavía mejor cómo se conectan con nuestro problema.
+
+Enunciamos en primer lugar lo que son los modelos gráficos probabilísticos, ya que permiten realizar 
+inferencias en dominios complejos dotados de incertidumbre.
+
+\begin{definicion}{Modelos gráficos probabilísticos} \label{subsect:modelos}
+Un modelo gráfico probabilístico es un marco que consta de dos partes: una componente cualitativa
+en forma de modelo gráfico que codifica afirmaciones de independencia condicional sobre el 
+dominio que se está estudiando, y una componente cuantitativa que consiste en una colección de 
+distribuciones de probabilidad locales que se adhieren a la propiedades de independencia especificadas 
+en el modelo gráfico. En conjunto, los dos componentes proporcionan una representación compacta de la 
+distribución de probabilidad conjunta sobre el dominio \cite{inference-rev-hbn}. 
+\end{definicion}
+
+Un tipo de modelo gráfico probabilístico que usaremos y estudiaremos en profundidad en los próximos 
+capítulos son las redes bayesianas.
+
+\subsection{Redes bayesianas}
+\begin{definicion}[Redes bayesianas] \label{def:BN}
+Una red bayesiana \cite{def-bncn} $\mathfrak{B} = \lbrace \mathcal{G}, \mathbb{P} \rbrace$ está definida por:
+\begin{itemize}
+    \item Un grafo directo acíclico $\mathcal{G}=(X,E)$ donde $X$ es un conjunto de nodos o vértices y $E$ 
+    es un conjunto de enlaces dirigidos o bordes.
+    \item Un espacio de probabilidad $(\Omega, \mathbb{P})$.
+    \item Un conjunto de variables aleatorias $X={X_1...X_n}$ asociadas con los nodos del grafo $(\Omega, \mathbb{P})$ 
+    de tal manera que $\mathbb{P}(X_1...X_n)= \prod_{i=1}^{n}\mathbb{P}(X_i|P_a(X_i))$, donde $P_a(X_i)$ es el 
+    conjunto de los nodos padre del nodo $X_i$ en $\mathcal{G}$.  
+\end{itemize}
+\end{definicion}
+
+En otras palabras, una red bayesiana es un grafo donde los nodos representan variables aleatorias discretas 
+o contínuas y los bordes o aristas representan las influencias entre ellas. Asociamos la variable 
+aleatoria $X$ a sus modalidades ($X=x_1, X=x_2,..., X=x_n$ si $X$ puede tomar $n$ valores). Las aristas 
+representan pues las causalidades, que pueden ser determinísticas o probabilísticas. Para un borde 
+uniendo el hecho $A$ con el $B$, hay una relación que es la probabilidad condicionada, notada como $P(B|A)$, 
+la cual representa una relación de probabilidad de un nodo, conocidos sus nodos padres. Para los nodos 
+sin padres o nodos raíz, una probabilidad previa será asignada.
+
+Generalmente, este tipo de modelo gráfico probabilístico se utilizan como un marco eficiente para
+toma de decisiones con conocimiento incierto, y mide la estructura de dependencia condicional
+de un conjunto de variables aleatorias basándose en el teorema de Bayes:\\
+\begin{equation} \label{eq:bayes}
+P(A|B) = \frac{P(B|A).P(A)}{P(B)}
+\end{equation}
+donde $P(A)$ es la probabilidad previa, $P(B)$ son las observaciones y la probabilidad posterior viene dada 
+por $P(A|B)$ \cite{YANG201919}.
+
+En aplicaciones prácticas, es común encontrar escenarios que
+involucran variables discretas y continuas simultáneamente. Este tipo de problemas se pueden modelar 
+utilizando las llamadas redes bayesianas híbridas.
+
+\subsection{Redes bayesianas híbridas}
+\begin{definicion}[Redes bayesianas híbridas] \label{def:hybrid_BN}
+    Una red bayesiana híbrida \cite{hybrid-BN} es un tipo de red bayesiana que permite modelar incertidumbre
+    sobre variables discretas y contínuas.
+\end{definicion}
+
+Han recibido una atención creciente durante 
+los últimos años, debido a que amplían la aplicabilidad de las redes bayesianas en general. Sin embargo, 
+esta característica adicional también tiene un costo: la inferencia
+en este tipo de modelos es computacionalmente más desafiante \cite{inference-rev-hbn}.
+
+Tradicionalmente se han aplicado más las redes complejas que las bayesianas al análisis del fútbol \cite{ARRIAZAARDILES2018236}.
+Este tipo de redes nos interesan ya que su estudio está inspirado por los análisis empíricos de redes reales, y 
+permiten entender el funcionamiento de los equipos de fútbol, desde el punto de vista individual o colectivo. Usaremos 
+variables definidas sobre la red compleja para "alimentar" la red bayesiana \cite{Bai_Xing_Wu_2022}.
+
+\subsection{Redes complejas}
+\begin{definicion}[Redes complejas] \label{def:CN}
+    Una \href{https://en.wikipedia.org/wiki/Complex_network}{red compleja} 
+    es un grafo con características topológicas que no se dan 
+    en redes simples como \href{https://en.wikipedia.org/wiki/Lattice_(order)}{celosías} o 
+    \href{https://mathworld.wolfram.com/RandomGraph.html}{grafos aleatorios}, pero a menudo ocurren en redes que 
+    representan sistemas reales. 
+\end{definicion}
+
+Estos sistemas son llamados complejos debido a que no es posible predecir directamente su 
+comportamiento colectivo a partir de sus componentes individuales. Una de las principales razones detrás de 
+la popularidad de las redes complejas es su flexibilidad
+y generalidad para representar prácticamente cualquier estructura natural, incluidas las que experimentan 
+cambios dinámicos de topología \cite{CN-review}.
+
+La teoría de redes complejas se desarrolla en base a la teoría de grafos y la física estadística. En teoría de 
+redes complejas, todo sistema complejo puede abstraerse como una red. Los nodos de la red se pueden 
+considerar como los elementos en el sistema, y las relaciones
+entre cada elemento como conexiones. Hay muchos indicadores estructurales
+en la teoría de redes complejas que pueden cuantificar la importancia de los nodos desde el nodo mismo o el
+nivel de relación de red, usando \href{https://link.springer.com/10.1007%2F978-1-4419-9863-7_935}{centralidad de grado}, 
+\href{https://neo4j.com/docs/graph-data-science/current/algorithms/eigenvector-centrality/}{centralidad de vectores propios} 
+y \href{https://en.wikipedia.org/wiki/Clustering_coefficient}{coeficiente de agrupamiento} \cite{albert2002statistical}.
  
 
-\section{Definiciones y terminología}
-% issue #50
+
+Otra manera de medir la importancia de cada nodo es mediante sistemas de calificación.
+
+\subsection{Sistemas de calificación} \label{subsect:ratings}
+Determinar la habilidad relativa entre adversarios es probablemente el
+elemento más importante junto con la predicción de los resultados de partidos de fútbol; las posiciones en 
+una liga adolecen de numerosos inconvenientes que hacen que no sean fiables para la predicción. 
+Por ejemplo, una liga de fútbol sufre de alta variación al inicio de la temporada, y de baja 
+variación al final. Además, es posible que los equipos que compiten durante una temporada no
+compartan un número equivalente de partidos jugados debido a aplazamientos y
+por lo tanto, la clasificación de la liga será errónea durante unas cuantas semanas. De hecho, 
+la clasificación de una liga está sesgada hasta que se juega el último partido de la temporada, porque
+para que la clasificación sea justa, cada equipo tiene que jugar contra el resto de equipos, en
+casa y fuera. Incluso al final de una temporada, el \textit{ranking} representa
+el rendimiento general durante ese período, pero no logra
+demostrar cómo varió la habilidad de un equipo. Adicionalmente,
+ignora los partidos de Copa y los partidos de otras competiciones (por ejemplo, Champions
+League), o no compara equipos en diferentes divisiones/ligas. \textbf{En
+resumen, una tabla de clasificación no es un buen indicador de la situación actual de un equipo. Un 
+sistema de calificación proporciona medidas relativas de superioridad entre adversarios y supera 
+todos los problemas anteriores \cite{pi-ratings}.}
+
+Cuando se trata de fútbol, para generar calificaciones que capturen con precisión la
+capacidad actual de un equipo, tenemos que considerar al menos:
+\begin{itemize}
+    \item La ventaja que supone jugar en casa.
+    \item El hecho de que los resultados más recientes son más importantes que los menos recientes
+    al estimar las habilidades actuales.
+    \item El hecho de que una victoria es más importante para un equipo que aumentar la diferencia de goles.
+\end{itemize}
+
+\begin{definicion} \label{def:ratings}
+La calificación general de un equipo es la calificación promedio entre las actuaciones 
+en casa y fuera, y esto se define como
+
+$$ R_{\tau}= \frac{R_{\tau H} + R_{\tau A}}{2} $$
+
+donde $R_{\tau}$ es la calificación para un equipo $\tau$, $R_{\tau H}$ es la calificación para el 
+equipo $\tau$ cuando juega en casa, y $R_{\tau A}$ es la calificación de un equipo $\tau$ cuando 
+juegan fuera. 
+\end{definicion}
+
+Nosotros calificaremos a los equipos según su entropía.
 
 \subsection{Entropía}
+La entropía es el concepto clave para extraer características universales de un sistema a partir de sus 
+detalles. Aparece en muchos contextos como termodinámica, mecánica estadística o teoría de la información, como 
+una medida de diferentes propiedades: energía que no puede producir trabajo, desorden, incertidumbre, 
+aleatoriedad o complejidad \cite{gen-entr-review}.
 
+En teoría de la información, la entropía de una variable aleatoria es el nivel promedio de información, 
+sorpresa o incertidumbre inherente a los posibles resultados de una variable \cite{t-entropy}.
+\begin{definicion}[Entropía] \label{def:entropy}
+Para una variable aleatoria discreta $X$ definimos su entropía como:  
+
+$$H(X):= - \sum_{x} P(x)\log[P(x)]$$
+
+bits, donde $X$ toma valores en $\mathcal{X}$, $P:\mathcal{X} \rightarrow [0,1]$, $P(x)$ es la 
+probabilidad de que $X$ esté en el estado $x$. La 
+entropía conjunta de las variables $X_1...X_n$ se define por 
+$$H(X_1,...,X_n)=-sum_{x_1}...sum_{x_n}P(x_1,...,x_n)log[P(x_1,...,x_n)]$$
+\end{definicion}
+
+La elección de la base para el logaritmo varía según las diferentes 
+aplicaciones. La base 2 da la unidad de bits (o "shannons"), mientras que la base $e$ da "unidades naturales" 
+nat, y la base 10 da unidades de "dits", "bans" o "hartleys". Una definición equivalente de entropía es 
+el valor esperado de autoinformación de una variable.
+
+El concepto de entropía de la información fue introducido por el matemático e ingeniero eléctrico americano 
+\href{https://en.wikipedia.org/wiki/Claude_Shannon}{Claude Shannon} en su artículo 
+de 1948 "Una teoría matemática de la comunicación" \cite{shannon-1948} y también se conoce como entropía de Shannon.
+
+La entropía que más nos interesa es la de Tsallis, al ser la que se puede aplicar mejor a las redes de pases 
+que ocurren a lo largo de un partido de fútbol
 \subsection{Entropía de Tsallis}
-
-\subsection{Entropía de Shannon}
-
-\subsection{Entropía de Renyi} 
-
-
-\subsection{Principio de máxima entropía}
-
-\subsection{Redes causales}
+En 1988 el físico \href{https://en.wikipedia.org/wiki/Constantino_Tsallis}{Constantino Tsallis} 
+introdujo una nueva definición para entropía que describe las características estadísticas de sistemas 
+complejos. Fue diseñada para analizar sistemas donde existen correlaciones entre sus microestados \cite{tsallis}.
+\begin{definicion}[Entropía de Tsallis] \label{def:tsallis_entropy}
+Dado un conjunto discreto de probabilidades ${p_i}$ con la condición $\sum_{i} p_i = 1$, y con $q$ 
+cualquier número real, se define la entropía de Tsallis como
+$$ S_q(p_i)=\frac{k}{q-1}(1- \sum_{i=1}^{N}p_{i}^{q})$$
+donde $q$ se denomina índice entrópico, $N$ son los microestados y $k$ es una constante positiva.
+\end{definicion}
+Si $q = 1$, obtenemos la entropía de 
+Shannon. La entropía de Tsallis no es extensiva, lo que significa que si se combinan dos sistemas idénticos, 
+la entropía del sistema combinado no es igual a la suma de la entropía de sus subsistemas \cite{comparison-entropies}.
