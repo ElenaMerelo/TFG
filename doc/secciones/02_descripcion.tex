@@ -251,6 +251,9 @@ Como producto esperado se tendrá la base teórica terminada y bien explicada, p
 El objetivo de esta sección es introducir los términos que serán usados en el estado del arte, donde veremos 
 todavía mejor cómo se conectan con nuestro problema.
 
+Enunciamos en primer lugar lo que son los modelos gráficos probabilísticos, ya que permiten realizar 
+inferencias en dominios complejos dotados de incertidumbre.
+
 \begin{definicion}{Modelos gráficos probabilísticos} \label{subsect:modelos}
 Un modelo gráfico probabilístico es un marco que consta de dos partes: una componente cualitativa
 en forma de modelo gráfico que codifica afirmaciones de independencia condicional sobre el 
@@ -259,6 +262,9 @@ distribuciones de probabilidad locales que se adhieren a la propiedades de indep
 en el modelo gráfico. En conjunto, los dos componentes proporcionan una representación compacta de la 
 distribución de probabilidad conjunta sobre el dominio \cite{inference-rev-hbn}. 
 \end{definicion}
+
+Un tipo de modelo gráfico probabilístico que usaremos y estudiaremos en profundidad en los próximos 
+capítulos son las redes bayesianas.
 
 \subsection{Redes bayesianas}
 \begin{definicion}[Redes bayesianas] \label{def:BN}
@@ -279,8 +285,7 @@ aleatoria $X$ a sus modalidades ($X=x_1, X=x_2,..., X=x_n$ si $X$ puede tomar $n
 representan pues las causalidades, que pueden ser determinísticas o probabilísticas. Para un borde 
 uniendo el hecho $A$ con el $B$, hay una relación que es la probabilidad condicionada, notada como $P(B|A)$, 
 la cual representa una relación de probabilidad de un nodo, conocidos sus nodos padres. Para los nodos 
-sin padres o nodos raíz, una probabilidad previa será asignada. \textbf{Nosotros veremos las redes de pases como una 
-red bayesiana, donde los jugadores serán los nodos, y los pases constituirán las aristas.}
+sin padres o nodos raíz, una probabilidad previa será asignada.
 
 Generalmente, este tipo de modelo gráfico probabilístico se utilizan como un marco eficiente para
 toma de decisiones con conocimiento incierto, y mide la estructura de dependencia condicional
@@ -291,21 +296,24 @@ P(A|B) = \frac{P(B|A).P(A)}{P(B)}
 donde $P(A)$ es la probabilidad previa, $P(B)$ son las observaciones y la probabilidad posterior viene dada 
 por $P(A|B)$ \cite{YANG201919}.
 
+En aplicaciones prácticas, es común encontrar escenarios que
+involucran variables discretas y continuas simultáneamente. Este tipo de problemas se pueden modelar 
+utilizando las llamadas redes bayesianas híbridas.
+
 \subsection{Redes bayesianas híbridas}
 \begin{definicion}[Redes bayesianas híbridas] \label{def:hybrid_BN}
     Una red bayesiana híbrida \cite{hybrid-BN} es un tipo de red bayesiana que permite modelar incertidumbre
     sobre variables discretas y contínuas.
 \end{definicion}
 
-En aplicaciones prácticas, es común encontrar escenarios que
-involucran variables discretas y continuas simultáneamente. Este tipo de problemas se pueden modelar por tanto
-utilizando las llamadas redes bayesianas híbridas. Han recibido una atención creciente durante 
+Han recibido una atención creciente durante 
 los últimos años, debido a que amplían la aplicabilidad de las redes bayesianas en general. Sin embargo, 
 esta característica adicional también tiene un costo: la inferencia
 en este tipo de modelos es computacionalmente más desafiante \cite{inference-rev-hbn}.
 
-Los modelos gráficos probabilísticos proporcionan como estamos viendo un enfoque bien fundamentado y 
-basado en principios para realizar inferencias en dominios complejos dotados de incertidumbre. 
+Tradicionalmente se han aplicado más las redes complejas que las bayesianas al análisis del fútbol \cite{ARRIAZAARDILES2018236}.
+Este tipo de redes nos interesan ya que su estudio está inspirado por los análisis empíricos de redes reales, y 
+permiten entender el funcionamiento de los equipos de fútbol, desde el punto de vista individual o colectivo.
 
 \subsection{Redes complejas}
 \begin{definicion}[Redes complejas] \label{def:CN}
@@ -315,10 +323,6 @@ basado en principios para realizar inferencias en dominios complejos dotados de 
     \href{https://mathworld.wolfram.com/RandomGraph.html}{grafos aleatorios}, pero a menudo ocurren en redes que 
     representan sistemas reales. 
 \end{definicion}
-
-Tradicionalmente se han aplicado más las redes complejas que las bayesianas al análisis del fútbol \cite{ARRIAZAARDILES2018236}.
-Este tipo de redes nos interesan ya que su estudio está inspirado por los análisis empíricos de redes reales, y 
-nos permiten entender el funcionamiento de los equipos, desde el punto de vista individual o colectivo.
 
 Estos sistemas son llamados complejos debido a que no es posible predecir directamente su 
 comportamiento colectivo a partir de sus componentes individuales. Una de las principales razones detrás de 
@@ -342,24 +346,48 @@ nos proveerían de la componente cuantitativa. Basándonos en la
 estructura de esa red simplificada obtenida, se puede establecer la estructura topológica de la red 
 bayesiana \cite{Bai_Xing_Wu_2022}.
 
+Otra manera de medir la importancia de cada nodo es mediante sistemas de calificación.
+
 \subsection{Sistemas de calificación} \label{subsect:ratings}
 Determinar la habilidad relativa entre adversarios es probablemente el
-elemento más importante antes que la predicción de los resultados de partidos de fútbol; las posiciones en 
-una liga adolecen de numerosos inconvenientes que hacen que no seann fiables para la predicción. 
+elemento más importante junto con la predicción de los resultados de partidos de fútbol; las posiciones en 
+una liga adolecen de numerosos inconvenientes que hacen que no sean fiables para la predicción. 
 Por ejemplo, una liga de fútbol sufre de alta variación al inicio de la temporada, y de baja 
 variación al final. Además, es posible que los equipos que compiten durante una temporada no
 compartan un número equivalente de partidos jugados debido a aplazamientos y
-por lo tanto, la clasificación de la liga será errónea durante unas cuantas semanas. De hecho, la clasificación de 
-una liga está sesgada hasta que se juega el último partido de la temporada, porque
+por lo tanto, la clasificación de la liga será errónea durante unas cuantas semanas. De hecho, 
+la clasificación de una liga está sesgada hasta que se juega el último partido de la temporada, porque
 para que la clasificación sea justa, cada equipo tiene que jugar contra el resto de equipos, en
-casa y fuera. Incluso al final de la temporada, el \textit{ranking} representa
-el rendimiento general durante el período de toda una temporada, y no logra
-demostrar cómo varió la habilidad de un equipo durante ese período. Adicionalmente,
+casa y fuera. Incluso al final de una temporada, el \textit{ranking} representa
+el rendimiento general durante ese período, pero no logra
+demostrar cómo varió la habilidad de un equipo. Adicionalmente,
 ignora los partidos de Copa y los partidos de otras competiciones (por ejemplo, Champions
 League), o no compara equipos en diferentes divisiones/ligas. \textbf{En
 resumen, una tabla de clasificación no es un buen indicador de la situación actual de un equipo. Un 
 sistema de calificación proporciona medidas relativas de superioridad entre adversarios y supera 
 todos los problemas anteriores \cite{pi-ratings}.}
+
+Cuando se trata de fútbol, para generar calificaciones que capturen con precisión la
+capacidad actual de un equipo, tenemos que considerar al menos:
+\begin{itemize}
+    \item La ventaja que supone jugar en casa.
+    \item El hecho de que los resultados más recientes son más importantes que los menos recientes
+    al estimar las habilidades actuales.
+    \item El hecho de que una victoria es más importante para un equipo que aumentar la diferencia de goles.
+\end{itemize}
+
+\begin{definicion} \label{def:ratings}
+La calificación general de un equipo es la calificación promedio entre las actuaciones 
+en casa y fuera, y esto se define como
+
+$$ R_{\tau}= \frac{R_{\tau H} + R_{\tau A}}{2} $$
+
+donde $R_{\tau}$ es la calificación para un equipo $\tau$, $R_{\tau H}$ es la calificación para el 
+equipo $\tau$ cuando juega en casa, y $R_{\tau A}$ es la calificación de un equipo $\tau$ cuando 
+juegan fuera. 
+\end{definicion}
+
+Nosotros calificaremos a los equipos según su entropía.
 
 \subsection{Entropía}
 La entropía es el concepto clave para extraer características universales de un sistema a partir de sus 
@@ -389,7 +417,8 @@ El concepto de entropía de la información fue introducido por el matemático e
 \href{https://en.wikipedia.org/wiki/Claude_Shannon}{Claude Shannon} en su artículo 
 de 1948 "Una teoría matemática de la comunicación" \cite{shannon-1948} y también se conoce como entropía de Shannon.
 
-
+La entropía que más nos interesa es la de Tsallis, al ser la que se puede aplicar mejor a las redes de pases 
+que ocurren a lo largo de un partido de fútbol
 \subsection{Entropía de Tsallis}
 En 1988 el físico \href{https://en.wikipedia.org/wiki/Constantino_Tsallis}{Constantino Tsallis} 
 introdujo una nueva definición para entropía que describe las características estadísticas de sistemas 
