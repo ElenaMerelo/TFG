@@ -4,7 +4,7 @@ de marcar gol? Si cambia la entropía del equipo, ¿podemos determinar la causa?
 específico, la alineación o más bien la influencia del equipo 
 contrario?. Igualmente, ¿es posible ver la entropía reflejada en un tipo de visualización de 
 las redes de pases?. Estudiaremos hasta qué punto es determinante la 
-entropía a nivel de jugador o equipo, empleando técnicas estadísticas, para obtener respuestas a lo planteado, 
+entropía a nivel de jugador o equipo, empleando técnicas estadísticas para obtener respuestas a lo planteado y 
 siguiendo la forma de trabajar que pasamos a describir.
 
 \section{Metodología - Desarrollo ágil}
@@ -165,7 +165,9 @@ hemos llegado a los siguientes usuarios:
     \item Persona que apuesta: recopila información sobre los equipos y jugadores, para poder apostar 
     en base a una alineación, o una vez se sabe quién va a jugar en un partido. 
     \item Entrenador: es el encargado de decidir a quién sacar durante un partido, los 
-    cambios, dónde poner a quién.   
+    cambios, dónde poner a quién. 
+    \item Dueño del equipo de fútbol: tiene que decidir antes del comienzo 
+    de cada temporada cuánto dinero ha de invertir en nuevos jugadores. 
     \item Periodista deportivo: debe escribir un artículo sobre un partido con gráficos y datos estadísticos, 
     para lo que debe conocer medianamente a los jugadores y equipos, junto con su desempeño a lo largo de 
     una liga o temporada. 
@@ -177,9 +179,6 @@ A partir de los clientes, y como parte de la metodología, definimos en \href{ht
 
 \begin{itemize}
     \item Como analista táctico, quiero obtener un análisis del propio equipo y de los rivales.
-    \item Como tutores, nos gustaría que el proyecto siga un desarrollo ágil.
-    \item Como matemática, quiero que la teoría sobre redes causales se aplique bien al caso concreto, y se conecte sin problema con la parte informática.
-    \item Como entrenador, me gustaría poder usar la herramienta desarrollada, y que sea intuitiva.
     \item Como scouter,  quiero encontrar los jugadores que necesita el equipo 
     o el club, y analizar sus cualidades y posibilidades de integración al equipo, desde su rendimiento futbolístico hasta el 
     económico.
@@ -189,9 +188,17 @@ A partir de los clientes, y como parte de la metodología, definimos en \href{ht
     juego del equipo o para la compra y venta de jugadores. 
     \item Como persona que apuesta, querré inferir el resultado de un partido y 
     quién marcará, una vez se publiquen los jugadores. 
+    \item Como entrenador, me gustaría poder usar la herramienta desarrollada, y que sea intuitiva.
+    \item \label{hu:dueño} Como dueño del equipo de fútbol, quiero poder calcular los ingresos 
+    probables por las ventas de jugadores no deseados, el gasto neto relativo de otros
+    equipos y el posible impacto negativo en el desempeño del equipo de hacer demasiados cambios de personal de una 
+    vez.  
     \item Como periodista deportivo, desearía tener una herramienta más en mi arsenal, y 
     usarla para obtener gráficos, estadísticas, y conclusiones acerca de un partido, 
     temporada, equipo o jugador.
+    \item Como tutores, nos gustaría que el proyecto siga un desarrollo ágil.
+    \item Como matemática, quiero que la teoría sobre redes causales se aplique bien al caso concreto, y 
+    se conecte sin problema con la parte informática.
 \end{itemize}
 
 \section{Hitos o Productos Mínimamente Viables}
@@ -243,7 +250,15 @@ Como producto esperado se tendrá la base teórica terminada y bien explicada, p
 
 \section{Definiciones y terminología}
 El objetivo de esta sección es introducir los términos que serán usados en el estado del arte, donde veremos 
-cómo se conectan con nuestro problema.
+todavía mejor cómo se conectan con nuestro problema.
+
+\subsection{Modelos gráficos probabilísticos}\label{subsect:modelos}
+Un modelo gráfico probabilístico es un marco que consta de dos partes: una componente cualitativa
+en forma de modelo gráfico que codifica afirmaciones de independencia condicional sobre el 
+dominio que se está estudiando, y una componente cuantitativa que consiste en una colección de 
+distribuciones de probabilidad locales que se adhieren a la propiedades de independencia especificadas 
+en el modelo gráfico. En conjunto, los dos componentes proporcionan una representación compacta de la 
+distribución de probabilidad conjunta sobre el dominio\cite{inference-rev-hbn}. 
 
 \subsection{Redes bayesianas}
 \begin{definicion}[Redes bayesianas]\label{def:BN}
@@ -258,12 +273,14 @@ Una red bayesiana\cite{def-bncn} $\mathfrak{B} = \lbrace \mathcal{G}, \mathbb{P}
 \end{itemize}
 \end{definicion}
 
-En otras palabras, una red bayesiana es un grafo donde los nodos representan variables aleatorias discretas o contínuas 
-y los bordes o aristas representan las influencias entre ellas. Asociamos la variable aleatoria $X$ a sus modalidades 
-($X=x_1, X=x_2,..., X=x_n$ si $X$ puede tomar $n$ valores). Las aristas representan pues las causalidades, que pueden ser determinísticas 
-o probabilísticas. Para un borde uniendo el hecho $A$ con el $B$, hay una relación que es la probabilidad condicionada, notada como $P(B|A)$, 
-la cual representa una relación de probabilidad de un nodo, conocidos sus nodos padres. Para los nodos sin padres o nodos raíz, una probabilidad 
-previa será asignada.
+En otras palabras, una red bayesiana es un grafo donde los nodos representan variables aleatorias discretas 
+o contínuas y los bordes o aristas representan las influencias entre ellas. Asociamos la variable 
+aleatoria $X$ a sus modalidades ($X=x_1, X=x_2,..., X=x_n$ si $X$ puede tomar $n$ valores). Las aristas 
+representan pues las causalidades, que pueden ser determinísticas o probabilísticas. Para un borde 
+uniendo el hecho $A$ con el $B$, hay una relación que es la probabilidad condicionada, notada como $P(B|A)$, 
+la cual representa una relación de probabilidad de un nodo, conocidos sus nodos padres. Para los nodos 
+sin padres o nodos raíz, una probabilidad previa será asignada. \textbf{Nosotros veremos las redes de pases como una 
+red bayesiana, donde los jugadores serán los nodos, y los pases constituirán las aristas.}
 
 Generalmente, este tipo de modelo gráfico probabilístico se utilizan como un marco eficiente para
 toma de decisiones con conocimiento incierto, y mide la estructura de dependencia condicional
@@ -275,10 +292,21 @@ P(A|B) = \frac{P(B|A).P(A)}{P(B)}
 donde $P(A)$ es la probabilidad previa, $P(B)$ son las observaciones y la probabilidad posterior viene dada 
 por $P(A|B)$\cite{YANG201919}.
 
+\subsection{Redes bayesianas híbridas}
 \begin{definicion}[Redes bayesianas híbridas]\label{def:hybrid_BN}
-Una red bayesiana híbrida\cite{hybrid-BN} es un tipo de red bayesiana que permite modelar incertidumbre
-sobre variables discretas y contínuas.
+    Una red bayesiana híbrida\cite{hybrid-BN} es un tipo de red bayesiana que permite modelar incertidumbre
+    sobre variables discretas y contínuas.
 \end{definicion}
+
+En aplicaciones prácticas, es común encontrar escenarios que
+involucran variables discretas y continuas simultáneamente. Este tipo de problemas se pueden modelar por tanto
+utilizando las llamadas redes bayesianas híbridas. Han recibido una atención creciente durante 
+los últimos años, debido a que amplían la aplicabilidad de las redes bayesianas en general. Sin embargo, 
+esta característica adicional también tiene un costo: la inferencia
+en este tipo de modelos es computacionalmente más desafiante\cite{inference-rev-hbn}.
+
+Los modelos gráficos probabilísticos proporcionan como estamos viendo un enfoque bien fundamentado y 
+basado en principios para realizar inferencias en dominios complejos dotados de incertidumbre. 
 
 \subsection{Redes complejas}
 \begin{definicion}[Redes complejas]\label{def:CN}
@@ -293,6 +321,12 @@ Tradicionalmente se han aplicado más las redes complejas que las bayesianas al 
 Este tipo de redes nos interesan ya que su estudio está inspirado por los análisis empíricos de redes reales, y 
 nos permiten entender el funcionamiento de los equipos, desde el punto de vista individual o colectivo.
 
+Estos sistemas son llamados complejos debido a que no es posible predecir directamente su 
+comportamiento colectivo a partir de sus componentes individuales. Una de las principales razones detrás de 
+la popularidad de las redes complejas es su flexibilidad
+y generalidad para representar prácticamente cualquier estructura natural, incluidas las que experimentan 
+cambios dinámicos de topología\cite{CN-review}.
+
 La teoría de redes complejas se desarrolla en base a la teoría de grafos y la física estadística. En teoría de 
 redes complejas, todo sistema complejo puede abstraerse como una red. Los nodos de la red se pueden 
 considerar como los elementos en el sistema, y las relaciones
@@ -300,23 +334,33 @@ entre cada elemento como conexiones. Hay muchos indicadores estructurales
 en la teoría de redes complejas que pueden cuantificar la importancia de los nodos desde el nodo mismo o el
 nivel de relación de red, usando \href{https://link.springer.com/10.1007%2F978-1-4419-9863-7_935}{centralidad de grado}, 
 \href{https://neo4j.com/docs/graph-data-science/current/algorithms/eigenvector-centrality/}{centralidad de vectores propios} 
-y \href{https://en.wikipedia.org/wiki/Clustering_coefficient}{coeficiente de agrupamiento}.
+y \href{https://en.wikipedia.org/wiki/Clustering_coefficient}{coeficiente de agrupamiento}\cite{albert2002statistical}.
  
-Por lo tanto, la teoría de redes complejas se introduce para optimizar y simplificar el grafo de conocimiento que 
-se tenga del problema, mediante el cálculo de los índices mencionados anteriormente, que permiten medir la importancia de cada nodo, obtener 
-las relaciones de dependencia entre ellos. Basándonos en la estructura de esa red simplificada obtenida, 
-se puede establecer la estructura topológica de la red bayesiana\cite{Bai_Xing_Wu_2022}.
-
-Estos sistemas son llamados complejos debido a que no es posible predecir directamente su 
-comportamiento colectivo a partir de sus componentes individuales. Una de las principales razones detrás de 
-la popularidad de las redes complejas es su flexibilidad
-y generalidad para representar prácticamente cualquier estructura natural, incluidas las que experimentan 
-cambios dinámicos de topología\cite{CN-review}.
+Por lo tanto, la teoría de redes complejas se introduce para optimizar y simplificar la red de conocimiento que 
+se tenga del problema, mediante el cálculo de los índices mencionados anteriormente, que nos permiten medir 
+la importancia de cada nodo, para obtener las relaciones de dependencia entre ellos. En \ref{subsect:modelos}, 
+nos proveerían de la componente cuantitativa. Basándonos en la 
+estructura de esa red simplificada obtenida, se puede establecer la estructura topológica de la red 
+bayesiana\cite{Bai_Xing_Wu_2022}.
 
 \subsection{Sistemas de calificación}
-% issue #50
-
-
+Determinar la habilidad relativa entre adversarios es probablemente el
+elemento más importante antes que la predicción de los resultados de partidos de fútbol; las posiciones en 
+una liga adolecen de numerosos inconvenientes que hacen que no seann fiables para la predicción. 
+Por ejemplo, una liga de fútbol sufre de alta variación al inicio de la temporada, y de baja 
+variación al final. Además, es posible que los equipos que compiten durante una temporada no
+compartan un número equivalente de partidos jugados debido a aplazamientos y
+por lo tanto, la clasificación de la liga será errónea durante unas cuantas semanas. De hecho, la clasificación de 
+una liga está sesgada hasta que se juega el último partido de la temporada, porque
+para que la clasificación sea justa, cada equipo tiene que jugar contra el resto de equipos, en
+casa y fuera. Incluso al final de la temporada, el \textit{ranking} representa
+el rendimiento general durante el período de toda una temporada, y no logra
+demostrar cómo varió la habilidad de un equipo durante ese período. Adicionalmente,
+ignora los partidos de Copa y los partidos de otras competiciones (por ejemplo, Champions
+League), o no compara equipos en diferentes divisiones/ligas. \textbf{En
+resumen, una tabla de clasificación no es un buen indicador de la situación actual de un equipo. Un 
+sistema de calificación proporciona medidas relativas de superioridad entre adversarios y supera 
+todos los problemas anteriores\cite{pi-ratings}.}
 
 \subsection{Entropía}
 La entropía es el concepto clave para extraer características universales de un sistema a partir de sus 
@@ -360,5 +404,3 @@ donde $q$ se denomina índice entrópico, $N$ son los microestados y $k$ es una 
 Si $q = 1$, obtenemos la entropía de 
 Shannon. La entropía de Tsallis no es extensiva, lo que significa que si se combinan dos sistemas idénticos, 
 la entropía del sistema combinado no es igual a la suma de la entropía de sus subsistemas\cite{comparison-entropies}.
-
-\subsection{Redes causales}
