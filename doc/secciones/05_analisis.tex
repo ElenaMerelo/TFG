@@ -22,15 +22,6 @@ lenguaje para comunicar y discutir las relaciones entre las
 variables del dominio del problema, las cuales se pueden representar de forma muy compacta 
 mediante grafos dirigidos acíclicos (DAG).
 
-Las redes probabilísticas pueden verse como representaciones compactas de reglas de causa-efecto "difusas" 
-que, contrariamente a los sistemas normales basados en reglas, son capables de realizar tanto razonamiento 
-deductivo y abductivo, como intercausal. El razonamiento deductivo o causal
-sigue la dirección de los vínculos causales que hay entre las variables de un modelo; por ejemplo, al saber
-que un paciente sufre de angina podemos concluir con alta probabilidad que
-el paciente tiene fiebre y dolor de garganta. Por otro lado, el razonamiento abductivo o diagnóstico 
-va en contra de la dirección de los nexos causales; por ejemplo, observar
-que un paciente tiene dolor de garganta proporciona evidencia de que anginas es un diagnóstico correcto.
-
 Sin embargo, la propiedad que distingue a la inferencia en redes probabilísticas
 de otros paradigmas de razonamiento automático es su capacidad para hacer razonamientos intercausales: 
 obtener evidencia que apoye una sola hipótesis o un subconjunto de
@@ -76,7 +67,7 @@ es un camino, $\langle u,...,v \rangle$, de longitud mayor que dos (excepto el c
 es el ya mencionado DAG. 
 
 \subsection{Modelos gráficos}
-En un nivel estructural o cualitativo, los modelos de redes probabilísticas son grafos cuyos vértices 
+A un nivel estructural o cualitativo, los modelos de redes probabilísticas son grafos cuyos vértices 
 representan variables y funciones, y los bordes representan distintos tipos de relaciones entre ellas. 
 
 \subsubsection{Variables}
@@ -182,5 +173,9 @@ En una red bayesiana, la inferencia probabilística está determinada por los si
 \end{itemize}
 
 Estas son pues las tres clases de causalidades que producen redes bayesianas.
+
+\subsection{Construir una red bayesiana}
+
+
 \section{Resolución de redes probabilísticas}
 
