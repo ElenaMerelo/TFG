@@ -9,7 +9,8 @@ discovery of causal relationships using bayesian networks} \cite{cooper}.
 \subsection{Fundamentos de grafos}
 Un grafo es un par $G = (V, E)$, donde $V$ es un conjunto finito de vértices distinguibles y 
 $E \subseteq V \times V$ es un conjunto de aristas. Un par ordenado $(u, v) \in E$ denota un borde dirigido
-del vértice $u$ al vértice $v$, y se dice que $u$ es padre de $v$ y $v$ hijo de $u$. Los bordes dirigidos 
+del vértice $u$ al vértice $v$, y se dice que $u$ es padre de $v$ y $v$ hijo de $u$. Al conjunto de padres 
+e hijos de un vértice $v$ los denotaremos por $pa(v)$ y $ch(v)$, respectivamente. Los bordes dirigidos 
 se representarán como flechas, y los bordes no dirigidos como líneas. 
 
 \begin{figure}[h!]
@@ -33,10 +34,6 @@ Un grafo $G= (V, E)$ está conectado si para cada par ${u, v} \subseteq V$ hay u
 $\langle u,...,v \rangle$ en $G$. Un ciclo es un camino, 
 $\langle u,...,v \rangle$ de longitud mayor que dos (excepto el caso $v_{1} = v_{n}$); un grafo 
 dirigido sin ciclos dirigidos es el ya mencionado DAG. 
-
-\subsection{Modelos gráficos}
-A un nivel estructural o cualitativo, los modelos de redes probabilísticas son grafos cuyos vértices 
-representan variables y funciones, y los bordes representan distintos tipos de relaciones entre ellas. 
 
 \subsubsection{Variables}
 Una variable representa un conjunto exhaustivo de eventos mutuamente excluyentes, conocidos como dominio 
@@ -64,10 +61,56 @@ representadas como enlaces dirigidos desde las causas
 a los efectos. Esto es, si $X$ es una causa directa de $Y$, tenemos que asegurarnos de añadir un enlace 
 desde $X$ a $Y$. 
 
-En las siguientes subsecciones discutiremos cada uno de las posibles formas de conexión que pueden aparecer en una red.
+En las siguientes subsecciones discutiremos cada uno de las posibles formas de conexión que pueden 
+aparecer en una red.
 
-\section{Probabilidades} 
-% issue #61
+\section{Fundamentos de probabilidad} 
+El hecho de que la estructura de una red probabilística pueda ser caracterizada como un DAG proviene de axiomas básicos 
+de cálculo de probabilidades que conduce a la factorización recursiva de una distribución de probabilidad conjunta en 
+un producto de distribuciones de probabilidad condicionada de menor dimensión. En primer lugar, cada distribución de 
+probabilidad conjunta se puede descomponer o factorizar en un producto de distribuciones condicionadas de distinta 
+dimensión, donde la dimensión de la distribución más grande es idéntica a la dimensión de la distribución conjunta. En 
+segundo lugar, las declaraciones de independencia condicionada locales se manifiestan como reducciones en las dimensiones 
+de algunas de las distribuciones de probabilidad condicionada. Estos dos hechos dan lugar a la estructura de un DAG.
+
+De hecho , una distribución de probabilidad conjunta $P$ se puede descomponer recursivamente de esa manera sí y solo sí 
+hay un DAG que represente correctamente la dependencia (condicionada) y las propiedades de independencia de $P$. Esto 
+significa que un conjunto de distribuciones de probabilidad condicionada con respecto a un DAG $G=(V,E)$, (esto es, 
+una distribución $P(A|pa(A))$ para cada $A \in V$) define una distribución de probabilidad conjunta.
+
+Consecuentemente, un modelo de redes probabilísticas puede ser especificado directamente a través de la distribución 
+de probabilidad conjunta, o mediante un DAG que muestre las relaciones causa-efecto junto con un conjunto de 
+las correspondientes distribuciones de probabilidad condicionada.
+
+Pasamos a presentar algunos axiomas de cálculo de probabilidades que dan lugar al teorema de Bayes, así como 
+la regla para la descomposición de una distribución de probabilidad conjunta en productos de distribuciones 
+condicionadas. Adicionalmente, veremos las operaciones fundamentales necesitadas para realizar inferencia 
+sobre redes probabilísticas.
+
+\subsection{Axiomas} 
+Dado un evento $\math{b}$, la probabilidad condicionada de una evento $a$ es $x$, $P(a|b) = x$.
+Los siguientes tres axiomas dan la base para el cálculo de probabilidades bayesianas.
+\begin{axiom} 
+Para cualquier evento $a$, $0 \leq P(a) \leq 1$, con $P(a)=1 \leftrightarrow a$ ocurre con certeza.
+\end{axiom}
+
+\begin{axiom}
+Para dos eventos $a$ y $b$ mutuamente excluyentes, la probabilidad de que $a$ o $b$ ocurran es 
+$$P(a or b) \equiv P(a \vee b)= P(a) + P(b)$$.
+En general, si los eventos $a_{1},...,a_{n}$ son incompatibles dos a dos, entonces 
+$$P(\bigcup_{i}^{n} a_{i})= P(a_{1}) + ... + P(a_{n}) = \sum_{i}^{n} P(a_{i})$$.
+\end{axiom}
+
+\begin{axiom}
+Para cualesquiera dos eventos $a$ y $b$, la probabilidad de que $a$ y $b$ ocurran es 
+$$P(a and b) \equiv P(a,b) = P(b|a)P(a) = P(a|b)P(b)$$, 
+donde $P(a,b)$ se llama probabilidad conjunta de los eventos $a$ and $b$.
+\end{axiom}
+
+\subsection{Distribuciones de probabilidad para variables}
+
+
+
 \section{Fundamentos de redes probabilísticas}
 %¿Por qué nos interesa esto? ¿Qué vamos a hacer con ellas?
 %¿Qué tienen que ver con los grafos? O igual simplemente haz una referencia.
