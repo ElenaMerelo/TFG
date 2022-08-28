@@ -251,14 +251,14 @@ Como producto esperado se tendrá la base teórica terminada y bien explicada, p
 El objetivo de esta sección es introducir los términos que serán usados en el estado del arte, donde veremos 
 todavía mejor cómo se conectan con nuestro problema.
 
-Enunciamos en primer lugar lo que son los modelos gráficos probabilísticos, ya que permiten realizar 
+Enunciamos ahora lo que son los modelos gráficos probabilísticos, ya que permiten realizar 
 inferencias en dominios complejos dotados de incertidumbre.
 
 \begin{definicion}{Modelos gráficos probabilísticos} \label{subsect:modelos}
 Un modelo gráfico probabilístico es un marco que consta de dos partes: una componente cualitativa
 en forma de modelo gráfico que codifica afirmaciones de independencia condicional sobre el 
 dominio que se está estudiando, y una componente cuantitativa que consiste en una colección de 
-distribuciones de probabilidad locales que se adhieren a la propiedades de independencia especificadas 
+distribuciones de probabilidad locales que cumplen la propiedades de independencia especificadas 
 en el modelo gráfico. En conjunto, los dos componentes proporcionan una representación compacta de la 
 distribución de probabilidad conjunta sobre el dominio \cite{inference-rev-hbn}. 
 \end{definicion}
@@ -270,24 +270,50 @@ capítulos son las redes bayesianas.
 \begin{definicion}[Redes bayesianas] \label{def:BN}
 Una red bayesiana \cite{def-bncn} $\mathfrak{B} = \lbrace \mathcal{G}, \mathbb{P} \rbrace$ está definida por:
 \begin{itemize}
-    \item Un grafo directo acíclico $\mathcal{G}=(X,E)$ donde $X$ es un conjunto de nodos o vértices y $E$ 
-    es un conjunto de enlaces dirigidos o bordes.
+    \item Un grafo dirigido acíclico $\mathcal{G}=(V,E)$ donde $V$ es un conjunto de nodos o vértices y $E$ 
+    es un conjunto de enlaces dirigidos o aristas.
     \item Un espacio de probabilidad $(\Omega, \mathbb{P})$.
-    \item Un conjunto de variables aleatorias $X={X_1...X_n}$ asociadas con los nodos del grafo $(\Omega, \mathbb{P})$ 
-    de tal manera que $\mathbb{P}(X_1...X_n)= \prod_{i=1}^{n}\mathbb{P}(X_i|P_a(X_i))$, donde $P_a(X_i)$ es el 
-    conjunto de los nodos padre del nodo $X_i$ en $\mathcal{G}$.  
+    \item Un conjunto de variables aleatorias $V={V_1...V_n}$ asociadas con los nodos del grafo $(\Omega, \mathbb{P})$ 
+    de tal manera que $\mathbb{P}(V_1...V_n)= \prod_{i=1}^{n}\mathbb{P}(V_i|pa(V_i))$, donde $pa(V_i)$ es el 
+    conjunto de los nodos padre del nodo $V_i$ en $\mathcal{G}$.  
 \end{itemize}
 \end{definicion}
 
 En otras palabras, una red bayesiana es un grafo donde los nodos representan variables aleatorias discretas 
 o contínuas y los bordes o aristas representan las influencias entre ellas. Asociamos la variable 
-aleatoria $X$ a sus modalidades ($X=x_1, X=x_2,..., X=x_n$ si $X$ puede tomar $n$ valores). Las aristas 
+aleatoria $V$ a sus modalidades ($V=v_1,..., V=v_n$ si $V$ puede tomar $n$ valores). Las aristas 
 representan pues las causalidades, que pueden ser determinísticas o probabilísticas. Para un borde 
-uniendo el hecho $A$ con el $B$, hay una relación que es la probabilidad condicionada, notada como $P(B|A)$, 
-la cual representa una relación de probabilidad de un nodo, conocidos sus nodos padres. Para los nodos 
-sin padres o nodos raíz, una probabilidad previa será asignada.
+uniendo el hecho $A$ con el $B$, con $P(B|A)$ representamos la relación de probabilidad de un 
+nodo, conocidos sus padres. Para los nodos sin padres o nodos raíz, se asignará una probabilidad previa.
 
-Generalmente, este tipo de modelo gráfico probabilístico se utilizan como un marco eficiente para
+Vamos a ver un poco más específicamente lo que hemos llamado grafos.
+\subsubsection{Grafos}
+\begin{definicion} \label{def:grafo}
+Un grafo es un par $\mathcal{G} = (V, E)$, donde $V$ es un conjunto finito de vértices distinguibles y 
+$E \subseteq V \times V$ es un conjunto de aristas. Un par ordenado $(u, v) \in E$ denota un borde dirigido
+del vértice $u$ al vértice $v$, y se dice que $u$ es padre de $v$ y $v$ hijo de $u$. Al conjunto de padres 
+e hijos de un vértice $v$ los denotaremos por $pa(v)$ y $ch(v)$, respectivamente. Los bordes dirigidos 
+se representarán con flechas, y los bordes no dirigidos con líneas. 
+\end{definicion}
+
+\begin{figure}[h!]
+    \centering
+     \includegraphics[width=\textwidth]{./img/dag.png}
+     \caption{Ejemplo de grafo dirigido acíclico (DAG). Generado mediante \href{https://github.com/ElenaMerelo/TFG/blob/master/scripts/dag.R}{un script en R}}
+     \label{img:dag1}
+    \end{figure}
+
+Un camino $ \langle v_{1},...,v_{n} \rangle $ 
+es una secuencia de vértices distinguibles tales que $u \rightarrow v$, $v \rightarrow u$ o $u - v$ para 
+cada $i= 1,..., n-1$. La longitud del camino es $n-1$. El camino es dirigido si $v_{i} \rightarrow v_{i+1}$ 
+para cada $i= 1,..., n-1$; $v_{i}$ es por tanto un ancestro de $v_{j}$ y $v_{j}$ es un descendiente de 
+$v_{i}$ para cada $j > i$. 
+
+Un ciclo es un camino, $\langle u,...,v \rangle$ de longitud mayor que dos 
+(excepto el caso $v_{1} = v_{n}$); un grafo 
+dirigido sin ciclos dirigidos es el ya mencionado DAG. 
+
+Generalmente, las redes bayesianas se utilizan como un marco eficiente para la
 toma de decisiones con conocimiento incierto, y mide la estructura de dependencia condicional
 de un conjunto de variables aleatorias basándose en el teorema de Bayes:\\
 \begin{equation} \label{eq:bayes}
