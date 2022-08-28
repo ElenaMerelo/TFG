@@ -1,147 +1,140 @@
 \chapter{Desarrollo teórico}
 En este capítulo estableceremos la base matemática del proyecto. Principalmente nos basaremos en 
-los libros \textit{Advanced Data Analysis
-from an Elementary Point of View} \cite{ada} y \textit{Probabilistic Networks for Practitioners — A
-Guide to Construction and Analysis of Bayesian
-Networks and Influence Diagrams} \cite{pgm}, junto con el capítulo \textit{An overview of the representation and 
-discovery of causal relationships using bayesian networks} \cite{cooper}.
+los libros \textit{Análisis de datos avanzado desde un punto de vista elemental} \cite{ada}, 
+\textit{Learning Bayesian Networks} \cite{neapolitan} 
+y \textit{Redes probabilísticas para aficionados - Una guía para la construcción y análisis de redes 
+bayesianas y diagramas de influencia} \cite{pgm}, junto con el capítulo 
+\textit{Visión general de la representación y descubrimiento de relaciones causales usando redes 
+bayesianas} \cite{cooper} y la tesis \textit{Modelos de clasificación de documentos basados en redes 
+bayesianas} \cite{tesis-alfonso}.
 
-\subsubsection{Variables}
-Una variable representa un conjunto exhaustivo de eventos mutuamente excluyentes, conocidos como dominio 
-de la variable. Estos eventos también se pueden llamar estados, niveles, valores, elecciones o opciones. 
-El dominio de una variable puede ser discreto o contínuo; los dominios discretos son siempre finitos. 
-Usaremos letras mayúsculas para denotar variables o conjuntos de variables, y letras minúsculas para sus 
-valores. Consecuentemente, $X = x$ puede denotar el hecho de que la variable $X$ toma el valor $x$ o que 
-el conjunto de variables $X = (X_{1},...,X_{n})$ toma el vector de valores $x = (x_{1},...,x_{n})$. 
-Con $dom(X)= (x_{1},...,x_{||X||})$ denotaremos el dominio de $X$, donde $||X|| = |dom(X)|$ es el número 
-de posibles valores de $X$. Si $X = (X_{1},...,X_{n})$, entonces $dom(X)$ es el producto cartesiano sobre 
-los dominios de las variables en $X$, $$dom(X)=dom(X_{1})\times ... \times dom(X_{n})$$, y por lo tanto 
-$||X|| = \prod_i ||X_{i}||$. Para dos (conjuntos de) variables $X$ e $Y$ escribiremos $dom(X \cup Y)$ 
-o $dom(X,Y)$ para denotar $dom(X) \times dom(Y)$.
+\section{Teoría de la probabilidad}
 
-Usaremos la noción de variable y vértice o nodo de manera indistinta.  
+\subsection{Conceptos básicos}
+En esta subsección revisaremos algunos de los conceptos básicos de teoría de la probabilidad para el 
+caso discreto. 
 
-\section{Fundamentos de probabilidad} 
-El hecho de que la estructura de una red probabilística pueda ser caracterizada como un DAG proviene de axiomas básicos 
-de cálculo de probabilidades que conduce a la factorización recursiva de una distribución de probabilidad conjunta en 
-un producto de distribuciones de probabilidad condicionada de menor dimensión. En primer lugar, cada distribución de 
-probabilidad conjunta se puede descomponer o factorizar en un producto de distribuciones condicionadas de distinta 
-dimensión, donde la dimensión de la distribución más grande es idéntica a la dimensión de la distribución conjunta. En 
-segundo lugar, las declaraciones de independencia condicionada locales se manifiestan como reducciones en las dimensiones 
-de algunas de las distribuciones de probabilidad condicionada. Estos dos hechos dan lugar a la estructura de un DAG.
+\subsubsection{Funciones y espacios de probabilidad}
+Un {\em espacio muestral} es un conjunto contable\footnote{Un conjunto es {\em contable} si tiene el mismo número de 
+elementos (cardinalidad) que algún subconjunto de los números naturales, $\mathbb{N}$.} $\Omega = \{x_1, x_2, 
+\dots \}$ que representa todos los posibles resultados de un experimento.
 
-De hecho , una distribución de probabilidad conjunta $P$ se puede descomponer recursivamente de esa manera sí y solo sí 
-hay un DAG que represente correctamente la dependencia (condicionada) y las propiedades de independencia de $P$. Esto 
-significa que un conjunto de distribuciones de probabilidad condicionada con respecto a un DAG $G=(V,E)$, (esto es, 
-una distribución $P(A|pa(A))$ para cada $A \in V$) define una distribución de probabilidad conjunta.
+Una función $P : 2^\Omega \longrightarrow \mathbb{R}$, donde $2^\Omega$ es el conjunto de todos los 
+subconjuntos (eventos) de $\Omega$, se denomina {\em función de probabilidad} si satisface los axiomas de 
+probabilidad de Kolmogorov:
 
-Consecuentemente, un modelo de redes probabilísticas puede ser especificado directamente a través de la distribución 
-de probabilidad conjunta, o mediante un DAG que muestre las relaciones causa-efecto junto con un conjunto de 
-las correspondientes distribuciones de probabilidad condicionada.
+\begin{enumerate}
+    \item $0 \leq P(A) \leq 1, \forall A  \subseteq \Omega$.
+    \item $P(\Omega) = 1$.
+    \item Si $E_1, E_2, \dots$ son tales que $E_i \cap E_j = \emptyset, \quad \forall i\neq j$, entonces
+    $$P\left(\cup_i E_i\right) = \sum_i P(E_i).$$
+\end{enumerate}
 
-Pasamos a presentar algunos axiomas de cálculo de probabilidades que dan lugar al teorema de Bayes, así como 
-la regla para la descomposición de una distribución de probabilidad conjunta en productos de distribuciones 
-condicionadas. Adicionalmente, veremos las operaciones fundamentales necesitadas para realizar inferencia 
-sobre redes probabilísticas.
+Si $P$ es una función probabilística, el par $(\Omega, P)$ se llama {\em espacio de probabilidad}.
 
-\subsection{Axiomas} 
-Dado un evento $b$, la probabilidad condicionada de una evento $a$ es $x$, $P(a|b) = x$.
-Los siguientes tres axiomas dan la base para el cálculo de probabilidades bayesianas.
-\begin{axioma} 
-Para cualquier evento $a$, $0 \leq P(a) \leq 1$, con $P(a)=1 \leftrightarrow a$ ocurre con certeza.
-\end{axioma}
+\subsubsection{Probabilidad condicionada y teorema de Bayes}\label{condi}
 
-\begin{axioma}
-Para dos eventos $a$ y $b$ mutuamente excluyentes, la probabilidad de que $a$ o $b$ ocurran es 
-$$P(a or b) \equiv P(a \vee b)= P(a) + P(b)$$.
-En general, si los eventos $a_{1},...,a_{n}$ son incompatibles dos a dos, entonces 
-$$P(\bigcup_{i}^{n} a_{i})= P(a_{1}) + ... + P(a_{n}) = \sum_{i}^{n} P(a_{i})$$.
-\end{axioma}
+Sean $A, B \subseteq \Omega$ tales que $P(B) \neq 0$. Entonces, la {\em probabilidad condicionada} de $A$, 
+dado $B$ y notada como $P(A|B)$ viene dada por:
 
-\begin{axioma}
-Para cualesquiera dos eventos $a$ y $b$, la probabilidad de que $a$ y $b$ ocurran es 
-$$P(a and b) \equiv P(a,b) = P(b|a)P(a) = P(a|b)P(b)$$, 
-donde $P(a,b)$ se llama probabilidad conjunta de los eventos $a$ and $b$.
-\end{axioma}
+$$P(A|B) = \frac{P(A \cap B)}{P(B)}.$$
 
-\subsection{Distribuciones de probabilidad para variables}
+Diremos que dos eventos $A,B$, donde $P(A) \neq 0$ y $P(B) \neq 0$ son {\em independientes} si $P(A|B) = P(A)$, 
+y son {\em condicionalmente independientes} si dado $C$, $P(A|B \cap C) = P(A|C)$.
 
+Si $E_1, \dots, E_n$ es un conjunto de eventos mutuamente disjuntos tales que $\cup_i E_i = \Omega$, esto es, 
+son una {\em partición} del espacio muestral, y $P(E_i) > 0, \forall i = 1, \dots, n$, entonces para cualquier 
+evento $A$: 
 
+\begin{equation}
+P(A) = \sum_{i=1}^n P(A \cup E_i) = \sum_{i=1}^n P(A|E_i)P(E_i). 
+\label{lawoftotalprobability}
+\end{equation}
 
-\section{Fundamentos de redes probabilísticas}
-%¿Por qué nos interesa esto? ¿Qué vamos a hacer con ellas?
-%¿Qué tienen que ver con los grafos? O igual simplemente haz una referencia.
-Las redes probabilísticas son modelos gráficos de interacciones (causales) entre una
-conjunto de variables, donde las variables se representan como vértices o nodos de un 
-gráfico y las interacciones (dependencias directas) como aristas dirigidas (también
-enlaces y arcos) entre los vértices. Cualquier par de vértices no conectados indican 
-independencia (condicional) entre las variables representadas
-por estos vértices en circunstancias particulares que se pueden leer fácilmente desde el
-grafo. 
+Esta propiedad se llama {\em regla de probabilidad total}, y puede ser demostrada con teoría básica de conjuntos.
 
-Los grafos han demostrado ser un lenguaje muy intuitivo para representar
-tales declaraciones de dependencia e independencia, y por lo tanto proporcionan un excelente
-lenguaje para comunicar y discutir las relaciones entre las 
-variables del dominio del problema, las cuales se pueden representar de forma muy compacta 
-mediante grafos dirigidos acíclicos (DAG).
+%\begin{theorem} \emph{(Bayes)} 
+%Dados dos eventos $A, B \in \Omega$, tales que $P(A) \neq 0$ y $P(B) \neq 0$, tenemos que
+%$$P(A|B) = \frac{P(A)P(B|A)}{P(B)}.$$
+%\end{theorem}
 
-No obstante, la propiedad que distingue a la inferencia en redes probabilísticas
-de otros paradigmas de razonamiento automático es su capacidad para hacer razonamientos intercausales: 
-obtener evidencia que apoye una sola hipótesis o un subconjunto de
-hipótesis conduce a la disminución de la creencia en las otras con las que compiten y para las que no se 
-han encontrado unas bases que las soporten. Por ejemplo, hay un gran número de posibles causas por las 
-que un coche puede no arrancar, entre ellas falta de combustible. Observar que el indicador de combustible 
-indica que no hay combustible proporciona una fuerte evidencia de que la falta de combustible es la causa 
-del problema, a la vez que la creencia en otras causas posibles disminuye sustancialmente. La capacidad 
-de las redes probabilísticas para realizar automáticamente tal inferencia intercausal de manera adecuada 
-es una contribución clave a su poder de razonamiento.
+%\begin{proof}
+%Using the definition of conditional probability, $P(A|B) = \frac{P(A \cap B)}{P(B)}$ and $P(B|A) = \frac{P(A \cap B)}{P(A)}$.
+%Therefore $P(A|B)P(B) = P(B|A)P(A)$.--
+%\end{proof}
 
-La parte gráfica de una red probabilística se conoce como aspecto cualitativo, mientras que la 
-parte probabilística o numérica constituye su aspecto cuantitativo. Nos dedicaremos primeramente al aspecto 
-cualitativo de las redes probabilísticas.
+\subsubsection{Variables aleatorias}
 
-\section{Redes causales}
+Una {\em variable aleatoria} (discreta) es una función que mapea eventos a valores de un conjunto contable, donde 
+cada valor tiene una probabilidad mayor o igual a cero. Representaremos las variables aleatorias con letras 
+mayúsculas, y los valores a los que los eventos son mapeados, con mínusculas. 
 
-\section{Fundamentos de redes bayesianas}
-Las redes bayesianas nos ayudan a modelar y entender las muchas variables que informan nuestro proceso de 
-toma de decisiones. Las decisiones más complejas están normalmente basadas en una multitud de factores o 
-variables. Por ejemplo, para el presidente de un equipo de fútbol \ref{hu:presidente}, podemos 
-mapear la decisión que tiene que tomar y las diferentes variables usando 
-una red bayesiana, esto es, un modelo gráfico que captura la relación entre variables que están bajo 
-supuestos de causalidad o influencia \cite{things-to-know-BN}.
+Una variable aleatoria induce una nueva función de probabilidad sobre sus valores. Usaremos la notación $X=x$ para 
+representar el conjunto de eventos de $\Omega$ mapeados por $X$ a $x$. Si definimos $P_X(\{x\}) := P(X=x)$, 
+entonces $P_X$ es una función de probabilidad. De ahora en adelante escribiremos simplemente $P(X=x)$, que se 
+denominará la {\em distribución de probabilidad} de $X$ (o solo {\em distribución} de $X$). Si sabemos que $X$ 
+es una variable aleatoria, podemos denotar su distribución como $P(X)$ sin ambigüedad.
 
-Básicamente entonces, \textbf{una red bayesiana es un diagrama que 
-usa flechas o arcos dirigidos para mostrar cómo distintos factores, representados por nodos elípticos, se 
-influencian los unos a los otros.} Cada nodo viene con una tabla de probabilidades condicionadas, la cual refleja las 
-posibilidades de varios desenlaces, provenientes de las influencias que le afectan directamente. Una vez 
-la estructura del grafo y dicha tabla han sido definidas, hay algoritmos estándar que 
-calculan los estados de las variables desconocidas basándose en los estados de las variables conocidas en el
-modelo \cite{learning-algorithms-BN-comparison}, \cite{BN-achilles-heel}, \cite{different-algorithmic-schemes}.
+En ocasiones, dada una variable aleatoria $X$ y siendo $x$ uno de sus valores, escribiremos para ser más breves 
+$p(x)$ en vez de $P(X=x)$. Esta cantidad es la {\em probabilidad de $x$}.
 
-Una de las razones por las que las redes bayesianas son tan potentes es que pueden realizar inferencias 
-tanto predictivas como diagnósticas. Por ejemplo, podemos por un lado predecir la posición en la liga de un equipo para 
-un valor dado (observación) de rendimiento, y por otro ingresar un estado de posición en la 
-liga como observación para examinar qué nivel de desempeño del equipo podría explicarla. Estos algoritmos estándar son
-llamados algoritmos de ``propagación bayesiana" \cite{Cano2004}, \cite{more-algorithms}, \cite{back-prop} porque se basan en el teorema de Bayes, en el que la 
-probabilidad de una variable desconocida se actualiza después de que se obtenga evidencia relevante para esa variable \cite{prop-alg}.
+Asimismo, para una variable aleatoria $A$, denominaremos al conjunto de valores que $A$ puede tener como 
+``rango de $A$'', $\Omega_A$.
 
-Las clases de causalidad que producen redes bayesianas son:
-\begin{itemize}
-    \item \textbf{Cadena causal}: describe variables que tienen un efecto dominó las unas sobre las otras. Por ejemplo, \textit{cambios en la calidad de 
-    los jugadores} tiene impacto sobre el \textit{desempeño del equipo} que a su vez influencia la \textit{posición en la liga}. 
-    Esto quiere decir que la \textit{posición en la liga} es independiente de los \textit{cambios en la calidad de los jugadores} una vez conocemos el \textit{desempeño del equipo}.\\
-    cambios en la calidad de los jugadores $\rightarrow$ Desempeño del equipo $\rightarrow$ Posición en la liga
-    \item \textbf{Efecto común}: ocurre cuando dos variables diferentes, tales como \textit{fichajes} y \textit{jugadores vendidos}, tienen influencia sobre una tercera variable tal como 
-    \textit{gasto neto en transferencias}. Esto significa que \textit{jugadores vendidos} depende de \textit{fichajes} una vez que conocemos el \textit{gasto neto en transferencias}.\\
-    Fichajes $\rightarrow$ Gasto neto en transferencias $\leftarrow$ Jugadores vendidos    
-    \item \textbf{Causa común}: tiene lugar cuando dos variables distintas, tales como \textit{posición en la liga} y \textit{asistencia}, se ven influenciados por la misma variable, tal 
-    como \textit{desempeño del equipo}. Ello significa que \textit{asistencia} es independiente de \textit{posición en la liga} una vez conocemos \textit{desempeño del equipo}.\\
-    Posición en la liga $\leftarrow$ Desempeño del equipo $\rightarrow$ Asistencia
-\end{itemize}
+Dadas dos variables aleatorias $X,Y$ definidas en el mismo espacio muestral, y dos valores $x$ de $X$ e $y$ de 
+$Y$, podemos medir la probabilidad del evento intersección $P(X=x, Y=y)$, la cual se denomina {\em distribución 
+de probabilidad conjunta} de $X$ e $Y$. Podemos definir la distribución de probabilidad conjunta de un conjunto 
+arbitrario de variables aleatorias $\{X_1, X_2, \dots, X_n \}$ como $P(X_1=x_1, X_2=x_2,\dots, X_n=x_n )$.
 
+Pasamos a introducir la operación conocida como {\em marginalización}. Dada una distribución de probabilidad 
+conjunta $P(X=x,Y=y)$, podemos obtener la distribución $P(X=x)$ (llamada {\em distribución marginal de 
+probabilidad de $X$}\footnote{El término ``marginal'' se usa cuando una distribución se obtiene por marginalización 
+de otra distribución conjunta, pero de hecho es también una distribución ``convencional''.}), sumando sobre todos 
+los valores de $y$ en el rango de $Y$: 
 
-\subsection{Construcción de redes bayesianas}
-Construir una red bayesiana implica determinar su estructura y su tabla de probabilidades condicionadas. Podemos hacer esto 
+$$P(X=x) = \sum_y P(X=x, Y=y).$$
 
-\section{Resolución de redes probabilísticas}
+Esta es otra expresión de la ley de probabilidad total \ref{lawoftotalprobability}.
 
+En último lugar, una vez entendida la analogía entre variable aleatoria y eventos, podemos definir la 
+{\em distribución de probabilidad condicionada} de una variable aleatoria $X$ dado $Y$:
+
+$$P(X=x|Y=y) = \frac{P(X=x, Y=y)}{P(Y=y)}.$$
+
+Este caso se puede extender a un conjunto de dos o más variables. Un resultado que permite calcular la 
+distribución conjunta de un conjunto de variables aleatorias usando únicamente probabilidades condicionadas 
+es la {\em regla de la cadena}:
+
+$$P(X_1=x_1, \dots, X_n=x_n) = \prod_{i=1}^n P(X_i=x_i|X_{i-1}=x_{i-1}, \dots, X_1=x_1),$$ la cual puede 
+probarse fácilmente como aplicación directa del teorema de Bayes \ref{eq:bayes}.
+
+\subsubsection{Independencia condicionada y observaciones de variables aleatorias}
+
+Dos de las nociones ``clásicas'' en teoría de la probabilidad (y ya mencionadas en la sección \ref{condi}) son 
+el concepto de {\em independencia} y {\em independencia condicionada}. 
+
+Desde el punto de vista de variables aleatorias, podemos reescribir la definición de {\em eventos independientes}; 
+diremos que dos eventos $X=x$ e $Y=y$ (siendo $x,y$ dos valores de las variables aleatorias $X,Y$) son 
+independientes si 
+
+$$p(x,y) = p(x) \, p(y).$$
+
+Además, dos variables aleatorias $X$ e $Y$ son {\em independientes} sí y solo sí 
+Two random variables $X$ and $Y$ are {\em independent} if and only if $$P(X=x, Y=y) = P(X=x) \, P(Y=y),$$ 
+para todos los valores $x,y$ de $X$ e $Y$, respectivamente.
+
+Para problemas con al menos tres variables aleatorias, $X,Y,Z$, puede observarse {\em independencia 
+condicionada}; diremos que $X$ e $Y$ son {\em independientes condicionadamente dada $Z$} sí y solo sí todo par 
+de valores $x$ (de $X$) e $y$ (de $Y$) es independiente condicionadamente para cada $z$ (de $Z$), tal que 
+$p(z) > 0$, esto es:
+
+$$\forall x, y, z, \quad p(z) > 0 \,\, \Rightarrow \,\, p(x,y|z) = p(x|z)\, p(y|z).$$
+
+Este concepto no está solo limitado a tres variables, y se puede extender a conjuntos grandes.
+
+Diremos que una variable es {\em observada} si toma uno de los valores de su rango. Si queremos testear la {\em 
+independencia con respecto a una variable observada}, necesitamos únicamente testear la independencia con respecto 
+a ese valor asignado. Es de notar que observar una variable puede cambiar las relaciones de Independencia entre 
+un conjunto de variables.
+
+%wip 
