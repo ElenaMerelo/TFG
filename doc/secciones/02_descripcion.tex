@@ -1,11 +1,14 @@
 \chapter{Descripción del problema}
-El presente trabajo intentará responder entonces a: ¿La entropía mejora las posibilidades 
-de marcar gol? Si cambia la entropía del equipo, ¿podemos determinar la causa?¿Ha sido por un jugador 
-específico, la alineación o más bien la influencia del equipo 
-contrario?. Igualmente, ¿es posible ver la entropía reflejada en un tipo de visualización de 
-las redes de pases?. Estudiaremos hasta qué punto es determinante la 
-entropía a nivel de jugador o equipo, empleando técnicas estadísticas para obtener respuestas a lo planteado y 
-siguiendo la forma de trabajar que pasamos a describir.
+\label{chap:descripcion}
+
+El presente trabajo intentará responder entonces a: ¿La entropía mejora las
+posibilidades de marcar gol? Si cambia la entropía del equipo, ¿podemos
+determinar la causa?¿Ha sido por un jugador específico, la alineación o más bien
+la influencia del equipo contrario?. Igualmente, ¿es posible ver la entropía
+reflejada en un tipo de visualización de las redes de pases?. Estudiaremos hasta
+qué punto es determinante la entropía a nivel de jugador o equipo, empleando
+técnicas estadísticas para obtener respuestas a lo planteado y siguiendo la
+forma de trabajar que pasamos a describir.
 
 \section{Metodología - Desarrollo ágil}
 La metodología nos dicta dos cosas esenciales:
@@ -19,17 +22,19 @@ como veremos más adelante. Para lo segundo, hay que tener en cuenta que todos
 los \textit{issues} son problemas, e idealmente deben de decir explícitamente 
 (o implícitamente si está claro) cómo se resuelve el problema.
 
-El desarrollo ágil tiene su origen en el manifesto ágil\cite{manifiesto-agil}, el cual fue una revolución frente 
-al modelo en cascada,
-en la forma de desarrollar software, y planteaba que tienen más valor las personas que 
-los procesos o herramientas, un producto funcionando que mucha documentación, colaboración 
-con los clientes que contratos, y \textbf{flexibilidad} frente a seguir un plan. Desde el 
-año 2001 que se redactó ha cambiado mucho la tecnología, y por ejemplo nosotros pondremos 
-mucho peso en la documentación, mas la idea sigue intacta: lo importante son los usuarios, 
-adaptarse a sus deseos. En general pues, con \textit{ágil} nos referimos a una forma de pensar que se aplica 
-a todo un ciclo de desarrollo del software centrado en el cliente y que consiste en 
-continuas mejoras de productos mínimamente viables\cite{agile-science}.
-En este apartado entenderemos mejor y dejaremos claro lo que esto significa e implica.
+El desarrollo ágil tiene su origen en el manifesto ágil\cite{manifiesto-agil},
+el cual fue una revolución frente al modelo en cascada, en la forma de
+desarrollar software, y planteaba que tienen más valor las personas que los
+procesos o herramientas, un producto funcionando que mucha documentación,
+colaboración con los clientes que contratos, y \textbf{flexibilidad} frente a
+seguir un plan. Desde el año 2001 que se redactó ha cambiado mucho la
+tecnología, y por ejemplo nosotros pondremos mucho peso en la documentación, mas
+la idea sigue intacta: lo importante son los usuarios, adaptarse a sus
+deseos. En general pues, con \textit{ágil} nos referimos a una forma de pensar
+que se aplica a todo un ciclo de desarrollo del software centrado en el cliente
+y que consiste en continuas mejoras de productos mínimamente
+viables\cite{agile-science}.  En este apartado entenderemos mejor y dejaremos
+claro lo que esto significa e implica.
 
 Lo esencial de esta forma de proceder es que su objetivo es \textbf{resolver problemas} y satisfacer 
 al cliente, no hacer aplicaciones: importa el por qué, antes que el qué o el cómo. Estos 
@@ -154,13 +159,18 @@ en itálica, enlaces. Hay numerosos tutoriales en internet, pero lo que más con
 
 \section{Clientes}
 Basándonos en la \href{https://www.designthinking.services/herramientas-design-thinking/metodo-persona/}{metodología basada en personas}, 
-hemos llegado a los siguientes usuarios: 
+hemos llegado a los siguientes usuarios \footnote{Para más información sobre las
+  figuras que aparecen en el análisis de datos deportivos, consultar
+  \href{https://objetivoanalista.com}{Objetivo Analista}}:
 \begin{itemize}
     \item Analista táctico: estudia los equipos y cómo se desenvuelven en los partidos. 
-    \item Scouter: es la persona encargada de la búsqueda y captación 
-    de jugadores.
-    \item Analista de datos: toma la información estadística de 
-    cada partido tanto en lo individual como en lo colectivo. 
+    \item {Scouter}: en algunos equipos grandes existe esta figura que asiste a
+      encuentros de otras ligas, otras divisiones, o incluso el filial, para
+      identificar qué jugadores pueden entrar en los planes de adquisición o de
+      ascenso a equipos de categorías superiores del club.
+    \item Analistas de datos: tienen que generar la estrategia de recogida de
+      datos del club y preparar aplicaciones e informes para ayuda a la toma de
+      decisiones por parte de los mismos.
     \item Persona que apuesta: recopila información sobre los equipos y jugadores, para poder apostar 
     en base a una alineación, o una vez se sabe quién va a jugar en un partido. 
     \item Entrenador: es el encargado de decidir a quién sacar durante un partido, los 
@@ -178,13 +188,12 @@ A partir de los clientes, y como parte de la metodología, definimos en \href{ht
 
 \begin{itemize}
     \item Como analista táctico, quiero obtener un análisis del propio equipo y de los rivales.
-    \item Como scouter,  quiero encontrar los jugadores que necesita el equipo 
-    o el club, y analizar sus cualidades y posibilidades de integración al equipo, desde su rendimiento futbolístico hasta el 
-    económico.
-    \item Como analista de datos, quiero poder establecer relaciones para encontrar respuestas o ideas que 
-    puedan colaborar con la toma de decisiones del club referentes 
-    a lo táctico, lo técnico y lo económico, para el modelo de 
-    juego del equipo o para la compra y venta de jugadores. 
+    \item Como scouter, quiero tener elementos cuantitativos de juicio, a partir
+      de las observaciones, para tomar decisiones que beneficien el desempeño
+      deportivo del club.
+    \item Como analista de datos, deseo conocer qué metodología de obtención,
+      tratamiento y presentación de datos es la que me permite elaborarlos con
+      más claridad para presentarlos a los que toman las decisiones en el club.
     \item Como persona que apuesta, querré inferir el resultado de un partido y 
     quién marcará, una vez se publiquen los jugadores. 
     \item Como entrenador, me gustaría poder usar la herramienta desarrollada, y que sea intuitiva.
