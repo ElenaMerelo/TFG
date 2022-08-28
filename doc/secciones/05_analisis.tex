@@ -6,35 +6,6 @@ Guide to Construction and Analysis of Bayesian
 Networks and Influence Diagrams} \cite{pgm}, junto con el capítulo \textit{An overview of the representation and 
 discovery of causal relationships using bayesian networks} \cite{cooper}.
 
-\subsection{Fundamentos de grafos}
-Un grafo es un par $G = (V, E)$, donde $V$ es un conjunto finito de vértices distinguibles y 
-$E \subseteq V \times V$ es un conjunto de aristas. Un par ordenado $(u, v) \in E$ denota un borde dirigido
-del vértice $u$ al vértice $v$, y se dice que $u$ es padre de $v$ y $v$ hijo de $u$. Al conjunto de padres 
-e hijos de un vértice $v$ los denotaremos por $pa(v)$ y $ch(v)$, respectivamente. Los bordes dirigidos 
-se representarán como flechas, y los bordes no dirigidos como líneas. 
-
-\begin{figure}[h!]
-    \centering
-     \includegraphics[width=\textwidth]{./img/dag.png}
-     \caption{Ejemplo de grafo dirigido acíclico (DAG)}
-     \label{img:dag1}
-    \end{figure}
-
-Una forma relativamente natural de ver un partido de fútbol es como una secuencia de 
-pases entre jugadores e intercepciones, que terminan en una resolución. 
-
-Si $E$ no contiene bordes no dirigidos, entonces $G$ es un grafo dirigido, y si $E$ no 
-contiene bordes dirigidos, entonces es un grafo no dirigido. Un camino $ \langle v_{1},...,v_{n} \rangle $ 
-es una secuencia de vértices distinguidos tales que $u \rightarrow v$, $v \rightarrow u$ o $u - v$ para 
-cada $i= 1,..., n-1$. La longitud del camino es $n-1$. El camino es dirigido si $v_{i} \rightarrow v_{i+1}$ 
-para cada $i= 1,..., n-1$; $v_{i}$ es por tanto un ancestro de $v_{j}$ y $v_{j}$ es un descendiente de 
-$v_{i}$ para cada $j > i$. 
-
-Un grafo $G= (V, E)$ está conectado si para cada par ${u, v} \subseteq V$ hay un camino 
-$\langle u,...,v \rangle$ en $G$. Un ciclo es un camino, 
-$\langle u,...,v \rangle$ de longitud mayor que dos (excepto el caso $v_{1} = v_{n}$); un grafo 
-dirigido sin ciclos dirigidos es el ya mencionado DAG. 
-
 \subsubsection{Variables}
 Una variable representa un conjunto exhaustivo de eventos mutuamente excluyentes, conocidos como dominio 
 de la variable. Estos eventos también se pueden llamar estados, niveles, valores, elecciones o opciones. 
@@ -49,20 +20,6 @@ $||X|| = \prod_i ||X_{i}||$. Para dos (conjuntos de) variables $X$ e $Y$ escribi
 o $dom(X,Y)$ para denotar $dom(X) \times dom(Y)$.
 
 Usaremos la noción de variable y vértice o nodo de manera indistinta.  
-
-\subsection{Causalidad}
-La causalidad tiene un papel muy importante en el proceso de construcción de modelos de redes 
-probabilísticas. Una variable $X$ se dice que es una causa directa de $Y$ si al establecer el valor 
-de $X$ por la fuerza, el valor de $Y$ cambia y no hay otra variable $Z$ que sea causa directa de 
-$Y$ tal que $X$ es causa directa de $Z$. Para representar correctamente las relaciones de dependencia 
-e independencia que existen en un conjunto de variables 
-del dominio de un problema, es muy útil tener las relaciones de causalidad que hay entre las variables 
-representadas como enlaces dirigidos desde las causas 
-a los efectos. Esto es, si $X$ es una causa directa de $Y$, tenemos que asegurarnos de añadir un enlace 
-desde $X$ a $Y$. 
-
-En las siguientes subsecciones discutiremos cada uno de las posibles formas de conexión que pueden 
-aparecer en una red.
 
 \section{Fundamentos de probabilidad} 
 El hecho de que la estructura de una red probabilística pueda ser caracterizada como un DAG proviene de axiomas básicos 
@@ -90,22 +47,22 @@ sobre redes probabilísticas.
 \subsection{Axiomas} 
 Dado un evento $b$, la probabilidad condicionada de una evento $a$ es $x$, $P(a|b) = x$.
 Los siguientes tres axiomas dan la base para el cálculo de probabilidades bayesianas.
-\begin{axiom} 
+\begin{axioma} 
 Para cualquier evento $a$, $0 \leq P(a) \leq 1$, con $P(a)=1 \leftrightarrow a$ ocurre con certeza.
-\end{axiom}
+\end{axioma}
 
-\begin{axiom}
+\begin{axioma}
 Para dos eventos $a$ y $b$ mutuamente excluyentes, la probabilidad de que $a$ o $b$ ocurran es 
 $$P(a or b) \equiv P(a \vee b)= P(a) + P(b)$$.
 En general, si los eventos $a_{1},...,a_{n}$ son incompatibles dos a dos, entonces 
 $$P(\bigcup_{i}^{n} a_{i})= P(a_{1}) + ... + P(a_{n}) = \sum_{i}^{n} P(a_{i})$$.
-\end{axiom}
+\end{axioma}
 
-\begin{axiom}
+\begin{axioma}
 Para cualesquiera dos eventos $a$ y $b$, la probabilidad de que $a$ y $b$ ocurran es 
 $$P(a and b) \equiv P(a,b) = P(b|a)P(a) = P(a|b)P(b)$$, 
 donde $P(a,b)$ se llama probabilidad conjunta de los eventos $a$ and $b$.
-\end{axiom}
+\end{axioma}
 
 \subsection{Distribuciones de probabilidad para variables}
 
