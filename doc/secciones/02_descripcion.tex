@@ -207,13 +207,13 @@ hemos llegado a los siguientes usuarios \footnote{Para más información sobre l
   \href{https://objetivoanalista.com}{Objetivo Analista}}:
 \begin{itemize}
     \item Analista táctico: estudia los equipos y cómo se desenvuelven en los partidos. 
-    \item {Scouter}: en algunos equipos grandes existe esta figura que asiste a
+    \item Scouter: en algunos equipos grandes existe esta figura que asiste a
       encuentros de otras ligas, otras divisiones, o incluso el filial, para
       identificar qué jugadores pueden entrar en los planes de adquisición o de
       ascenso a equipos de categorías superiores del club.
     \item Analistas de datos: tienen que generar la estrategia de recogida de
-      datos del club y preparar aplicaciones e informes para ayuda a la toma de
-      decisiones por parte de los mismos.
+      datos del club y preparar aplicaciones e informes para ayudar en la toma de
+      decisiones del mismo.
     \item Persona que apuesta: recopila información sobre los equipos y jugadores, para poder apostar 
     en base a una alineación, o una vez se sabe quién va a jugar en un partido. 
     \item Entrenador: es el encargado de decidir a quién sacar durante un partido, los 
@@ -307,12 +307,12 @@ Enunciamos en primer lugar lo que son los modelos gráficos probabilísticos, ya
 inferencia en dominios complejos dotados de incertidumbre.
 
 \begin{definicion}{Modelos gráficos probabilísticos} \label{subsect:modelos}
-Un modelo gráfico probabilístico es un marco que consta de dos partes: una componente cualitativa
-en forma de modelo gráfico que codifica afirmaciones de independencia condicional sobre el 
+Un modelo gráfico probabilístico es una representación de la distribución de probabilidad conjunta 
+sobre un dominio, que consta de dos partes: una componente cualitativa
+en forma de grafo que codifica afirmaciones de independencia condicional sobre el 
 dominio que se está estudiando, y una componente cuantitativa que consiste en una colección de 
 distribuciones de probabilidad locales que cumplen la propiedades de independencia especificadas 
-en el modelo gráfico. En conjunto, los dos componentes proporcionan una representación compacta de la 
-distribución de probabilidad conjunta sobre el dominio \cite{inference-rev-hbn}. 
+en el modelo \cite{inference-rev-hbn}. 
 \end{definicion}
 
 Un tipo de modelo gráfico probabilístico que usaremos y estudiaremos en profundidad en los próximos 
@@ -322,8 +322,8 @@ capítulos son las redes bayesianas.
 \begin{definicion}[Redes bayesianas] \label{def:BN}
 Una red bayesiana \cite{def-bncn} $\mathfrak{B} = \lbrace \mathcal{G}, \mathbb{P} \rbrace$ está definida por:
 \begin{itemize}
-    \item Un grafo dirigido acíclico $\mathcal{G}=(V,E)$ donde $V$ es un conjunto de nodos o vértices y $E$ 
-    es un conjunto de enlaces dirigidos o aristas.
+    \item Un grafo dirigido acíclico $\mathcal{G}=(V,E)$ donde $V$ es un conjunto de nodos y $E$ 
+    es un conjunto de aristas.
     \item Un espacio de probabilidad $(\Omega, \mathbb{P})$.
     \item Un conjunto de variables aleatorias $\textbf{V}=V[i], i=1,...,N$ con N lista de variables aleatorias, 
     asociadas con los nodos del grafo $(\Omega, \mathbb{P})$ 
@@ -351,7 +351,7 @@ se representarán con flechas, y los bordes no dirigidos con líneas.
 \begin{figure}[h!]
     \centering
      \includegraphics[width=\textwidth]{./img/dag.png}
-     \caption{Ejemplo de grafo dirigido acíclico (DAG). Generado mediante \href{https://github.com/ElenaMerelo/TFG/blob/master/scripts/dag.R}{un script en R}}
+     \caption{Ejemplo de grafo dirigido acíclico (DAG). Generado mediante \href{https://github.com/ElenaMerelo/TFG/blob/master/scripts/dag.R}{un script en R}.}
      \label{img:dag1}
     \end{figure}
 
@@ -391,7 +391,7 @@ en este tipo de modelos es computacionalmente más desafiante \cite{inference-re
 
 Tradicionalmente se han aplicado más las redes complejas que las bayesianas al análisis del fútbol \cite{ARRIAZAARDILES2018236}.
 Este tipo de redes nos interesan ya que su estudio está inspirado por los análisis empíricos de redes reales, y 
-permiten entender el funcionamiento de los equipos de fútbol, desde el punto de vista individual o colectivo. Usaremos 
+permiten entender el funcionamiento de los equipos de fútbol, ya sea a nivel individual o colectivo. Usaremos 
 variables definidas sobre la red compleja para ``alimentar" la red bayesiana \cite{Bai_Xing_Wu_2022}.
 
 \subsection{Redes complejas}
@@ -404,12 +404,12 @@ variables definidas sobre la red compleja para ``alimentar" la red bayesiana \ci
 \end{definicion}
 
 Estos sistemas son llamados complejos debido a que no es posible predecir directamente su 
-comportamiento colectivo a partir de sus componentes individuales. Una de las principales razones detrás de 
-la popularidad de las redes complejas es su flexibilidad
+comportamiento colectivo a partir de sus componentes individuales. Una de las principales razones por las que 
+las redes complejas son populares es su flexibilidad
 y generalidad para representar prácticamente cualquier estructura natural, incluidas las que experimentan 
 cambios dinámicos de topología \cite{CN-review}.
 
-La teoría de redes complejas se desarrolla en base a la teoría de grafos y la física estadística. En teoría de 
+La teoría de redes complejas se desarrolla en base a la teoría de grafos y la física estadística; en teoría de 
 redes complejas, todo sistema complejo puede abstraerse como una red. Los nodos de la red se pueden 
 considerar como los elementos en el sistema, y las relaciones
 entre cada elemento como conexiones. Hay muchos indicadores estructurales
@@ -423,9 +423,9 @@ y \href{https://en.wikipedia.org/wiki/Clustering_coefficient}{coeficiente de agr
 Otra manera de medir la importancia de cada nodo es mediante sistemas de calificación.
 
 \subsection{Sistemas de calificación} \label{subsect:ratings}
-Determinar la habilidad relativa entre adversarios es probablemente el
-elemento más importante junto con la predicción de los resultados de partidos de fútbol; las posiciones en 
-una liga adolecen de numerosos inconvenientes que hacen que no sean fiables para la predicción. 
+Determinar la habilidad relativa entre adversarios es uno de los elementos
+más importantes en el análisis de fútbol junto con la predicción de resultados de partidos de fútbol; las posiciones en 
+una liga constan de numerosos inconvenientes que hacen que no sean fiables para la predicción. 
 Por ejemplo, una liga de fútbol sufre de alta variación al inicio de la temporada, y de baja 
 variación al final. Además, es posible que los equipos que compiten durante una temporada no
 compartan un número equivalente de partidos jugados debido a aplazamientos y
@@ -466,11 +466,9 @@ Nosotros calificaremos a los equipos según su entropía.
 \subsection{Entropía}
 La entropía es el concepto clave para extraer características universales de un sistema a partir de sus 
 detalles. Aparece en muchos contextos como termodinámica, mecánica estadística o teoría de la información, como 
-una medida de diferentes propiedades: energía que no puede producir trabajo, desorden, incertidumbre, 
-aleatoriedad o complejidad \cite{gen-entr-review}.
+una medida de diferentes propiedades: energía que no puede producir trabajo, nivel promedio de información, sorpresa, 
+desorden, incertidumbre, aleatoriedad o complejidad \cite{gen-entr-review}, \cite{t-entropy}.
 
-En teoría de la información, la entropía de una variable aleatoria es el nivel promedio de información, 
-sorpresa o incertidumbre inherente a los posibles resultados de una variable \cite{t-entropy}.
 \begin{definicion}[Entropía] \label{def:entropy}
 Para una variable aleatoria discreta $X$ definimos su entropía como:  
 
@@ -482,14 +480,9 @@ entropía conjunta de las variables $X_1...X_N$ se define por
 $$H(X_1,...,X_N)=-\sum_{x_1}...\sum_{x_N}P(x_1,...,x_N)\log[P(x_1,...,x_N)]$$
 \end{definicion}
 
-La elección de la base para el logaritmo varía según las diferentes 
-aplicaciones. La base 2 da la unidad de bits (o ``shannons"), mientras que la base $e$ da ``unidades naturales" 
-nat, y la base 10 da unidades de ``dits", ``bans" o ``hartleys". Una definición equivalente de entropía es 
-el valor esperado de autoinformación de una variable.
-
-El concepto de entropía de la información fue introducido por el matemático e ingeniero eléctrico americano 
-\href{https://en.wikipedia.org/wiki/Claude_Shannon}{Claude Shannon} en su artículo 
-de 1948 ``Una teoría matemática de la comunicación" \cite{shannon-1948} y también se conoce como entropía de Shannon.
+El concepto de entropía (o entropía de Shannon) se lo debemos al matemático e ingeniero eléctrico americano 
+\href{https://en.wikipedia.org/wiki/Claude_Shannon}{Claude Shannon}, que lo introdubjo en 1948 en el 
+artículo ``Una teoría matemática de la comunicación" \cite{shannon-1948}.
 
 La entropía que más nos interesa es la de Tsallis, al ser la que se puede aplicar mejor a las redes de pases 
 que ocurren a lo largo de un partido de fútbol
@@ -503,6 +496,7 @@ cualquier número real, se define la entropía de Tsallis como
 $$ S_q(p_i)=\frac{k}{q-1}\left(1- \sum_{i=1}^{N}p_{i}^{q}\right)$$
 donde $q$ se denomina índice entrópico, $N$ son los microestados y $k$ es una constante positiva.
 \end{definicion}
-Si $q = 1$, obtenemos la entropía de 
-Shannon. La entropía de Tsallis no es extensiva, lo que significa que si se combinan dos sistemas idénticos, 
-la entropía del sistema combinado no es igual a la suma de la entropía de sus subsistemas \cite{comparison-entropies}.
+Si hacemos $q = 1$, obtenemos la entropía de 
+Shannon. En último lugar, notar que si se combinan dos sistemas idénticos, 
+la entropía de Tsallis del sistema combinado no es igual a la suma de la entropía de sus 
+subsistemas \cite{comparison-entropies}.

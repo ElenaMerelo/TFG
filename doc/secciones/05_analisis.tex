@@ -11,13 +11,13 @@ bayesianas} \cite{tesis-alfonso}.
 \section{Teoría de la probabilidad}
 
 \subsection{Conceptos básicos}
-En esta subsección revisaremos algunos de los conceptos básicos de teoría de la probabilidad para el 
+En esta subsección revisaremos algunos conceptos de teoría de la probabilidad básicos, en el 
 caso discreto. 
 
 \subsubsection{Funciones y espacios de probabilidad}
 Un {\em espacio muestral} es un conjunto contable\footnote{Un conjunto es {\em contable} si tiene el mismo número de 
 elementos (cardinalidad) que algún subconjunto de los números naturales, $\mathbb{N}$.} $\Omega = \{x_1, x_2, 
-\dots \}$ que representa todos los posibles resultados de un experimento.
+\dots \}$ que representa los posibles resultados de un experimento.
 
 Una función $P : 2^\Omega \longrightarrow \mathbb{R}$, donde $2^\Omega$ es el conjunto de todos los 
 subconjuntos (eventos) de $\Omega$, se denomina {\em función de probabilidad} si satisface los axiomas de 
@@ -81,7 +81,7 @@ $p(x)$ en vez de $P(X=x)$. Esta cantidad es la {\em probabilidad de $x$}.
 Asimismo, para una variable aleatoria $A$, denominaremos al conjunto de valores que $A$ puede tener como 
 ``rango de $A$'', $\Omega_A$.
 
-Dadas dos variables aleatorias $X,Y$ definidas en el mismo espacio muestral, y dos valores $x$ de $X$ e $y$ de 
+Dadas $X,Y$ variables aleatorias definidas en el mismo espacio muestral, y dos valores $x$ de $X$ e $y$ de 
 $Y$, podemos medir la probabilidad del evento intersección $P(X=x, Y=y)$, la cual se denomina {\em distribución 
 de probabilidad conjunta} de $X$ e $Y$. Podemos definir la distribución de probabilidad conjunta de un conjunto 
 arbitrario de variables aleatorias $\{X_1, X_2, \dots, X_n \}$ como $P(X_1=x_1, X_2=x_2,\dots, X_n=x_n )$.
@@ -119,12 +119,11 @@ independientes si
 
 $$p(x,y) = p(x) \, p(y).$$
 
-Además, dos variables aleatorias $X$ e $Y$ son {\em independientes} sí y solo sí 
-Two random variables $X$ and $Y$ are {\em independent} if and only if $$P(X=x, Y=y) = P(X=x) \, P(Y=y),$$ 
+Además, $X$ e $Y$ son {\em independientes} sí y solo sí $$P(X=x, Y=y) = P(X=x) \, P(Y=y),$$ 
 para todos los valores $x,y$ de $X$ e $Y$, respectivamente.
 
 Para problemas con al menos tres variables aleatorias, $X,Y,Z$, puede observarse {\em independencia 
-condicionada}; diremos que $X$ e $Y$ son {\em independientes condicionadamente dada $Z$} sí y solo sí todo par 
+condicionada}; diremos que, dada $Z$, $X$ e $Y$ son {\em independientes condicionadamente } $\leftrightarrow$ todo par 
 de valores $x$ (de $X$) e $y$ (de $Y$) es independiente condicionadamente para cada $z$ (de $Z$), tal que 
 $p(z) > 0$, esto es:
 
@@ -134,7 +133,7 @@ Este concepto no está solo limitado a tres variables, y se puede extender a con
 
 Diremos que una variable es {\em observada} si toma uno de los valores de su rango. Si queremos testear la {\em 
 independencia con respecto a una variable observada}, necesitamos únicamente testear la independencia con respecto 
-a ese valor asignado. Es de notar que observar una variable puede cambiar las relaciones de Independencia entre 
+a ese valor asignado. Es de notar que observar una variable puede cambiar las relaciones de independencia entre
 un conjunto de variables.
 
 %wip 
