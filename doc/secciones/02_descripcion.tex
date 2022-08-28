@@ -124,7 +124,6 @@ Github, y lo hemos escogido por ser de los más usados y establecidos, con más 
 y porque frente a \href{https://about.gitlab.com/}{gitlab}, contiene justo lo que necesitamos. Gitlab es para proyectos 
 más grandes y profesionales.
 
-\subsection{\textit{Framework} de la terminal}
 Para tener conciencia situacional del estado del repositorio de Github, instalamos \href{https://ohmyz.sh/}{oh my zsh}, 
 un \textit{framework} libre para administrar la configuración del \textit{shell} \textit{Zsh}. Permite el 
 acceso y fácil instalación de plantillas para la terminal, que hacen más fácil saber en qué rama se está 
@@ -133,12 +132,20 @@ trabajando, qué cambios se han realizado, si están ya añadidos o no, y en gen
 contribuidores, incluye numerosos \textit{plugins} que hacen el desarrollo de \textit{software} más fácil y bonito, 
 y la posibilidad de personalizar la terminal, con temas ya creados o propios.
 
-{Zsh} es un \textit{shell} que se presenta como alternativa a \textit{bash}, el cual viene por defecto en 
+Añadir que {Zsh} es un \textit{shell} que se presenta como alternativa a \textit{bash}, el cual viene por defecto en 
 \textit{Ubuntu}. Las ventajas de las que más nos hemos aprovechado y por las que lo escogimos parten de 
 su mayor configurabilidad, el que te corrija errores de escritura y complete palabras, y esa necesidad que ya 
 hemos mencionado de tener un buen conocimiento de la situación y el desarrollo.
 
-\subsection{Editor de código}
+\begin{figure}[h!]
+    \centering
+     \includegraphics[width=\textwidth]{./img/ohmyzsh.png}
+     \caption{Cómo se ve nuestra terminal}
+     \label{img:dag1}
+\end{figure}
+
+
+\subsection{IDE}
 Como editor de código precisábamos de uno que diera soporte a varios lenguajes de programación, fuera bien en 
 Ubuntu, se pudiera coordinar con Github sin problemas, hiciera la escritura de código algo más fácil con 
 funcionalidades como autocompletación de palabras, resaltado de código y corchetes, autoindentación, herramientas de 
@@ -155,11 +162,7 @@ Como opciones, destacamos \href{https://netbeans.apache.org/}{Apache Netbeans},
 \href{https://www.gnu.org/s/emacs/}{Emacs}. De todos ellos, es el que mejor puntuación y \textit{reviews} tiene 
 en la web. Lo elegimos antes que Netbeans dado que este no se puede integrar con Github, el desarrollo es más 
 personalizado y permite revisión de código o seguimiento de errores; se ajusta más que Netbeans para lo que 
-queremos hacer y es más fácil de usar, con mayor número de funcionalidades. A estas alturas, ya cae uno en que 
-Github es fundamental para nuestro proyecto, por lo que podríamos pensar que \href{https://atom.io/docs}{Atom} sería 
-una buena opción como editor de código al ser desarrollado por ellos, no obstante de primeras está menos configurado 
-y la curva de aprendizaje es algo más elevada que con VS Code, donde es abrir tu proyecto y ya te recomienda los 
-plugins que instalar, no tienes que irte a ficheros de configuración ni nada. VS Code es más eficiente que Vim, y 
+queremos hacer y es más fácil de usar, con mayor número de funcionalidades. VS Code es más eficiente que Vim, y 
 gana con diferencia, al ser un IDE completo y no solo un editor de textos, en el que habría que hacerlo casi 
 todo a mano. Por supuesto, hay muchos puristas de Vim o Emacs, que ya han pasado el periodo de adaptación y saben 
 usarlo genial, lo tienen chetadísimo, pero las ventajas y características de VS Code hacen que nos quedemos 
@@ -168,6 +171,7 @@ hemos incluido RStudio debido a que la parte informática será en ese lenguaje,
 desde VS Code también se puede hacer, así que mejor tenerlo todo centralizado.
 
 \subsection{Lenguaje de programación}
+% Igual, enumera las posibilidades, los requisitos, y escoge uno.
 Escogimos \href{https://www.r-project.org/}{R} puesto que necesitábamos un lenguaje que no nos pusiera límites 
 en cuanto a la aplicación de la teoría matemática, esto es, fuera bueno para estadística computacional y 
 análisis, permitiera realizar gráficos, y constara de numerosos paquetes, una gran comunidad detrás, 
@@ -175,6 +179,7 @@ fuera gratis y software libre, además de que llevara muchos años asentado como
 continua expansión y crecimiento.
 
 \subsection{Sistema de composición de documentos}
+%mencionar quarto
 \href{https://www.latex-project.org/}{LaTeX} es un sistema estándar para la composición de documentos 
 científicos y técnicos, software libre y gratuito. Lo escogimos ante la necesidad de un programa que nos 
 permitiera escribir la memoria, con soporte para lenguaje matemático o código informático, sin tener que 
@@ -207,7 +212,7 @@ hemos llegado a los siguientes usuarios \footnote{Para más información sobre l
   \href{https://objetivoanalista.com}{Objetivo Analista}}:
 \begin{itemize}
     \item Analista táctico: estudia los equipos y cómo se desenvuelven en los partidos. 
-    \item Scouter: en algunos equipos grandes existe esta figura que asiste a
+    \item {\em Scouter}: en algunos equipos grandes existe esta figura que asiste a
       encuentros de otras ligas, otras divisiones, o incluso el filial, para
       identificar qué jugadores pueden entrar en los planes de adquisición o de
       ascenso a equipos de categorías superiores del club.
@@ -353,7 +358,7 @@ se representarán con flechas, y los bordes no dirigidos con líneas.
      \includegraphics[width=\textwidth]{./img/dag.png}
      \caption{Ejemplo de grafo dirigido acíclico (DAG). Generado mediante \href{https://github.com/ElenaMerelo/TFG/blob/master/scripts/dag.R}{un script en R}.}
      \label{img:dag1}
-    \end{figure}
+\end{figure}
 
 Un camino $ \langle v_{1},...,v_{n} \rangle $ 
 es una secuencia de vértices distinguibles tales que $u \rightarrow v$, $v \rightarrow u$ o $u - v$ para 
@@ -409,8 +414,8 @@ las redes complejas son populares es su flexibilidad
 y generalidad para representar prácticamente cualquier estructura natural, incluidas las que experimentan 
 cambios dinámicos de topología \cite{CN-review}.
 
-La teoría de redes complejas se desarrolla en base a la teoría de grafos y la física estadística; en teoría de 
-redes complejas, todo sistema complejo puede abstraerse como una red. Los nodos de la red se pueden 
+La teoría de redes complejas se desarrolla en base a la teoría de grafos y la física estadística; en esta, 
+todo sistema complejo puede abstraerse como una red. Los nodos de la red se pueden 
 considerar como los elementos en el sistema, y las relaciones
 entre cada elemento como conexiones. Hay muchos indicadores estructurales
 en la teoría de redes complejas que pueden cuantificar la importancia de los nodos desde el nodo mismo o el
@@ -496,7 +501,9 @@ cualquier número real, se define la entropía de Tsallis como
 $$ S_q(p_i)=\frac{k}{q-1}\left(1- \sum_{i=1}^{N}p_{i}^{q}\right)$$
 donde $q$ se denomina índice entrópico, $N$ son los microestados y $k$ es una constante positiva.
 \end{definicion}
-Si hacemos $q = 1$, obtenemos la entropía de 
-Shannon. En último lugar, notar que si se combinan dos sistemas idénticos, 
+
+La fórmula se reduce a la de la entropía de Shannon cuando $q=1$. En último lugar, notar que si se 
+combinan dos sistemas idénticos, 
 la entropía de Tsallis del sistema combinado no es igual a la suma de la entropía de sus 
-subsistemas \cite{comparison-entropies}.
+subsistemas \cite{comparison-entropies}. Esto quiere decirnos que podemos trabajar con la entropía de 
+alguna variable calculada a partir de los jugadores.

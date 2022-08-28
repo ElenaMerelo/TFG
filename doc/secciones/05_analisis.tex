@@ -53,16 +53,6 @@ P(A) = \sum_{i=1}^n P(A \cup E_i) = \sum_{i=1}^n P(A|E_i)P(E_i).
 
 Esta propiedad se llama {\em regla de probabilidad total}, y puede ser demostrada con teoría básica de conjuntos.
 
-%\begin{theorem} \emph{(Bayes)} 
-%Dados dos eventos $A, B \in \Omega$, tales que $P(A) \neq 0$ y $P(B) \neq 0$, tenemos que
-%$$P(A|B) = \frac{P(A)P(B|A)}{P(B)}.$$
-%\end{theorem}
-
-%\begin{proof}
-%Using the definition of conditional probability, $P(A|B) = \frac{P(A \cap B)}{P(B)}$ and $P(B|A) = \frac{P(A \cap B)}{P(A)}$.
-%Therefore $P(A|B)P(B) = P(B|A)P(A)$.--
-%\end{proof}
-
 \subsubsection{Variables aleatorias}
 
 Una {\em variable aleatoria} (discreta) es una función que mapea eventos a valores de un conjunto contable, donde 
@@ -173,11 +163,45 @@ estándar son llamados algoritmos de ``propagación bayesiana" \cite{Cano2004}, 
 \cite{back-prop} porque se basan en el teorema de Bayes; en ellos, la probabilidad de una variable 
 desconocida se actualiza después de que se obtenga evidencia relevante para esa variable \cite{prop-alg}.
 
-\begin{theorem}\emph{(Factorización de una red bayesiana)} 
+Las clases de causalidad que producen redes bayesianas son:
+\begin{itemize}
+    \item \textbf{Cadena causal}: describe variables que tienen un efecto dominó las unas sobre las otras. Por ejemplo, \textit{cambios en la calidad de 
+    los jugadores} tiene impacto sobre el \textit{desempeño del equipo} que a su vez influencia la \textit{posición en la liga}. 
+    Esto quiere decir que la \textit{posición en la liga} es independiente de los \textit{cambios en la calidad de los jugadores} una vez conocemos el \textit{desempeño del equipo}.\\
+    cambios en la calidad de los jugadores $\rightarrow$ Desempeño del equipo $\rightarrow$ Posición en la liga
+    \item \textbf{Efecto común}: ocurre cuando dos variables diferentes, tales como \textit{fichajes} y \textit{jugadores vendidos}, tienen influencia sobre una tercera variable tal como 
+    \textit{gasto neto en transferencias}. Esto significa que \textit{jugadores vendidos} depende de \textit{fichajes} una vez que conocemos el \textit{gasto neto en transferencias}.\\
+    Fichajes $\rightarrow$ Gasto neto en transferencias $\leftarrow$ Jugadores vendidos    
+    \item \textbf{Causa común}: tiene lugar cuando dos variables distintas, tales como \textit{posición en la liga} y \textit{asistencia}, se ven influenciados por la misma variable, tal 
+    como \textit{desempeño del equipo}. Ello significa que \textit{asistencia} es independiente de \textit{posición en la liga} una vez conocemos \textit{desempeño del equipo}.\\
+    Posición en la liga $\leftarrow$ Desempeño del equipo $\rightarrow$ Asistencia
+\end{itemize}
+
+\subsection{Factorización de redes bayesianas}
+Nos interesa reducir el número de parámetros que encontrarmos en las redes bayesianas, de manera que sean menos 
+costosas de analizar, y la predicción sea mejor. En este subsección estudiamos maneras de hacerlo.
+
+Dado un conjunto de variables aleatorias $\mathbf{U} = \{X_1, \dots, X_n\}$, un {\em modelo de dependencia} $M$ 
+es un conjunto de relaciones de independencia suficiente para determinar, para cualesquiera $\mathbf{A_1}, 
+\mathbf{A_2}, \mathbf{A_3} \subset \mathbf{U}$ con $\mathbf{A_1}, \mathbf{A_2}, \mathbf{A_3}$
+disjuntos, y $\mathbf{A_1}, \mathbf{A_2}$ no vacíos, si la relación de independencia $\mathbf{A_1} \perp 
+\mathbf{A_2} | \mathbf{A_3}$ es verdadera o falsa. 
+
+Si tenemos un conjunto de variables aleatorias cada una en un nodo de un DAG \ref{def:grafo}, la {\em condición 
+de Markov} nos dice que una variable aleatoria de un grafo es independiente de sus no-descendientes, dados 
+sus padres \cite{markov-assumption}. 
+
+Una distribución de probabilidad $P$ en un DAG $D$ constituye una {\em red bayesiana} $\leftrightarrow$ $D$ es un 
+mapa-I mínimo de $P$. Esto nos dice que una red bayesiana sobre un conjunto de variables aleatorias puede verse 
+como un conjunto de relaciones de independencia almacenadas usando un DAG.
+%añadir cita
+
+
+\begin{teorema}\emph{(Factorización de una red bayesiana)} 
 La distribución conjunta de una red bayesiana $P(X_1, \dots, X_n)$ se factoriza de la siguiente manera:
 
 $$P(X_1, \dots, X_n) = \prod_{i=1}^n P(X_i|pa(X_i))$$
 
 donde $pa(X_i)$ es el conjunto de padres de la variable en el grafo. 
-\end{theorem}
+\end{teorema}
 
