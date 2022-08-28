@@ -136,4 +136,48 @@ independencia con respecto a una variable observada}, necesitamos únicamente te
 a ese valor asignado. Es de notar que observar una variable puede cambiar las relaciones de independencia entre
 un conjunto de variables.
 
-%wip 
+Escribiremos $A\perp B | C$ cuando una variable $A$ es independiente de otra, $B$, tras la observación de $C$. Si 
+$A$ es independiente de $B$, sin observaciones adicionales, escribiremos $A \perp B$.
+
+Dados $\mathbf{W, X, Y, Z}$ conjuntos de variables aleatorias, las relaciones de independencia tienen 
+las siguientes propiedades:
+
+\begin{itemize}
+ \item Simetría $(\mathbf{X} \perp \mathbf{Y} | \mathbf{Z}) \Rightarrow (\mathbf{Y} \perp \mathbf{X} | \mathbf{Z})$.
+ \item Descomposición $(\mathbf{X} \perp \mathbf{Y, W} | \mathbf{Z}) \Rightarrow (\mathbf{X} \perp \mathbf{Y} | \mathbf{Z})$.
+\end{itemize}
+
+\section{Redes bayesianas}
+
+Las redes bayesianas nos ayudan a modelar y entender las muchas variables que informan nuestro proceso de 
+toma de decisiones. Las decisiones más complejas están normalmente basadas en una multitud de factores o 
+variables. Por ejemplo, para el presidente de un equipo de fútbol \ref{hu:presidente}, podemos 
+mapear la decisión que tiene que tomar y las diferentes variables usando 
+una red bayesiana, esto es, un modelo gráfico que captura la relación entre variables que están bajo 
+supuestos de causalidad o influencia \cite{things-to-know-BN}.
+
+Como ya hemos comentado en \ref{subsect:BN}, \textbf{una red bayesiana es un diagrama que 
+usa flechas o arcos dirigidos para mostrar cómo distintos factores, representados por nodos elípticos, se 
+influencian los unos a los otros.} Cada nodo viene con una tabla de probabilidades condicionadas, la cual 
+refleja las posibilidades de que tenga lugar distintos desenlaces, provenientes de las influencias que 
+le afectan directamente. Una vez la estructura del grafo y dicha tabla han sido definidas, hay algoritmos 
+estándar que calculan los estados de las variables desconocidas basándose en los estados de las variables 
+conocidas en el modelo \cite{learning-algorithms-BN-comparison}, \cite{BN-achilles-heel}, 
+\cite{different-algorithmic-schemes}.
+
+Una de las razones por las que las redes bayesianas son tan potentes es que pueden realizar inferencias 
+tanto predictivas como diagnósticas. Por ejemplo, podemos por un lado predecir la posición en la liga de 
+un equipo para un valor dado de rendimiento, y por otro ingresar un estado de posición en la 
+liga como observación para examinar qué nivel de desempeño del equipo podría explicarla. Estos algoritmos 
+estándar son llamados algoritmos de ``propagación bayesiana" \cite{Cano2004}, \cite{more-algorithms}, 
+\cite{back-prop} porque se basan en el teorema de Bayes; en ellos, la probabilidad de una variable 
+desconocida se actualiza después de que se obtenga evidencia relevante para esa variable \cite{prop-alg}.
+
+\begin{theorem}\emph{(Factorización de una red bayesiana)} 
+La distribución conjunta de una red bayesiana $P(X_1, \dots, X_n)$ se factoriza de la siguiente manera:
+
+$$P(X_1, \dots, X_n) = \prod_{i=1}^n P(X_i|pa(X_i))$$
+
+donde $pa(X_i)$ es el conjunto de padres de la variable en el grafo. 
+\end{theorem}
+
