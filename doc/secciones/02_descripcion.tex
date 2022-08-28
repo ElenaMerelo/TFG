@@ -91,22 +91,31 @@ En esta sección profundizaremos en las herramientas empleadas para desarrollar 
 la metodología ya descrita, además de explicitar por qué las hemos escogido.
 
 \subsection{Plataforma de desarrollo} 
-\href{https://github.com/}{Github} es una plataforma de alojamiento de código para control de versiones y 
-colaboración que permite llevar cuenta de los proyectos de \href{https://git-scm.com/}{\tt git}, fuera del ordenador o 
-servidor local, y está basado en la nube. A su vez, {\tt git} es un 
-sistema distribuido de control de versiones, marco de integración y despliegue contínuo gratis y cuyo software es libre. Es fácil de 
-aprender, pesa poco y tiene un gran rendimiento.
+Necesitábamos una plataforma que nos permitiera guardar el proyecto en algún sitio aparte de nuestro 
+ordenador, para que en caso de problemas con el mismo pudiéramos continuar el desarrollo y no perderlo 
+todo, a la vez que consultar versiones anteriores de lo escrito, dado que en algunas ocasiones se borran 
+cosas que luego quieres incluir, o simplemente surge la necesidad de consultar el estado del trabajo en 
+otro momento, para restablecerlo incluso. Es esencial tener un visión global de la construcción paso a paso 
+de lo desarrollado, así como ver quién ha aportado qué, permitir que se sugieran cambios o añadan comentarios 
+de una manera fácil, sin tener que andar pasando \textit{zips} para arriba y para abajo. Teniendo en consideración 
+el potencial tamaño de un proyecto como el que nos ocupa, es importante también que a la plataforma ``no le importe'', 
+siga funcionando rápido y no limite de ninguna manera lo que se tiene pensado hacer, sino más bien lo haga sencillo, 
+intuitivo, \textit{disfrutable}. Sin tener que instalar \textit{gigas} de paquetes ni nada, tan solo sea una parte 
+más y se funda con el proyecto. Por supuesto, que sea gratuita es un buen añadido, al igual que el que tenga 
+una gran comunidad detrás. Todo esto nos llevó a escoger \href{https://github.com/}{Github} (y seguro que nos 
+dejamos algo; GitHub ofrece increíbles posibilidades).
 
-Así pues, Github es una aplicación con web (también API, marco de aplicaciones entre otras) muy completa 
+Github es una aplicación con web (también API o marco de aplicaciones, entre otras) muy completa 
 para que desarrolladores y programadores puedan trabajar colaborativamente 
-en repositorios. Su punto fuerte es el sistema de control de versiones mencionado, que permite llevar 
-cuenta detallada 
-de los cambios realizados por cada persona, discutirlos, revisarlos y proponer modificaciones, así como 
-separar el producto final de las funcionalidades que se vayan añadiendo y sobre las que cada equipo esté 
-trabajando. Adicionalmente, proporciona herramientas como las \href{https://github.com/features/actions}{Github Actions}, 
-las cuales facilitan la automatización de los flujos de trabajo, incluyendo integración y despliegue contínuos.
-Nosotros lo empleamos para chequear la ortografía cada vez que subimos algo al repositorio, o construir el pdf 
-de la memoria cuando se cambie algún archivo \textit{.tex}, pero por supuesto hay muchísimas más posibilidades.
+en repositorios. Su punto fuerte es el sistema de control de versiones, que permite llevar 
+cuenta detallada de los cambios realizados por cada persona, discutirlos, revisarlos y proponer 
+modificaciones, así como 
+separar el producto final de las funcionalidades que se vayan añadiendo y sobre las que cada equipo o persona 
+esté trabajando, mediante \href{https://docs.github.com/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-branches}{ramas}. 
+Adicionalmente, proporciona herramientas como las \href{https://github.com/features/actions}{Github Actions}, 
+las cuales permiten la automatización de los flujos de trabajo, incluyendo integración y despliegue contínuos.
+Nosotros por ejemplo lo empleamos para chequear la ortografía cada vez que subimos algo al repositorio, o construir el \textit{pdf}
+de la memoria cuando se cambie algún archivo \textit{.tex}, pero por supuesto hay muchísimas más funcionalidades posibles.
 
 Se puede consultar nuestro repositorio en \href{https://github.com/ElenaMerelo/TFG}{el siguiente enlace}, y navegar 
 por las \href{https://github.com/ElenaMerelo/TFG/issues}{issues creadas}, \href{https://github.com/ElenaMerelo/TFG/pulls}{pull requests mergeados} 
@@ -115,41 +124,75 @@ Github, y lo hemos escogido por ser de los más usados y establecidos, con más 
 y porque frente a \href{https://about.gitlab.com/}{gitlab}, contiene justo lo que necesitamos. Gitlab es para proyectos 
 más grandes y profesionales.
 
-\subsection{Shell}
-Para tener conciencia situacional del estado del repositorio, instalé \href{https://ohmyz.sh/}{oh my zsh}, 
-un \textit{framework} libre para configurar \textit{Zsh}. Permite el acceso y fácil instalación de plantillas para 
-la terminal, que hacen más fácil saber en qué rama se está trabajando, qué cambios se han realizado, y en 
-general casa genial con \textit{Github} y sus funcionalidades. Tiene detrás una comunidad muy grande de 
-contribuidores, incluye numerosos \textit{plugins} que hacen el desarrollo de \textit{software} más fácil, 
+\subsection{\textit{Framework} de la terminal}
+Para tener conciencia situacional del estado del repositorio de Github, instalamos \href{https://ohmyz.sh/}{oh my zsh}, 
+un \textit{framework} libre para administrar la configuración del \textit{shell} \textit{Zsh}. Permite el 
+acceso y fácil instalación de plantillas para la terminal, que hacen más fácil saber en qué rama se está 
+trabajando, qué cambios se han realizado, si están ya añadidos o no, y en general casa genial con 
+\textit{Github} y sus funcionalidades. Tiene detrás una comunidad muy grande de 
+contribuidores, incluye numerosos \textit{plugins} que hacen el desarrollo de \textit{software} más fácil y bonito, 
 y la posibilidad de personalizar la terminal, con temas ya creados o propios.
 
 {Zsh} es un \textit{shell} que se presenta como alternativa a \textit{bash}, el cual viene por defecto en 
 \textit{Ubuntu}. Las ventajas de las que más nos hemos aprovechado y por las que lo escogimos parten de 
-su mayor configurabilidad, el que te corrija errores de escritura y complete palabras.
+su mayor configurabilidad, el que te corrija errores de escritura y complete palabras, y esa necesidad que ya 
+hemos mencionado de tener un buen conocimiento de la situación y el desarrollo.
 
 \subsection{Editor de código}
-Como editor de código uso \href{https://code.visualstudio.com/}{Visual Studio Code}, dado que ya estaba 
-familiarizada y muy contenta con él. Tiene soporte para mucho lenguajes, está disponible para Ubuntu, Windows y 
-MacOs, comprende resaltado de sintaxis, autoindentación, innumerables temas y plugins, atajos de teclado, 
-aparte de una comunidad enorme detrás. Combina pues la simplicidad de un editor 
-de código fuente con herramientas de desarrollo potentes, como completación de código o \textit{debugging}. Y lo mejor, 
-es software libre, y se integra perfectamente con git y Github, además de permitirte construir el proyecto y compilarlo, 
-todo sin cambiar de pantalla. 
+Como editor de código precisábamos de uno que diera soporte a varios lenguajes de programación, fuera bien en 
+Ubuntu, se pudiera coordinar con Github sin problemas, hiciera la escritura de código algo más fácil con 
+funcionalidades como autocompletación de palabras, resaltado de código y corchetes, autoindentación, herramientas de 
+compilación o \textit{debugging}, seguimiento de definiciones, atajos de teclado o un mercado de plugins y temas 
+para facilitar lo anterior, y más en general hacer sencillo el desarrollo. Por ello su enorme potencial y comunidad 
+detrás, escogimos \href{https://code.visualstudio.com/}{Visual Studio Code}. Combina pues la simplicidad 
+de un editor de código fuente con herramientas de desarrollo potentes, como completación de código o 
+\textit{debugging}. Y lo mejor, es software libre, y se integra perfectamente con git y Github, además de 
+permitirte construir el proyecto y compilarlo, todo sin cambiar de pantalla ni rompederos de cabeza; es intuitivo 
+y hasta diríamos inteligente.
+
+Como opciones, destacamos \href{https://netbeans.apache.org/}{Apache Netbeans}, 
+\href{https://www.eclipse.org/downloads/}{Eclipse}, \href{https://www.rstudio.com/}{RStudio}, \href{https://www.vim.org/}{Vim} o 
+\href{https://www.gnu.org/s/emacs/}{Emacs}. De todos ellos, es el que mejor puntuación y \textit{reviews} tiene 
+en la web. Lo elegimos antes que Netbeans dado que este no se puede integrar con Github, el desarrollo es más 
+personalizado y permite revisión de código o seguimiento de errores; se ajusta más que Netbeans para lo que 
+queremos hacer y es más fácil de usar, con mayor número de funcionalidades. A estas alturas, ya cae uno en que 
+Github es fundamental para nuestro proyecto, por lo que podríamos pensar que \href{https://atom.io/docs}{Atom} sería 
+una buena opción como editor de código al ser desarrollado por ellos, no obstante de primeras está menos configurado 
+y la curva de aprendizaje es algo más elevada que con VS Code, donde es abrir tu proyecto y ya te recomienda los 
+plugins que instalar, no tienes que irte a ficheros de configuración ni nada. VS Code es más eficiente que Vim, y 
+gana con diferencia, al ser un IDE completo y no solo un editor de textos, en el que habría que hacerlo casi 
+todo a mano. Por supuesto, hay muchos puristas de Vim o Emacs, que ya han pasado el periodo de adaptación y saben 
+usarlo genial, lo tienen chetadísimo, pero las ventajas y características de VS Code hacen que nos quedemos 
+con él, aparte de la ya reiterada estupenda integración con Github de la que estos últimos carecen. Por último, 
+hemos incluido RStudio debido a que la parte informática será en ese lenguaje, y para ello es maravilloso, pero 
+desde VS Code también se puede hacer, así que mejor tenerlo todo centralizado.
+
+\subsection{Lenguaje de programación}
+Escogimos \href{https://www.r-project.org/}{R} puesto que necesitábamos un lenguaje que no nos pusiera límites 
+en cuanto a la aplicación de la teoría matemática, esto es, fuera bueno para estadística computacional y 
+análisis, permitiera realizar gráficos, y constara de numerosos paquetes, una gran comunidad detrás, 
+fuera gratis y software libre, además de que llevara muchos años asentado como herramienta de desarrollo, y en 
+continua expansión y crecimiento.
 
 \subsection{Sistema de composición de documentos}
-\href{https://www.latex-project.org/}{LaTeX} es un sistema de composición tipográfica de alta calidad; 
-incluye características diseñadas para la producción de documentación técnica y científica. Es el estándar 
-de facto para la comunicación y publicación de documentos científicos, además de estar disponible como 
-software libre y gratuito. 
+\href{https://www.latex-project.org/}{LaTeX} es un sistema estándar para la composición de documentos 
+científicos y técnicos, software libre y gratuito. Lo escogimos ante la necesidad de un programa que nos 
+permitiera escribir la memoria, con soporte para lenguaje matemático o código informático, sin tener que 
+andar ajustando tamaños de letras, imágenes o índices. Queríamos centrarnos en el contenido, y no tanto 
+en el formato. En un principio, puede parecer más fácil usar Word o LibreOffice, pero para escribir proyectos 
+más grandes que no comprendan únicamente texto, tras una pequeña fase de aprendizaje, LaTeX gana con ventaja, 
+al disponer también de plantillas, una documentación excelente, y años y años de consolidación en la comunidad 
+científica. 
 
-LaTeX da al usuario un control extremadamente bueno sobre el formato de los documentos. Una vez que se 
+LaTeX da pues al usuario un control extremadamente bueno sobre el formato de los documentos. Una vez que se 
 domina, puede ser mucho más fácil trabajar con él que con un procesador de texto convencional. Tuve 
 problemas (que fui reflejando en \href{https://github.com/ElenaMerelo/TFG/issues}{mi Github}) a la hora 
 de usarlo ya que no lo había empleado hasta este momento, por lo que tenía que entender 
 el funcionamiento de la plantilla que uso, \href{https://github.com/ElenaMerelo/TFG/issues/58}{cómo escribir las fórmulas 
 y símbolos matemáticos}, \href{https://github.com/ElenaMerelo/TFG/issues/54}{la definición de entornos}, 
 \href{https://github.com/ElenaMerelo/TFG/issues/56}{cómo hacer citas y referencias}, 
-\href{https://github.com/ElenaMerelo/TFG/issues/57}{cómo se incluyen imágenes}, cómo incluir y usar paquetes, o incluso cómo poner títulos, letra 
+\href{https://github.com/ElenaMerelo/TFG/issues/57}{cómo se incluyen imágenes}, cómo incluir y usar paquetes, 
+o incluso cómo poner títulos, letra 
 en itálica, enlaces. Hay numerosos tutoriales en internet, pero lo que más consulté ha sido
  \href{https://es.overleaf.com/learn}{la documentación de Overleaf}, aunque tenga otro editor de LaTeX. Ciertamente, 
  la curva de aprendizaje no es muy grande, y una vez entiendes la lógica detrás, se escribe relativamente rápido. En 
