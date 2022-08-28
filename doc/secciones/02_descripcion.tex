@@ -1,11 +1,14 @@
 \chapter{Descripción del problema}
-El presente trabajo intentará responder entonces a: ¿La entropía mejora las posibilidades 
-de marcar gol? Si cambia la entropía del equipo, ¿podemos determinar la causa?¿Ha sido por un jugador 
-específico, la alineación o más bien la influencia del equipo 
-contrario?. Igualmente, ¿es posible ver la entropía reflejada en un tipo de visualización de 
-las redes de pases?. Estudiaremos hasta qué punto es determinante la 
-entropía a nivel de jugador o equipo, empleando técnicas estadísticas para obtener respuestas a lo planteado y 
-siguiendo la forma de trabajar que pasamos a describir.
+\label{chap:descripcion}
+
+El presente trabajo intentará responder entonces a: ¿La entropía mejora las
+posibilidades de marcar gol? Si cambia la entropía del equipo, ¿podemos
+determinar la causa?¿Ha sido por un jugador específico, la alineación o más bien
+la influencia del equipo contrario?. Igualmente, ¿es posible ver la entropía
+reflejada en un tipo de visualización de las redes de pases?. Estudiaremos hasta
+qué punto es determinante la entropía a nivel de jugador o equipo, empleando
+técnicas estadísticas para obtener respuestas a lo planteado y siguiendo la
+forma de trabajar que pasamos a describir.
 
 \section{Metodología - Desarrollo ágil}
 La metodología nos dicta dos cosas esenciales:
@@ -19,17 +22,19 @@ como veremos más adelante. Para lo segundo, hay que tener en cuenta que todos
 los \textit{issues} son problemas, e idealmente deben de decir explícitamente 
 (o implícitamente si está claro) cómo se resuelve el problema.
 
-El desarrollo ágil tiene su origen en el manifesto ágil\cite{manifiesto-agil}, el cual fue una revolución frente 
-al modelo en cascada,
-en la forma de desarrollar software, y planteaba que tienen más valor las personas que 
-los procesos o herramientas, un producto funcionando que mucha documentación, colaboración 
-con los clientes que contratos, y \textbf{flexibilidad} frente a seguir un plan. Desde el 
-año 2001 que se redactó ha cambiado mucho la tecnología, y por ejemplo nosotros pondremos 
-mucho peso en la documentación, mas la idea sigue intacta: lo importante son los usuarios, 
-adaptarse a sus deseos. En general pues, con \textit{ágil} nos referimos a una forma de pensar que se aplica 
-a todo un ciclo de desarrollo del software centrado en el cliente y que consiste en 
-continuas mejoras de productos mínimamente viables\cite{agile-science}.
-En este apartado entenderemos mejor y dejaremos claro lo que esto significa e implica.
+El desarrollo ágil tiene su origen en el manifesto ágil\cite{manifiesto-agil},
+el cual fue una revolución frente al modelo en cascada, en la forma de
+desarrollar software, y planteaba que tienen más valor las personas que los
+procesos o herramientas, un producto funcionando que mucha documentación,
+colaboración con los clientes que contratos, y \textbf{flexibilidad} frente a
+seguir un plan. Desde el año 2001 que se redactó ha cambiado mucho la
+tecnología, y por ejemplo nosotros pondremos mucho peso en la documentación, mas
+la idea sigue intacta: lo importante son los usuarios, adaptarse a sus
+deseos. En general pues, con \textit{ágil} nos referimos a una forma de pensar
+que se aplica a todo un ciclo de desarrollo del software centrado en el cliente
+y que consiste en continuas mejoras de productos mínimamente
+viables\cite{agile-science}.  En este apartado entenderemos mejor y dejaremos
+claro lo que esto significa e implica.
 
 Lo esencial de esta forma de proceder es que su objetivo es \textbf{resolver problemas} y satisfacer 
 al cliente, no hacer aplicaciones: importa el por qué, antes que el qué o el cómo. Estos 
@@ -55,7 +60,7 @@ y los objetivos a alcanzar. Están relacionadas con la lógica de
 negocio del proyecto y siempre son un beneficio para los posibles usuarios del proyecto.
 
 Una regla del pulgar para las historias de usuario: Siempre tienen que expresar un deseo y un 
-beneficio para el usuario. Si ponemos "ojalá qué" y te lo imaginas en la boca del usuario y suena 
+beneficio para el usuario. Si ponemos ``ojalá qué" y te lo imaginas en la boca del usuario y suena 
 creíble, es que es una historia de usuario. Si no, es un \textit{issue} o tarea que necesitamos
 que el usuario haga para que cumpla sus deseos. El problema reside en poner lo que nosotros queremos que 
 haga el usuario para conseguir algo, y no lo que el usuario quiere. Más adelante expondremos las historias 
@@ -154,13 +159,18 @@ en itálica, enlaces. Hay numerosos tutoriales en internet, pero lo que más con
 
 \section{Clientes}
 Basándonos en la \href{https://www.designthinking.services/herramientas-design-thinking/metodo-persona/}{metodología basada en personas}, 
-hemos llegado a los siguientes usuarios: 
+hemos llegado a los siguientes usuarios \footnote{Para más información sobre las
+  figuras que aparecen en el análisis de datos deportivos, consultar
+  \href{https://objetivoanalista.com}{Objetivo Analista}}:
 \begin{itemize}
     \item Analista táctico: estudia los equipos y cómo se desenvuelven en los partidos. 
-    \item Scouter: es la persona encargada de la búsqueda y captación 
-    de jugadores.
-    \item Analista de datos: toma la información estadística de 
-    cada partido tanto en lo individual como en lo colectivo. 
+    \item {Scouter}: en algunos equipos grandes existe esta figura que asiste a
+      encuentros de otras ligas, otras divisiones, o incluso el filial, para
+      identificar qué jugadores pueden entrar en los planes de adquisición o de
+      ascenso a equipos de categorías superiores del club.
+    \item Analistas de datos: tienen que generar la estrategia de recogida de
+      datos del club y preparar aplicaciones e informes para ayuda a la toma de
+      decisiones por parte de los mismos.
     \item Persona que apuesta: recopila información sobre los equipos y jugadores, para poder apostar 
     en base a una alineación, o una vez se sabe quién va a jugar en un partido. 
     \item Entrenador: es el encargado de decidir a quién sacar durante un partido, los 
@@ -178,13 +188,12 @@ A partir de los clientes, y como parte de la metodología, definimos en \href{ht
 
 \begin{itemize}
     \item Como analista táctico, quiero obtener un análisis del propio equipo y de los rivales.
-    \item Como scouter,  quiero encontrar los jugadores que necesita el equipo 
-    o el club, y analizar sus cualidades y posibilidades de integración al equipo, desde su rendimiento futbolístico hasta el 
-    económico.
-    \item Como analista de datos, quiero poder establecer relaciones para encontrar respuestas o ideas que 
-    puedan colaborar con la toma de decisiones del club referentes 
-    a lo táctico, lo técnico y lo económico, para el modelo de 
-    juego del equipo o para la compra y venta de jugadores. 
+    \item Como scouter, quiero tener elementos cuantitativos de juicio, a partir
+      de las observaciones, para tomar decisiones que beneficien el desempeño
+      deportivo del club.
+    \item Como analista de datos, deseo conocer qué metodología de obtención,
+      tratamiento y presentación de datos es la que me permite elaborarlos con
+      más claridad para presentarlos a los que toman las decisiones en el club.
     \item Como persona que apuesta, querré inferir el resultado de un partido y 
     quién marcará, una vez se publiquen los jugadores. 
     \item Como entrenador, me gustaría poder usar la herramienta desarrollada, y que sea intuitiva.
@@ -252,13 +261,13 @@ El objetivo de esta sección es introducir los términos que serán usados en el
 todavía mejor cómo se conectan con nuestro problema.
 
 Enunciamos en primer lugar lo que son los modelos gráficos probabilísticos, ya que permiten realizar 
-inferencias en dominios complejos dotados de incertidumbre.
+inferencia en dominios complejos dotados de incertidumbre.
 
 \begin{definicion}{Modelos gráficos probabilísticos} \label{subsect:modelos}
 Un modelo gráfico probabilístico es un marco que consta de dos partes: una componente cualitativa
 en forma de modelo gráfico que codifica afirmaciones de independencia condicional sobre el 
 dominio que se está estudiando, y una componente cuantitativa que consiste en una colección de 
-distribuciones de probabilidad locales que se adhieren a la propiedades de independencia especificadas 
+distribuciones de probabilidad locales que cumplen la propiedades de independencia especificadas 
 en el modelo gráfico. En conjunto, los dos componentes proporcionan una representación compacta de la 
 distribución de probabilidad conjunta sobre el dominio \cite{inference-rev-hbn}. 
 \end{definicion}
@@ -270,28 +279,54 @@ capítulos son las redes bayesianas.
 \begin{definicion}[Redes bayesianas] \label{def:BN}
 Una red bayesiana \cite{def-bncn} $\mathfrak{B} = \lbrace \mathcal{G}, \mathbb{P} \rbrace$ está definida por:
 \begin{itemize}
-    \item Un grafo directo acíclico $\mathcal{G}=(X,E)$ donde $X$ es un conjunto de nodos o vértices y $E$ 
-    es un conjunto de enlaces dirigidos o bordes.
+    \item Un grafo dirigido acíclico $\mathcal{G}=(V,E)$ donde $V$ es un conjunto de nodos o vértices y $E$ 
+    es un conjunto de enlaces dirigidos o aristas.
     \item Un espacio de probabilidad $(\Omega, \mathbb{P})$.
-    \item Un conjunto de variables aleatorias $X={X_1...X_n}$ asociadas con los nodos del grafo $(\Omega, \mathbb{P})$ 
-    de tal manera que $\mathbb{P}(X_1...X_n)= \prod_{i=1}^{n}\mathbb{P}(X_i|P_a(X_i))$, donde $P_a(X_i)$ es el 
-    conjunto de los nodos padre del nodo $X_i$ en $\mathcal{G}$.  
+    \item Un conjunto de variables aleatorias $\textbf{V}=V[i], i=1,...,N$ con N lista de variables aleatorias, 
+    asociadas con los nodos del grafo $(\Omega, \mathbb{P})$ 
+    de tal manera que $\mathbb{P}(V[1],...,V[N])= \prod_{i=1}^{n}\mathbb{P}(V[i]|pa(V[i]))$, donde $pa(V[i])$ es el 
+    conjunto de los nodos padre de $V[i]$ en $\mathcal{G}$.  
 \end{itemize}
 \end{definicion}
 
 En otras palabras, una red bayesiana es un grafo donde los nodos representan variables aleatorias discretas 
-o contínuas y los bordes o aristas representan las influencias entre ellas. Asociamos la variable 
-aleatoria $X$ a sus modalidades ($X=x_1, X=x_2,..., X=x_n$ si $X$ puede tomar $n$ valores). Las aristas 
+o contínuas y los bordes o aristas representan las influencias entre ellas. Las aristas 
 representan pues las causalidades, que pueden ser determinísticas o probabilísticas. Para un borde 
-uniendo el hecho $A$ con el $B$, hay una relación que es la probabilidad condicionada, notada como $P(B|A)$, 
-la cual representa una relación de probabilidad de un nodo, conocidos sus nodos padres. Para los nodos 
-sin padres o nodos raíz, una probabilidad previa será asignada.
+uniendo el hecho $A$ con el $B$, con $P(B|A)$ representamos la relación de probabilidad de un 
+nodo, conocidos sus padres. Para los nodos sin padres o nodos raíz, se asignará una probabilidad previa.
 
-Generalmente, este tipo de modelo gráfico probabilístico se utilizan como un marco eficiente para
+Vamos a ver un poco más específicamente qué queremos decir cuando hablamos de grafos.
+\subsubsection{Grafos}
+\begin{definicion} \label{def:grafo}
+Un grafo es un par $\mathcal{G} = (V, E)$, donde $V$ es un conjunto finito de vértices distinguibles y 
+$E \subseteq V \times V$ es un conjunto de aristas. Un par ordenado $(u, v) \in E$ denota un borde dirigido
+del vértice $u$ al vértice $v$, y se dice que $u$ es padre de $v$ y $v$ hijo de $u$. Al conjunto de padres 
+e hijos de un vértice $v$ los denotaremos por $pa(v)$ y $ch(v)$, respectivamente. Los bordes dirigidos 
+se representarán con flechas, y los bordes no dirigidos con líneas. 
+\end{definicion}
+
+\begin{figure}[h!]
+    \centering
+     \includegraphics[width=\textwidth]{./img/dag.png}
+     \caption{Ejemplo de grafo dirigido acíclico (DAG). Generado mediante \href{https://github.com/ElenaMerelo/TFG/blob/master/scripts/dag.R}{un script en R}}
+     \label{img:dag1}
+    \end{figure}
+
+Un camino $ \langle v_{1},...,v_{n} \rangle $ 
+es una secuencia de vértices distinguibles tales que $u \rightarrow v$, $v \rightarrow u$ o $u - v$ para 
+cada $i= 1,..., N-1$. El camino es dirigido si $v_{i} \rightarrow v_{i+1}$ 
+para cada $i= 1,..., N-1$; $v_{i}$ es por tanto un ancestro de $v_{j}$ y $v_{j}$ es un descendiente de 
+$v_{i}$ para cada $j > i$. 
+
+Un ciclo es un camino, $\langle u,...,v \rangle$ de longitud mayor que dos 
+(excepto el caso $v_{1} = v_{N}$); un grafo 
+dirigido sin ciclos dirigidos es el ya mencionado DAG. 
+
+Generalmente, las redes bayesianas se utilizan como un marco eficiente para la
 toma de decisiones con conocimiento incierto, y mide la estructura de dependencia condicional
 de un conjunto de variables aleatorias basándose en el teorema de Bayes:\\
 \begin{equation} \label{eq:bayes}
-P(A|B) = \frac{P(B|A).P(A)}{P(B)}
+P(A|B) = \frac{P(B|A) \cdot P(A)}{P(B)}
 \end{equation}
 donde $P(A)$ es la probabilidad previa, $P(B)$ son las observaciones y la probabilidad posterior viene dada 
 por $P(A|B)$ \cite{YANG201919}.
@@ -314,7 +349,7 @@ en este tipo de modelos es computacionalmente más desafiante \cite{inference-re
 Tradicionalmente se han aplicado más las redes complejas que las bayesianas al análisis del fútbol \cite{ARRIAZAARDILES2018236}.
 Este tipo de redes nos interesan ya que su estudio está inspirado por los análisis empíricos de redes reales, y 
 permiten entender el funcionamiento de los equipos de fútbol, desde el punto de vista individual o colectivo. Usaremos 
-variables definidas sobre la red compleja para "alimentar" la red bayesiana \cite{Bai_Xing_Wu_2022}.
+variables definidas sobre la red compleja para ``alimentar" la red bayesiana \cite{Bai_Xing_Wu_2022}.
 
 \subsection{Redes complejas}
 \begin{definicion}[Redes complejas] \label{def:CN}
@@ -400,18 +435,18 @@ $$H(X):= - \sum_{x} P(x)\log[P(x)]$$
 
 bits, donde $X$ toma valores en $\mathcal{X}$, $P:\mathcal{X} \rightarrow [0,1]$, $P(x)$ es la 
 probabilidad de que $X$ esté en el estado $x$. La 
-entropía conjunta de las variables $X_1...X_n$ se define por 
-$$H(X_1,...,X_n)=-sum_{x_1}...sum_{x_n}P(x_1,...,x_n)log[P(x_1,...,x_n)]$$
+entropía conjunta de las variables $X_1...X_N$ se define por 
+$$H(X_1,...,X_N)=-\sum_{x_1}...\sum_{x_N}P(x_1,...,x_N)\log[P(x_1,...,x_N)]$$
 \end{definicion}
 
 La elección de la base para el logaritmo varía según las diferentes 
-aplicaciones. La base 2 da la unidad de bits (o "shannons"), mientras que la base $e$ da "unidades naturales" 
-nat, y la base 10 da unidades de "dits", "bans" o "hartleys". Una definición equivalente de entropía es 
+aplicaciones. La base 2 da la unidad de bits (o ``shannons"), mientras que la base $e$ da ``unidades naturales" 
+nat, y la base 10 da unidades de ``dits", ``bans" o ``hartleys". Una definición equivalente de entropía es 
 el valor esperado de autoinformación de una variable.
 
 El concepto de entropía de la información fue introducido por el matemático e ingeniero eléctrico americano 
 \href{https://en.wikipedia.org/wiki/Claude_Shannon}{Claude Shannon} en su artículo 
-de 1948 "Una teoría matemática de la comunicación" \cite{shannon-1948} y también se conoce como entropía de Shannon.
+de 1948 ``Una teoría matemática de la comunicación" \cite{shannon-1948} y también se conoce como entropía de Shannon.
 
 La entropía que más nos interesa es la de Tsallis, al ser la que se puede aplicar mejor a las redes de pases 
 que ocurren a lo largo de un partido de fútbol
@@ -422,7 +457,7 @@ complejos. Fue diseñada para analizar sistemas donde existen correlaciones entr
 \begin{definicion}[Entropía de Tsallis] \label{def:tsallis_entropy}
 Dado un conjunto discreto de probabilidades ${p_i}$ con la condición $\sum_{i} p_i = 1$, y con $q$ 
 cualquier número real, se define la entropía de Tsallis como
-$$ S_q(p_i)=\frac{k}{q-1}(1- \sum_{i=1}^{N}p_{i}^{q})$$
+$$ S_q(p_i)=\frac{k}{q-1}\left(1- \sum_{i=1}^{N}p_{i}^{q}\right)$$
 donde $q$ se denomina índice entrópico, $N$ son los microestados y $k$ es una constante positiva.
 \end{definicion}
 Si $q = 1$, obtenemos la entropía de 
