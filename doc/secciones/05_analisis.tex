@@ -235,3 +235,50 @@ nodo de $Z_1, \ldots, Z_k$. Las dos maneras en que un nodo puede bloquear un cam
 
 Estamos pues en condiciones de ver el resultado principal de $d$-separación e independencia:
 
+\begin{teorema}
+    Sean $A$ y $B$ variables de una red bayesiana separadas por $C$, entonces $A \perp B | C$.
+\end{teorema}
+    
+Alternativamente, podemos definir un I-map usando $d$-separación: un DAG sobre un conjunto de variables 
+aleatorias es un I-map del modelo de dependencia $M$ si la $d$-separación sobre dos conjuntos de variables 
+implica que son independientes.
+    
+Consecuentemente, una red bayesiana de nodos $X_i$, $i = 1, \ldots , n$ es útil para encontrar probabilidades 
+$p(x_1, \ldots, x_n)$, dado que el conjunto de variables satisface la lista de independencias representada por 
+el grafo. Esta expresión gráfica de la distribución ha ayudado a desarrollar algoritmos para aplicar algunas 
+herramientas de probabilidad como el Teorema de Bayes, o la regla de marginalización. Asimismo, también se 
+puede inferir la 
+distribución de probabilidad a partir de datos, asumiendo que hay una red bayesiana representando el conjunto 
+de independencias entre las variables \cite{buntine}.
+    
+\subsection{Algoritmos de inferencia para redes bayesianas}
+    
+La inferencia en redes bayesianas es el método por el cual, dado un conocimiento previo o {\em evidencia}, 
+podemos calcular las probabilidades de que ocurran ciertos resultados \cite{pearl88}; dado un conjunto de 
+variables aleatorias ${\bf X} = \{X_1, \dots, X_n\}$, ${\bf E} \subset {\bf X}$, con las variables previamente 
+conocidas ${\bf E} = \{E_1,\dots, E_m\}$, y un conjunto de valores ${\bf e} = \{e_1, \dots, e_m\}$ tales que 
+$e_i \in \Omega_{E_i}$, un {\em algoritmo de inferencia} o {\em algoritmo de propagación} es un método que halla 
+el valor de probabilidad 
+$$p(x_i|{\bf e}), \quad x_i \in \Omega_{X_i}, \quad \forall X_i \in {\bf X} \backslash {\bf E}.$$
+
+donde el conjunto de variables observadas puede ser vacío.
+
+Si el valor de probabilidad $p(x_i|{\bf e})$ se calcula de una manera exacta, se denomina {\em algoritmo exacto 
+de propagación}, mientras que si hacemos una aproximación $\widehat p(x_i|{\bf e})$ de $p(x_i|{\bf e})$, se 
+denominará {\em aproximado} \cite{Cano2004}.
+
+El problema de inferencia exacta para el caso general de redes bayesianas es NP-complejo \cite{Cooper}, y 
+aunque el de inferencia aproximada también lo sea \cite{Dagum}, estos métodos requieren menos 
+carga computacional, y funcionan relativamente bien en casos en los que no es posible hacer inferencia exacta.
+
+Los algoritmos de inferencia exacta \cite {ECastillo, pearl88} están basados en los conceptos de teoría 
+de la probabilidad explicados con anterioridad. Entre ellos tenemos el \href{https://ermongroup.github.io/cs228-notes/inference/ve/}{\em 
+algoritmo de eliminación de variables} o el \href{https://mjtsai1974.github.io/DevBlog/2018/10/14/bayesian-ml-clique-tree-construction/}{\em 
+algoritmo de árbol de unión} \cite{clique-tree}. 
+
+Algunos ejemplos de algoritmos de inferencia aproximada son los 
+\href{http://www.sc.ehu.es/sbweb/fisica_/numerico/montecarlo/montecarlo.html}{\em métodos de Monte 
+Carlo} \cite{Cano2004}, entre los cuales encontramos el \href{https://github.com/topics/importance-sampling}{\em 
+algoritmo de muestreo de importancia} \cite{martinez}. 
+
+
