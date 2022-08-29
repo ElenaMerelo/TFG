@@ -335,7 +335,7 @@ Una red bayesiana \cite{def-bncn} $\mathfrak{B} = \lbrace \mathcal{G}, \mathbb{P
     de tal manera que $\mathbb{P}(V[1],...,V[N])= \prod_{i=1}^{n}\mathbb{P}(V[i]|pa(V[i]))$, donde $pa(V[i])$ es el 
     conjunto de los nodos padre de $V[i]$ en $\mathcal{G}$.  
 \end{itemize}
-\end{definicion}
+\end{definicion} 
 
 En otras palabras, una red bayesiana es un grafo donde los nodos representan variables aleatorias discretas 
 o contínuas y los bordes o aristas representan las influencias entre ellas. Las aristas 
@@ -378,6 +378,34 @@ P(A|B) = \frac{P(B|A) \cdot P(A)}{P(B)}
 \end{equation}
 donde $P(A)$ es la probabilidad previa, $P(B)$ son las observaciones y la probabilidad posterior viene dada 
 por $P(A|B)$ \cite{YANG201919}.
+
+En \ref{ch5} profundizaremos más sobre este tipo de redes.
+
+\subsection{Redes bayesianas causales} \label{sect:CBN}
+Se introducen al ser más efectivas que las redes bayesianas generales para el descubrimiento de 
+causalidades. Una característica esencial de ellas es que pueden responder tanto a consultas de 
+intervención como a probabilísticas. Una {\em intervención} sobre una variable aleatoria $X_{i}$ a 
+$x_{i}$, notado como $do(X_{i}=x_{i})$, es una perturbación realizada por un agente externo, que 
+fuerza a $X_{i}$ ser $x_{i}$. Más específicamente, se toman como {\em datos observacionales} a aquellos 
+que son observados pasivamente. Los valores que se toman de cada variable se determinan por las interacciones 
+causales entre ellos dentro del sistema. {\em Datos intervencionales} son los fenómenos intervenidos por 
+agentes externos. A algunas variables en el sistema le son dados valores fijos por una fuerza externa, normalmente 
+humanos. 
+
+La intervención es pues lo que separa $X_{i}$ de sus causas directas, mediante la eliminación de todos los arcos 
+que llegan a $X_{i}$ y estableciendo el modelo de distribución condicionada de $X_{i}$ a $P(X_{i}|pa(X_{i}))=I(X_{i} = x_{i})$, 
+donde $I(X_{i} = x_{i})$ es la probabilidad de que sean independientes \cite{LCBN}.
+
+Formalmente \cite{learning-CBNs}, 
+\begin{definicion}
+   Un DAG $G$ es una red bayesiana causal \cite{LBCN} compatible con cualquier distribución intervencional $P(v|do(X=x))$, donde $v$ es 
+   una asignación de los valores a $V$ y $X \subset V$, pudiendo ser $X= \emptyset$, $\rightleftarrows$
+   \begin{itemize}
+    \item Cada $P(v|do(X=x))$ cumple la condición de Markov.
+    \item $P(X_{i}|do(X=x))= I(X_{i}=x_{i})$ con $X_{i} \subset X$.
+    \item $P(X_{i}|pa(X_{i}), do(X=x))=P(X_{i}|pa(X_{i}))$, con $X_{i} \nsubseteq X$.
+   \end{itemize}
+\end{definicion}
 
 En aplicaciones prácticas, es común encontrar escenarios que
 involucran variables discretas y continuas simultáneamente. Este tipo de problemas se pueden modelar 

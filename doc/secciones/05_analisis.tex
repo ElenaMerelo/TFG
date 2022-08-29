@@ -1,4 +1,4 @@
-\chapter{Desarrollo teórico}
+\chapter{Desarrollo teórico} \label{ch5}
 En este capítulo estableceremos la base matemática del proyecto. Principalmente nos basaremos en 
 los libros \textit{Análisis de datos avanzado desde un punto de vista elemental} \cite{ada}, 
 \textit{Learning Bayesian Networks} \cite{neapolitan} 
@@ -184,6 +184,23 @@ Las clases de causalidad que producen redes bayesianas son:
     Se dirá que son {\em nodos divergentes}. \label{nodos-div}
 \end{itemize}
 
+Probablemente el aspecto más importante de las redes bayesianas es que son representaciones directas del mundo, no de procesos de 
+razonamiento. Las flechas en el DAG (ver por ejemplo \ref{img:dag1}) representan conexiones causales reales, y no el flujo de información 
+durante un razonamiento, como en \href{http://personales.upv.es/ccarrasc/doc/SRP-16.htm}{sistemas basados en reglas} o 
+\href{https://www.frro.utn.edu.ar/repositorio/catedras/quimica/5_anio/orientadora1/monograias/matich-redesneuronales.pdf}{redes neuronales} \cite{pearl-and-rusell}.
+Procesos de razonamiento pueden operar en redes bayesianas mediante la propagación de información en cualquier dirección.
+
+La mayor parte de los modelos probabilísticos, incluidas las redes bayesianas generales, describen 
+una distribución sobre eventos que pueden haber sido observados, pero no dicen nada sobre qué pasará 
+si una cierta intervención tiene lugar. Una {\em red causal} (introducida en \ref{sect:CBN}) es una red bayesiana 
+con la propiedad añadida de que los padres de cada nodo son sus causas directas \cite{pearl-and-rusell}. 
+Las redes causales se definen pues como redes bayesianas en las cuales el modelo de probabilidad 
+viene dado por la eliminación de enlaces de nodos del padre; en general (y a no ser que indiquemos lo contrario), 
+cuando hablemos de redes bayesianas nos referiremos a redes bayesianas causales.
+Aparte de que las redes bayesianas son usadas para descubrir estructuras causales en datos estadísticos no 
+procesados, como iremos viendo \cite{causal-discov}. \footnote{Para obtener una idea más clara de la distinción redes bayesianas / redes bayesianas causales, consultar 
+\href{https://armahmood.github.io/files/mahmood-TR11-01.pdf}{el siguiente enlace}.}
+
 \subsection{Factorización de redes bayesianas}
 Nos interesa reducir el número de parámetros que encontrarmos en las redes bayesianas, de manera que sean menos 
 costosas de analizar, y la predicción sea mejor. En este subsección estudiamos maneras de hacerlo.
@@ -197,6 +214,11 @@ disjuntos, y $\mathbf{A_1}, \mathbf{A_2}$ no vacíos, si la relación de indepen
 Si tenemos un conjunto de variables aleatorias cada una en un nodo de un DAG \ref{def:grafo}, la {\em condición 
 de Markov} nos dice que una variable aleatoria de un grafo es independiente de sus no-descendientes, dados 
 sus padres \cite{markov-assumption}. 
+
+Una red bayesiana causal satisface la {\em condición de Markov causal}: dadas las causas directas, el fenómeno 
+asociado a un nodo es independiente de los que no tienen efecto sobre él. Esta asunción permite que la distribución 
+conjunta de las variables en una red causal sea factorizada como \cite{LCBN}:
+$$ P(X_{1}, \dots,X_{N}) = \prod_{i=1}^{N} P(X_{i} | pa(X_{i}))$$ 
 
 Una distribución de probabilidad $P$ en un DAG $D$ constituye una {\em red bayesiana} $\leftrightarrow$ $D$ es un 
 I-map mínimo de $P$. Esto nos dice que una red bayesiana sobre un conjunto de variables aleatorias puede verse 
