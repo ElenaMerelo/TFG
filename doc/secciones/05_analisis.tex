@@ -278,7 +278,42 @@ algoritmo de árbol de unión} \cite{clique-tree}.
 
 Algunos ejemplos de algoritmos de inferencia aproximada son los 
 \href{http://www.sc.ehu.es/sbweb/fisica_/numerico/montecarlo/montecarlo.html}{\em métodos de Monte 
-Carlo} \cite{Cano2004}, entre los cuales encontramos el \href{https://github.com/topics/importance-sampling}{\em 
-algoritmo de muestreo de importancia} \cite{martinez}. 
+Carlo} \cite{Cano2004}, entre los cuales encontramos el \href{https://github.com/topics/importance-sampling}{\em algoritmo de muestreo de importancia} \cite{martinez}. 
 
+\subsection{Algoritmos de aprendizaje para redes bayesianas}
+En este apartado, veremos algunos algoritmos que se pueden usar para obtener redes bayesianas.
+\subsubsection{Conceptos}
+    
+La tarea de aprender una red bayesiana consiste en, dado un conjunto de muestras de la distribución 
+conjunta, recuperar la estructura del grafo y el conjunto de distribuciones de probabilidad \cite{different-algorithmic-schemes}.
+    
+Formalmente, si tenemos un conjunto $({\bf x}^{(1)}, \dots, {\bf x}^{(m)})$ de muestras del conjunto de variables 
+${\bf X} = \{X_1, \dots, X_n\}$, nuestro objetivo es encontrar la red bayesiana que mejor representa los datos. Los 
+pasos para encontrar una solución óptima son \cite{Cano2004}: 
+\begin{enumerate}
+    \item Aprendizaje de la estructura de la red.
+    \item Aprendizaje del conjunto de parámetros. 
+\end{enumerate}
 
+El segundo ha sido muy estudiado, y tiene una solución exacta \cite{neapolitan}. Para el primero, podemos:
+\begin{enumerate}
+    \item \label{first-scheme} Detectar el conjunto de independencias entre las variables
+    \item \label{second-scheme} Buscar una red que represente correctamente las muestras que tenemos.
+\end{enumerate}
+    
+
+\ref{first-scheme} detecta independencias haciendo tests y añadiéndolas a una lista, para dar una red 
+bayesiana que representa a la mayoría o todas las independencias obtenidas de esa manera \cite{learning-algorithms-BN-comparison}, 
+mientras que \ref{second-scheme} (llamado ``buscar y puntuar'') busca en el espacio de todas las posibles estructuras 
+de redes bayesianas, asignando a cada una un valor real o puntuación con una cierta función o métrica, que mide lo 
+adecuada que es la red para esos datos \cite{more-algorithms}.
+
+En ambos casos, el espacio de búsqueda, esto es, el conjunto de todos los DAG posibles entre las $n$ variables, 
+es de tamaño {\em híper exponencial}; es un hecho que la búsqueda de la estructura óptima del grafo no se puede 
+hacer con un ordenador \cite{Chickering}. Para encontrar una buena estructura de red se usan algoritmos de búsqueda 
+aproximada. Entre ellos, aquellos que emplean heurísticas o metaheurística suelen encontrar buenas soluciones. Pasamos 
+a ver uno que usa de las heurísticas más fáciles.
+
+\subsubsection{Algoritmo PC}
+
+\subsubsection{Algoritmo de propagación para detrás}
