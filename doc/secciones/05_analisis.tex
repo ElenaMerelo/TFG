@@ -5,19 +5,19 @@ los libros \textit{Análisis de datos avanzado desde un punto de vista elemental
 y \textit{Redes probabilísticas para aficionados - Una guía para la construcción y análisis de redes 
 bayesianas y diagramas de influencia} \cite{pgm}, junto con el capítulo 
 \textit{Visión general de la representación y descubrimiento de relaciones causales usando redes 
-bayesianas} \cite{cooper} y la tesis \textit{Modelos de clasificación de documentos basados en redes 
+bayesianas} \cite{Cooper} y la tesis \textit{Modelos de clasificación de documentos basados en redes 
 bayesianas} \cite{tesis-alfonso}.
 
 \section{Teoría de la probabilidad}
 
 \subsection{Conceptos básicos}
-En esta subsección revisaremos algunos de los conceptos básicos de teoría de la probabilidad para el 
+En esta subsección revisaremos algunos conceptos de teoría de la probabilidad básicos, en el 
 caso discreto. 
 
 \subsubsection{Funciones y espacios de probabilidad}
 Un {\em espacio muestral} es un conjunto contable\footnote{Un conjunto es {\em contable} si tiene el mismo número de 
 elementos (cardinalidad) que algún subconjunto de los números naturales, $\mathbb{N}$.} $\Omega = \{x_1, x_2, 
-\dots \}$ que representa todos los posibles resultados de un experimento.
+\dots \}$ que representa los posibles resultados de un experimento.
 
 Una función $P : 2^\Omega \longrightarrow \mathbb{R}$, donde $2^\Omega$ es el conjunto de todos los 
 subconjuntos (eventos) de $\Omega$, se denomina {\em función de probabilidad} si satisface los axiomas de 
@@ -53,16 +53,6 @@ P(A) = \sum_{i=1}^n P(A \cup E_i) = \sum_{i=1}^n P(A|E_i)P(E_i).
 
 Esta propiedad se llama {\em regla de probabilidad total}, y puede ser demostrada con teoría básica de conjuntos.
 
-%\begin{theorem} \emph{(Bayes)} 
-%Dados dos eventos $A, B \in \Omega$, tales que $P(A) \neq 0$ y $P(B) \neq 0$, tenemos que
-%$$P(A|B) = \frac{P(A)P(B|A)}{P(B)}.$$
-%\end{theorem}
-
-%\begin{proof}
-%Using the definition of conditional probability, $P(A|B) = \frac{P(A \cap B)}{P(B)}$ and $P(B|A) = \frac{P(A \cap B)}{P(A)}$.
-%Therefore $P(A|B)P(B) = P(B|A)P(A)$.--
-%\end{proof}
-
 \subsubsection{Variables aleatorias}
 
 Una {\em variable aleatoria} (discreta) es una función que mapea eventos a valores de un conjunto contable, donde 
@@ -81,7 +71,7 @@ $p(x)$ en vez de $P(X=x)$. Esta cantidad es la {\em probabilidad de $x$}.
 Asimismo, para una variable aleatoria $A$, denominaremos al conjunto de valores que $A$ puede tener como 
 ``rango de $A$'', $\Omega_A$.
 
-Dadas dos variables aleatorias $X,Y$ definidas en el mismo espacio muestral, y dos valores $x$ de $X$ e $y$ de 
+Dadas $X,Y$ variables aleatorias definidas en el mismo espacio muestral, y dos valores $x$ de $X$ e $y$ de 
 $Y$, podemos medir la probabilidad del evento intersección $P(X=x, Y=y)$, la cual se denomina {\em distribución 
 de probabilidad conjunta} de $X$ e $Y$. Podemos definir la distribución de probabilidad conjunta de un conjunto 
 arbitrario de variables aleatorias $\{X_1, X_2, \dots, X_n \}$ como $P(X_1=x_1, X_2=x_2,\dots, X_n=x_n )$.
@@ -119,12 +109,11 @@ independientes si
 
 $$p(x,y) = p(x) \, p(y).$$
 
-Además, dos variables aleatorias $X$ e $Y$ son {\em independientes} sí y solo sí 
-Two random variables $X$ and $Y$ are {\em independent} if and only if $$P(X=x, Y=y) = P(X=x) \, P(Y=y),$$ 
+Además, $X$ e $Y$ son {\em independientes} sí y solo sí $$P(X=x, Y=y) = P(X=x) \, P(Y=y),$$ 
 para todos los valores $x,y$ de $X$ e $Y$, respectivamente.
 
 Para problemas con al menos tres variables aleatorias, $X,Y,Z$, puede observarse {\em independencia 
-condicionada}; diremos que $X$ e $Y$ son {\em independientes condicionadamente dada $Z$} sí y solo sí todo par 
+condicionada}; diremos que, dada $Z$, $X$ e $Y$ son {\em independientes condicionadamente } $\leftrightarrow$ todo par 
 de valores $x$ (de $X$) e $y$ (de $Y$) es independiente condicionadamente para cada $z$ (de $Z$), tal que 
 $p(z) > 0$, esto es:
 
@@ -134,7 +123,197 @@ Este concepto no está solo limitado a tres variables, y se puede extender a con
 
 Diremos que una variable es {\em observada} si toma uno de los valores de su rango. Si queremos testear la {\em 
 independencia con respecto a una variable observada}, necesitamos únicamente testear la independencia con respecto 
-a ese valor asignado. Es de notar que observar una variable puede cambiar las relaciones de Independencia entre 
+a ese valor asignado. Es de notar que observar una variable puede cambiar las relaciones de independencia entre
 un conjunto de variables.
 
-%wip 
+Escribiremos $A\perp B | C$ cuando una variable $A$ es independiente de otra, $B$, tras la observación de $C$. Si 
+$A$ es independiente de $B$, sin observaciones adicionales, escribiremos $A \perp B$.
+
+Dados $\mathbf{W, X, Y, Z}$ conjuntos de variables aleatorias, las relaciones de independencia tienen 
+las siguientes propiedades:
+
+\begin{itemize}
+ \item Simetría $(\mathbf{X} \perp \mathbf{Y} | \mathbf{Z}) \Rightarrow (\mathbf{Y} \perp \mathbf{X} | \mathbf{Z})$.
+ \item Descomposición $(\mathbf{X} \perp \mathbf{Y, W} | \mathbf{Z}) \Rightarrow (\mathbf{X} \perp \mathbf{Y} | \mathbf{Z})$.
+\end{itemize}
+
+\section{Redes bayesianas}
+
+\subsection{Introducción}
+Las redes bayesianas nos ayudan a modelar y entender las muchas variables que informan nuestro proceso de 
+toma de decisiones. Las decisiones más complejas están normalmente basadas en una multitud de factores o 
+variables. Por ejemplo, para el presidente de un equipo de fútbol \ref{hu:presidente}, podemos 
+mapear la decisión que tiene que tomar y las diferentes variables usando 
+una red bayesiana, esto es, un modelo gráfico que captura la relación entre variables que están bajo 
+supuestos de causalidad o influencia \cite{things-to-know-BN}.
+
+Como ya hemos comentado en \ref{subsect:BN}, \textbf{una red bayesiana es un diagrama que 
+usa flechas o arcos dirigidos para mostrar cómo distintos factores, representados por nodos elípticos, se 
+influencian los unos a los otros.} Cada nodo viene con una tabla de probabilidades condicionadas, la cual 
+refleja las posibilidades de que tenga lugar distintos desenlaces, provenientes de las influencias que 
+le afectan directamente. Una vez la estructura del grafo y dicha tabla han sido definidas, hay algoritmos 
+estándar que calculan los estados de las variables desconocidas basándose en los estados de las variables 
+conocidas en el modelo \cite{learning-algorithms-BN-comparison}, \cite{BN-achilles-heel}, 
+\cite{different-algorithmic-schemes}.
+
+Una de las razones por las que las redes bayesianas son tan potentes es que pueden realizar inferencias 
+tanto predictivas como diagnósticas. Por ejemplo, podemos por un lado predecir la posición en la liga de 
+un equipo para un valor dado de rendimiento, y por otro ingresar un estado de posición en la 
+liga como observación para examinar qué nivel de desempeño del equipo podría explicarla. Estos algoritmos 
+estándar son llamados algoritmos de ``propagación bayesiana" \cite{Cano2004}, \cite{more-algorithms}, 
+\cite{back-prop} porque se basan en el teorema de Bayes; en ellos, la probabilidad de una variable 
+desconocida se actualiza después de que se obtenga evidencia relevante para esa variable \cite{prop-alg}.
+
+Las clases de causalidad que producen redes bayesianas son:
+\begin{itemize}
+    \item \textbf{Cadena causal}: describe variables que tienen un efecto dominó las unas sobre las otras. 
+    Por ejemplo, \textit{cambios en la calidad de los jugadores} tiene impacto sobre el \textit{desempeño 
+    del equipo} que a su vez influencia la \textit{posición en la liga}. 
+    Esto quiere decir que la \textit{posición en la liga} es independiente de los \textit{cambios en la 
+    calidad de los jugadores} una vez conocemos el \textit{desempeño del equipo}.\\
+    cambios en la calidad de los jugadores $\rightarrow$ Desempeño del equipo $\rightarrow$ Posición en la 
+    liga
+    Se dirá que son {\em nodos en secuencia}. \label{nodos-secuencia}
+    \item \textbf{Efecto común}: ocurre cuando dos variables diferentes, tales como \textit{fichajes} y \textit{jugadores vendidos}, tienen influencia sobre una tercera variable tal como 
+    \textit{gasto neto en transferencias}. Esto significa que \textit{jugadores vendidos} depende de \textit{fichajes} una vez que conocemos el \textit{gasto neto en transferencias}.\\
+    Fichajes $\rightarrow$ Gasto neto en transferencias $\leftarrow$ Jugadores vendidos 
+    Se dirá que son {\em nodos convergentes}. \label{nodos-conv}   
+    \item \textbf{Causa común}: tiene lugar cuando dos variables distintas, tales como \textit{posición en la liga} y \textit{asistencia}, se ven influenciados por la misma variable, tal 
+    como \textit{desempeño del equipo}. Ello significa que \textit{asistencia} es independiente de \textit{posición en la liga} una vez conocemos \textit{desempeño del equipo}.\\
+    Posición en la liga $\leftarrow$ Desempeño del equipo $\rightarrow$ Asistencia
+    Se dirá que son {\em nodos divergentes}. \label{nodos-div}
+\end{itemize}
+
+\subsection{Factorización de redes bayesianas}
+Nos interesa reducir el número de parámetros que encontrarmos en las redes bayesianas, de manera que sean menos 
+costosas de analizar, y la predicción sea mejor. En este subsección estudiamos maneras de hacerlo.
+
+Dado un conjunto de variables aleatorias $\mathbf{U} = \{X_1, \dots, X_n\}$, un {\em modelo de dependencia} $M$ 
+es un conjunto de relaciones de independencia suficiente para determinar, para cualesquiera $\mathbf{A_1}, 
+\mathbf{A_2}, \mathbf{A_3} \subset \mathbf{U}$ con $\mathbf{A_1}, \mathbf{A_2}, \mathbf{A_3}$
+disjuntos, y $\mathbf{A_1}, \mathbf{A_2}$ no vacíos, si la relación de independencia $\mathbf{A_1} \perp 
+\mathbf{A_2} | \mathbf{A_3}$ es verdadera o falsa. 
+
+Si tenemos un conjunto de variables aleatorias cada una en un nodo de un DAG \ref{def:grafo}, la {\em condición 
+de Markov} nos dice que una variable aleatoria de un grafo es independiente de sus no-descendientes, dados 
+sus padres \cite{markov-assumption}. 
+
+Una distribución de probabilidad $P$ en un DAG $D$ constituye una {\em red bayesiana} $\leftrightarrow$ $D$ es un 
+I-map mínimo de $P$. Esto nos dice que una red bayesiana sobre un conjunto de variables aleatorias puede verse 
+como un conjunto de relaciones de independencia almacenadas usando un DAG \cite{i-map}.
+
+\begin{teorema}\emph{(Factorización de una red bayesiana)} 
+La distribución conjunta de una red bayesiana $P(X_1, \dots, X_n)$ se factoriza de la siguiente manera:
+
+$$P(X_1, \dots, X_n) = \prod_{i=1}^n P(X_i|pa(X_i))$$
+
+donde $pa(X_i)$ es el conjunto de padres de la variable en el grafo. 
+\end{teorema}
+
+El recíproco también es cierto:
+
+\begin{teorema} Sea $P$ una distribución en un grafo tal que $P(X_1, \dots, X_n) = \prod_{i=1}^n P(X_i|Pa(X_i))$. Entonces, el grafo es un I-map de $P$.
+\end{teorema}
+
+Las redes bayesianas cumplen el conjunto de condiciones de Markov, si bien suele aplicarse (y son equivalentes) 
+más el concepto de $d$-separación, un criterio gráfico de independencia, por su buen rendimiento computacional 
+\cite{pearl88}.
+
+\subsection{Criterios gráficos de independencia}
+
+Las redes bayesianas nos dan un conjunto de {\em criterios gráficos} para comprobar si, dado otro conjunto, dos 
+conjuntos de variables aleatorias son independientes.
+
+Diremos que $X$ está $d$-separado (o simplemente {\em separado}) de $Y$ dados $Z_1, \dots, Z_k$ si todos los 
+caminos entre $X$ e $Y$ recorriendo los arcos de la red en ambas direcciones , están {\em bloqueados} por cualquier 
+nodo de $Z_1, \ldots, Z_k$. Las dos maneras en que un nodo puede bloquear un camino son: 
+
+\begin{itemize}
+\item Hay observaciones de nodos en secuencia en el camino.
+\item Hay un nodo convergente sin observar, cono todos sus descendientes no observados
+\end{itemize}
+
+Estamos pues en condiciones de ver el resultado principal de $d$-separación e independencia:
+
+\begin{teorema}
+    Sean $A$ y $B$ variables de una red bayesiana separadas por $C$, entonces $A \perp B | C$.
+\end{teorema}
+    
+Alternativamente, podemos definir un I-map usando $d$-separación: un DAG sobre un conjunto de variables 
+aleatorias es un I-map del modelo de dependencia $M$ si la $d$-separación sobre dos conjuntos de variables 
+implica que son independientes.
+    
+Consecuentemente, una red bayesiana de nodos $X_i$, $i = 1, \ldots , n$ es útil para encontrar probabilidades 
+$p(x_1, \ldots, x_n)$, dado que el conjunto de variables satisface la lista de independencias representada por 
+el grafo. Esta expresión gráfica de la distribución ha ayudado a desarrollar algoritmos para aplicar algunas 
+herramientas de probabilidad como el Teorema de Bayes, o la regla de marginalización. Asimismo, también se 
+puede inferir la 
+distribución de probabilidad a partir de datos, asumiendo que hay una red bayesiana representando el conjunto 
+de independencias entre las variables \cite{buntine}.
+    
+\subsection{Algoritmos de inferencia para redes bayesianas}
+    
+La inferencia en redes bayesianas es el método por el cual, dado un conocimiento previo o {\em evidencia}, 
+podemos calcular las probabilidades de que ocurran ciertos resultados \cite{pearl88}; dado un conjunto de 
+variables aleatorias ${\bf X} = \{X_1, \dots, X_n\}$, ${\bf E} \subset {\bf X}$, con las variables previamente 
+conocidas ${\bf E} = \{E_1,\dots, E_m\}$, y un conjunto de valores ${\bf e} = \{e_1, \dots, e_m\}$ tales que 
+$e_i \in \Omega_{E_i}$, un {\em algoritmo de inferencia} o {\em algoritmo de propagación} es un método que halla 
+el valor de probabilidad 
+$$p(x_i|{\bf e}), \quad x_i \in \Omega_{X_i}, \quad \forall X_i \in {\bf X} \backslash {\bf E}.$$
+
+donde el conjunto de variables observadas puede ser vacío.
+
+Si el valor de probabilidad $p(x_i|{\bf e})$ se calcula de una manera exacta, se denomina {\em algoritmo exacto 
+de propagación}, mientras que si hacemos una aproximación $\widehat p(x_i|{\bf e})$ de $p(x_i|{\bf e})$, se 
+denominará {\em aproximado} \cite{Cano2004}.
+
+El problema de inferencia exacta para el caso general de redes bayesianas es NP-complejo \cite{Cooper}, y 
+aunque el de inferencia aproximada también lo sea \cite{Dagum}, estos métodos requieren menos 
+carga computacional, y funcionan relativamente bien en casos en los que no es posible hacer inferencia exacta.
+
+Los algoritmos de inferencia exacta \cite {ECastillo, pearl88} están basados en los conceptos de teoría 
+de la probabilidad explicados con anterioridad. Entre ellos tenemos el \href{https://ermongroup.github.io/cs228-notes/inference/ve/}{\em 
+algoritmo de eliminación de variables} o el \href{https://mjtsai1974.github.io/DevBlog/2018/10/14/bayesian-ml-clique-tree-construction/}{\em 
+algoritmo de árbol de unión} \cite{clique-tree}. 
+
+Algunos ejemplos de algoritmos de inferencia aproximada son los 
+\href{http://www.sc.ehu.es/sbweb/fisica_/numerico/montecarlo/montecarlo.html}{\em métodos de Monte 
+Carlo} \cite{Cano2004}, entre los cuales encontramos el \href{https://github.com/topics/importance-sampling}{\em algoritmo de muestreo de importancia} \cite{martinez}. 
+
+\subsection{Algoritmos de aprendizaje para redes bayesianas}
+En este apartado, veremos algunos algoritmos que se pueden usar para obtener redes bayesianas.
+\subsubsection{Conceptos}
+    
+La tarea de aprender una red bayesiana consiste en, dado un conjunto de muestras de la distribución 
+conjunta, recuperar la estructura del grafo y el conjunto de distribuciones de probabilidad \cite{different-algorithmic-schemes}.
+    
+Formalmente, si tenemos un conjunto $({\bf x}^{(1)}, \dots, {\bf x}^{(m)})$ de muestras del conjunto de variables 
+${\bf X} = \{X_1, \dots, X_n\}$, nuestro objetivo es encontrar la red bayesiana que mejor representa los datos. Los 
+pasos para encontrar una solución óptima son \cite{Cano2004}: 
+\begin{enumerate}
+    \item Aprendizaje de la estructura de la red.
+    \item Aprendizaje del conjunto de parámetros. 
+\end{enumerate}
+
+El segundo ha sido muy estudiado, y tiene una solución exacta \cite{neapolitan}. Para el primero, podemos:
+\begin{enumerate}
+    \item \label{first-scheme} Detectar el conjunto de independencias entre las variables
+    \item \label{second-scheme} Buscar una red que represente correctamente las muestras que tenemos.
+\end{enumerate}
+    
+
+\ref{first-scheme} detecta independencias haciendo tests y añadiéndolas a una lista, para dar una red 
+bayesiana que representa a la mayoría o todas las independencias obtenidas de esa manera \cite{learning-algorithms-BN-comparison}, 
+mientras que \ref{second-scheme} (llamado ``buscar y puntuar'') busca en el espacio de todas las posibles estructuras 
+de redes bayesianas, asignando a cada una un valor real o puntuación con una cierta función o métrica, que mide lo 
+adecuada que es la red para esos datos \cite{more-algorithms}.
+
+En ambos casos, el espacio de búsqueda, esto es, el conjunto de todos los DAG posibles entre las $n$ variables, 
+es de tamaño {\em híper exponencial}; es un hecho que la búsqueda de la estructura óptima del grafo no se puede 
+hacer con un ordenador \cite{Chickering}. Para encontrar una buena estructura de red se usan algoritmos de búsqueda 
+aproximada. Entre ellos, aquellos que emplean heurísticas o metaheurística suelen encontrar buenas soluciones. Pasamos 
+a ver uno que usa de las heurísticas más fáciles.
+
+\subsubsection{Algoritmo PC}
+
+\subsubsection{Algoritmo de propagación para detrás}
