@@ -139,6 +139,7 @@ las siguientes propiedades:
 
 \section{Redes bayesianas}
 
+\subsection{Introducción}
 Las redes bayesianas nos ayudan a modelar y entender las muchas variables que informan nuestro proceso de 
 toma de decisiones. Las decisiones más complejas están normalmente basadas en una multitud de factores o 
 variables. Por ejemplo, para el presidente de un equipo de fútbol \ref{hu:presidente}, podemos 
@@ -165,16 +166,22 @@ desconocida se actualiza después de que se obtenga evidencia relevante para esa
 
 Las clases de causalidad que producen redes bayesianas son:
 \begin{itemize}
-    \item \textbf{Cadena causal}: describe variables que tienen un efecto dominó las unas sobre las otras. Por ejemplo, \textit{cambios en la calidad de 
-    los jugadores} tiene impacto sobre el \textit{desempeño del equipo} que a su vez influencia la \textit{posición en la liga}. 
-    Esto quiere decir que la \textit{posición en la liga} es independiente de los \textit{cambios en la calidad de los jugadores} una vez conocemos el \textit{desempeño del equipo}.\\
-    cambios en la calidad de los jugadores $\rightarrow$ Desempeño del equipo $\rightarrow$ Posición en la liga
+    \item \textbf{Cadena causal}: describe variables que tienen un efecto dominó las unas sobre las otras. 
+    Por ejemplo, \textit{cambios en la calidad de los jugadores} tiene impacto sobre el \textit{desempeño 
+    del equipo} que a su vez influencia la \textit{posición en la liga}. 
+    Esto quiere decir que la \textit{posición en la liga} es independiente de los \textit{cambios en la 
+    calidad de los jugadores} una vez conocemos el \textit{desempeño del equipo}.\\
+    cambios en la calidad de los jugadores $\rightarrow$ Desempeño del equipo $\rightarrow$ Posición en la 
+    liga
+    Se dirá que son {\em nodos en secuencia}. \label{nodos-secuencia}
     \item \textbf{Efecto común}: ocurre cuando dos variables diferentes, tales como \textit{fichajes} y \textit{jugadores vendidos}, tienen influencia sobre una tercera variable tal como 
     \textit{gasto neto en transferencias}. Esto significa que \textit{jugadores vendidos} depende de \textit{fichajes} una vez que conocemos el \textit{gasto neto en transferencias}.\\
-    Fichajes $\rightarrow$ Gasto neto en transferencias $\leftarrow$ Jugadores vendidos    
+    Fichajes $\rightarrow$ Gasto neto en transferencias $\leftarrow$ Jugadores vendidos 
+    Se dirá que son {\em nodos convergentes}. \label{nodos-conv}   
     \item \textbf{Causa común}: tiene lugar cuando dos variables distintas, tales como \textit{posición en la liga} y \textit{asistencia}, se ven influenciados por la misma variable, tal 
     como \textit{desempeño del equipo}. Ello significa que \textit{asistencia} es independiente de \textit{posición en la liga} una vez conocemos \textit{desempeño del equipo}.\\
     Posición en la liga $\leftarrow$ Desempeño del equipo $\rightarrow$ Asistencia
+    Se dirá que son {\em nodos divergentes}. \label{nodos-div}
 \end{itemize}
 
 \subsection{Factorización de redes bayesianas}
@@ -192,10 +199,8 @@ de Markov} nos dice que una variable aleatoria de un grafo es independiente de s
 sus padres \cite{markov-assumption}. 
 
 Una distribución de probabilidad $P$ en un DAG $D$ constituye una {\em red bayesiana} $\leftrightarrow$ $D$ es un 
-mapa-I mínimo de $P$. Esto nos dice que una red bayesiana sobre un conjunto de variables aleatorias puede verse 
-como un conjunto de relaciones de independencia almacenadas usando un DAG.
-%añadir cita
-
+I-map mínimo de $P$. Esto nos dice que una red bayesiana sobre un conjunto de variables aleatorias puede verse 
+como un conjunto de relaciones de independencia almacenadas usando un DAG \cite{i-map}.
 
 \begin{teorema}\emph{(Factorización de una red bayesiana)} 
 La distribución conjunta de una red bayesiana $P(X_1, \dots, X_n)$ se factoriza de la siguiente manera:
@@ -204,4 +209,29 @@ $$P(X_1, \dots, X_n) = \prod_{i=1}^n P(X_i|pa(X_i))$$
 
 donde $pa(X_i)$ es el conjunto de padres de la variable en el grafo. 
 \end{teorema}
+
+El recíproco también es cierto:
+
+\begin{teorema} Sea $P$ una distribución en un grafo tal que $P(X_1, \dots, X_n) = \prod_{i=1}^n P(X_i|Pa(X_i))$. Entonces, el grafo es un I-map de $P$.
+\end{teorema}
+
+Las redes bayesianas cumplen el conjunto de condiciones de Markov, si bien suele aplicarse (y son equivalentes) 
+más el concepto de $d$-separación, un criterio gráfico de independencia, por su buen rendimiento computacional 
+\cite{pearl88}.
+
+\subsection{Criterios gráficos de independencia}
+
+Las redes bayesianas nos dan un conjunto de {\em criterios gráficos} para comprobar si, dado otro conjunto, dos 
+conjuntos de variables aleatorias son independientes.
+
+Diremos que $X$ está $d$-separado (o simplemente {\em separado}) de $Y$ dados $Z_1, \dots, Z_k$ si todos los 
+caminos entre $X$ e $Y$ recorriendo los arcos de la red en ambas direcciones , están {\em bloqueados} por cualquier 
+nodo de $Z_1, \ldots, Z_k$. Las dos maneras en que un nodo puede bloquear un camino son: 
+
+\begin{itemize}
+\item Hay observaciones de nodos en secuencia en el camino.
+\item Hay un nodo convergente sin observar, cono todos sus descendientes no observados
+\end{itemize}
+
+Estamos pues en condiciones de ver el resultado principal de $d$-separación e independencia:
 
