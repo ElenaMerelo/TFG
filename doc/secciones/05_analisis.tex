@@ -192,7 +192,7 @@ Procesos de razonamiento pueden operar en redes bayesianas mediante la propagaci
 
 La mayor parte de los modelos probabilísticos, incluidas las redes bayesianas generales, describen 
 una distribución sobre eventos que pueden haber sido observados, pero no dicen nada sobre qué pasará 
-si una cierta intervención tiene lugar. Una {\em red causal} (introducida en \ref{sect:CBN}) es una red bayesiana 
+si una cierta intervención tiene lugar. Una {\em red causal} es una red bayesiana 
 con la propiedad añadida de que los padres de cada nodo son sus causas directas \cite{pearl-and-rusell}. 
 Las redes causales se definen pues como redes bayesianas en las cuales el modelo de probabilidad 
 viene dado por la eliminación de enlaces de nodos del padre; en general (y a no ser que indiquemos lo contrario), 
@@ -333,9 +333,4 @@ adecuada que es la red para esos datos \cite{more-algorithms}.
 En ambos casos, el espacio de búsqueda, esto es, el conjunto de todos los DAG posibles entre las $n$ variables, 
 es de tamaño {\em híper exponencial}; es un hecho que la búsqueda de la estructura óptima del grafo no se puede 
 hacer con un ordenador \cite{Chickering}. Para encontrar una buena estructura de red se usan algoritmos de búsqueda 
-aproximada. Entre ellos, aquellos que emplean heurísticas o metaheurística suelen encontrar buenas soluciones. Pasamos 
-a ver uno que usa de las heurísticas más fáciles.
-
-\subsubsection{Algoritmo PC}
-
-\subsubsection{Algoritmo de propagación para detrás}
+aproximada. Entre ellos, aquellos que emplean heurísticas o metaheurística suelen encontrar buenas soluciones. 
