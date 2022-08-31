@@ -17,7 +17,8 @@
 #install.packages("tidyverse")
 #install.packages("igraph", dependencies=TRUE)
 # devtools::install_github("FCrSTATS/SBpitch") # to plot a pitch
-
+install.packages("fmsb")
+library(fmsb)
 library(SBpitch)
 library(StatsBombR)
 library(igraph)

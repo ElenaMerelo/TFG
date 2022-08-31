@@ -1,3 +1,5 @@
+library(ggplot2)
+library(fmsb)
 library(StatsBombR)
 library(igraph)
 library(tidyverse)
@@ -61,8 +63,9 @@ plot(england.simplified,
 dev.off()
 view(england.simplified$diversity)
 
-# análogo para noruega
 
+# análogo para noruega
+dev.off()
 norway <- graph.data.frame(data.frame(passes_norw$player.name,
 passes_norw$pass.recipient.name), directed = FALSE)
 png(filename = "scripts/plot_norw")
@@ -80,3 +83,12 @@ plot(norway.simplified,
 dev.off()
 view(norway.simplified$diversity)
 
+norway.simplified.df <- data.frame(matrix(unlist(norway.simplified$diversity), 
+nrow=length(norway.simplified$diversity), byrow = TRUE))
+view(norway.simplified.df)
+
+radarchart(norway.simplified.df)
+
+england.simplified.df <- data.frame(matrix(unlist(england.simplified$diversity), 
+nrow=length(england.simplified$diversity), byrow = TRUE))
+radarchart(england.simplified.df)

@@ -67,17 +67,17 @@ jugadoras que no supieron coordinarse, o simplemente no están a la altura de In
 encontrar respuestas.
 
 \section{Elección de fuentes de datos}
-% issue #80, #71
 Escogemos las de StatsBomb, al ser de los partidos y equipos que nos interesaban. Otras opciones disponibles en 
 el mercado son \href{https://www.statsperform.com/}{StatsPerform}, para el cual hay que pagar, 
 \href{https://fbref.com/en/}{FbRef}, el cual dispone de datos libres, pero para descargarlos y tratar con ellos 
 es más aparatoso y manual.
 
 \section{Paquetes de R}
-% issue #79
+Hemos usado igraph por su facilidad a la hora de calcular la entropía, ggplot para los gráficos, statsbomb para 
+los datos, devtools para usar paquetes que están en github, así como tidyverse y dplyr para tratar los datos.
 
 \section{Diseño experimental}
-En este apartado particularizaremos nuestro estudio a los resultados que acabamos de mencionar. 
+En este apartado veremos los experimentos realizados, y lo obtenido.
 
 \begin{figure}[h!]
     \centering
@@ -112,6 +112,20 @@ En este apartado particularizaremos nuestro estudio a los resultados que acabamo
     \centering
      \includegraphics[width=\textwidth]{./img/plot_norw_simpl.png}
      \caption{Red de pases total simplificado de Noruega en la EURO 2022}
+     \label{img:dag1}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+     \includegraphics[width=\textwidth]{./img/englandentropy.png}
+     \caption{Entropía de Inglaterra}
+     \label{img:dag1}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+     \includegraphics[width=\textwidth]{./img/norwayentrop.png}
+     \caption{Entropía de Noruega}
      \label{img:dag1}
 \end{figure}
 
