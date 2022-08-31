@@ -40,16 +40,17 @@ view(matches)
 # para obtener los datos de eventos disponibles y limpiar
 all_data <- free_allevents(MatchesDF = matches) %>% allclean()
 
-# nos quedamos con las columnas que nos interesan
-data <- all_data %>% select(match_id, home_score,
-away_score, match_status_360, match_week, home_team.country.name,
-away_team.country.name, competition_stage.name)
-
 #guardamos los partidos en los que jugó Noruega
-noruega <- data %>% 
+noruega <- all_data %>%
 filter(home_team.country.name == "Norway" | away_team.country.name == "Norway")
 
 #guardamos los partidos en los que jugó Inglaterra
-inglaterra <- data %>% 
-filter(home_team.country.name == "England" | away_team.country.name == "England")
+inglaterra <- all_data %>%
+filter(home_team.country.name == "England" |
+away_team.country.name == "England")
+
+# nos quedamos con las columnas que nos interesan
+#data <- all_data %>% select(match_id, match_date, home_score,
+#away_score, match_status_360, home_team.country.name,
+#away_team.country.name, competition_stage.name)
 

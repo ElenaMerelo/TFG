@@ -1,2 +1,65 @@
-\chapter{Conclusiones y trabajos futuros}
+\chapter{Resultados}
+Más específicamente, usaremos como fuente la 
+\href{https://es.uefa.com/womenseuro/news/0258-0e223de64a73-41a64bf308f9-1000--todos-los-resultados/?iv=true}{EURO 
+Femenina de la UEFA 2022}, en la cual Inglaterra resultó ganadora, y Noruega perdió 
+\href{https://es.uefa.com/womenseuro/match/2032209--england-vs-norway/}{un partido} contra ellas por ocho 
+goles a cero (es de notar que seis fueron tan solo en la primera parte), constituyendo uno de los márgenes más 
+grandes de victoria (en las fases finales) de la historia 
+del campeonato, además de uno de los partidos (nuevamente, de los finales) en los que más goles se han marcado. 
+Nuestro objetivo será estudiar por qué ocurrió esto, si podemos verlo reflejado de alguna manera 
+en las redes de pases o entropía de ambos equipos. Añadir que luego tampoco pasaron a cuartos de final, al perder 
+contra Austria por \href{https://es.uefa.com/womenseuro/match/2032211--austria-vs-norway/}{un gol}. Será interesante 
+comparar más a fondo el desempeño de Noruega a lo largo de este campeonato, del cual (para nuestra agradable sorpresa) se 
+\href{https://statsbomb.com/articles/soccer/statsbomb-release-free-360-data-womens-euro-2022-available-now/}{
+liberaron los datos} el cuatro de agosto, por \href{https://statsbomb.com/}{StatsBomb}, una empresa de 
+análisis de fútbol y visualización de datos con sede en el Reino Unido.
+
+Esa derrota fue sorprendente teniendo en cuenta que, si consultamos 
+\href{https://www.uefa.com/womenseuro/news/023d-0e16a7c86b1c-05ff0a6fb380-1000--uefa-women-s-euro-facts-and-figures-player-records-most-goals-b/}{
+el ``cuadro de honor de la EURO femenina''}, vemos que previamente Noruega ha ganado dos veces esta 
+competición, contra una vez que ya ganó Inglaterra; han estado seis veces en la final versus tres que ha 
+estado Inglaterra, y nueve veces en semifinales, contra seis de Inglaterra. 
+Si consultamos las \href{https://www.uefa.com/womenseuro/statistics/}{estadísticas por equipo y jugadoras}, sin 
+duda Inglaterra y Alemania son las que se imponen, apareciendo Noruega únicamente en un quinto puesto en cuanto 
+a posesión del balón (52.7 \%, contra un máximo de 63.8\% por parte de España), un sexto puesto por una 
+precisión de pases del 79.7\% (contra máximo de un 86.8\%, también de España), y otro quinto puesto por catorce paradas 
+de la portera, en comparación con el primer puesto por veintitrés salvadas de Holanda. 
+
+Nuestra pregunta es pues ¿qué les pasó a las noruegas este año? El entrenador (ahora ex-entrenador) Martin Sjögren 
+\href{https://www.nrk.no/sport/massiv-kritikk-mot-sjogren-etter-tidenes-storste-norge-tap-1.16034807}{fue muy 
+criticado} por no hacer cambios de formación o jugadores en esos primeros 47 minutos en los que volaron goles, 
+y al ser ese partido de la EURO 2022 contra Inglaterra la mayor derrota de Noruega en la historia; anteriormente 
+habían perdido 0-4 contra Alemania en la Eurocopa de 2009, 0-5 contra China en el mundial de 1999, o 
+\href{https://www.nrk.no/sport/norges-landslag-knust-av-nederland--1.15538927}{un 0-7} contra Holanda el año pasado.
+\href{https://www.nrk.no/sport/norge-mareritt-mot-england-i-em_-_-dette-er-direkte-pinlig-1.16034607}{Se culpa} a la 
+falta de estructura defensiva y presión ofensiva; alegan que empezaron bien, mas una vez Inglanterra marcó el primer gol en 
+el minuto 12 no pudieron pararles, y fueron cuesta abajo. Veremos si esto se refleja en los datos obtenidos y por qué 
+salió tan mal, considerando en último lugar que Noruega tiene 
+\href{https://www.nrk.no/sport/engelsk-forbauselse_-_-jeg-kan-ikke-helt-tro-det-jeg-nettopp-har-vaert-vitne-til-1.16034919}{
+jugadoras de los mejores equipos del mundo}. 
+
+No obstante, desde que en Inglaterra tienen a la entrenadora Sarina Wiegman, no 
+han perdido los últimos dieciseis partidos. ¿Tan grande es la influencia del entrenador? 
+\href{https://www.nrk.no/sport/hvis-det-er-en-plan_-er-den-usynlig-1.16038718}{En este artículo} ponen en evidencia los problemas 
+que se han ido arrastrando desde que Sjögren es entrenador, con un rendimiento lejos del esperado (teniendo en 
+cuenta la buena prestación de las jugadoras cuando juegan en los equipos en que están fichadas) en las últimas 
+competiciones. Se discute que como equipo cometieron errores a la hora de posicionarse, dejaron libre la zona de 
+defensa y jugadoras que podrían haber sido decisivas se quedaron aisladas, con lo que abrieron las puertas a 
+las inglesas a dominar el juego. 
+
+\href{https://www.nrk.no/sport/norsk-fiasko-i-em_-_-en-varslet-katastrofe-1.16039578}{En el partido contra Austria},
+que debían ganar, no hubo un solo disparo a puerta antes del minuto 88, por lo que siguieron siendo una sombra de sí 
+mismas, pese a que, en sus palabras, usaron los días posteriores para reconstruir su orgullo y autoestima, y recomponerse 
+de tal golpe bajo. No consiguieron estar a la altura, dejar de ser una sombra de ellas mismas, y hubieron de pasar 
+63 minutos antes de que el entrenador hiciera un cambio (el gol de Austria fue en el minuto 37). Se cometieron también 
+errores aquí y allí, pero está lejos de ser el partido contra Inglaterra. ¿Podremos ver esta diferencia reflejada 
+en las redes de pases o entropía del equipo? Principalmente, ¿es problema de la formación 
+(en \href{https://www.nrk.no/sport/reiten-ut-mot-sjogren-grep_-_-pa-tide-med-noko-nytt-1.16085631}{la nueva 
+entrenadora Hege Riise} afirma que habría sido mejor jugar 4-3-3, en vez de 4-2-3-1), del entrenador, de las 
+jugadoras que no supieron coordinarse, o simplemente no están a la altura de Inglaterra? Con este trabajo intentaremos 
+encontrar respuestas.
+
+
+\section{Conclusiones y trabajos futuros}
+
 
