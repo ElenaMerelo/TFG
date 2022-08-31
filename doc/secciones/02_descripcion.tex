@@ -116,6 +116,9 @@ Adicionalmente, proporciona herramientas como las \href{https://github.com/featu
 las cuales permiten la automatización de los flujos de trabajo, incluyendo integración y despliegue contínuos.
 Nosotros por ejemplo lo empleamos para chequear la ortografía cada vez que subimos algo al repositorio, o construir el \textit{pdf}
 de la memoria cuando se cambie algún archivo \textit{.tex}, pero por supuesto hay muchísimas más funcionalidades posibles.
+Uno de los objetivos principales y subyacentes de este trabajo de fin de grado es aprender a gestionar un proyecto 
+siguiendo las mejores prácticas, y GitHub o Git lo piden como requisito algunas empresas, y en general es ampliamente 
+usado.
 
 Se puede consultar nuestro repositorio en \href{https://github.com/ElenaMerelo/TFG}{el siguiente enlace}, y navegar 
 por las \href{https://github.com/ElenaMerelo/TFG/issues}{issues creadas}, \href{https://github.com/ElenaMerelo/TFG/pulls}{pull requests mergeados} 
@@ -170,23 +173,55 @@ hemos incluido RStudio debido a que la parte informática será en ese lenguaje,
 desde VS Code también se puede hacer, así que mejor tenerlo todo centralizado.
 
 \subsection{Lenguaje de programación}
-% Igual, enumera las posibilidades, los requisitos, y escoge uno.
-Escogimos \href{https://www.r-project.org/}{R} puesto que necesitábamos un lenguaje que no nos pusiera límites 
-en cuanto a la aplicación de la teoría matemática, esto es, fuera bueno para estadística computacional y 
-análisis, permitiera realizar gráficos, y constara de numerosos paquetes, una gran comunidad detrás, 
-fuera gratis y software libre, además de que llevara muchos años asentado como herramienta de desarrollo, y en 
-continua expansión y crecimiento. Como opciones tenemos python, Mathematica y julia, entre otros. % wip, issue #53   
+Cuando pensamos en estadística $+$ lenguaje de programación, lo primero que nos viene a la cabeza es R. Pero por 
+supuesto hay más opciones en el mercado, que pasamos a comparar.
+Sobre todo, escogimos \href{https://www.r-project.org/}{R} puesto que necesitábamos un lenguaje que no 
+nos pusiera límites ni trabas en cuanto a la aplicación de la teoría matemática, esto es, fuera uno con la
+estadística computacional y análisis de datos, nos permitiera realizar gráficos, y constara de numerosos 
+paquetes profusamente documentados y desarrollados por expertos, junto con una gran comunidad detrás. Que 
+fuera gratis y software libre son requisitos que damos por sabido, además de que llevara muchos años 
+asentado como herramienta de desarrollo, y en continua expansión y crecimiento. 
+
+Como opciones teníamos \href{https://www.python.org/}{Python}, 
+\href{https://www.wolfram.com/mathematica/}{Mathematica} y \href{https://julialang.org/}{julia}, entre otros. 
+Ambos Python y R son muy usados en ciencia y análisis de datos o \textit{machine learning}, si bien R en general 
+se dice que es preferible para la parte estadística de un proyecto al ir mejor los paquetes, y para visualizar 
+grafos, a pesar de ser algo más lento. \href{https://www.interviewbit.com/blog/python-vs-r/}{Aquí} se puede 
+consultar una de las comparativas que miramos a la hora de decidirnos. Hemos de admitir también que en la 
+asignatura de Estadística Computacional nos familiarizamos bastante bien con el lenguaje, y nos gustó su 
+potencial y forma de funcionar o traducir las matemáticas a algo que el ordenador entienda. Python obviamente 
+sirve para muchísimo, y nos habría servido igual de bien para hacer el trabajo, pero es un poco 
+como ir con un ferrari por una ciudad, a 30km/h; nosotros necesitábamos 
+únicamente librerías bien trabajadas para experimentación con datos, exploración, simplificación de problemas 
+matemáticos y visualización, y para ello R va que chuta. Mathematica la descartamos casi al instante, al no ser 
+software libre. Por último, Julia ha ganado muchísimo tirón estos años, y se dice que es más rápida que R (podemos ver 
+una comparativa \href{https://stackshare.io/stackups/julia-vs-r-language}{aquí}). Existen 
+librerías para entropía o redes bayesianas, si bien nos quedamos con R al estar su uso más extendido, con 
+vistas sobre todo a que, ante el surgimiento de problemas, podamos consultar una documentación sin huecos, 
+y haya una extensiva batería de preguntas en StackOverflow que nos sirvan para aprender de nuestros errores.
 
 \subsection{Sistema de composición de documentos}
-%mencionar quarto
-\href{https://www.latex-project.org/}{LaTeX} es un sistema estándar para la composición de documentos 
+Nuevamente, cuando piensas en escritura de matemáticas, lo primero que viene a la cabeza y no se cuestiona 
+demasiado es LaTeX. \href{https://www.latex-project.org/}{LaTeX} es un sistema estándar para la composición de documentos 
 científicos y técnicos, software libre y gratuito. Lo escogimos ante la necesidad de un programa que nos 
 permitiera escribir la memoria, con soporte para lenguaje matemático o código informático, sin tener que 
 andar ajustando tamaños de letras, imágenes o índices. Queríamos centrarnos en el contenido, y no tanto 
 en el formato. En un principio, puede parecer más fácil usar Word o LibreOffice, pero para escribir proyectos 
 más grandes que no comprendan únicamente texto, tras una pequeña fase de aprendizaje, LaTeX gana con ventaja, 
 al disponer también de plantillas, una documentación excelente, y años y años de consolidación en la comunidad 
-científica. 
+científica. Otra opción que ha aparecido de forma relativamente reciente es \href{https://quarto.org/docs/output-formats/pdf-engine.html}{Quarto},
+un sistema de publicación de documentos científicos y técnicos software libre construido con
+\href{https://pandoc.org/}{Pandoc}, escribiéndolos como si fuera una \textit{notebook} de Python o simple \href{https://markdown.es/}{Markdown}. 
+Lo que sin duda nos echó más para atrás es la falta de plantillas. Llama la atención y nos reafirmamos 
+en lo productivo y genial que es GitHub al ver que todos estos lenguajes de programación que vamos 
+mencionando han sido desarrollados y podemos encontrar los repositorios en él; por lo que este no 
+es excepción, y a la hora de valorar si usarlo encontramos una 
+\href{https://github.com/quarto-dev/quarto-cli/issues/170}{\textit{issue}} abierta en noviembre 
+de 2021 sobre la ausencia de \textit{templates} de Quarto para tesis y artículos académicos, que 
+finalmente fue solucionada en abril de este año. Al ser tan reciente, preferimos LaTeX, de manera que 
+si surgen dudas o problemas haya una literatura más extensa que consultar. Si nos sorprendió que ya 
+existieran extensiones para trabajar con él en VS Code, pero no fue suficiente como para ``ganar'' a LaTeX 
+en cuanto a ventajas.
 
 LaTeX da pues al usuario un control extremadamente bueno sobre el formato de los documentos. Una vez que se 
 domina, puede ser mucho más fácil trabajar con él que con un procesador de texto convencional. Tuve 
@@ -302,6 +337,14 @@ Como producto esperado se tendrá la base teórica terminada y bien explicada, p
     \item Entender cómo se pueden resolver redes probabilísticas 
     \item Añadir introducción a las redes causales 
 \end{itemize}
+
+\subsection{\textit{Milestone} 4 - Implementación} 
+El objetivo de esta \textit{milestone} es aplicar lo aprendido y obtenido en la anterior, 
+analizando los datos de partidos de fútbol, generando visualizaciones de las redes de pases y 
+calculando la entropía.
+
+Como producto esperado se tendrá un programa en R funcionando y gráficos a partir de los cuales 
+podamos obtener conclusiones acerca del desempeño de un equipo a lo largo de una competición.
 
 \section{Definiciones y terminología}
 El objetivo de esta sección es introducir los términos que serán usados en el estado del arte, donde veremos 
@@ -424,8 +467,6 @@ nivel de relación de red, usando \href{https://link.springer.com/10.1007%2F978-
 \href{https://neo4j.com/docs/graph-data-science/current/algorithms/eigenvector-centrality/}{centralidad de vectores propios} 
 y \href{https://en.wikipedia.org/wiki/Clustering_coefficient}{coeficiente de agrupamiento} \cite{albert2002statistical}.
  
-
-
 Otra manera de medir la importancia de cada nodo es mediante sistemas de calificación.
 
 \subsection{Sistemas de calificación} \label{subsect:ratings}
