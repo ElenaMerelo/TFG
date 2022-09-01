@@ -89,25 +89,38 @@ y te traza la red, y si aparte quieres usarlos como dataframes para hacer otros 
 de uso podemos verlo \href{https://github.com/JJ/venice-patrician-social-network/blob/main/patrician-social-network.R}{aquí}, 
 programa en el cual nos inspiramos para trazar nuestra red de pases.
 
-\subsection{Ggplot}
-Usamos \href{https://ggplot2.tidyverse.org/}{ggplot} por lo sencillo que hace crear gráficos de caja, de dispersión, 
+\subsection{Devtools}
+Si bien la mayoría de los paquetes de R están en \href{https://cran.r-project.org/}{CRAN}, hay muchos que vamos 
+a necesitar que se encuentran en Github. \href{https://www.r-project.org/nosvn/pandoc/devtools.html}{devtools} da 
+la posibilidad de descargarlos directamente.
+
+\subsubsection{Statsbomb}
+\href{https://github.com/statsbomb/StatsBombR}{Este paquete} lo empleamos, una vez decidido que íbamos a hacer 
+uso de sus datos, para poder quedarnos con las columnas que nos interesaban y demás operaciones, esto es, \textit{parsear} 
+la información.
+
+\subsection{Tidyverse}
+\href{http://www.storybench.org/getting-started-with-tidyverse-in-r/}{Tidyverse} contiene paquetes como 
+\href{https://dplyr.tidyverse.org/}{dplyr} que son útiles para manipular, explorar y visualizar datos, y 
+prácticamente es un estándar en estadística y ciencia de datos. \href{https://rviews.rstudio.com/2017/06/08/what-is-the-tidyverse/}{Sus ventajas} 
+incluyen funciones consistentes y uso a lo largo de todo el \textit{workflow}, lo que se ve reflejado en una 
+mayor productividad, y no nos hizo dudar al escogerlo. \href{https://www.r-bloggers.com/2018/09/why-learn-the-tidyverse/}{Más ventajas} incluye 
+que carga una \textit{suite} complete y extensiva de las últimas herramientas de tratamiento de datos, haciendo más 
+fácil el desarrollo al despreocuparte así de tener que andar con librerías y paquetes de aquí y allí, que son 
+intuitivamente distintos a la hora de pasar parámetros o tratar las tablas.
+
+\subsubsection{Ggplot2}
+Está contenido dentro de \textit{tidyverse}, y lo usamos \href{https://ggplot2.tidyverse.org/}{ggplot} por lo sencillo que hace crear gráficos de caja, de dispersión, 
 temporales o de radar. De hecho, fue una de las razones por las que elegimos usar R para este proyecto; es una 
 librería extremadamente trabajada y documentada, que nos representar datos de un 
 \href{https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/data.frame}{dataframe} complejos de 
 manera personalizada, sin mucho problema; justo lo que necesitábamos, teniendo en cuenta el gran tamaño de las 
-tablas que manejamos.
+tablas que manejamos. Además es el paquete de R más popular para visualizar datos.
 
-\subsection{Statsbomb}
-statsbomb para 
-los datos
-
-\subsection{Devtools}
-devtools para usar paquetes que están en github
-
-\subsection{Tidyverse}
-
-\subsection{Dplyr}
-
+\subsubsection{Dplyr}
+\href{https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html}{Este paquete} hace extremadamente fácil 
+reducir la cantidad de datos que tenemos, gracias a funciones como \textit{filter, slice, arrange, select, rename, mutate, 
+relocate o summarise}. \href{https://dplyr.tidyverse.org/}{Aquí} podemos consultar más a fondo.
 
 \section{Diseño experimental}
 En este apartado veremos los experimentos realizados, y lo obtenido.
