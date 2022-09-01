@@ -299,7 +299,7 @@ Pasamos a describir los prototipos del producto que queremos desarrollar.
 El objetivo de esta \textit{milestone} es configurar la infraestructura del proyecto. Para ello, tendremos que:
 \begin{itemize}
     \item Borrar los archivos de la plantilla que no sean necesarios.
-    \item Definir los primeros \textit{milestone} e issues.
+    \item Definir los primeros \textit{milestones} e issues.
     \item Configurar un corrector ortográfico.
     \item Documentar la configuración inicial.
     \item Formular los objetivos principales del trabajo.
@@ -315,28 +315,31 @@ bases para crear un producto de calidad (sin faltas ortográficas, por ejemplo).
 El objetivo de esta \textit{milestone} es dejar escritas:
 
 \begin{itemize}
-    \item Introducción
-    \item Descripción del problema
+    \item Prefacio
+    \item Introducción y objetivos del trabajo
+    \item Descripción/Motivación del problema
+    \item Metodología y justificación de las herramientas usadas
+    \item Clientes, historias de usuario y \textit{milestones}
     \item Estado del arte
-    \item Planificación
-    \item Metodología
-    \item Clientes, usuarios e historias de usuario
+    \item Planificación y costes
 \end{itemize}
 
 Habiendo terminado así la parte de ideación, planteamiento del problema, y pasar a estar preparado para solucionarlo.
 
 \subsection{\textit{Milestone} 3 - Parte matemática} 
-El objetivo de esta \textit{Milestone} es la recopilación de datos, procesarlos, eliminar los que 
-no sirvan, obtener conclusiones. Aparte, habría que reproducir teoremas, dejar bien clara la base matemática.
+El objetivo de esta \textit{milestone} es dejar clara la teoría sobre la que basaremos la implementación,
+así como la recopilación y procesamiento de datos, eliminando los que no sirvan, para obtener conclusiones. 
+Habrá que dar nociones de fundamentos de redes, probabilidd, probabilidad condicionada, redes probabilisticas, 
+tecnicas empleadas para hallar probabilidad, al igual que de redes causales, modelos gráficos e identificación de 
+efectos causales o algoritmos empleados.
 
-Como producto esperado se tendrá la base teórica terminada y bien explicada, para ello habrá que: 
-
+Como producto esperado se tendrá la base teórica terminada y bien explicada, para ello tendremos que: 
 \begin{itemize}
-    \item Añadir fundamentos de redes
-    \item Incluir fundamentos de probabilidad 
-    \item Añadir fundamentos de redes probabilísticas 
-    \item Entender cómo se pueden resolver redes probabilísticas 
-    \item Añadir introducción a las redes causales 
+    \item Añadir conceptos básicos de teoría de la probabilidad
+    \item Incluir fundamentos de redes bayesianas
+    \item Ver criterios gráficos de independencia 
+    \item Explicar algoritmos de inferencia para redes bayesianas 
+    \item Profundizar en algoritmos de aprendizaje para redes bayesianas
 \end{itemize}
 
 \subsection{\textit{Milestone} 4 - Implementación} 
@@ -344,8 +347,9 @@ El objetivo de esta \textit{milestone} es aplicar lo aprendido y obtenido en la 
 analizando los datos de partidos de fútbol, generando visualizaciones de las redes de pases y 
 calculando la entropía.
 
-Como producto esperado se tendrá un programa en R funcionando y gráficos a partir de los cuales 
-podamos obtener conclusiones acerca del desempeño de un equipo a lo largo de una competición.
+Como producto esperado se tendrá unos programas en R funcionando y grafos a partir de los cuales 
+podamos obtener conclusiones acerca del desempeño de un equipo a lo largo de una competición, dejando 
+pinceladas de trabajos futuros.
 
 \section{Definiciones y terminología}
 El objetivo de esta sección es introducir los términos que serán usados en el estado del arte, donde veremos 
@@ -414,8 +418,8 @@ Un ciclo es un camino, $\langle u,...,v \rangle$ de longitud mayor que dos
 dirigido sin ciclos dirigidos es el ya mencionado DAG. 
 
 Generalmente, las redes bayesianas se utilizan como un marco eficiente para la
-toma de decisiones con conocimiento incierto, y mide la estructura de dependencia condicional
-de un conjunto de variables aleatorias basándose en el teorema de Bayes:\\
+toma de decisiones con conocimiento incierto, y miden la estructura de dependencia condicional
+de un conjunto de variables aleatorias, tomando como base el teorema de Bayes:\\
 \begin{equation} \label{eq:bayes}
 P(A|B) = \frac{P(B|A) \cdot P(A)}{P(B)}
 \end{equation}
@@ -424,7 +428,7 @@ por $P(A|B)$ \cite{YANG201919}.
 
 En \ref{ch5} profundizaremos más sobre este tipo de redes.
 
-En aplicaciones prácticas, es común encontrar escenarios que
+En aplicaciones prácticas, es común encontrarse con escenarios que
 involucran variables discretas y continuas simultáneamente. Este tipo de problemas se pueden modelar 
 utilizando las llamadas redes bayesianas híbridas.
 
@@ -436,11 +440,11 @@ utilizando las llamadas redes bayesianas híbridas.
 
 Han recibido una atención creciente durante 
 los últimos años, debido a que amplían la aplicabilidad de las redes bayesianas en general. Sin embargo, 
-esta característica adicional también tiene un costo: la inferencia
+esta característica adicional también tiene un coste: la inferencia
 en este tipo de modelos es computacionalmente más desafiante \cite{inference-rev-hbn}.
 
 Tradicionalmente se han aplicado más las redes complejas que las bayesianas al análisis del fútbol \cite{ARRIAZAARDILES2018236}.
-Este tipo de redes nos interesan ya que su estudio está inspirado por los análisis empíricos de redes reales, y 
+Este tipo de redes nos interesan ya que su estudio está inspirado en análisis empíricos de redes reales, y 
 permiten entender el funcionamiento de los equipos de fútbol, ya sea a nivel individual o colectivo. Usaremos 
 variables definidas sobre la red compleja para ``alimentar" la red bayesiana \cite{Bai_Xing_Wu_2022}.
 
@@ -472,18 +476,18 @@ Otra manera de medir la importancia de cada nodo es mediante sistemas de calific
 
 \subsection{Sistemas de calificación} \label{subsect:ratings}
 Determinar la habilidad relativa entre adversarios es uno de los elementos
-más importantes en el análisis de fútbol junto con la predicción de resultados de partidos de fútbol; las posiciones en 
-una liga constan de numerosos inconvenientes que hacen que no sean fiables para la predicción. 
-Por ejemplo, una liga de fútbol sufre de alta variación al inicio de la temporada, y de baja 
-variación al final. Además, es posible que los equipos que compiten durante una temporada no
+más importantes en el análisis de fútbol junto con la predicción de resultados de partidos; las posiciones en 
+una liga tienen numerosos inconvenientes que hacen que no sean fiables para la predicción. 
+Por ejemplo, una liga de fútbol sufre una variación alta al inicio de la temporada, y baja 
+al final. Asimismo, es posible que los equipos que compiten durante una temporada no
 compartan un número equivalente de partidos jugados debido a aplazamientos y
 por lo tanto, la clasificación de la liga será errónea durante unas cuantas semanas. De hecho, 
 la clasificación de una liga está sesgada hasta que se juega el último partido de la temporada, porque
-para que la clasificación sea justa, cada equipo tiene que jugar contra el resto de equipos, en
+para que la clasificación sea justa, cada equipo tiene que jugar contra el resto, en
 casa y fuera. Incluso al final de una temporada, el \textit{ranking} representa
 el rendimiento general durante ese período, pero no logra
-demostrar cómo varió la habilidad de un equipo. Adicionalmente,
-ignora los partidos de Copa y los partidos de otras competiciones (por ejemplo, Champions
+demostrar cómo varió la habilidad de un equipo globalmente, al
+ignorar los partidos de Copa u otras competiciones (como la Champions
 League), o no compara equipos en diferentes divisiones/ligas. \textbf{En
 resumen, una tabla de clasificación no es un buen indicador de la situación actual de un equipo. Un 
 sistema de calificación proporciona medidas relativas de superioridad entre adversarios y supera 
@@ -492,7 +496,7 @@ todos los problemas anteriores \cite{pi-ratings}.}
 Cuando se trata de fútbol, para generar calificaciones que capturen con precisión la
 capacidad actual de un equipo, tenemos que considerar al menos:
 \begin{itemize}
-    \item La ventaja que supone jugar en casa.
+    \item La ventaja que supone jugar en casa \cite{home-advantage}
     \item El hecho de que los resultados más recientes son más importantes que los menos recientes
     al estimar las habilidades actuales.
     \item El hecho de que una victoria es más importante para un equipo que aumentar la diferencia de goles.
@@ -529,11 +533,12 @@ $$H(X_1,...,X_N)=-\sum_{x_1}...\sum_{x_N}P(x_1,...,x_N)\log[P(x_1,...,x_N)]$$
 \end{definicion}
 
 El concepto de entropía (o entropía de Shannon) se lo debemos al matemático e ingeniero eléctrico americano 
-\href{https://en.wikipedia.org/wiki/Claude_Shannon}{Claude Shannon}, que lo introdubjo en 1948 en el 
+\href{https://en.wikipedia.org/wiki/Claude_Shannon}{Claude Shannon}, que lo introdujo en 1948 en el 
 artículo ``Una teoría matemática de la comunicación" \cite{shannon-1948}.
 
 La entropía que más nos interesa es la de Tsallis, al ser la que se puede aplicar mejor a las redes de pases 
-que ocurren a lo largo de un partido de fútbol
+que ocurren a lo largo de un partido de fútbol.
+
 \subsection{Entropía de Tsallis}
 En 1988 el físico \href{https://en.wikipedia.org/wiki/Constantino_Tsallis}{Constantino Tsallis} 
 introdujo una nueva definición para entropía que describe las características estadísticas de sistemas 
