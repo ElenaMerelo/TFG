@@ -50,7 +50,9 @@ han perdido los últimos dieciséis partidos. ¿Tan grande es la influencia del 
 \href{https://www.nrk.no/sport/hvis-det-er-en-plan_-er-den-usynlig-1.16038718}{En este artículo} ponen en evidencia los problemas 
 que se han ido arrastrando desde que Sjögren es entrenador, con un rendimiento lejos del esperado (teniendo en 
 cuenta la buena prestación de las jugadoras cuando juegan en los equipos en que están fichadas) en las últimas 
-competiciones. Se discute que como equipo cometieron errores a la hora de posicionarse, dejaron libre la zona de 
+competiciones. Conceptualizar y medir cuánto y en qué se diferencia un todo de la suma de sus partes es un desafío no 
+trivial. Una posible dirección para abordar esto consiste en cuantificar hasta qué punto la entropía 
+del todo no es aditiva  \cite{whole-different}. Se discute que como equipo cometieron errores a la hora de posicionarse, dejaron libre la zona de 
 defensa y jugadoras que podrían haber sido decisivas se quedaron aisladas, con lo que abrieron las puertas a 
 las inglesas a dominar el juego. 
 
@@ -64,22 +66,40 @@ en las redes de pases o entropía del equipo? Principalmente, ¿es problema de l
 (en \href{https://www.nrk.no/sport/reiten-ut-mot-sjogren-grep_-_-pa-tide-med-noko-nytt-1.16085631}{la nueva 
 entrenadora Hege Riise} afirma que habría sido mejor jugar 4-3-3, en vez de 4-2-3-1), del entrenador, de las 
 jugadoras que no supieron coordinarse, o simplemente no están a la altura de Inglaterra? Con este trabajo intentaremos 
-encontrar respuestas.
+encontrar respuestas. 
 
 \section{Elección de fuentes de datos}
-Escogemos las de StatsBomb, al ser de los partidos y equipos que nos interesaban. Otras opciones disponibles en 
+Escogemos las de \href{https://github.com/statsbomb/open-data}{StatsBomb}, al contener datos de los partidos y equipos que nos interesaban. Otras opciones disponibles en 
 el mercado son \href{https://www.statsperform.com/}{StatsPerform}, para el cual hay que pagar, 
 \href{https://fbref.com/en/}{FbRef}, el cual dispone de datos libres, pero para descargarlos y tratar con ellos 
-es más aparatoso y manual.
+es más aparatoso y manual, aparte de que no tiene los datos temporales ni de los pases con tanto detalle y 
+extensión como Statsbomb.
 
 \section{Paquetes de R}
-Hemos usado igraph por su facilidad a la hora de calcular la entropía, ggplot para los gráficos, statsbomb para 
-los datos, devtools para usar paquetes que están en github, así como tidyverse y dplyr para tratar los datos.
+En este apartado describiremos los paquetes de R de los que hemos hecho uso, justificando nuestra elección.
+
+\subsection{Igraph}
+igraph por su facilidad a la hora de calcular la entropía
+
+\subsection{Ggplot}
+ggplot para los gráficos
+
+\subsection{Statsbomb}
+statsbomb para 
+los datos
+
+\subsection{Devtools}
+devtools para usar paquetes que están en github
+
+\subsection{Tidyverse}
+
+\subsection{Dplyr}
+
 
 \section{Diseño experimental}
 En este apartado veremos los experimentos realizados, y lo obtenido.
 
-\begin{figure}[h!]
+\begin{figure}[ht!]
     \centering
      \includegraphics[width=\textwidth]{./img/entrop_engl.png}
      \caption{Entropía por jugadoras de Inglaterra en la EURO 2022}
@@ -87,42 +107,42 @@ En este apartado veremos los experimentos realizados, y lo obtenido.
 \end{figure}
 
 
-\begin{figure}[h!]
+\begin{figure}[ht!]
     \centering
      \includegraphics[width=\textwidth]{./img/entrop_norw.png}
      \caption{Entropía por jugadoras de Noruega en la EURO 2022}
      \label{img:ent:nor}
 \end{figure}
 
-\begin{figure}[h!]
+\begin{figure}[ht!]
     \centering
      \includegraphics[width=\textwidth]{./img/plot_norw.png}
      \caption{Red de pases total de Noruega en la EURO 2022}
      \label{img:red:nor:tot}
 \end{figure}
 
-\begin{figure}[h!]
+\begin{figure}[ht!]
     \centering
      \includegraphics[width=\textwidth]{./img/plot_england_simpl.png}
      \caption{Red de pases total de Inglaterra simplificado en la EURO 2022}
      \label{img:red:eng}
 \end{figure}
 
-\begin{figure}[h!]
+\begin{figure}[ht!]
     \centering
      \includegraphics[width=\textwidth]{./img/plot_norw_simpl.png}
      \caption{Red de pases total simplificado de Noruega en la EURO 2022}
      \label{img:red:nor}
 \end{figure}
 
-\begin{figure}[h!]
+\begin{figure}[ht!]
     \centering
      \includegraphics[width=\textwidth]{./img/englandentropy.png}
      \caption{Entropía de Inglaterra}
      \label{img:red:eng:ent}
 \end{figure}
 
-\begin{figure}[h!]
+\begin{figure}[ht!]
     \centering
      \includegraphics[width=\textwidth]{./img/norwayentrop.png}
      \caption{Entropía de Noruega}
@@ -131,8 +151,6 @@ En este apartado veremos los experimentos realizados, y lo obtenido.
 
 
 \section{Costes}
-
-
 En cuanto a coste de amortización anuales, he usado mi portátil Asus Vivobook 14, comprado hace casi tres 
 años por 799€, lo que se corresponde a 150€. El coste de desarrollo, teniendo en cuenta que 
 hemos empleado 571 horas, entre 40 que son las horas que se echan por semana en un trabajo a 
@@ -155,8 +173,8 @@ muestra en la tabla \ref{tab:costes1}
 \end{table}
 
 Sin embargo, el trabajo realizado aquí corresponde más bien al de un analista
-junior de datos deportivos. Según Payscale, el sueldo medio está en torno a los
-24000€. En este escenario los costes serían los indicados en la tabla \ref{tab:costes2}.
+junior de datos deportivos. Según \href{https://www.payscale.com/}{Payscale}, el sueldo medio está en torno 
+a los24000€. En este escenario los costes serían los indicados en la tabla \ref{tab:costes2}.
 
 \begin{table}
 \begin{tabular}[h!tbp]{lccr}
