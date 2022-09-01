@@ -79,7 +79,16 @@ extensión como Statsbomb.
 En este apartado describiremos los paquetes de R de los que hemos hecho uso, justificando nuestra elección.
 
 \subsection{Igraph}
-igraph por su facilidad a la hora de calcular la entropía
+
+La librería y paquete \href{https://igraph.org/r/}{igraph} de R lo hemos escogido por su facilidad a la hora de 
+calcular la entropía;está destinada al análisis de redes y consta por tanto de \href{https://kateto.net/netscix2016.html}{funciones sencillas} para calcular 
+medidas como \textit{closeness, network density, centrality, betweenness, centralization, robustness, 
+efficiency, effectiveness and diversity} sobre grafos, mediante la 
+creación de \href{https://igraph.org/r/doc/graph_from_data_frame.html}{``graph dataframes''}, que viene genial 
+dado que podemos usarlos con \href{https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/plot}{plot} 
+y te traza la red, y si aparte quieres usarlos como dataframes para hacer otros cálculos, también se puede. Un ejemplo 
+de uso podemos verlo \href{https://github.com/JJ/venice-patrician-social-network/blob/main/patrician-social-network.R}{aquí}, 
+programa en el cual nos inspiramos para trazar nuestra red de pases.
 
 \subsection{Ggplot}
 ggplot para los gráficos
