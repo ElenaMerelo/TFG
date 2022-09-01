@@ -125,56 +125,85 @@ relocate o summarise}. \href{https://dplyr.tidyverse.org/}{Aquí} podemos consul
 \section{Diseño experimental}
 En este apartado veremos los experimentos realizados, y lo obtenido.
 
+En \ref{img:red:simpl:eng} hemos representado cada jugador con un peso correspondiente a la suma de sus interacciones, y al calcular 
+la entropía de los pases a lo largo de la competición, podemos observar lo compacta que es la red, lo bien 
+conectadas que están todas, y cómo en el centro (y por tanto las que tocan más balón y hacen más juego) se 
+encuentran aquellas que han jugado más minutos a lo largo de la competición, son las que han marcado más goles, 
+o juegan como centrocampistas, seguidas por un alto número de defensas, lo que ciertamente llama la atención, dado 
+que normalmente suelen ser las centrocampistas las que mueven más la pelota, y nos indica que defendieron bien. 
+En definitiva, de la red podemos ver que todas participan y se coordinan de manera óptima.
+
 \begin{figure}[ht!]
-    \centering
-     \includegraphics[width=\textwidth]{./img/entrop_engl.png}
-     \caption{Entropía por jugadoras de Inglaterra en la EURO 2022}
-     \label{img:ent:eng}
+  \centering
+   \includegraphics[width=\textwidth]{./img/plot_england_simpl.png}
+   \caption{Red de pases total de Inglaterra simplificado en la EURO 2022}
+   \label{img:red:simpl:eng}
 \end{figure}
 
+En \ref{img:ent:eng} estudiamos cómo es consistente con lo ya comentado, y hay poca variabilidad dentro de la 
+entropía, conteniendo únicamente extremos mínimos correspondientes a la portera y máximos correspondientes a las defensas. 
+Nos reafirma en que la entropía refleja bien el comportamiento en el campo, la posición de las jugadoras y cuántos 
+minutos jugaron.
+
+\begin{figure}[ht!]
+  \centering
+   \includegraphics[width=\textwidth]{./img/entrop_engl.png}
+   \caption{Entropía por jugadoras de Inglaterra en la EURO 2022}
+   \label{img:ent:eng}
+\end{figure}
+
+En \ref{img:red:eng} vemos las redes de peso sin simplicar las aristas, lo que nos permite apreciar lo densa que es, pero a su 
+vez están bien repartidas, y no apelotonadas como en Noruega \ref{img:red:norw}.
+
+\begin{figure}[ht!]
+  \centering
+   \includegraphics[width=\textwidth]{./img/entrop_engl.png}
+   \caption{Entropía por jugadoras de Inglaterra en la EURO 2022}
+   \label{img:red:eng}
+\end{figure}
+
+En \ref{img:red:simpl:nor} y \ref{img:red:nor} vemos que no es tanto una estructura casi romboidal, sino circular; 
+están más juntas y sin una forma reticular clara.
+
+\begin{figure}[ht!]
+  \centering
+   \includegraphics[width=\textwidth]{./img/plot_norw_simpl.png}
+   \caption{Red de pases total simplificado de Noruega en la EURO 2022}
+   \label{img:red:simpl:nor}
+\end{figure}
 
 \begin{figure}[ht!]
     \centering
      \includegraphics[width=\textwidth]{./img/entrop_norw.png}
      \caption{Entropía por jugadoras de Noruega en la EURO 2022}
-     \label{img:ent:nor}
+     \label{img:red:nor}
 \end{figure}
 
 \begin{figure}[ht!]
     \centering
      \includegraphics[width=\textwidth]{./img/plot_norw.png}
      \caption{Red de pases total de Noruega en la EURO 2022}
-     \label{img:red:nor:tot}
+     \label{img:ent:norw}
 \end{figure}
 
-\begin{figure}[ht!]
-    \centering
-     \includegraphics[width=\textwidth]{./img/plot_england_simpl.png}
-     \caption{Red de pases total de Inglaterra simplificado en la EURO 2022}
-     \label{img:red:eng}
-\end{figure}
-
-\begin{figure}[ht!]
-    \centering
-     \includegraphics[width=\textwidth]{./img/plot_norw_simpl.png}
-     \caption{Red de pases total simplificado de Noruega en la EURO 2022}
-     \label{img:red:nor}
-\end{figure}
+En \ref{img:fineng} y \ref{img:finnorw} vemos cómo Noruega se mantuvo con una entropía bastante alta en general
+(lo que podemos ver reflejado en\ref{img:ent:norw}), 
+mientras que la de Inglaterra es una curva decreciente, por lo que tienen orden y desorden, y consiguen un buen 
+equilibrio.
 
 \begin{figure}[ht!]
     \centering
      \includegraphics[width=\textwidth]{./img/englandentropy.png}
      \caption{Entropía de Inglaterra}
-     \label{img:red:eng:ent}
+     \label{img:fineng}
 \end{figure}
 
 \begin{figure}[ht!]
     \centering
      \includegraphics[width=\textwidth]{./img/norwayentrop.png}
      \caption{Entropía de Noruega}
-     \label{img:red:eng:nor}
+     \label{img:finnorw}
 \end{figure}
-
 
 \section{Costes}
 En cuanto a coste de amortización anuales, he usado mi portátil Asus Vivobook 14, comprado hace casi tres 
