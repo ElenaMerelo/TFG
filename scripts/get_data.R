@@ -17,7 +17,8 @@
 #install.packages("tidyverse")
 #install.packages("igraph", dependencies=TRUE)
 # devtools::install_github("FCrSTATS/SBpitch") # to plot a pitch
-
+install.packages("fmsb")
+library(fmsb)
 library(SBpitch)
 library(StatsBombR)
 library(igraph)
@@ -33,24 +34,15 @@ comp <- FreeCompetitions() %>%
 
 # cargar partidos disponibles para UEFA Women's Euro
 matches <- FreeMatches(Competitions = comp)
-view(matches)
-# vemos que para filtrar por país, tendremos que usar la
-# columna home_team.country.name o away_team.country.name
 
-# para obtener los datos de eventos disponibles y limpiar
-all_data <- free_allevents(MatchesDF = matches) %>% allclean()
-
-#guardamos los partidos en los que jugó Noruega
-noruega <- all_data %>%
+#guardamos los partidos en los que jugó Noruega y le extraemos los eventos
+noruega <- matches %>%
 filter(home_team.country.name == "Norway" | away_team.country.name == "Norway")
+norw_clean <- free_allevents(MatchesDF = noruega) %>% all_clean()
+saveRDS(norw_clean, file = "/tmp/data_norway.Rds")
 
-#guardamos los partidos en los que jugó Inglaterra
-inglaterra <- all_data %>%
-filter(home_team.country.name == "England" |
-away_team.country.name == "England")
-
-# nos quedamos con las columnas que nos interesan
-#data <- all_data %>% select(match_id, match_date, home_score,
-#away_score, match_status_360, home_team.country.name,
-#away_team.country.name, competition_stage.name)
-
+# lo mismo para Inglaterra
+inglaterra <- matches %>%
+filter(home_team.country.name == "England" | away_team.country.name == "England")
+eng_clean <- free_allevents(MatchesDF = inglaterra) %>% all_clean()
+saveRDS(eng_clean, file = "/tmp/data_england.Rds")
