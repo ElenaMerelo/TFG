@@ -83,7 +83,7 @@ En este apartado veremos los experimentos realizados, y lo obtenido.
     \centering
      \includegraphics[width=\textwidth]{./img/entrop_engl.png}
      \caption{Entropía por jugadoras de Inglaterra en la EURO 2022}
-     \label{img:dag1}
+     \label{img:ent:eng}
 \end{figure}
 
 
@@ -91,55 +91,93 @@ En este apartado veremos los experimentos realizados, y lo obtenido.
     \centering
      \includegraphics[width=\textwidth]{./img/entrop_norw.png}
      \caption{Entropía por jugadoras de Noruega en la EURO 2022}
-     \label{img:dag1}
+     \label{img:ent:nor}
 \end{figure}
 
 \begin{figure}[h!]
     \centering
      \includegraphics[width=\textwidth]{./img/plot_norw.png}
      \caption{Red de pases total de Noruega en la EURO 2022}
-     \label{img:dag1}
+     \label{img:red:nor:tot}
 \end{figure}
 
 \begin{figure}[h!]
     \centering
      \includegraphics[width=\textwidth]{./img/plot_england_simpl.png}
      \caption{Red de pases total de Inglaterra simplificado en la EURO 2022}
-     \label{img:dag1}
+     \label{img:red:eng}
 \end{figure}
 
 \begin{figure}[h!]
     \centering
      \includegraphics[width=\textwidth]{./img/plot_norw_simpl.png}
      \caption{Red de pases total simplificado de Noruega en la EURO 2022}
-     \label{img:dag1}
+     \label{img:red:nor}
 \end{figure}
 
 \begin{figure}[h!]
     \centering
      \includegraphics[width=\textwidth]{./img/englandentropy.png}
      \caption{Entropía de Inglaterra}
-     \label{img:dag1}
+     \label{img:red:eng:ent}
 \end{figure}
 
 \begin{figure}[h!]
     \centering
      \includegraphics[width=\textwidth]{./img/norwayentrop.png}
      \caption{Entropía de Noruega}
-     \label{img:dag1}
+     \label{img:red:eng:nor}
 \end{figure}
 
 
 \section{Costes}
+
+
 En cuanto a coste de amortización anuales, he usado mi portátil Asus Vivobook 14, comprado hace casi tres 
 años por 799€, lo que se corresponde a 150€. El coste de desarrollo, teniendo en cuenta que 
 hemos empleado 571 horas, entre 40 que son las horas que se echan por semana en un trabajo a 
 tiempo completo, nos quedamos con 14 semanas, esto es, unos tres meses y medio. Si consultamos 
 \href{https://www.linkedin.com/feed/}{LinkedIn}, las ofertas de trabajo para desarrolladores 
 \textit{junior} están en torno a los 21.000€ al año, lo que viene a ser 1750€ por mes, añadiendo los 14€ 
-que costaron el ventilador de Alehop mencionado en \ref{agradec}.
+que costaron el ventilador de Alehop mencionado en los agradecimientos. Esto se
+muestra en la tabla \ref{tab:costes1}
+
+\begin{table}
+\begin{tabular}[h!tbp]{lccr}
+  Concepto & Coste unitario & Unidades & Total \\
+  Amortización portátil & 150€ & 1 & 150€ \\
+  Ventilador            & 12€  & 1 & 14€ \\
+  Costes laborales      & 1750€& 3.5 & 6125€ \\
+  \hline \\
+  \multicolumn{3}{l}{Total} & 6289€ \\
+\end{tabular}
+\caption{Costes el proyecto en el escenario ``ingeniera junior''} \label{tab:costes1}
+\end{table}
+
+Sin embargo, el trabajo realizado aquí corresponde más bien al de un analista
+junior de datos deportivos. Según Payscale, el sueldo medio está en torno a los
+24000€. En este escenario los costes serían los indicados en la tabla \ref{tab:costes2}.
+
+\begin{table}
+\begin{tabular}[h!tbp]{lccr}
+  Concepto & Coste unitario & Unidades & Total \\
+  Amortización portátil & 150€ & 1 & 150€ \\
+  Ventilador            & 12€  & 1 & 14€ \\
+  Costes laborales      & 2000€& 3.5 & 7000€ \\
+  \hline \\
+  \multicolumn{3}{l}{Total} & 7164€ \\
+\end{tabular}
+\caption{Costes el proyecto en el escenario ``analista de datos junior''} \label{tab:costes2}
+\end{table}
 
 El coste de explotación, despliegue y producción se corresponderán a servicios de 
-desarrollo a medida, adaptación, implantación, cursos, entre otros. La biblioteca tendremos que 
+desarrollo a medida, adaptación, implantación, cursos, entre otros, pero este
+tipo de trabajos se suelen hacer en nómina o bien vendiendo los informes; el
+coste del informe trataría de ponerse de acorde con las horas empleadas y la
+amortización del equipo durante el tiempo necesario. Una vez llevado a cabo todo
+el análisis inicial y la exploración de los métodos, la elaboración de un nuevo
+informe de este tipo se estima que duraría unos 15 días.
+
+La biblioteca tendremos que 
 mirarla cada cierto tiempo, actualizar dependencias, responder a los issues, para lo que echaremos 
 40 horas al mes, que serán costes de producción que tendremos que factorizar en el coste del producto.
