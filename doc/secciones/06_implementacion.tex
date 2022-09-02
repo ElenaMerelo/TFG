@@ -50,7 +50,9 @@ han perdido los últimos dieciséis partidos. ¿Tan grande es la influencia del 
 \href{https://www.nrk.no/sport/hvis-det-er-en-plan_-er-den-usynlig-1.16038718}{En este artículo} ponen en evidencia los problemas 
 que se han ido arrastrando desde que Sjögren es entrenador, con un rendimiento lejos del esperado (teniendo en 
 cuenta la buena prestación de las jugadoras cuando juegan en los equipos en que están fichadas) en las últimas 
-competiciones. Se discute que como equipo cometieron errores a la hora de posicionarse, dejaron libre la zona de 
+competiciones. Conceptualizar y medir cuánto y en qué se diferencia un todo de la suma de sus partes es un desafío no 
+trivial. Una posible dirección para abordar esto consiste en cuantificar hasta qué punto la entropía 
+del todo no es aditiva  \cite{whole-different}. Se discute que como equipo cometieron errores a la hora de posicionarse, dejaron libre la zona de 
 defensa y jugadoras que podrían haber sido decisivas se quedaron aisladas, con lo que abrieron las puertas a 
 las inglesas a dominar el juego. 
 
@@ -64,75 +66,146 @@ en las redes de pases o entropía del equipo? Principalmente, ¿es problema de l
 (en \href{https://www.nrk.no/sport/reiten-ut-mot-sjogren-grep_-_-pa-tide-med-noko-nytt-1.16085631}{la nueva 
 entrenadora Hege Riise} afirma que habría sido mejor jugar 4-3-3, en vez de 4-2-3-1), del entrenador, de las 
 jugadoras que no supieron coordinarse, o simplemente no están a la altura de Inglaterra? Con este trabajo intentaremos 
-encontrar respuestas.
+encontrar respuestas. 
 
 \section{Elección de fuentes de datos}
-Escogemos las de StatsBomb, al ser de los partidos y equipos que nos interesaban. Otras opciones disponibles en 
+Escogemos las de \href{https://github.com/statsbomb/open-data}{StatsBomb}, al contener datos de los partidos y equipos que nos interesaban. Otras opciones disponibles en 
 el mercado son \href{https://www.statsperform.com/}{StatsPerform}, para el cual hay que pagar, 
 \href{https://fbref.com/en/}{FbRef}, el cual dispone de datos libres, pero para descargarlos y tratar con ellos 
-es más aparatoso y manual.
+es más aparatoso y manual, aparte de que no tiene los datos temporales ni de los pases con tanto detalle y 
+extensión como Statsbomb.
 
 \section{Paquetes de R}
-Hemos usado igraph por su facilidad a la hora de calcular la entropía, ggplot para los gráficos, statsbomb para 
-los datos, devtools para usar paquetes que están en github, así como tidyverse y dplyr para tratar los datos.
+En este apartado describiremos los paquetes de R de los que hemos hecho uso, justificando nuestra elección.
+
+\subsection{Igraph}
+La librería y paquete \href{https://igraph.org/r/}{igraph} de R lo hemos escogido por su facilidad a la hora de 
+calcular la entropía;está destinada al análisis de redes y consta por tanto de \href{https://kateto.net/netscix2016.html}{funciones sencillas} para calcular 
+medidas como \textit{closeness, network density, centrality, betweenness, centralization, robustness, 
+efficiency, effectiveness and diversity} sobre grafos, mediante la 
+creación de \href{https://igraph.org/r/doc/graph_from_data_frame.html}{``graph dataframes''}, que viene genial 
+dado que podemos usarlos con \href{https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/plot}{plot} 
+y te traza la red, y si aparte quieres usarlos como dataframes para hacer otros cálculos, también se puede. Un ejemplo 
+de uso podemos verlo \href{https://github.com/JJ/venice-patrician-social-network/blob/main/patrician-social-network.R}{aquí}, 
+programa en el cual nos inspiramos para trazar nuestra red de pases.
+
+\subsection{Devtools}
+Si bien la mayoría de los paquetes de R están en \href{https://cran.r-project.org/}{CRAN}, hay muchos que vamos 
+a necesitar que se encuentran en Github. \href{https://www.r-project.org/nosvn/pandoc/devtools.html}{devtools} da 
+la posibilidad de descargarlos directamente.
+
+\subsubsection{Statsbomb}
+\href{https://github.com/statsbomb/StatsBombR}{Este paquete} lo empleamos, una vez decidido que íbamos a hacer 
+uso de sus datos, para poder quedarnos con las columnas que nos interesaban y demás operaciones, esto es, \textit{parsear} 
+la información.
+
+\subsection{Tidyverse}
+\href{http://www.storybench.org/getting-started-with-tidyverse-in-r/}{Tidyverse} contiene paquetes como 
+\href{https://dplyr.tidyverse.org/}{dplyr} que son útiles para manipular, explorar y visualizar datos, y 
+prácticamente es un estándar en estadística y ciencia de datos. \href{https://rviews.rstudio.com/2017/06/08/what-is-the-tidyverse/}{Sus ventajas} 
+incluyen funciones consistentes y uso a lo largo de todo el \textit{workflow}, lo que se ve reflejado en una 
+mayor productividad, y no nos hizo dudar al escogerlo. \href{https://www.r-bloggers.com/2018/09/why-learn-the-tidyverse/}{Más ventajas} incluye 
+que carga una \textit{suite} complete y extensiva de las últimas herramientas de tratamiento de datos, haciendo más 
+fácil el desarrollo al despreocuparte así de tener que andar con librerías y paquetes de aquí y allí, que son 
+intuitivamente distintos a la hora de pasar parámetros o tratar las tablas.
+
+\subsubsection{Ggplot2}
+Está contenido dentro de \textit{tidyverse}, y lo usamos \href{https://ggplot2.tidyverse.org/}{ggplot} por lo sencillo que hace crear gráficos de caja, de dispersión, 
+temporales o de radar. De hecho, fue una de las razones por las que elegimos usar R para este proyecto; es una 
+librería extremadamente trabajada y documentada, que nos representar datos de un 
+\href{https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/data.frame}{dataframe} complejos de 
+manera personalizada, sin mucho problema; justo lo que necesitábamos, teniendo en cuenta el gran tamaño de las 
+tablas que manejamos. Además es el paquete de R más popular para visualizar datos.
+
+\subsubsection{Dplyr}
+\href{https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html}{Este paquete} hace extremadamente fácil 
+reducir la cantidad de datos que tenemos, gracias a funciones como \textit{filter, slice, arrange, select, rename, mutate, 
+relocate o summarise}. \href{https://dplyr.tidyverse.org/}{Aquí} podemos consultar más a fondo.
 
 \section{Diseño experimental}
 En este apartado veremos los experimentos realizados, y lo obtenido.
 
-\begin{figure}[h!]
-    \centering
-     \includegraphics[width=\textwidth]{./img/entrop_engl.png}
-     \caption{Entropía por jugadoras de Inglaterra en la EURO 2022}
-     \label{img:ent:eng}
+En \ref{img:red:simpl:eng} hemos representado cada jugador con un peso correspondiente a la suma de sus interacciones, y al calcular 
+la entropía de los pases a lo largo de la competición, podemos observar lo compacta que es la red, lo bien 
+conectadas que están todas, y cómo en el centro (y por tanto las que tocan más balón y hacen más juego) se 
+encuentran aquellas que han jugado más minutos a lo largo de la competición, son las que han marcado más goles, 
+o juegan como centrocampistas, seguidas por un alto número de defensas, lo que ciertamente llama la atención, dado 
+que normalmente suelen ser las centrocampistas las que mueven más la pelota, y nos indica que defendieron bien. 
+En definitiva, de la red podemos ver que todas participan y se coordinan de manera óptima.
+
+\begin{figure}[ht!]
+  \centering
+   \includegraphics[width=\textwidth]{./img/plot_england_simpl.png}
+   \caption{Red de pases total de Inglaterra simplificado en la EURO 2022}
+   \label{img:red:simpl:eng}
 \end{figure}
 
+En \ref{img:ent:eng} estudiamos cómo es consistente con lo ya comentado, y hay poca variabilidad dentro de la 
+entropía, conteniendo únicamente extremos mínimos correspondientes a la portera y máximos correspondientes a las defensas. 
+Nos reafirma en que la entropía refleja bien el comportamiento en el campo, la posición de las jugadoras y cuántos 
+minutos jugaron.
 
-\begin{figure}[h!]
+\begin{figure}[ht!]
+  \centering
+   \includegraphics[width=\textwidth]{./img/entrop_engl.png}
+   \caption{Entropía por jugadoras de Inglaterra en la EURO 2022}
+   \label{img:ent:eng}
+\end{figure}
+
+En \ref{img:red:eng} vemos las redes de peso sin simplicar las aristas, lo que nos permite apreciar lo densa que es, pero a su 
+vez están bien repartidas, y no apelotonadas como en Noruega \ref{img:red:norw}.
+
+\begin{figure}[ht!]
+  \centering
+   \includegraphics[width=\textwidth]{./img/entrop_engl.png}
+   \caption{Entropía por jugadoras de Inglaterra en la EURO 2022}
+   \label{img:red:eng}
+\end{figure}
+
+En \ref{img:red:simpl:nor} y \ref{img:red:nor} vemos que no es tanto una estructura casi romboidal, sino circular; 
+están más juntas y sin una forma reticular clara.
+
+\begin{figure}[ht!]
+  \centering
+   \includegraphics[width=\textwidth]{./img/plot_norw_simpl.png}
+   \caption{Red de pases total simplificado de Noruega en la EURO 2022}
+   \label{img:red:simpl:nor}
+\end{figure}
+
+\begin{figure}[ht!]
     \centering
      \includegraphics[width=\textwidth]{./img/entrop_norw.png}
      \caption{Entropía por jugadoras de Noruega en la EURO 2022}
-     \label{img:ent:nor}
-\end{figure}
-
-\begin{figure}[h!]
-    \centering
-     \includegraphics[width=\textwidth]{./img/plot_norw.png}
-     \caption{Red de pases total de Noruega en la EURO 2022}
-     \label{img:red:nor:tot}
-\end{figure}
-
-\begin{figure}[h!]
-    \centering
-     \includegraphics[width=\textwidth]{./img/plot_england_simpl.png}
-     \caption{Red de pases total de Inglaterra simplificado en la EURO 2022}
-     \label{img:red:eng}
-\end{figure}
-
-\begin{figure}[h!]
-    \centering
-     \includegraphics[width=\textwidth]{./img/plot_norw_simpl.png}
-     \caption{Red de pases total simplificado de Noruega en la EURO 2022}
      \label{img:red:nor}
 \end{figure}
 
-\begin{figure}[h!]
+\begin{figure}[ht!]
+    \centering
+     \includegraphics[width=\textwidth]{./img/plot_norw.png}
+     \caption{Red de pases total de Noruega en la EURO 2022}
+     \label{img:ent:norw}
+\end{figure}
+
+En \ref{img:fineng} y \ref{img:finnorw} vemos cómo Noruega se mantuvo con una entropía bastante alta en general
+(lo que podemos ver reflejado en\ref{img:ent:norw}), 
+mientras que la de Inglaterra es una curva decreciente, por lo que tienen orden y desorden, y consiguen un buen 
+equilibrio.
+
+\begin{figure}[ht!]
     \centering
      \includegraphics[width=\textwidth]{./img/englandentropy.png}
      \caption{Entropía de Inglaterra}
-     \label{img:red:eng:ent}
+     \label{img:fineng}
 \end{figure}
 
-\begin{figure}[h!]
+\begin{figure}[ht!]
     \centering
      \includegraphics[width=\textwidth]{./img/norwayentrop.png}
      \caption{Entropía de Noruega}
-     \label{img:red:eng:nor}
+     \label{img:finnorw}
 \end{figure}
 
-
 \section{Costes}
-
-
 En cuanto a coste de amortización anuales, he usado mi portátil Asus Vivobook 14, comprado hace casi tres 
 años por 799€, lo que se corresponde a 150€. El coste de desarrollo, teniendo en cuenta que 
 hemos empleado 571 horas, entre 40 que son las horas que se echan por semana en un trabajo a 
@@ -155,8 +228,8 @@ muestra en la tabla \ref{tab:costes1}
 \end{table}
 
 Sin embargo, el trabajo realizado aquí corresponde más bien al de un analista
-junior de datos deportivos. Según Payscale, el sueldo medio está en torno a los
-24000€. En este escenario los costes serían los indicados en la tabla \ref{tab:costes2}.
+junior de datos deportivos. Según \href{https://www.payscale.com/}{Payscale}, el sueldo medio está en torno 
+a los24000€. En este escenario los costes serían los indicados en la tabla \ref{tab:costes2}.
 
 \begin{table}
 \begin{tabular}[h!tbp]{lccr}

@@ -334,3 +334,20 @@ En ambos casos, el espacio de búsqueda, esto es, el conjunto de todos los DAG p
 es de tamaño {\em híper exponencial}; es un hecho que la búsqueda de la estructura óptima del grafo no se puede 
 hacer con un ordenador \cite{Chickering}. Para encontrar una buena estructura de red se usan algoritmos de búsqueda 
 aproximada. Entre ellos, aquellos que emplean heurísticas o metaheurística suelen encontrar buenas soluciones. 
+
+\section{Entropía conjunta}
+Pasamos a extender en este apartado el ya introducido concepto de entropía \ref{def:entropy}, para mejor 
+entenderlo y aplicarlo a nuestro problema.
+
+Sea una variable aleatoria unidimensional $X$ con valores posibles en $\mathcal{X}={x_{1},\dots,x_{N}}$ y una 
+función de probabilidad $P(X)$. Un evento con una probabilidad de ocurrencia $P(x), x \in \mathcal{X}$ tiene 
+un contenido informativo $I[P(x)]=- \log P(x)$. El valor esperado de $I$ es la {\em entropía de Shannon}, 
+$$S(X)= \sum_{x \in \mathcal{X}} [- \log P(x)]P(x)$$
+expresión que mide la incertidumbre en $P(X)$ \cite{entropy-extended}.
+
+La entropía conjunta mide la forma de la función asociada a un conjunto de variables aleatorias \cite{mass-function}.
+La entropía de Shannon conjunta de las variables aleatorias $(X,Y)$ es 
+$$S(X,Y)= \sum_{x \in \mathcal{X}} \sum_{y \in \mathcal{Y}} - P(x,y) \log P(x,y) $$
+
+donde $P(X,Y)$ denota la función de probabilidad conjunta. Si $X$ e $Y$ son independientes, su entropía conjunta es la suma 
+de las entropías individuales, $S(X,Y)=S(X)+S(Y)$ \cite{entropy-extended}.

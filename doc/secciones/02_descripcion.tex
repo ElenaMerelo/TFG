@@ -141,7 +141,7 @@ Añadir que {Zsh} es un \textit{shell} que se presenta como alternativa a \texti
 su mayor configurabilidad, el que te corrija errores de escritura y complete palabras, y esa necesidad que ya 
 hemos mencionado de tener un buen conocimiento de la situación y el desarrollo.
 
-\begin{figure}[h!]
+\begin{figure}[ht!]
     \centering
      \includegraphics[width=\textwidth]{./img/ohmyzsh.png}
      \caption{Cómo se ve nuestra terminal}
@@ -513,7 +513,9 @@ equipo $\tau$ cuando juega en casa, y $R_{\tau A}$ es la calificación de un equ
 juegan fuera. 
 \end{definicion}
 
-Nosotros calificaremos a los equipos según su entropía.
+Nosotros calificaremos a los equipos según la entropía obtenida de las redes de pases entre los jugadores, 
+la cual caracteriza su grado de heterogeneidad (uniformidad) u homogeneidad (variabilidad). Esto es, cuanto más 
+cercana sea la distribución de pases a la uniformidad, menos certeza tendremos de quién obtendrá el balón \cite{entropy-analysis}.
 
 \subsection{Entropía}
 La entropía es el concepto clave para extraer características universales de un sistema a partir de sus 
@@ -536,8 +538,12 @@ El concepto de entropía (o entropía de Shannon) se lo debemos al matemático e
 \href{https://en.wikipedia.org/wiki/Claude_Shannon}{Claude Shannon}, que lo introdujo en 1948 en el 
 artículo ``Una teoría matemática de la comunicación" \cite{shannon-1948}.
 
-La entropía que más nos interesa es la de Tsallis, al ser la que se puede aplicar mejor a las redes de pases 
-que ocurren a lo largo de un partido de fútbol.
+\href{http://bearcave.com/misl/misl_tech/wavelets/compression/shannon.html}{La entropía de Shannon} nos da 
+una manera de estimar el número medio mínimo de \textit{bits} que se necesitan para codificar una cadena de 
+símbolos, basándonos en la frecuencia de estos. 
+
+Con la entropía de Tsallis de los pases entre los jugadores, se puede medir la organización asociada al 
+comportamiento de un equipo de fútbol \cite{entropy-analysis}.
 
 \subsection{Entropía de Tsallis}
 En 1988 el físico \href{https://en.wikipedia.org/wiki/Constantino_Tsallis}{Constantino Tsallis} 

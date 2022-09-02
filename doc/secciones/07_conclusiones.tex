@@ -1,5 +1,27 @@
 \chapter{Conclusiones y trabajos futuros}
+En este trabajo hemos intentado modelar la manera en que los equipos consiguen, en mayor o menor medida,
+alcanzar un equilibrio entre organización y desorganización. Hemos visto reflejado el hecho de que una 
+mayor entropía implica una posición más baja en un campeonato, y en trabajos futuros nos gustaría estudiarlo 
+más en profundidad. En este apartado veremos específicamente las conclusiones a las que hemos llegado a partir 
+de este estudio preliminar, y los caminos que se pueden seguir a partir de aquí.
 
-Vemos una curva evidentemente más pronunciada en Inglaterra, pero llega a valores más bajos, luego están más 
-ordenadas, mientras que en Noruega hay más caos. En trabajos futuros veremos más en profundidad la entropía por 
-partido, así como las redes bayesianas y estudiar la causalidad.
+Hemos de tener en mente que por un lado, un equipo ha de intentar minimizar su entropía para poder maximizar 
+la comunicación entre sus jugadores, a la vez que por el otro, deben maximizar su entropía para maximizar sus 
+grados de libertad y evitar que el rival identifique un patrón ordenado de comportamiento.
+\cite{entropy-analysis}
+
+El desempeño de un equipo de fútbol está claramente influenciado por el equipo contra el que juegan, así que para 
+trabajos futuros dejamos lo de analizar, visualizar y estudiar el partido en el que se enfrentaron Inglaterra 
+y Noruega. \cite{donogue} teorizó sobre la naturaleza adaptativa de un jugador, pero no midió el desempeño de los 
+jugadores en términos de entropía. Nosotros hemos estudiado el rendimiento de un equipo de fútbol en base 
+a la entropía de los pases a lo largo de una competición, y queda ver cómo esta medida se adapta al equipo 
+rival, o comparar cómo varía de partido a partido.
+
+Otra cuestión importante que no podemos dejar de lado es que la correlación entre el buen desempeño de un 
+equipo y la entropía que se obtiene de sus redes de pases puede tener su base en la posesión del balón 
+del mismo; cuánto más tiempo lo tengan, más pases harán, luego más se pueden organizar y son los que 
+dominan el juego, pero puede salir una entropía más alta, que no es que indique más caos o desorden, 
+sino que hay más grados de libertad, y no tiene por qué significar que vayan a tener una posición más baja en la 
+competición. Sería interesante pues ampliar este estudio que hemos hecho 
+incluyendo los datos correspondientes a la posesión del balón de cada equipo en la tabla de distribuciones 
+condicionadas de la red bayesiana, o como causalidad.
