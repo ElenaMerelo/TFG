@@ -1,0 +1,247 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Based one the "beamer-greek-two" template provided 
+%% by the Laboratory of Computational Mathematics, 
+%% Mathematical Software and Digital Typography, 
+%% Department of Mathematics, University of the Aegean
+%% (http://myria.math.aegean.gr/labs/dt/)
+%%
+%% Adapted by John Liaperdos, October-November 2014
+%% (ioannis.liaperdos@gmail.com)
+%%
+%% Last update: 22/06/2017 (English Support)
+%% Source: https://es.overleaf.com/latex/templates/thesis-presentation-template-beamer-english-version-dpt-of-computer-engineering-technological-educational-institute-of-peloponnese/vwhtyshhtqmg
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{naturalnames}{hyperref}
+\documentclass{beamer} 
+\usepackage{babel}
+\usepackage[utf8]{inputenc}
+
+
+%%% FONT SELECTION %%%%%%%%%%%%%%%%%
+%%% we choose a sans font %%%%%%%%%%
+\usepackage{kmath,kerkis} 
+%\usepackage[default]{gfsneohellenic} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{color}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{epstopdf}
+\usepackage{graphicx}
+\graphicspath{{./img/}}
+
+%%
+% load TEI-Pel - specific layout
+\usepackage{TeiPel_En_Beamer_Layout}
+\setTeipelLayout{draft,newlogo}% options: "draft", "newlogo"
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Thesis Info %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% title
+		\title[Análisis de redes causales en deportes de equipo]{Análisis de redes causales en deportes de equipo}	
+	% author 
+    % (In the mandatory argument "{}", separate multiple
+    % authors with "\and" - use "\\" for better author name formatting
+    % in the title page. In the optional argument "[]" include all
+	% author names, with no "\and" or text formatting macros.)
+	% Example: 
+    %\author[A. Author Albert Einstein]{Anthony Author \and Albert Einstein}
+		\author[E. Merelo]{Elena Merelo}
+	% supervisor	
+		% \supervisor{Supervisor}{Mister Supervisor}{Professor}
+	% date
+		\presentationDate{7 de septiembre de 2022}
+%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+% typeset front slides
+	\typesetFrontSlides
+
+%%%%%%%%%%%%%%%%
+% Your Slides Start here:
+
+%%%%
+\section{Introducción}
+
+%%
+\subsection[Problema]{Descripción del problema}
+
+\begin{frame}{Motivación}
+	\framesubtitle{El fútbol es un deporte de equipo \textit{complicado}}
+    Como parte del cuerpo técnico de un equipo habrá que decidir:
+    \begin{itemize}
+		\item Quiénes jugarán
+		\pause
+		\item Dónde se posicionarán
+		\pause
+        \item Cuándo y qué cambios habrá
+		\pause
+        \item Alineación por la que se abogará
+        \pause
+        \item Así como a quién fichar, a quién vender, qué hacer en los entrenamientos 
+        \pause
+        \item Entran muchas variables \textit{en juego}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Objetivos del trabajo}
+	\begin{itemize}
+		\item <1->Entender cómo se pueden aplicar técnicas estadísticas en deportes de equipo, 
+        y adaptar resultados en ese campo a los tipos de datos que existen aquí.
+		\item <2->Crear una herramienta para que personas del equipo técnico de un equipo
+        de fútbol, como analistas de datos, analistas técnicos, analistas de rendimiento físico o 
+        entrenadores, puedan tomar decisiones en base al estudio que se haga antes, durante o después de 
+        un partido.
+	\end{itemize}
+    El repositorio en Github del proyecto se puede encontrar \href{https://bit.ly/memoriaTFG_emerelo}{aquí}.
+\end{frame}
+
+\begin{frame}{Descripción}
+	\begin{itemize}
+		\item <1->¿La entropía mejora las posibilidades de marcar gol? 
+        \item <2->Si cambia la entropía del equipo, ¿podemos determinar la causa?
+        \item <3->¿Es posible ver la entropía reflejada en un tipo de visualización de las redes de pases?
+        \item <4->¿Hasta qué punto es determinante la entropía a nivel de jugador o equipo?
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Metodología}
+	\begin{itemize}
+		\item \textbf{Desarrollo ágil}
+		\pause
+		\item \textit{Design thinking}
+	\end{itemize}
+\end{frame}
+
+%%
+\subsection{Definiciones}
+\begin{frame}{Redes bayesianas}
+    \begin{definition}[Redes bayesianas] 
+        Una red bayesiana $\mathfrak{B} = \lbrace \mathcal{G}, \mathbb{P} \rbrace$ está definida por:
+        \begin{itemize}
+            \item Un grafo dirigido acíclico $\mathcal{G}=(V,E)$ donde $V$ es un conjunto de nodos y $E$ 
+            es un conjunto de aristas.
+            \item Un espacio de probabilidad $(\Omega, \mathbb{P})$.
+            \item Un conjunto de variables aleatorias $\textbf{V}=V[i], i=1,...,N$ con N lista de variables aleatorias, 
+            asociadas con los nodos del grafo $(\Omega, \mathbb{P})$ 
+            de tal manera que $\mathbb{P}(V[1],...,V[N])= \prod_{i=1}^{n}\mathbb{P}(V[i]|pa(V[i]))$, donde $pa(V[i])$ es el 
+            conjunto de los nodos padre de $V[i]$ en $\mathcal{G}$.  
+        \end{itemize}
+    \end{definition}     
+\end{frame}
+
+\begin{frame}{Redes bayesianas}
+	\begin{center}
+		Ejemplo de grafo dirigido acíclico \\[12pt]
+		\includegraphics[width=0.35\textwidth,keepaspectratio]{dag.png}
+		\\
+		\footnotesize(Una red bayesiana consiste en un modelo estructural y un conjunto de probabilidades)
+    \end{center}
+\end{frame}
+
+
+\begin{frame}{Redes causales}
+    \begin{block}
+        <1->{}
+            \begin{itemize}
+                \item Red bayesiana en la que los padres de cada nodo son sus causas directas.
+                \item Satisface la {\em condición de Markov causal}
+            \end{itemize}
+    \end{block}
+    \begin{exampleblock}
+        <2->{Condición de Markov causal}
+            \begin{itemize}
+                \item Dadas las causas directas, el fenómeno asociado a un nodo es independiente de 
+                los que no tienen efecto sobre él. Esta asunción permite que la distribución 
+                conjunta de las variables en una red causal sea factorizada como :
+                $$ P(X_{1}, \dots,X_{N}) = \prod_{i=1}^{N} P(X_{i} | pa(X_{i}))$$ 
+            \end{itemize}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Entropía}
+	\begin{definition}[Entropía] \label{def:entropy}
+        Para una variable aleatoria discreta $X$ definimos su entropía como:  
+        
+        $$H(X):= - \sum_{x} P(x)\log[P(x)]$$
+        
+        bits, donde $X$ toma valores en $\mathcal{X}$, $P:\mathcal{X} \rightarrow [0,1]$, $P(x)$ es la 
+        probabilidad de que $X$ esté en el estado $x$. La 
+        entropía conjunta de las variables $X_1...X_N$ se define por 
+        $$H(X_1,...,X_N)=-\sum_{x_1}...\sum_{x_N}P(x_1,...,x_N)\log[P(x_1,...,x_N)]$$
+    \end{definition}
+\end{frame}
+
+%%%%
+\section{Contribuciones}
+
+%%
+\subsection{Implementación}
+
+\begin{frame}{Summary}
+   	\begin{alertblock}{Attention}
+   		\textlatin{This is an important alert}
+   	\end{alertblock}
+\end{frame}
+
+%
+\subsection{Resultados principales}
+
+\begin{frame}{Summary}
+	\begin{itemize}
+		\item The \textcolor{red}{first main message} of our talk.
+		\item The \textcolor{red}{second main message} of our talk.
+		\item Maybe a \textcolor{red}{third message}, but ... no more.
+	\end{itemize}
+	\vskip0pt plus.5fill
+	\begin{itemize}
+		\item Conclusion.
+	\end{itemize}
+	\begin{itemize}
+		\item Future work.
+		\item Discussion.
+	\end{itemize}
+\end{frame}
+
+\subsection{Conclusiones y trabajos futuros}
+
+\begin{frame}{Summary}
+	\begin{itemize}
+		\item The \textcolor{red}{first main message} of our talk.
+		\item The \textcolor{red}{second main message} of our talk.
+		\item Maybe a \textcolor{red}{third message}, but ... no more.
+	\end{itemize}
+	\vskip0pt plus.5fill
+	\begin{itemize}
+		\item Conclusion.
+	\end{itemize}
+	\begin{itemize}
+		\item Future work.
+		\item Discussion.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Bibliografía}
+	\begin{thebibliography}{2}
+		\beamertemplatebookbibitems
+		\bibitem{Author1990}A.\ Author. \newblock\emph{Handbook of Everything}.\newblock
+\textlatin{Some Press, \oldstylenums{1990}}.
+
+		\beamertemplatearticlebibitems
+		\bibitem{Someone2002}B.\ Author.\newblock On this and that\emph{.}
+\newblock\emph{Journal on This and That}. 
+\oldstylenums{2}(\oldstylenums{1}):\oldstylenums{50}--\oldstylenums{100}, 
+\oldstylenums{2000}.
+	\end{thebibliography}
+\end{frame}
+
+%%
+\end{document}
