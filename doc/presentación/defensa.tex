@@ -22,7 +22,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{multicol}
 \usepackage{caption}
-
+\usepackage{subfig}
 
 
 %%% FONT SELECTION %%%%%%%%%%%%%%%%%
@@ -179,6 +179,38 @@
         \includegraphics[width=\columnwidth,height=3cm]{plot_norw_simpl.png}
         \captionof{figure}{Entropía conjunta simplificada de Noruega}
     \end{columns} 
+\end{frame}
+
+\begin{frame}{Partido Inglaterra - Noruega}
+	%   	\begin{alertblock}{Attention}
+	%   		\textlatin{This is an important alert}
+	%   	\end{alertblock}
+		\begin{columns}[t]
+			\column{.5\textwidth}
+			\includegraphics[width=\columnwidth,height=3cm]{entropy_match_eng.png}
+			\captionof{figure}{Entropía conjunta de Inglaterra}
+			\includegraphics[width=\columnwidth,height=3cm]{entropy_match_engl_simpl.png}
+			\captionof{figure}{Entropía conjunta simplificada de Inglaterra}
+			\column{.5\textwidth}
+			\includegraphics[width=\columnwidth,height=3cm]{entropy_match_norw.png}
+			\captionof{figure}{Entropía conjunta de Noruega}
+			\includegraphics[width=\columnwidth,height=3cm]{entropy_match_norw_simpl.png}
+			\captionof{figure}{Entropía conjunta simplificada de Noruega}
+		\end{columns} 
+	\end{frame}
+
+\begin{frame}{Comparativa por jugadoras}
+	\begin{figure}
+		\centering
+		 \subfloat[Entropía total Inglaterra]{
+		   \includegraphics[width=0.2\textwidth]{table_entrop_engl.png}}
+		 \subfloat[Entropía en el partido Inglaterra]{
+		   \includegraphics[width=0.2\textwidth]{table_entropy_match_eng.png}}
+		 \subfloat[Entropía total Noruega]{
+		   \includegraphics[width=0.2\textwidth]{table_entrop_norw.png}}
+		\subfloat[Entropía total en el partido Noruega]{
+			\includegraphics[width=0.2\textwidth]{table_entropy_match_norw.png}}
+	   \end{figure}
 \end{frame}
 
 %
