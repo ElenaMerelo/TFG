@@ -81,7 +81,7 @@
 	\framesubtitle{El fútbol es un deporte de equipo \textit{complejo}}
     Como parte del cuerpo técnico de un equipo habrá que decidir:
     \begin{itemize}
-		\item Quiénes jugarán
+		\item Quién será convocado y quién jugará
 		\pause
 		\item Dónde se posicionarán
 		\pause
@@ -170,16 +170,12 @@
 	\end{alertblock}
 \end{frame}
 
-\begin{frame}{Partido Inglaterra - Noruega}
+\begin{frame}{Partido Inglaterra 8 - Noruega 0}
 		\begin{columns}[t]
 			\column{.5\textwidth}
-			\includegraphics[width=\columnwidth,height=3cm]{entropy_match_eng.png}
-			\captionof{figure}{Entropía conjunta de Inglaterra}
 			\includegraphics[width=\columnwidth,height=3cm]{entropy_match_engl_simpl.png}
 			\captionof{figure}{Entropía conjunta simplificada de Inglaterra}
 			\column{.5\textwidth}
-			\includegraphics[width=\columnwidth,height=3cm]{entropy_match_norw.png}
-			\captionof{figure}{Entropía conjunta de Noruega}
 			\includegraphics[width=\columnwidth,height=3cm]{entropy_match_norw_simpl.png}
 			\captionof{figure}{Entropía conjunta simplificada de Noruega}
 		\end{columns} 
@@ -188,15 +184,29 @@
 \begin{frame}{Comparativa por jugadoras}
 	\begin{figure}
 		\centering
-		 \subfloat[Entropía total Inglaterra]{
-		   \includegraphics[width=0.2\textwidth]{england_total_ordered.png}}
-		 \subfloat[Entropía en el partido Inglaterra]{
-		   \includegraphics[width=0.2\textwidth]{england_match_ordered.png}}
-		 \subfloat[Entropía total Noruega]{
-		   \includegraphics[width=0.2\textwidth]{norway_total_ordered.png}}
-		\subfloat[Entropía total en el partido Noruega]{
-			\includegraphics[width=0.2\textwidth]{norway_match_ordered.png}}
-	   \end{figure}
+			\subfloat[Posiciones Inglaterra]{
+			\includegraphics[width=0.105\textwidth]{positions_england_total.png}}
+			\subfloat[Entropía total de Inglaterra]{
+			\includegraphics[width=0.2\textwidth]{england_total_ordered.png}}
+			\subfloat[Posiciones Noruega]{
+			\includegraphics[width=0.101\textwidth]{positions_norway_total.png}}
+		\subfloat[Entropía total de Noruega]{
+			\includegraphics[width=0.21\textwidth]{norway_total_ordered.png}}
+		\end{figure}
+\end{frame}
+
+\begin{frame}{En el partido Inglaterra 8-Noruega 0}
+	\begin{figure}
+		\centering
+			\subfloat[Posiciones Inglaterra]{
+			\includegraphics[width=0.101\textwidth]{positions_england_match.png}}
+			\subfloat[Entropía total de Inglaterra]{
+			\includegraphics[width=0.199\textwidth]{england_match_ordered.png}}
+			\subfloat[Posiciones Noruega]{
+			\includegraphics[width=0.102\textwidth]{positions_norway_match.png}}
+		\subfloat[Entropía total de Noruega]{
+			\includegraphics[width=0.209\textwidth]{norway_match_ordered.png}}
+		\end{figure}
 \end{frame}
 
 %
