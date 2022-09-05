@@ -93,24 +93,11 @@
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{Objetivos del trabajo}
-	\begin{itemize}
-		\item <1->Entender cómo se pueden aplicar técnicas estadísticas en deportes de equipo, 
-        y adaptar resultados en ese campo a los tipos de datos que existen aquí.
-		\item <2->Crear una herramienta para que personas del equipo técnico de un equipo
-        de fútbol, como analistas de datos, analistas técnicos, analistas de rendimiento físico o 
-        entrenadores, puedan tomar decisiones en base al estudio que se haga antes, durante o después de 
-        un partido.
-	\end{itemize}
-    \href{https://bit.ly/memoriaTFG_emerelo}{Repositorio en Github}.
-\end{frame}
-
 \begin{frame}{Descripción}
 	\begin{itemize}
-		\item <1->¿La entropía mejora las posibilidades de marcar gol? 
-        \item <2->Si cambia la entropía del equipo, ¿podemos determinar la causa?
+		\item <1->¿Analizar la entropía sobre el grafo de pases nos ayuda a entender mejor el desempeño de un equipo?
+		\item <2->¿Hasta qué punto es determinante la entropía a nivel de jugador o equipo?
         \item <3->¿Es posible ver la entropía reflejada en un tipo de visualización de las redes de pases?
-        \item <4->¿Hasta qué punto es determinante la entropía a nivel de jugador o equipo?
 	\end{itemize}
 \end{frame}
 
@@ -124,16 +111,13 @@
 
 %%
 \subsection{Definiciones}
-\begin{frame}{Redes bayesianas}
-    \begin{definition}[Redes bayesianas] 
-        Una red bayesiana $\mathfrak{B} = \lbrace \mathcal{G}, \mathbb{P} \rbrace$ está definida por:
-        \begin{itemize}
-            \item $\mathcal{G}=(V,E)$ 
-            \item $(\Omega, \mathbb{P})$.
-            \item $\textbf{V}=V[i], i=1,...,N$, $(\Omega, \mathbb{P})$ 
-            de tal manera que $\mathbb{P}(V[1],...,V[N])= \prod_{i=1}^{n}\mathbb{P}(V[i]|pa(V[i]))$
-        \end{itemize}
-    \end{definition}     
+\begin{frame}{Grafos}
+	\begin{definition}
+		Un grafo es un par $\mathcal{G} = (V, E)$, con $V$ conjunto finito de vértices distinguibles y 
+		$E \subseteq V \times V$ conjunto de aristas. Un par ordenado $(u, v) \in E$ denota un borde dirigido
+		del vértice $u$ al vértice $v$, y se dice que $u$ es padre de $v$ y $v$ hijo de $u$. Los bordes dirigidos 
+		se representarán con flechas. 
+	\end{definition}
 \end{frame}
 
 \begin{frame}{Redes bayesianas}
@@ -155,6 +139,10 @@
         La entropía conjunta de las variables $X_1...X_N$ se define por 
         $$H(X_1,...,X_N):=-\sum_{x_1}...\sum_{x_N}P(x_1,...,x_N)\log[P(x_1,...,x_N)]$$
     \end{definition}
+	\begin{example}
+	Nosotros calificaremos a los equipos según la entropía obtenida de las redes de pases entre los jugadores, 
+ 	la cual caracteriza su grado de uniformidad o variabilidad.
+	\end{example}
 \end{frame}
 
 %%%%
@@ -163,28 +151,26 @@
 %%
 \subsection{Resultados}
 
-\begin{frame}{Redes de pases}
-%   	\begin{alertblock}{Attention}
-%   		\textlatin{This is an important alert}
-%   	\end{alertblock}
+\begin{frame}{Redes de pases a lo largo de la competición}
     \begin{columns}[t]
         \column{.5\textwidth}
         \includegraphics[width=\columnwidth,height=3cm]{plot_england.png}
-        \captionof{figure}{Entropía conjunta de Inglaterra}
+        \captionof{figure}{Red de pases total de Inglaterra}
         \includegraphics[width=\columnwidth,height=3cm]{plot_england_simpl.png}
-        \captionof{figure}{Entropía conjunta simplificada de Inglaterra}
+        \captionof{figure}{Red de pases total simplificada de Inglaterra}
         \column{.5\textwidth}
         \includegraphics[width=\columnwidth,height=3cm]{plot_norw.png}
-        \captionof{figure}{Entropía conjunta de Noruega}
+        \captionof{figure}{Red de pases total de Noruega}
         \includegraphics[width=\columnwidth,height=3cm]{plot_norw_simpl.png}
-        \captionof{figure}{Entropía conjunta simplificada de Noruega}
+        \captionof{figure}{Red de pases total simplificada de Noruega}
     \end{columns} 
+	\begin{alertblock}{Nota}
+		\textlatin{En las simplificaciones, la entropía por jugadora es el tamaño de cada nodo. El grosor de los enlaces es el 
+	 	número de pases que ha habido.}
+	\end{alertblock}
 \end{frame}
 
 \begin{frame}{Partido Inglaterra - Noruega}
-	%   	\begin{alertblock}{Attention}
-	%   		\textlatin{This is an important alert}
-	%   	\end{alertblock}
 		\begin{columns}[t]
 			\column{.5\textwidth}
 			\includegraphics[width=\columnwidth,height=3cm]{entropy_match_eng.png}
@@ -226,11 +212,13 @@
 \end{frame}
 
 \begin{frame}{Trabajos futuros}
+	Introducción de redes bayesianas para:
 	\begin{itemize}
 		\item Adaptación al rival
 		\item Posesión del balón
-		\item Número de pases
+		\item Minutos jugados
 		\item Entropía espacio-temporal
+		\item Alineación y cambios
 	\end{itemize}
 \end{frame}
 
@@ -260,20 +248,29 @@
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{Python vs R}
+\begin{frame}{Sobre los datos usados}
 	\begin{itemize}
-		\item The \textcolor{red}{first main message} of our talk.
-		\item The \textcolor{red}{second main message} of our talk.
-		\item Maybe a \textcolor{red}{third message}, but ... no more.
+		\item \href{https://statsbomb.com/articles/soccer/statsbomb-release-free-360-data-womens-euro-2022-available-now/}{StatsBomb 360}
+		captura la posición de todos los jugadores por cada evento que ocurre.
 	\end{itemize}
-	\vskip0pt plus.5fill
-	\begin{itemize}
-		\item Conclusion.
-	\end{itemize}
-	\begin{itemize}
-		\item Future work.
-		\item Discussion.
-	\end{itemize}
+	\begin{center}
+		Fuente de los datos \\[12pt]
+		\includegraphics[width=0.35\textwidth,keepaspectratio]{free_data.png}
+		\\
+		\footnotesize(Nunca antes se había liberado datos 360 de StatsBomb para fútbol femenino)
+    \end{center}
+\end{frame}
+
+\begin{frame}{Redes bayesianas}
+    \begin{definition}[Redes bayesianas] 
+        Una red bayesiana $\mathfrak{B} = \lbrace \mathcal{G}, \mathbb{P} \rbrace$ está definida por:
+        \begin{itemize}
+            \item $\mathcal{G}=(V,E)$ 
+            \item $(\Omega, \mathbb{P})$.
+            \item $\textbf{V}=V[i], i=1,...,N$, $(\Omega, \mathbb{P})$ 
+            de tal manera que $\mathbb{P}(V[1],...,V[N])= \prod_{i=1}^{n}\mathbb{P}(V[i]|pa(V[i]))$
+        \end{itemize}
+    \end{definition}     
 \end{frame}
 
 \begin{frame}{Redes causales}
