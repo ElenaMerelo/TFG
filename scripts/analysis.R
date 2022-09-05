@@ -7,8 +7,9 @@ library(dplyr)
 
 # extraemos los eventos
 events_eng <- readRDS("scripts/data_england.Rds")
+view(events_eng)
 events_norw <- readRDS("scripts/data_norway.Rds")
-
+view(events_norw)
 #quitamos NA
 events_eng$pass.outcome.name <- ifelse(is.na(events_eng$pass.outcome.name),
 "Complete", as.character(events_eng$pass.outcome.name))
@@ -42,12 +43,14 @@ pass.outcome.name == "Complete")
 match_norw <- passes_norw %>% filter(match_id == 3835327)
 # me quedo solo con quién pasa y quién recibe, localización
 passes_eng <- passes_eng %>% select(player.name, pass.recipient.name)
+view(passes_eng)
 passes_norw <- passes_norw %>% select(player.name, pass.recipient.name)
-
+view(passes_norw)
 #igual para el partido específico eng-norw
 match_eng <- match_eng %>% select(player.name, pass.recipient.name)
 match_norw <- match_norw %>% select(player.name, pass.recipient.name)
-
+view(match_eng)
+view(match_norw)
 # calculamos entropía total de eng en euro 2022
 england <- graph.data.frame(data.frame(passes_eng$player.name,
 passes_eng$pass.recipient.name), directed = FALSE)
