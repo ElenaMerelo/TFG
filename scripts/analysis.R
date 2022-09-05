@@ -7,9 +7,9 @@ library(dplyr)
 
 # extraemos los eventos
 events_eng <- readRDS("scripts/data_england.Rds")
-view(events_eng)
+#view(events_eng)
 events_norw <- readRDS("scripts/data_norway.Rds")
-view(events_norw)
+#view(events_norw)
 #quitamos NA
 events_eng$pass.outcome.name <- ifelse(is.na(events_eng$pass.outcome.name),
 "Complete", as.character(events_eng$pass.outcome.name))
@@ -43,14 +43,14 @@ pass.outcome.name == "Complete")
 match_norw <- passes_norw %>% filter(match_id == 3835327)
 # me quedo solo con quién pasa y quién recibe, localización
 passes_eng <- passes_eng %>% select(player.name, pass.recipient.name)
-view(passes_eng)
+#view(passes_eng)
 passes_norw <- passes_norw %>% select(player.name, pass.recipient.name)
-view(passes_norw)
+#view(passes_norw)
 #igual para el partido específico eng-norw
 match_eng <- match_eng %>% select(player.name, pass.recipient.name)
 match_norw <- match_norw %>% select(player.name, pass.recipient.name)
-view(match_eng)
-view(match_norw)
+#view(match_eng)
+#view(match_norw)
 # calculamos entropía total de eng en euro 2022
 england <- graph.data.frame(data.frame(passes_eng$player.name,
 passes_eng$pass.recipient.name), directed = FALSE)
@@ -68,7 +68,9 @@ plot(england_simplified,
      vertex.size = england_simplified$diversity * 10,
      edge.width = E(england_simplified)$weight / 5)
 dev.off()
-view(england_simplified$diversity)
+
+england_total_ordered <- sort(england_simplified$diversity)
+view(england_total_ordered)
 
 # calculamos entropía de eng para partido eng-norw
 entropy_match_eng <- graph.data.frame(data.frame(match_eng$player.name,
@@ -88,8 +90,9 @@ plot(entropy_match_engl_simp,
      vertex.size = entropy_match_engl_simp$diversity * 10,
      edge.width = E(entropy_match_engl_simp)$weight / 5)
 dev.off()
-view(entropy_match_engl_simp$diversity)
 
+england_match_ordered <- sort(entropy_match_engl_simp$diversity)
+view(england_match_ordered)
 
 # análogo para noruega
 norway <- graph.data.frame(data.frame(passes_norw$player.name,
@@ -108,7 +111,9 @@ plot(norway_simplified,
      vertex.size = norway_simplified$diversity * 10,
      edge.width = E(norway_simplified)$weight / 5)
 dev.off()
-view(norway_simplified$diversity)
+
+norway_total_ordered <- sort(norway_simplified$diversity)
+view(norway_total_ordered)
 
 # calculamos entropía de norw para partido eng-norw
 entropy_match_norw <- graph.data.frame(data.frame(match_norw$player.name,
@@ -121,15 +126,15 @@ E(entropy_match_norw_simp)$weight <- 1
 entropy_match_norw_simp <- simplify(entropy_match_norw_simp,
 edge.attr.comb = list(weight = "sum"))
 
-
 entropy_match_norw_simp$diversity <- diversity(entropy_match_norw_simp)
 png(filename = "scripts/entropy_match_norw_simpl.png")
 plot(entropy_match_norw_simp,
      vertex.size = entropy_match_norw_simp$diversity * 10,
      edge.width = E(entropy_match_norw_simp)$weight / 5)
 dev.off()
-view(entropy_match_norw_simp$diversity)
 
+norway_match_ordered <- sort(entropy_match_norw_simp$diversity)
+view(norway_match_ordered)
 
 norway_simplified_df <- data.frame(matrix(unlist(norway_simplified$diversity),
 nrow = length(norway_simplified$diversity), byrow = TRUE))
