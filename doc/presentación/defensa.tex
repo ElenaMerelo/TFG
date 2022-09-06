@@ -81,29 +81,23 @@
     Como parte del cuerpo técnico de un equipo habrá que decidir:
     \begin{itemize}
 		\item Quién será convocado y quién jugará
-		\pause
-		\item Dónde se posicionarán
-		\pause
         \item Cuándo y qué cambios habrá
-		\pause
         \item Alineación por la que se abogará
-        \pause
         \item A quién fichar o vender, qué hacer en los entrenamientos,... 
 	\end{itemize}
 \end{frame}
 
 \begin{frame}{Descripción}
 	\begin{itemize}
-		\item <1->¿Analizar la entropía sobre el grafo de pases nos ayuda a entender mejor el desempeño de un equipo?
-		\item <2->¿Hasta qué punto es determinante la entropía a nivel de jugador o equipo?
-        \item <3->¿Es posible ver la entropía reflejada en un tipo de visualización de las redes de pases?
+		\item ¿Analizar la entropía sobre el grafo de pases nos ayuda a entender mejor el desempeño de un equipo?
+		\item ¿Hasta qué punto es determinante la entropía a nivel de jugador o equipo?
+        \item ¿Es posible ver la entropía reflejada en un tipo de visualización de las redes de pases?
 	\end{itemize}
 \end{frame}
 
 \begin{frame}{Metodología}
 	\begin{itemize}
 		\item \textbf{Desarrollo ágil}
-		\pause
 		\item \textit{Design thinking}
 	\end{itemize}
 \end{frame}
@@ -114,25 +108,60 @@
 	\begin{definition}
 		$\mathcal{G} = (V, E)$, con $V$ conjunto finito de vértices distinguibles y 
 		$E \subseteq V \times V$ conjunto de aristas. Un par ordenado $(u, v) \in E$ denota un borde dirigido
-		del vértice $u$ al vértice $v$, y se dice que $u$ es padre de $v$ y $v$ hijo de $u$. Los bordes dirigidos 
-		se representarán con flechas. 
+		del vértice $u$ al vértice $v$. Los bordes dirigidos se representarán con flechas. 
 	\end{definition}
 	En nuestro caso, representaremos las redes de pases mediante grafos no dirigidos, donde los nodos serán las 
-	jugadoras, y los pases los arcos.
+	jugadoras, y los arcos los pases.
+\end{frame}
+
+\begin{frame}{Redes bayesianas}
+    \begin{definition}[Redes bayesianas] 
+        Una red bayesiana $\mathfrak{B} = \lbrace \mathcal{G}, \mathbb{P} \rbrace$ está definida por:
+        \begin{itemize}
+            \item $\mathcal{G}=(V,E)$ 
+            \item $(\Omega, \mathbb{P})$.
+            \item $\textbf{V}=V[i], i=1,...,N$, $(\Omega, \mathbb{P})$ 
+            de tal manera que $\mathbb{P}(V[1],...,V[N])= \prod_{i=1}^{n}\mathbb{P}(V[i]|pa(V[i]))$
+			% la probabilidad conjunta es el productorio de las probabilidades condicionadas
+        \end{itemize}
+    \end{definition}  
+	El cálculo de la probabilidad conjunta que se usa en la entropía coincide con el modelo 
+	probabilístico de la red bayesiana.
 \end{frame}
 
 \begin{frame}{Entropía}
-	Nos da una manera de estimar el número medio mínimo de bits que se 
-	necesitan para codificar una cadena de símbolos, basándonos en la 
-	frecuencia de estos.
+	Podemos medir la cantidad de incertidumbre en una distribución de probabilidad usando la 
+	entropía de Shannon.
 	\begin{definition}[Entropía] \label{def:entropy}
-        Para $X$ variable aleatoria discreta $H(X):= - \sum_{x} P(x)\log[P(x)]$, donde 
+        Para $X$ v.a. discreta $H(X):= - \sum_{x} P(x)\log[P(x)]$, donde 
 		$X$ toma valores en $\mathcal{X}$, $P:\mathcal{X} \rightarrow [0,1]$.
         La entropía conjunta de las variables $X_1...X_N$ se define por 
-        $$H(X_1,...,X_N):=-\sum_{x_1}...\sum_{x_N}P(x_1,...,x_N)\log[P(x_1,...,x_N)]$$
+        $$H(X_1,...,X_N):=-\sum_{x_1}...\sum_{x_N}P(x_1,...,x_N)\log_{2}[P(x_1,...,x_N)]$$
     \end{definition}
 	Calificaremos a los equipos según la entropía de las redes de pases, que caracteriza 
 	su grado de uniformidad o variabilidad.
+	% aquí las variables no son independientes, luego a la hora de calcular la prob conjunta, 
+	% usamos las prob condicionadas ajustándonos al modelo probabilístico que tendríamos en 
+	% una red bayesiana.
+\end{frame}
+
+\begin{frame}{Entropía + Redes bayesianas}
+	\begin{itemize}
+		\item Para que tenga sentido calcular la entropía de Shannon debe cumplirse la propiedad de aditividad 
+		en los conjuntos
+		\item $P(A U B) = P(A) + P(B) - P(A \cap B)$; para que sea aditiva la probabilidad de la intersección 
+		debe ser 0, pero $P(A \cap B) = P(A)P(B/A)$
+		\item No tiene que ver con que sean sucesos dependientes o independientes, si no con que sean 
+		conjuntos disjuntos o no
+		\item Nuestras variables no son independientes
+	\end{itemize}
+	\begin{alertblock}{Entropía de Tsallis}
+		Para modelar el sistema con redes bayesianas, habría que usar una entropía que sí 
+		cumpliera esas propiedades.
+		La entropía de Shannon, implementada en igraph, refleja la propiedad (caos/orden/sorpresa) que 
+		estamos buscando, lo que fue suficiente para la viabilidad del producto en esta fase.
+	\end{alertblock}
+	
 \end{frame}
 
 %%%%
@@ -140,6 +169,21 @@
 
 %%
 \subsection{Resultados}
+
+\begin{frame}{Sobre los datos usados}
+	\begin{itemize}
+		\item \href{https://statsbomb.com/articles/soccer/statsbomb-release-free-360-data-womens-euro-2022-available-now/}{StatsBomb 360}
+		captura la posición de todos los jugadores por cada evento que ocurre.
+		\item 2246 pases completos de Inglaterra a lo largo de la EURO 2022 vs 967 de Noruega.
+		\item 444 pasess completos de Inglaterra en el partido Inglaterra-Noruega vs 177 de Noruega.
+	\end{itemize}
+	\begin{center}
+		Fuente de los datos \\[12pt]
+		\includegraphics[width=0.35\textwidth,keepaspectratio]{free_data.png}
+		\\
+		\footnotesize(Nunca antes se habían liberado datos 360 de StatsBomb para fútbol femenino)
+    \end{center}
+\end{frame}
 
 \begin{frame}{Preprocesamiento de datos}
 	\begin{itemize}
@@ -150,10 +194,10 @@
 	\begin{columns}[t]
 		\column{.5\textwidth}
 		\includegraphics[width=\columnwidth,height=3cm]{plot_england.png}
-		\captionof{figure}{Red de pases total de Inglaterra}
+		\footnotesize(Red de pases total de Inglaterra)
 		\column{.5\textwidth}
 		\includegraphics[width=\columnwidth,height=3cm]{plot_norw.png}
-		\captionof{figure}{Red de pases total de Noruega}
+		\footnotesize(Red de pases total de Noruega)
 	\end{columns} 
 \end{frame}
 
@@ -161,13 +205,13 @@
     \begin{columns}[t]
         \column{.5\textwidth}
         \includegraphics[width=\columnwidth,height=3cm]{plot_england_simpl.png}
-        \captionof{figure}{Red de pases total simplificada de Inglaterra}
+        \footnotesize(Red de pases total simplificada de Inglaterra)
         \column{.5\textwidth}
         \includegraphics[width=\columnwidth,height=3cm]{plot_norw_simpl.png}
-        \captionof{figure}{Red de pases total simplificada de Noruega}
+        \footnotesize(Red de pases total simplificada de Noruega)
     \end{columns} 
 	\begin{alertblock}{Nota}
-		\textlatin{En las simplificaciones, la entropía por jugadora es el tamaño de cada nodo. El grosor de los enlaces es el 
+		\textlatin{La entropía por jugadora es el tamaño de cada nodo. El grosor de los enlaces es el 
 	 	número de pases que ha habido.}
 	\end{alertblock}
 \end{frame}
@@ -181,7 +225,7 @@
 			\includegraphics[width=\columnwidth,height=3cm]{entropy_match_norw_simpl.png}
 			\captionof{figure}{Entropía conjunta simplificada de Noruega}
 		\end{columns} 
-	\end{frame}
+\end{frame}
 
 \begin{frame}{Comparativa por jugadoras a lo largo de la competición}
 	\begin{figure}
@@ -198,13 +242,11 @@
 \begin{frame}{Interpretaciones}
 	\begin{columns}[t]
 		\column{.5\textwidth}
-		\includegraphics[width=\columnwidth,height=3cm]{first_half_report.png}
 		\includegraphics[width=\columnwidth,height=3cm]{white.png}
-		\captionof{figure}{White- 0.9708, Mjelde- 0.8272}
+		\footnotesize(White- 0.9708, Mjelde (6)- 0.8272)
 		\column{.5\textwidth}
 		\includegraphics[width=\columnwidth,height=3cm]{norw2.png}
-		\captionof{figure}{Mead- 0.6506, White, Kirby- 0.8599, Thorisdottir- 0.8509, Tuva Hansen- 0.9189}
-		\includegraphics[width=\columnwidth,height=3cm]{second_half_report.png}
+		\footnotesize(Mead (7)- 0.6506, White (9), Kirby (14)- 0.8599, Thorisdottir(3)- 0.8509, Tuva Hansen(4)- 0.9189)
 	\end{columns} 
 \end{frame}
 
@@ -220,6 +262,17 @@
 		\end{figure}
 \end{frame}
 
+\begin{frame}{Resultados}
+	\begin{figure}
+		\centering
+			\subfloat[Entropía total de Inglaterra]{
+			\includegraphics[width=0.5\textwidth]{englandentropy.png}}
+			\subfloat[Entropía total de Noruega]{
+			\includegraphics[width=0.5\textwidth]{norwayentrop.png}}
+	\end{figure}
+	Entropía alta en una jugadora causa entropía alta en el equipo.
+\end{frame}
+
 %
 \subsection{Conclusiones y trabajos futuros}
 
@@ -233,7 +286,7 @@
 \end{frame}
 
 \begin{frame}{Trabajos futuros}
-	Introducción de redes bayesianas para:
+	Profundización en redes bayesianas para:
 	\begin{itemize}
 		\item Adaptación al rival
 		\item Posesión del balón
@@ -245,18 +298,11 @@
 
 \section{Extra}
 
-\begin{frame}{Costes}
-	\begin{table}
-		\begin{tabular}[h!tbp]{lccr}
-		  Concepto & Coste unitario & Unidades & Total \\
-		  Amortización portátil & 150€ & 1 & 150€ \\
-		  Ventilador            & 12€  & 1 & 14€ \\
-		  Costes laborales      & 2000€& 3.5 & 7000€ \\
-		  \hline \\
-		  \multicolumn{3}{l}{Total} & 7164€ \\
-		\end{tabular}
-		\caption{Costes el proyecto en el escenario ``analista de datos junior''} \label{tab:costes2}
-	\end{table}
+\begin{frame}{Preguntas}
+	\begin{center}
+		Det er alt, folkens! \\[12pt]
+		\includegraphics[width=0.35\textwidth,keepaspectratio]{final.jpg}
+    \end{center}
 \end{frame}
 
 \begin{frame}{Asignaturas usadas}
@@ -269,31 +315,18 @@
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{Sobre los datos usados}
-	\begin{itemize}
-		\item \href{https://statsbomb.com/articles/soccer/statsbomb-release-free-360-data-womens-euro-2022-available-now/}{StatsBomb 360}
-		captura la posición de todos los jugadores por cada evento que ocurre.
-		\item 2246 pases completos de Inglaterra a lo largo de la EURO 2022 vs 967 de Noruega.
-		\item 444 pasess completos de Inglaterra en el partido Inglaterra-Noruega vs 177 de Noruega.
-	\end{itemize}
-	\begin{center}
-		Fuente de los datos \\[12pt]
-		\includegraphics[width=0.35\textwidth,keepaspectratio]{free_data.png}
-		\\
-		\footnotesize(Nunca antes se había liberado datos 360 de StatsBomb para fútbol femenino)
-    \end{center}
-\end{frame}
-
-\begin{frame}{Redes bayesianas}
-    \begin{definition}[Redes bayesianas] 
-        Una red bayesiana $\mathfrak{B} = \lbrace \mathcal{G}, \mathbb{P} \rbrace$ está definida por:
-        \begin{itemize}
-            \item $\mathcal{G}=(V,E)$ 
-            \item $(\Omega, \mathbb{P})$.
-            \item $\textbf{V}=V[i], i=1,...,N$, $(\Omega, \mathbb{P})$ 
-            de tal manera que $\mathbb{P}(V[1],...,V[N])= \prod_{i=1}^{n}\mathbb{P}(V[i]|pa(V[i]))$
-        \end{itemize}
-    \end{definition}     
+\begin{frame}{Costes}
+	\begin{table}
+		\begin{tabular}[h!tbp]{lccr}
+		  Concepto & Coste unitario & Unidades & Total \\
+		  Amortización portátil & 150€ & 1 & 150€ \\
+		  Ventilador            & 14€  & 1 & 14€ \\
+		  Costes laborales      & 2000€& 3.5 & 7000€ \\
+		  \hline \\
+		  \multicolumn{3}{l}{Total} & 7164€ \\
+		\end{tabular}
+		\caption{Costes el proyecto en el escenario ``analista de datos junior''} \label{tab:costes2}
+		\end{table}
 \end{frame}
 
 \begin{frame}{Redes bayesianas}
@@ -322,6 +355,19 @@
                 $$ P(X_{1}, \dots,X_{N}) = \prod_{i=1}^{N} P(X_{i} | pa(X_{i}))$$ 
             \end{itemize}
     \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Entropía de Tsallis}
+Con la entropía de Tsallis de los pases entre los jugadores, se puede medir la organización asociada al 
+comportamiento de un equipo de fútbol. Fue diseñada para analizar sistemas donde existen correlaciones 
+entre sus microestados
+	\begin{definition}[Entropía de Tsallis] 
+	Dado un conjunto discreto de probabilidades ${p_i}$ con la condición $\sum_{i} p_i = 1$, y con $q$ 
+	cualquier número real, se define la entropía de Tsallis como
+	$$ S_q(p_i)=\frac{k}{q-1}\left(1- \sum_{i=1}^{N}p_{i}^{q}\right)$$
+	donde $q$ se denomina índice entrópico, $N$ son los microestados y $k$ es una constante positiva.
+	\end{definition}
+La fórmula se reduce a la de la entropía de Shannon cuando $q=1$.
 \end{frame}
 
 %%
