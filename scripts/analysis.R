@@ -146,3 +146,14 @@ england_simplified_df <- data.frame(matrix(
      unlist(england_simplified$diversity),
 nrow = length(england_simplified$diversity), byrow = TRUE))
 radarchart(england_simplified_df)
+
+
+# Para el partido inglaterra - noruega
+norway_match_df <- data.frame(matrix(unlist(entropy_match_norw_simp$diversity),
+nrow = length(entropy_match_norw_simp$diversity), byrow = TRUE))
+radarchart(norway_match_df)
+
+england_match_df <- data.frame(matrix(
+     unlist(entropy_match_engl_simp$diversity),
+nrow = length(entropy_match_engl_simp$diversity), byrow = TRUE))
+radarchart(england_match_df)

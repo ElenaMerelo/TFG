@@ -130,10 +130,10 @@
 \end{frame}
 
 \begin{frame}{Entropía}
-	Podemos medir la cantidad de incertidumbre en una distribución de probabilidad usando la 
+	Podemos medir la cantidad de información en una distribución de probabilidad usando la 
 	entropía de Shannon.
 	\begin{definition}[Entropía] \label{def:entropy}
-        Para $X$ v.a. discreta $H(X):= - \sum_{x} P(x)\log[P(x)]$, donde 
+        Para $X$ v.a. discreta $H(X):= - \sum_{x} P(x)\log_{2}[P(x)]$, donde 
 		$X$ toma valores en $\mathcal{X}$, $P:\mathcal{X} \rightarrow [0,1]$.
         La entropía conjunta de las variables $X_1...X_N$ se define por 
         $$H(X_1,...,X_N):=-\sum_{x_1}...\sum_{x_N}P(x_1,...,x_N)\log_{2}[P(x_1,...,x_N)]$$
@@ -144,26 +144,6 @@
 	% usamos las prob condicionadas ajustándonos al modelo probabilístico que tendríamos en 
 	% una red bayesiana.
 \end{frame}
-
-\begin{frame}{Entropía + Redes bayesianas}
-	\begin{itemize}
-		\item Para que tenga sentido calcular la entropía de Shannon debe cumplirse la propiedad de aditividad 
-		en los conjuntos
-		\item $P(A U B) = P(A) + P(B) - P(A \cap B)$; para que sea aditiva la probabilidad de la intersección 
-		debe ser 0, pero $P(A \cap B) = P(A)P(B/A)$
-		\item No tiene que ver con que sean sucesos dependientes o independientes, si no con que sean 
-		conjuntos disjuntos o no
-		\item Nuestras variables no son independientes
-	\end{itemize}
-	\begin{alertblock}{Entropía de Tsallis}
-		Para modelar el sistema con redes bayesianas, habría que usar una entropía que sí 
-		cumpliera esas propiedades.
-		La entropía de Shannon, implementada en igraph, refleja la propiedad (caos/orden/sorpresa) que 
-		estamos buscando, lo que fue suficiente para la viabilidad del producto en esta fase.
-	\end{alertblock}
-	
-\end{frame}
-
 %%%%
 \section{Contribuciones}
 
@@ -174,11 +154,8 @@
 	\begin{itemize}
 		\item \href{https://statsbomb.com/articles/soccer/statsbomb-release-free-360-data-womens-euro-2022-available-now/}{StatsBomb 360}
 		captura la posición de todos los jugadores por cada evento que ocurre.
-		\item 2246 pases completos de Inglaterra a lo largo de la EURO 2022 vs 967 de Noruega.
-		\item 444 pasess completos de Inglaterra en el partido Inglaterra-Noruega vs 177 de Noruega.
 	\end{itemize}
 	\begin{center}
-		Fuente de los datos \\[12pt]
 		\includegraphics[width=0.35\textwidth,keepaspectratio]{free_data.png}
 		\\
 		\footnotesize(Nunca antes se habían liberado datos 360 de StatsBomb para fútbol femenino)
@@ -190,6 +167,8 @@
 		\item FreeCompetitions
 		\item FreeMatches
 		\item Guardamos los de Inglaterra y Noruega y les extraemos los eventos
+		\item 2246 pases completos de Inglaterra a lo largo de la EURO 2022 vs 967 de Noruega.
+		\item 444 pasess completos de Inglaterra en el partido Inglaterra-Noruega vs 177 de Noruega.
 	\end{itemize}
 	\begin{columns}[t]
 		\column{.5\textwidth}
@@ -220,10 +199,10 @@
 		\begin{columns}[t]
 			\column{.5\textwidth}
 			\includegraphics[width=\columnwidth,height=3cm]{entropy_match_engl_simpl.png}
-			\captionof{figure}{Entropía conjunta simplificada de Inglaterra}
+			\captionof{figure}{Red de pases simplificada de Inglaterra}
 			\column{.5\textwidth}
 			\includegraphics[width=\columnwidth,height=3cm]{entropy_match_norw_simpl.png}
-			\captionof{figure}{Entropía conjunta simplificada de Noruega}
+			\captionof{figure}{Red de pases simplificada de Noruega}
 		\end{columns} 
 \end{frame}
 
@@ -239,17 +218,6 @@
 		\end{figure}
 \end{frame}
 
-\begin{frame}{Interpretaciones}
-	\begin{columns}[t]
-		\column{.5\textwidth}
-		\includegraphics[width=\columnwidth,height=3cm]{white.png}
-		\footnotesize(White- 0.9708, Mjelde (6)- 0.8272)
-		\column{.5\textwidth}
-		\includegraphics[width=\columnwidth,height=3cm]{norw2.png}
-		\footnotesize(Mead (7)- 0.6506, White (9), Kirby (14)- 0.8599, Thorisdottir(3)- 0.8509, Tuva Hansen(4)- 0.9189)
-	\end{columns} 
-\end{frame}
-
 \begin{frame}{En el partido Inglaterra 8-Noruega 0}
 	\begin{figure}
 		\centering
@@ -262,15 +230,29 @@
 		\end{figure}
 \end{frame}
 
+\begin{frame}{Interpretaciones}
+	\begin{columns}[t]
+		\column{.5\textwidth}
+		\includegraphics[width=\columnwidth,height=3cm]{white.png}
+		\footnotesize(White- 0.9708, Mjelde (6)- 0.8272)
+		\column{.5\textwidth}
+		\includegraphics[width=\columnwidth,height=3cm]{norw2.png}
+		\footnotesize(Mead (7)- 0.6506, White (9), Kirby (14)- 0.8599, Thorisdottir(3)- 0.8509, Tuva Hansen(4)- 0.9189)
+	\end{columns} 
+\end{frame}
+
 \begin{frame}{Resultados}
+	\begin{alertblock}{Principio de máxima entropía de Jayne}
+		Entre todas las distribuciones, debemos elegir aquella con la entropía máxima, esto es, 
+		la que tiene mayor variabilidad.
+	\end{alertblock}
 	\begin{figure}
 		\centering
 			\subfloat[Entropía total de Inglaterra]{
-			\includegraphics[width=0.5\textwidth]{englandentropy.png}}
+			\includegraphics[width=0.4\textwidth]{englandentropy.png}}
 			\subfloat[Entropía total de Noruega]{
-			\includegraphics[width=0.5\textwidth]{norwayentrop.png}}
+			\includegraphics[width=0.4\textwidth]{norwayentrop.png}}
 	\end{figure}
-	Entropía alta en una jugadora causa entropía alta en el equipo.
 \end{frame}
 
 %
@@ -278,19 +260,19 @@
 
 \begin{frame}{Conclusiones}
 	\begin{itemize}
-		\item Equilibrio entre organización y desorganización
-		\item Menos entropía, más comunicación
-		\item Más entropía, más grados de libertad 
-		\item Una entropía lineal alta muestra un peor desempeño
+		\item Con la entropía sobre el grafo de pases podemos explicar el desempeño de un equipo
+		\item Entropía a nivel de jugador y de equipo
+		\item Se puede ver la ``mejor'' o ``peor'' entropía reflejada en un tipo de 
+		visualización de las redes de pases
 	\end{itemize}
 \end{frame}
 
 \begin{frame}{Trabajos futuros}
 	Profundización en redes bayesianas para:
 	\begin{itemize}
-		\item Adaptación al rival
+		\item Influencia del rival
 		\item Posesión del balón
-		\item Minutos jugados
+		\item Minutos jugados de cada jugadora
 		\item Entropía espacio-temporal
 		\item Alineación y cambios
 	\end{itemize}
@@ -301,7 +283,7 @@
 \begin{frame}{Preguntas}
 	\begin{center}
 		Det er alt, folkens! \\[12pt]
-		\includegraphics[width=0.35\textwidth,keepaspectratio]{final.jpg}
+		\includegraphics[width=0.75\textwidth,keepaspectratio]{final.jpg}
     \end{center}
 \end{frame}
 
@@ -336,6 +318,21 @@
 		\\
 		\footnotesize(Una red bayesiana consiste en un modelo estructural y un conjunto de probabilidades)
     \end{center}
+\end{frame}
+
+\begin{frame}{Entropía + Redes bayesianas}
+	\begin{itemize}
+		\item Para calcular la entropía de Shannon debe cumplirse la propiedad de aditividad 
+		\item $P(A U B) = P(A) + P(B) - P(A \cap B)$; para que sea aditiva la probabilidad de la intersección 
+		debe ser 0, pero $P(A \cap B) = P(A)P(B/A)$
+	\end{itemize}
+	\begin{alertblock}{Entropía de Tsallis}
+		Para modelar el sistema con redes bayesianas, habría que usar una entropía que sí 
+		cumpliera esas propiedades.
+		La entropía de Shannon, implementada en igraph, refleja la propiedad (caos/orden/sorpresa) que 
+		estamos buscando, lo que fue suficiente para la viabilidad del producto en esta fase.
+	\end{alertblock}
+	
 \end{frame}
 
 \begin{frame}{Redes causales}
