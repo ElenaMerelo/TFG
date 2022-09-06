@@ -24,7 +24,6 @@
 \usepackage{caption}
 \usepackage{subfig}
 
-
 %%% FONT SELECTION %%%%%%%%%%%%%%%%%
 %%% we choose a sans font %%%%%%%%%%
 \usepackage{kmath,kerkis} 
@@ -113,29 +112,22 @@
 \subsection{Definiciones}
 \begin{frame}{Grafos}
 	\begin{definition}
-		Un grafo es un par $\mathcal{G} = (V, E)$, con $V$ conjunto finito de vértices distinguibles y 
+		$\mathcal{G} = (V, E)$, con $V$ conjunto finito de vértices distinguibles y 
 		$E \subseteq V \times V$ conjunto de aristas. Un par ordenado $(u, v) \in E$ denota un borde dirigido
 		del vértice $u$ al vértice $v$, y se dice que $u$ es padre de $v$ y $v$ hijo de $u$. Los bordes dirigidos 
 		se representarán con flechas. 
 	\end{definition}
-\end{frame}
-
-\begin{frame}{Redes bayesianas}
-	\begin{center}
-		Ejemplo de grafo dirigido acíclico \\[12pt]
-		\includegraphics[width=0.35\textwidth,keepaspectratio]{dag.png}
-		\\
-		\footnotesize(Una red bayesiana consiste en un modelo estructural y un conjunto de probabilidades)
-    \end{center}
+	En nuestro caso, representaremos las redes de pases mediante grafos no dirigidos, donde los nodos serán las 
+	jugadoras, y los pases los arcos.
 \end{frame}
 
 \begin{frame}{Entropía}
+	Nos da una manera de estimar el número medio mínimo de bits que se 
+	necesitan para codificar una cadena de símbolos, basándonos en la 
+	frecuencia de estos.
 	\begin{definition}[Entropía] \label{def:entropy}
-        Para $X$ variable aleatoria discreta:  
-        
-        $$H(X):= - \sum_{x} P(x)\log[P(x)]$$
-        
-        donde $X$ toma valores en $\mathcal{X}$, $P:\mathcal{X} \rightarrow [0,1]$.
+        Para $X$ variable aleatoria discreta $H(X):= - \sum_{x} P(x)\log[P(x)]$, donde 
+		$X$ toma valores en $\mathcal{X}$, $P:\mathcal{X} \rightarrow [0,1]$.
         La entropía conjunta de las variables $X_1...X_N$ se define por 
         $$H(X_1,...,X_N):=-\sum_{x_1}...\sum_{x_N}P(x_1,...,x_N)\log[P(x_1,...,x_N)]$$
     \end{definition}
@@ -150,19 +142,27 @@
 \subsection{Resultados}
 
 \begin{frame}{Preprocesamiento de datos}
-	
+	\begin{itemize}
+		\item FreeCompetitions
+		\item FreeMatches
+		\item Guardamos los de Inglaterra y Noruega y les extraemos los eventos
+	\end{itemize}
+	\begin{columns}[t]
+		\column{.5\textwidth}
+		\includegraphics[width=\columnwidth,height=3cm]{plot_england.png}
+		\captionof{figure}{Red de pases total de Inglaterra}
+		\column{.5\textwidth}
+		\includegraphics[width=\columnwidth,height=3cm]{plot_norw.png}
+		\captionof{figure}{Red de pases total de Noruega}
+	\end{columns} 
 \end{frame}
 
 \begin{frame}{Redes de pases a lo largo de la competición}
     \begin{columns}[t]
         \column{.5\textwidth}
-        \includegraphics[width=\columnwidth,height=3cm]{plot_england.png}
-        \captionof{figure}{Red de pases total de Inglaterra}
         \includegraphics[width=\columnwidth,height=3cm]{plot_england_simpl.png}
         \captionof{figure}{Red de pases total simplificada de Inglaterra}
         \column{.5\textwidth}
-        \includegraphics[width=\columnwidth,height=3cm]{plot_norw.png}
-        \captionof{figure}{Red de pases total de Noruega}
         \includegraphics[width=\columnwidth,height=3cm]{plot_norw_simpl.png}
         \captionof{figure}{Red de pases total simplificada de Noruega}
     \end{columns} 
@@ -190,9 +190,22 @@
 			\subfloat[Entropía total de Inglaterra]{
 			\includegraphics[width=0.2\textwidth]{england_total_ordered.png}}
 			\includegraphics[width=0.101\textwidth]{positions_norway_total.png}
-		\subfloat[Entropía total de Noruega]{
+			\subfloat[Entropía total de Noruega]{
 			\includegraphics[width=0.21\textwidth]{norway_total_ordered.png}}
 		\end{figure}
+\end{frame}
+
+\begin{frame}{Interpretaciones}
+	\begin{columns}[t]
+		\column{.5\textwidth}
+		\includegraphics[width=\columnwidth,height=3cm]{first_half_report.png}
+		\includegraphics[width=\columnwidth,height=3cm]{white.png}
+		\captionof{figure}{White- 0.9708, Mjelde- 0.8272}
+		\column{.5\textwidth}
+		\includegraphics[width=\columnwidth,height=3cm]{norw2.png}
+		\captionof{figure}{Mead- 0.6506, White, Kirby- 0.8599, Thorisdottir- 0.8509, Tuva Hansen- 0.9189}
+		\includegraphics[width=\columnwidth,height=3cm]{second_half_report.png}
+	\end{columns} 
 \end{frame}
 
 \begin{frame}{En el partido Inglaterra 8-Noruega 0}
@@ -202,7 +215,7 @@
 			\subfloat[Entropía total de Inglaterra]{
 			\includegraphics[width=0.199\textwidth]{england_match_ordered.png}}
 			\includegraphics[width=0.102\textwidth]{positions_norway_match.png}
-		\subfloat[Entropía total de Noruega]{
+			\subfloat[Entropía total de Noruega]{
 			\includegraphics[width=0.209\textwidth]{norway_match_ordered.png}}
 		\end{figure}
 \end{frame}
@@ -281,6 +294,15 @@
             de tal manera que $\mathbb{P}(V[1],...,V[N])= \prod_{i=1}^{n}\mathbb{P}(V[i]|pa(V[i]))$
         \end{itemize}
     \end{definition}     
+\end{frame}
+
+\begin{frame}{Redes bayesianas}
+	\begin{center}
+		Ejemplo de grafo dirigido acíclico \\[12pt]
+		\includegraphics[width=0.35\textwidth,keepaspectratio]{dag.png}
+		\\
+		\footnotesize(Una red bayesiana consiste en un modelo estructural y un conjunto de probabilidades)
+    \end{center}
 \end{frame}
 
 \begin{frame}{Redes causales}
